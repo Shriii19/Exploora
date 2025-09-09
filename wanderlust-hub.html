@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Hub - Your Gateway to Adventure</title>
+    <link rel="stylesheet" href="wanderlust-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🌍 Wanderlust Hub</h1>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Discover your next adventure..." class="search-input">
+                    <button id="searchBtn" class="search-btn">
+                        <i class="fas fa-search"></i>
+                        Explore
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="hero-title">Explore the World's Hidden Gems</h2>
+            <p class="hero-subtitle">Discover breathtaking destinations, plan your perfect getaway, and create memories that last a lifetime</p>
+            <div class="hero-buttons">
+                <button class="cta-primary">Start Your Journey</button>
+                <button class="cta-secondary">Watch Travel Stories</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destination Results -->
+    <section id="destinationSection" class="destination-section hidden">
+        <div class="container">
+            <h2 class="section-title">Destination Highlights</h2>
+            <div id="destinationGrid" class="destination-grid"></div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section id="weatherSection" class="weather-section hidden">
+        <div class="container">
+            <h2 class="section-title">Current Weather</h2>
+            <div id="weatherCard" class="weather-card"></div>
+        </div>
+    </section>
+
+    <!-- Recent Searches -->
+    <section class="recent-section">
+        <div class="container">
+            <h2 class="section-title">Recent Explorations</h2>
+            <div id="recentSearches" class="recent-searches">
+                <!-- Recent search cards will be generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-image" style="background: linear-gradient(45deg, #0077b6, #00b4d8);">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="featured-content">
+                        <h3>Mountain Adventures</h3>
+                        <p>Explore majestic peaks and scenic trails</p>
+                    </div>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="featured-image" style="background: linear-gradient(45deg, #0077b6, #90e0ef);">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="featured-content">
+                        <h3>Beach Escapes</h3>
+                        <p>Relax on pristine shores and crystal waters</p>
+                    </div>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="featured-image" style="background: linear-gradient(45deg, #0077b6, #023e8a);">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="featured-content">
+                        <h3>Urban Discoveries</h3>
+                        <p>Experience vibrant cultures and city life</p>
+                    </div>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="featured-image" style="background: linear-gradient(45deg, #0077b6, #48cae4);">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="featured-content">
+                        <h3>Nature Retreats</h3>
+                        <p>Connect with wilderness and natural beauty</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Travel Smart</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>Plan Ahead</h3>
+                    <p>Research your destination and book accommodations early for the best deals</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Stay Safe</h3>
+                    <p>Keep copies of important documents and stay informed about local customs</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Capture Memories</h3>
+                    <p>Document your journey and share your adventures with fellow travelers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🌍 Wanderlust Hub</h3>
+                    <p>Your gateway to extraordinary adventures and unforgettable experiences around the globe.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#travel-tips">Travel Tips</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Made with ❤️ using HTML, CSS, and JavaScript.</p>
+                <p>&copy; 2025 Wanderlust Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="wanderlust-script.js"></script>
+</body>
+</html>
