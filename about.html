@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Travel Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🌍 Travel Explorer</h1>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li><a href="destinations.html" class="nav-link">Destinations</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for a city..." class="search-input">
+                <button id="searchBtn" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>About Travel Explorer</h1>
+            <p>Simplifying trip planning with modern technology</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Problem Statement Section -->
+            <section class="content-section">
+                <div class="section-content">
+                    <div class="text-content">
+                        <h2>The Problem We Solve</h2>
+                        <p class="lead">
+                            Planning a trip can be overwhelming without easy access to destination information. 
+                            Travelers often struggle to find reliable, up-to-date information about destinations, 
+                            weather conditions, and visual representations of places they want to visit.
+                        </p>
+                        <p>
+                            Our Travel Explorer website addresses this challenge by providing a clean, intuitive 
+                            interface that combines real-time weather data with stunning destination photography, 
+                            making trip planning more efficient and enjoyable.
+                        </p>
+                    </div>
+                    <div class="image-content">
+                        <div class="problem-illustration">
+                            <i class="fas fa-route"></i>
+                            <h3>Trip Planning Made Simple</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Solution Section -->
+            <section class="content-section alternate">
+                <div class="section-content">
+                    <div class="image-content">
+                        <div class="solution-illustration">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Our Solution</h3>
+                        </div>
+                    </div>
+                    <div class="text-content">
+                        <h2>How We Help Travelers</h2>
+                        <ul class="solution-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Real-time Weather Data:</strong> Get current weather conditions using OpenWeatherMap API</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>High-Quality Photos:</strong> Browse stunning destination images from Unsplash API</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Clean Interface:</strong> User-friendly design that works on all devices</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Quick Search:</strong> Find destination information in seconds</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technology Stack Section -->
+            <section class="content-section">
+                <div class="tech-section">
+                    <h2>Technology Stack</h2>
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <i class="fab fa-html5"></i>
+                            <h3>HTML5</h3>
+                            <p>Semantic structure and accessibility features for modern web standards</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fab fa-css3-alt"></i>
+                            <h3>CSS3</h3>
+                            <p>Modern styling with Flexbox, Grid, and responsive design principles</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fab fa-js-square"></i>
+                            <h3>JavaScript ES6+</h3>
+                            <p>Interactive functionality and API integration for dynamic content</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fas fa-cloud"></i>
+                            <h3>OpenWeatherMap API</h3>
+                            <p>Real-time weather data and forecasts for destinations worldwide</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fas fa-camera"></i>
+                            <h3>Unsplash API</h3>
+                            <p>High-quality, professional photography for destination galleries</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Responsive Design</h3>
+                            <p>Optimized experience across desktop, tablet, and mobile devices</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="content-section mission-section">
+                <div class="mission-content">
+                    <h2>Our Mission</h2>
+                    <blockquote>
+                        "To empower travelers with instant access to essential destination information, 
+                        making trip planning more efficient, informed, and inspiring through the power of modern web technology."
+                    </blockquote>
+                    <div class="mission-stats">
+                        <div class="stat">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">Destinations</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Real-time</span>
+                            <span class="stat-label">Weather Data</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">HD</span>
+                            <span class="stat-label">Quality Photos</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="content-section">
+                <h2>Key Features</h2>
+                <div class="features-detailed">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Smart Search</h3>
+                            <p>Intelligent city search with auto-suggestions and instant results. Find any destination quickly with our responsive search interface.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Photo Gallery</h3>
+                            <p>Stunning destination photos powered by Unsplash API. Get visual inspiration with high-quality images of landmarks and attractions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Weather Information</h3>
+                            <p>Real-time weather conditions from OpenWeatherMap API. Plan your trip with current temperature, conditions, and forecasts.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <div class="feature-info">
+                            <h3>Search History</h3>
+                            <p>Keep track of your recent searches with local storage. Quickly revisit destinations you've explored before.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Made with ❤️ using HTML, CSS, and JavaScript | Project by Shrinivas Mudabe</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
