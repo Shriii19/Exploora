@@ -121,4 +121,4 @@ Feel free to fork this project and submit pull requests for any improvements!
 
 ---
 
-**Made with ❤️ using HTML, CSS, and JavaScript**
+**Project by shrinivas mudabe**
