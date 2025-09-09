@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Explorer - Discover the World</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🌍 Travel Explorer</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for a city..." class="search-input">
+                <button id="searchBtn" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Explore the World</h2>
+            <p>Discover amazing destinations and plan your next adventure</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Message (shown when no search) -->
+            <div id="welcomeSection" class="welcome-section">
+                <h3>Welcome to Travel Explorer!</h3>
+                <p>Search for any city to discover amazing destinations, check weather conditions, and explore beautiful photos.</p>
+            </div>
+
+            <!-- Destination Info Section -->
+            <section id="destinationSection" class="destination-section hidden">
+                <h3 id="cityName">City Name</h3>
+                <div class="photo-gallery" id="photoGallery">
+                    <!-- Photos will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Weather Info Section -->
+            <section id="weatherSection" class="weather-section hidden">
+                <h3>Weather Information</h3>
+                <div class="weather-card">
+                    <div class="weather-icon">
+                        <i id="weatherIcon" class="fas fa-sun"></i>
+                    </div>
+                    <div class="weather-info">
+                        <div class="temperature" id="temperature">25°C</div>
+                        <div class="condition" id="weatherCondition">Sunny</div>
+                        <div class="location" id="weatherLocation">City, Country</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Searches Section -->
+            <section class="recent-searches-section">
+                <h3>Recent Searches</h3>
+                <div class="recent-searches" id="recentSearches">
+                    <p class="no-searches">No recent searches yet. Start exploring!</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Made with ❤️ using HTML, CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
