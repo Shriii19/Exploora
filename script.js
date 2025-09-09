@@ -1,6 +1,10 @@
 // Global variables
 let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
 
+// API Keys (Replace with your actual API keys)
+const UNSPLASH_API_KEY = 'your_unsplash_api_key_here';
+const OPENWEATHER_API_KEY = 'your_openweather_api_key_here';
+
 // DOM elements
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
@@ -15,6 +19,10 @@ const weatherCondition = document.getElementById('weatherCondition');
 const weatherLocation = document.getElementById('weatherLocation');
 const recentSearchesContainer = document.getElementById('recentSearches');
 const loadingSpinner = document.getElementById('loadingSpinner');
+
+// Navigation elements
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
 
 // Sample data for demonstration
 const sampleDestinations = {
@@ -121,15 +129,9 @@ const cardColors = [
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    initializeNavigation();
+    initializeSearch();
     displayRecentSearches();
-    
-    // Event listeners
-    searchBtn.addEventListener('click', handleSearch);
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
-    });
     
     // Add some sample searches if none exist
     if (recentSearches.length === 0) {
@@ -138,6 +140,44 @@ document.addEventListener('DOMContentLoaded', function() {
         displayRecentSearches();
     }
 });
+
+// Initialize navigation
+function initializeNavigation() {
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Initialize search functionality
+function initializeSearch() {
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', handleSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSearch();
+            }
+        });
+    }
+}
 
 // Handle search functionality
 function handleSearch() {
@@ -150,11 +190,141 @@ function handleSearch() {
     
     showLoading(true);
     
-    // Simulate API delay
-    setTimeout(() => {
+    // Use real APIs or fallback to sample data
+    if (UNSPLASH_API_KEY !== 'your_unsplash_api_key_here' && OPENWEATHER_API_KEY !== 'your_openweather_api_key_here') {
+        searchWithAPIs(query);
+    } else {
+        // Fallback to sample data
+        setTimeout(() => {
+            searchDestination(query);
+            showLoading(false);
+        }, 1500);
+    }
+}
+
+// Search using real APIs
+async function searchWithAPIs(query) {
+    try {
+        const [photosData, weatherData] = await Promise.all([
+            fetchUnsplashPhotos(query),
+            fetchWeatherData(query)
+        ]);
+
+        if (photosData && weatherData) {
+            displayRealDestination(query, photosData, weatherData);
+            addToRecentSearches(query);
+            showSearchResults();
+        } else {
+            showCityNotFound(query);
+        }
+    } catch (error) {
+        console.error('API Error:', error);
+        // Fallback to sample data
         searchDestination(query);
-        showLoading(false);
-    }, 1500);
+    }
+    showLoading(false);
+}
+
+// Fetch photos from Unsplash API
+async function fetchUnsplashPhotos(query) {
+    try {
+        const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&per_page=5&client_id=${UNSPLASH_API_KEY}`);
+        const data = await response.json();
+        return data.results;
+    } catch (error) {
+        console.error('Unsplash API Error:', error);
+        return null;
+    }
+}
+
+// Fetch weather data from OpenWeatherMap API
+async function fetchWeatherData(query) {
+    try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${OPENWEATHER_API_KEY}&units=metric`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Weather API Error:', error);
+        return null;
+    }
+}
+
+// Display destination with real API data
+function displayRealDestination(query, photos, weatherData) {
+    if (cityNameElement) {
+        cityNameElement.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
+    }
+    
+    if (photoGallery) {
+        photoGallery.innerHTML = '';
+        
+        photos.forEach((photo, index) => {
+            const photoCard = createRealPhotoCard(photo, index);
+            photoGallery.appendChild(photoCard);
+        });
+    }
+
+    if (weatherData) {
+        displayRealWeather(weatherData);
+    }
+}
+
+// Create photo card with real Unsplash data
+function createRealPhotoCard(photo, index) {
+    const card = document.createElement('div');
+    card.className = 'photo-card';
+    
+    card.innerHTML = `
+        <img src="${photo.urls.regular}" alt="${photo.alt_description || 'Destination photo'}" loading="lazy">
+        <div class="photo-info">
+            <h4>${photo.alt_description || `Photo ${index + 1}`}</h4>
+            <p>Photo by ${photo.user.name} on Unsplash</p>
+        </div>
+    `;
+    
+    return card;
+}
+
+// Display real weather data
+function displayRealWeather(weatherData) {
+    if (!weatherIcon || !temperature || !weatherCondition || !weatherLocation) return;
+    
+    const iconMap = {
+        '01d': 'fas fa-sun',
+        '01n': 'fas fa-moon',
+        '02d': 'fas fa-cloud-sun',
+        '02n': 'fas fa-cloud-moon',
+        '03d': 'fas fa-cloud',
+        '03n': 'fas fa-cloud',
+        '04d': 'fas fa-cloud',
+        '04n': 'fas fa-cloud',
+        '09d': 'fas fa-cloud-rain',
+        '09n': 'fas fa-cloud-rain',
+        '10d': 'fas fa-cloud-sun-rain',
+        '10n': 'fas fa-cloud-moon-rain',
+        '11d': 'fas fa-bolt',
+        '11n': 'fas fa-bolt',
+        '13d': 'fas fa-snowflake',
+        '13n': 'fas fa-snowflake',
+        '50d': 'fas fa-smog',
+        '50n': 'fas fa-smog'
+    };
+    
+    weatherIcon.className = iconMap[weatherData.weather[0].icon] || 'fas fa-sun';
+    temperature.textContent = `${Math.round(weatherData.main.temp)}°C`;
+    weatherCondition.textContent = weatherData.weather[0].description.charAt(0).toUpperCase() + weatherData.weather[0].description.slice(1);
+    weatherLocation.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
+}
+
+// Show search results sections
+function showSearchResults() {
+    if (welcomeSection) welcomeSection.classList.add('hidden');
+    if (destinationSection) destinationSection.classList.remove('hidden');
+    if (weatherSection) weatherSection.classList.remove('hidden');
+    
+    if (destinationSection) {
+        destinationSection.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // Search for destination
