@@ -18,7 +18,6 @@ const temperature = document.getElementById('temperature');
 const weatherCondition = document.getElementById('weatherCondition');
 const weatherLocation = document.getElementById('weatherLocation');
 const recentSearchesContainer = document.getElementById('recentSearches');
-const loadingSpinner = document.getElementById('loadingSpinner');
 
 // Navigation elements
 const hamburger = document.querySelector('.hamburger');
@@ -131,6 +130,8 @@ const cardColors = [
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeSearch();
+    initializeScrollAnimations();
+    initializeHeaderScroll();
     displayRecentSearches();
     
     // Add some sample searches if none exist
@@ -140,6 +141,47 @@ document.addEventListener('DOMContentLoaded', function() {
         displayRecentSearches();
     }
 });
+
+// Initialize scroll animations
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements with animation classes
+    document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Initialize header scroll effect
+function initializeHeaderScroll() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        lastScrollY = currentScrollY;
+    });
+}
 
 // Initialize navigation
 function initializeNavigation() {
@@ -188,17 +230,12 @@ function handleSearch() {
         return;
     }
     
-    showLoading(true);
-    
     // Use real APIs or fallback to sample data
     if (UNSPLASH_API_KEY !== 'your_unsplash_api_key_here' && OPENWEATHER_API_KEY !== 'your_openweather_api_key_here') {
         searchWithAPIs(query);
     } else {
         // Fallback to sample data
-        setTimeout(() => {
-            searchDestination(query);
-            showLoading(false);
-        }, 1500);
+        searchDestination(query);
     }
 }
 
@@ -222,7 +259,6 @@ async function searchWithAPIs(query) {
         // Fallback to sample data
         searchDestination(query);
     }
-    showLoading(false);
 }
 
 // Fetch photos from Unsplash API
@@ -369,20 +405,31 @@ function displayDestination(destination) {
 // Create photo card element
 function createPhotoCard(photo, index) {
     const card = document.createElement('div');
-    card.className = 'photo-card';
+    card.className = 'photo-card fade-in';
     
     // Use a placeholder image with gradient background
     card.innerHTML = `
         <div style="
-            height: 200px;
+            height: 240px;
             background: ${cardColors[index % cardColors.length]};
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: bold;
+            position: relative;
+            overflow: hidden;
         ">
+            <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+                background-size: 20px 20px;
+            "></div>
             📸
         </div>
         <div class="photo-info">
@@ -390,6 +437,9 @@ function createPhotoCard(photo, index) {
             <p>${photo.description}</p>
         </div>
     `;
+    
+    // Add stagger animation delay
+    card.style.animationDelay = `${index * 0.1}s`;
     
     return card;
 }
@@ -438,22 +488,25 @@ function displayRecentSearches() {
 // Create search card element
 function createSearchCard(cityName) {
     const card = document.createElement('div');
-    card.className = 'search-card';
+    card.className = 'search-card fade-in';
     
     card.innerHTML = `
+        <div style="margin-bottom: 1rem; font-size: 2rem;">🏙️</div>
         <h4>${cityName}</h4>
-        <p>Click to search again</p>
+        <p>Click to explore again</p>
     `;
     
     card.addEventListener('click', () => {
         const query = cityName.split(',')[0].toLowerCase();
         searchInput.value = cityName;
-        showLoading(true);
         
+        // Add click animation
+        card.style.transform = 'scale(0.95)';
         setTimeout(() => {
-            searchDestination(query);
-            showLoading(false);
-        }, 1000);
+            card.style.transform = '';
+        }, 150);
+        
+        searchDestination(query);
     });
     
     return card;
@@ -482,40 +535,92 @@ function showCityNotFound(query) {
     destinationSection.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Show/hide loading spinner
-function showLoading(show) {
-    if (show) {
-        loadingSpinner.classList.remove('hidden');
-    } else {
-        loadingSpinner.classList.add('hidden');
-    }
-}
-
 // Add some interactive animations
 document.addEventListener('DOMContentLoaded', function() {
     // Animate hero section on load
     const heroContent = document.querySelector('.hero-content');
-    heroContent.style.opacity = '0';
-    heroContent.style.transform = 'translateY(30px)';
+    if (heroContent) {
+        heroContent.style.opacity = '0';
+        heroContent.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            heroContent.style.transition = 'all 1s ease';
+            heroContent.style.opacity = '1';
+            heroContent.style.transform = 'translateY(0)';
+        }, 300);
+    }
     
-    setTimeout(() => {
-        heroContent.style.transition = 'all 1s ease';
-        heroContent.style.opacity = '1';
-        heroContent.style.transform = 'translateY(0)';
-    }, 300);
-    
-    // Add hover effects to cards
-    document.addEventListener('mouseover', function(e) {
-        if (e.target.closest('.photo-card') || e.target.closest('.search-card')) {
-            e.target.style.transform = 'translateY(-5px)';
+    // Add modern button ripple effect
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn')) {
+            const btn = e.target;
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            `;
+            
+            btn.style.position = 'relative';
+            btn.style.overflow = 'hidden';
+            btn.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
         }
     });
     
-    document.addEventListener('mouseout', function(e) {
-        if (e.target.closest('.photo-card') || e.target.closest('.search-card')) {
-            e.target.style.transform = 'translateY(0)';
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
         }
-    });
+    `;
+    document.head.appendChild(style);
+});
+
+// Enhanced smooth scrolling for internal links
+document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+});
+
+// Add parallax effect to hero section
+window.addEventListener('scroll', function() {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        hero.style.transform = `translateY(${rate}px)`;
+    }
 });
 
 // Add keyboard navigation
