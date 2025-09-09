@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Travel Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🌍 Travel Explorer</h1>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="destinations.html" class="nav-link active">Destinations</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for a city..." class="search-input">
+                <button id="searchBtn" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Popular Destinations</h1>
+            <p>Discover amazing places around the world</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Filter Section -->
+            <section class="filter-section">
+                <h2>Explore by Region</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-region="all">All Destinations</button>
+                    <button class="filter-btn" data-region="europe">Europe</button>
+                    <button class="filter-btn" data-region="asia">Asia</button>
+                    <button class="filter-btn" data-region="america">America</button>
+                    <button class="filter-btn" data-region="oceania">Oceania</button>
+                </div>
+            </section>
+
+            <!-- Destinations Grid -->
+            <section class="destinations-grid" id="destinationsGrid">
+                <!-- Destinations will be loaded here by JavaScript -->
+            </section>
+
+            <!-- Featured Destinations -->
+            <section class="featured-section">
+                <h2>Why Choose These Destinations?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-plane"></i>
+                        <h3>Easy Access</h3>
+                        <p>Well-connected airports and transportation systems make these destinations easily accessible from major cities worldwide.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-camera"></i>
+                        <h3>Photo Opportunities</h3>
+                        <p>Instagram-worthy spots and iconic landmarks that provide endless opportunities for memorable photography.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Local Cuisine</h3>
+                        <p>Experience authentic local flavors and culinary traditions that reflect the unique culture of each destination.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Rich Culture</h3>
+                        <p>Immerse yourself in diverse cultures, historical sites, and traditions that span centuries of human civilization.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Travel Tips -->
+            <section class="tips-section">
+                <h2>Travel Planning Tips</h2>
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <div class="tip-number">1</div>
+                        <h3>Check Weather Conditions</h3>
+                        <p>Always check current weather and seasonal patterns before traveling. Our weather integration helps you plan the perfect time to visit.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">2</div>
+                        <h3>Research Local Attractions</h3>
+                        <p>Browse through destination photos to identify must-see landmarks and hidden gems that match your interests.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">3</div>
+                        <h3>Plan Your Itinerary</h3>
+                        <p>Use our destination information to create a balanced itinerary that includes both popular attractions and local experiences.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">4</div>
+                        <h3>Save Your Searches</h3>
+                        <p>Keep track of destinations you're interested in using our recent searches feature for easy comparison and planning.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Made with ❤️ using HTML, CSS, and JavaScript | Project by Shrinivas Mudabe</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="destinations.js"></script>
+</body>
+</html>
