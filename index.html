@@ -15,6 +15,19 @@
             <div class="logo">
                 <h1>🌍 Travel Explorer</h1>
             </div>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="destinations.html" class="nav-link">Destinations</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
             <div class="search-container">
                 <input type="text" id="searchInput" placeholder="Search for a city..." class="search-input">
                 <button id="searchBtn" class="search-btn">
@@ -37,8 +50,29 @@
         <div class="container">
             <!-- Welcome Message (shown when no search) -->
             <div id="welcomeSection" class="welcome-section">
-                <h3>Welcome to Travel Explorer!</h3>
-                <p>Search for any city to discover amazing destinations, check weather conditions, and explore beautiful photos.</p>
+                <h3>Simplify Your Trip Planning</h3>
+                <p class="problem-statement">
+                    Planning a trip can be overwhelming without easy access to destination info. 
+                    Travel Explorer offers a clean interface to explore destinations, view real photos, 
+                    and check current weather conditions. It simplifies trip planning for travelers worldwide.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-images"></i>
+                        <h4>Real Photos</h4>
+                        <p>High-quality destination photos from Unsplash</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-cloud-sun"></i>
+                        <h4>Live Weather</h4>
+                        <p>Current weather data from OpenWeatherMap</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h4>Easy Planning</h4>
+                        <p>Streamlined interface for quick destination research</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Destination Info Section -->
