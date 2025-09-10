@@ -22,11 +22,18 @@ function initializeContactForm() {
 
 // Handle form submission
 function handleFormSubmission() {
+    // Validate form first
+    if (!validateForm()) {
+        return;
+    }
+    
     const formData = new FormData(document.getElementById('contactForm'));
     const data = Object.fromEntries(formData);
     
     // Show loading state
     const submitBtn = document.querySelector('.submit-btn');
+    if (!submitBtn) return;
+    
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
@@ -41,7 +48,10 @@ function handleFormSubmission() {
         showFormSuccess();
         
         // Reset form
-        document.getElementById('contactForm').reset();
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.reset();
+        }
     }, 2000);
 }
 

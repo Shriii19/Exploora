@@ -440,23 +440,29 @@ function searchDestination(query) {
         displayWeather(destination.weather, destination.name);
         
         // Hide welcome section and show results
-        welcomeSection.classList.add('hidden');
-        destinationSection.classList.remove('hidden');
-        weatherSection.classList.remove('hidden');
+        if (welcomeSection) welcomeSection.classList.add('hidden');
+        if (destinationSection) destinationSection.classList.remove('hidden');
+        if (weatherSection) weatherSection.classList.remove('hidden');
         
         // Scroll to results
-        destinationSection.scrollIntoView({ behavior: 'smooth' });
+        if (destinationSection) {
+            destinationSection.scrollIntoView({ behavior: 'smooth' });
+        }
     } else {
         // Show message for city not found
         showCityNotFound(query);
     }
     
     // Clear search input
-    searchInput.value = '';
+    if (searchInput) {
+        searchInput.value = '';
+    }
 }
 
 // Display destination information
 function displayDestination(destination) {
+    if (!cityNameElement || !photoGallery) return;
+    
     cityNameElement.textContent = destination.name;
     photoGallery.innerHTML = '';
     
@@ -510,6 +516,8 @@ function createPhotoCard(photo, index) {
 
 // Display weather information
 function displayWeather(weather, cityName) {
+    if (!weatherIcon || !temperature || !weatherCondition || !weatherLocation) return;
+    
     weatherIcon.className = weather.icon;
     temperature.textContent = weather.temperature;
     weatherCondition.textContent = weather.condition;
@@ -536,6 +544,8 @@ function addToRecentSearches(cityName) {
 
 // Display recent searches
 function displayRecentSearches() {
+    if (!recentSearchesContainer) return;
+    
     if (recentSearches.length === 0) {
         recentSearchesContainer.innerHTML = '<p class="no-searches">No recent searches yet. Start exploring!</p>';
         return;
@@ -578,25 +588,32 @@ function createSearchCard(cityName) {
 
 // Show city not found message
 function showCityNotFound(query) {
-    welcomeSection.classList.add('hidden');
-    destinationSection.classList.remove('hidden');
-    weatherSection.classList.add('hidden');
+    if (welcomeSection) welcomeSection.classList.add('hidden');
+    if (destinationSection) destinationSection.classList.remove('hidden');
+    if (weatherSection) weatherSection.classList.add('hidden');
     
-    cityNameElement.textContent = `"${query}" - City Not Found`;
-    photoGallery.innerHTML = `
-        <div style="
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
-        ">
-            <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px; color: #ccc;"></i>
-            <h3 style="margin-bottom: 10px;">City Not Found</h3>
-            <p>Sorry, we couldn't find information about "${query}". Try searching for: Paris, Tokyo, London, New York, Sydney, or Rome.</p>
-        </div>
-    `;
+    if (cityNameElement) {
+        cityNameElement.textContent = `"${query}" - City Not Found`;
+    }
     
-    destinationSection.scrollIntoView({ behavior: 'smooth' });
+    if (photoGallery) {
+        photoGallery.innerHTML = `
+            <div style="
+                grid-column: 1 / -1;
+                text-align: center;
+                padding: 60px 20px;
+                color: #666;
+            ">
+                <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px; color: #ccc;"></i>
+                <h3 style="margin-bottom: 10px;">City Not Found</h3>
+                <p>Sorry, we couldn't find information about "${query}". Try searching for: Paris, Tokyo, London, New York, Sydney, or Rome.</p>
+            </div>
+        `;
+    }
+    
+    if (destinationSection) {
+        destinationSection.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // Add some interactive animations
@@ -691,10 +708,12 @@ window.addEventListener('scroll', function() {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         // Clear search and show welcome section
-        searchInput.value = '';
-        welcomeSection.classList.remove('hidden');
-        destinationSection.classList.add('hidden');
-        weatherSection.classList.add('hidden');
+        if (searchInput) {
+            searchInput.value = '';
+        }
+        if (welcomeSection) welcomeSection.classList.remove('hidden');
+        if (destinationSection) destinationSection.classList.add('hidden');
+        if (weatherSection) weatherSection.classList.add('hidden');
     }
 });
 
