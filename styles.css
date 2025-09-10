@@ -84,7 +84,6 @@ body {
     background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
     min-height: 100vh;
     overflow-x: hidden;
-    animation: fadeInUp 0.8s ease-out;
 }
 
 .container {
@@ -448,7 +447,6 @@ body {
     backdrop-filter: blur(25px);
     border-bottom: 1px solid rgba(37, 99, 235, 0.1);
     transition: all var(--transition-normal);
-    animation: slideDownBounce 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -514,16 +512,7 @@ body {
     align-items: center;
 }
 
-.nav-menu li {
-    animation: fadeInUp 0.6s ease-out;
-    opacity: 0;
-    animation-fill-mode: forwards;
-}
-
-.nav-menu li:nth-child(1) { animation-delay: 0.5s; }
-.nav-menu li:nth-child(2) { animation-delay: 0.6s; }
-.nav-menu li:nth-child(3) { animation-delay: 0.7s; }
-.nav-menu li:nth-child(4) { animation-delay: 0.8s; }
+/* Navigation items styling handled by .nav-link */
 
 .nav-link {
     color: var(--gray-600);
@@ -531,7 +520,7 @@ body {
     font-weight: var(--font-weight-medium);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-md);
-    transition: all 0.3s ease;
+    transition: color 0.2s ease, background-color 0.2s ease;
     position: relative;
     font-size: var(--text-sm);
 }
@@ -544,7 +533,7 @@ body {
     width: 0;
     height: 2px;
     background: var(--primary-color);
-    transition: all 0.3s ease;
+    transition: width 0.2s ease;
     transform: translateX(-50%);
 }
 
@@ -556,7 +545,6 @@ body {
 .nav-link.active {
     color: var(--primary-color);
     background: rgba(37, 99, 235, 0.08);
-    transform: translateY(-1px);
 }
 
 .nav-link.active::after {
