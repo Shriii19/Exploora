@@ -22,6 +22,70 @@ const recentSearchesContainer = document.getElementById('recentSearches');
 // Navigation elements
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
+const header = document.querySelector('.header');
+
+// Animation and scroll handling
+document.addEventListener('DOMContentLoaded', function() {
+    initializeAnimations();
+    setupScrollEffects();
+    setupIntersectionObserver();
+});
+
+// Initialize page animations
+function initializeAnimations() {
+    // Add animation classes to elements that should animate on load
+    const animatedElements = document.querySelectorAll('.feature-card, .photo-card');
+    animatedElements.forEach((el, index) => {
+        el.style.animationDelay = `${0.1 * index}s`;
+    });
+}
+
+// Setup scroll effects for header and other elements
+function setupScrollEffects() {
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Header scroll effect
+        if (currentScrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Parallax effect for hero section
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.5;
+            hero.style.transform = `translateY(${parallax}px)`;
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+}
+
+// Setup intersection observer for scroll-triggered animations
+function setupIntersectionObserver() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in-up');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements that should animate when scrolled into view
+    const elementsToObserve = document.querySelectorAll('.feature-card, .photo-card, .destination-section, .weather-section');
+    elementsToObserve.forEach(el => observer.observe(el));
+}
 
 // Sample data for demonstration
 const sampleDestinations = {
