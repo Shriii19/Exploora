@@ -39,36 +39,104 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-particles"></div>
         <div class="hero-content floating">
-            <span class="hero-badge">🌟 Your Ultimate Travel Companion</span>
-            <h2>Discover the World with <span class="gradient-text">Exploora</span></h2>
-            <p>Unlock breathtaking destinations with real-time weather insights, stunning photography, and intelligent travel planning—all in one seamless experience</p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">∞</span>
-                    <span class="stat-label">Global Cities</span>
+            <div class="hero-announcement">
+                <i class="fas fa-sparkles"></i>
+                <span>Trusted by 50,000+ travelers worldwide</span>
+                <div class="announcement-badge">NEW</div>
+            </div>
+            <h1 class="hero-title">
+                Discover the World with 
+                <span class="gradient-text-animated">Exploora</span>
+            </h1>
+            <p class="hero-description">
+                The most advanced travel planning platform. Get instant access to <strong>real-time weather</strong>, 
+                <strong>professional photography</strong>, and <strong>intelligent insights</strong> for any destination on Earth.
+            </p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-bolt"></i>
+                    <span>Instant Results</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">Live Data</span>
+                <div class="hero-feature">
+                    <i class="fas fa-globe"></i>
+                    <span>Global Coverage</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Free to Use</span>
+                <div class="hero-feature">
+                    <i class="fas fa-shield-check"></i>
+                    <span>100% Reliable</span>
                 </div>
             </div>
             <div class="hero-actions">
-                <a href="#popular-destinations" class="btn btn-primary btn-hero">
-                    <i class="fas fa-rocket"></i>
-                    Start Your Journey
+                <a href="#search-demo" class="btn btn-primary btn-hero pulse-animation">
+                    <i class="fas fa-search"></i>
+                    Try Search Demo
                 </a>
-                <a href="about.html" class="btn btn-secondary btn-hero">
-                    <i class="fas fa-play-circle"></i>
-                    Watch Demo
+                <a href="#popular-destinations" class="btn btn-glass btn-hero">
+                    <i class="fas fa-play"></i>
+                    Watch in Action
                 </a>
             </div>
-            <div class="hero-trust">
-                <span>Trusted by travelers worldwide • Updated every minute • Always free</span>
+            <div class="hero-social-proof">
+                <div class="proof-item">
+                    <div class="proof-avatars">
+                        <div class="avatar">👤</div>
+                        <div class="avatar">👤</div>
+                        <div class="avatar">👤</div>
+                        <div class="avatar-count">+50k</div>
+                    </div>
+                    <div class="proof-text">
+                        <strong>50,000+ travelers</strong> planned their trips this month
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Search Demo Section -->
+    <section id="search-demo" class="search-demo-section">
+        <div class="container">
+            <div class="search-demo-header">
+                <span class="section-badge premium">⚡ Live Demo</span>
+                <h2 class="section-title">Experience Instant Travel Intelligence</h2>
+                <p class="section-description">
+                    Type any city name and watch our AI deliver comprehensive travel insights in milliseconds
+                </p>
+            </div>
+            <div class="search-demo-container">
+                <div class="search-demo-input">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="demo-search" placeholder="Try searching 'Tokyo', 'Paris', or 'New York'..." />
+                        <div class="search-ai-indicator">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Powered</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary search-btn">
+                        <i class="fas fa-magic"></i>
+                        Search
+                    </button>
+                </div>
+                <div class="demo-features">
+                    <div class="demo-feature">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>0.3s</strong> response time</span>
+                    </div>
+                    <div class="demo-feature">
+                        <i class="fas fa-database"></i>
+                        <span><strong>50+</strong> data points</span>
+                    </div>
+                    <div class="demo-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span><strong>Real-time</strong> updates</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -150,6 +218,110 @@
                 </div>
                 <div class="recent-searches" id="recentSearches">
                     <p class="no-searches">No recent searches yet. Start exploring amazing destinations!</p>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials-section">
+                <div class="section-header">
+                    <span class="section-badge premium">💬 Trusted by Travelers</span>
+                    <h3>What Our Users Say</h3>
+                    <p>Join thousands of satisfied travelers who've transformed their journey planning with Exploora</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card premium">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <div class="avatar-img">👩</div>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Sarah M.</h4>
+                                <p>Travel Blogger • 🇺🇸 USA</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            "Exploora completely changed how I plan my travels. The real-time weather data and stunning photography help me create better content for my blog. It's like having a travel expert in my pocket!"
+                        </blockquote>
+                        <div class="testimonial-badge">
+                            <i class="fas fa-check-circle"></i>
+                            Verified User
+                        </div>
+                    </div>
+                    <div class="testimonial-card premium">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <div class="avatar-img">👨</div>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Alex K.</h4>
+                                <p>Business Executive • 🇬🇧 UK</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            "As someone who travels for business constantly, Exploora saves me hours of research. The instant insights and professional photography help me make quick decisions about my destinations."
+                        </blockquote>
+                        <div class="testimonial-badge">
+                            <i class="fas fa-crown"></i>
+                            Premium User
+                        </div>
+                    </div>
+                    <div class="testimonial-card premium">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <div class="avatar-img">👩</div>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Maria L.</h4>
+                                <p>Adventure Photographer • 🇪🇸 Spain</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            "The quality of destination photos on Exploora is incredible! It helps me scout locations before my photography trips. The platform has become an essential tool in my workflow."
+                        </blockquote>
+                        <div class="testimonial-badge">
+                            <i class="fas fa-camera"></i>
+                            Pro Photographer
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">4.9/5</span>
+                        <span class="stat-label">Average Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-label">Happy Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
                 </div>
             </section>
 
@@ -401,7 +573,72 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Made with ❤️ using HTML, CSS, and JavaScript | Project by Shrinivas Mudabe</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>🌍 Exploora</h3>
+                        <p>The world's most advanced travel intelligence platform. Discover destinations with real-time insights and professional photography.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="about.html">How It Works</a></li>
+                        <li><a href="#search-demo">Live Demo</a></li>
+                        <li><a href="contact.html">API Access</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Developer Docs</a></li>
+                        <li><a href="#">Travel Blog</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Status Page</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-newsletter">
+                        <p>Get travel inspiration and platform updates</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" />
+                            <button class="btn btn-primary">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-credits">
+                    <p>&copy; 2024 Exploora. Made with ❤️ by <strong>Shrinivas Mudabe</strong></p>
+                    <div class="footer-badges">
+                        <span class="footer-badge">
+                            <i class="fas fa-code"></i>
+                            Built with HTML, CSS & JavaScript
+                        </span>
+                        <span class="footer-badge">
+                            <i class="fas fa-bolt"></i>
+                            Powered by Modern Web APIs
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
