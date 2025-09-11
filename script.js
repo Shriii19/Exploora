@@ -8,6 +8,8 @@ const OPENWEATHER_API_KEY = 'your_openweather_api_key_here';
 // DOM elements
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
+const demoSearchInput = document.getElementById('demo-search');
+const demoSearchBtn = document.querySelector('.search-btn');
 const welcomeSection = document.getElementById('welcomeSection');
 const destinationSection = document.getElementById('destinationSection');
 const weatherSection = document.getElementById('weatherSection');
@@ -283,6 +285,37 @@ function initializeSearch() {
                 handleSearch();
             }
         });
+    }
+    
+    // Initialize demo search
+    if (demoSearchBtn && demoSearchInput) {
+        demoSearchBtn.addEventListener('click', handleDemoSearch);
+        demoSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleDemoSearch();
+            }
+        });
+    }
+}
+
+// Handle demo search functionality
+function handleDemoSearch() {
+    const query = demoSearchInput?.value.trim();
+    if (query) {
+        // Copy the search to the main search input
+        if (searchInput) {
+            searchInput.value = query;
+        }
+        // Trigger the main search
+        handleSearch();
+        // Scroll to results
+        setTimeout(() => {
+            document.getElementById('destinationSection')?.scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }, 300);
+    } else {
+        alert('Please enter a city name to search.');
     }
 }
 
