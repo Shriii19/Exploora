@@ -196,6 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSearch();
     initializeScrollAnimations();
     initializeHeaderScroll();
+    initializeDestinationHighlights();
     displayRecentSearches();
     
     // Add some sample searches if none exist
@@ -703,6 +704,40 @@ window.addEventListener('scroll', function() {
         hero.style.transform = `translateY(${rate}px)`;
     }
 });
+
+// Initialize destination highlights
+function initializeDestinationHighlights() {
+    const destinationHighlights = document.querySelectorAll('.destination-highlight');
+    
+    destinationHighlights.forEach(highlight => {
+        highlight.addEventListener('click', function() {
+            const cityName = this.dataset.city;
+            if (searchInput && cityName) {
+                searchInput.value = cityName;
+                
+                // Add click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                // Trigger search
+                setTimeout(() => {
+                    handleSearch();
+                }, 200);
+            }
+        });
+        
+        // Add hover animation
+        highlight.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        highlight.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+}
 
 // Add keyboard navigation
 document.addEventListener('keydown', function(e) {
