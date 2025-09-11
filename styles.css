@@ -573,68 +573,53 @@ body {
 .search-container {
     display: flex;
     align-items: center;
-    background: var(--white);
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-full);
-    padding: var(--space-xs);
-    box-shadow: var(--shadow-sm);
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 25px;
+    padding: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    max-width: 320px;
+    max-width: 300px;
     width: 100%;
-    animation: slideInRight 0.8s ease-out;
-    animation-delay: 0.5s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-    height: 40px;
 }
 
 .search-container:focus-within {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    transform: translateY(-1px);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .search-input {
     border: none;
     outline: none;
-    padding: var(--space-sm) var(--space-md);
-    border-radius: var(--radius-full);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
     flex: 1;
-    font-size: var(--text-sm);
-    color: var(--gray-700);
+    font-size: 0.9rem;
+    color: #374151;
     background: transparent;
-    transition: all 0.2s ease;
 }
 
 .search-input::placeholder {
-    color: var(--gray-400);
-    transition: color 0.2s ease;
-    font-size: var(--text-sm);
-}
-
-.search-input:focus::placeholder {
-    color: var(--gray-300);
+    color: #9ca3af;
 }
 
 .search-btn {
-    background: var(--primary-color);
-    color: var(--white);
+    background: #3b82f6;
+    color: white;
     border: none;
-    border-radius: var(--radius-full);
+    border-radius: 50%;
     width: 36px;
     height: 36px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+    transition: all 0.3s ease;
 }
 
 .search-btn:hover {
-    background: var(--primary-dark);
+    background: #2563eb;
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .search-btn:active {
@@ -1111,7 +1096,7 @@ body {
     padding: 1.5rem 2rem;
     border-radius: 20px;
     font-weight: 600;
-    min-width: 140px;
+    min-width: 14px;
     position: relative;
     overflow: hidden;
 }
