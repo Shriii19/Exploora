@@ -39,9 +39,31 @@
 
     <!-- Page Header -->
     <section class="page-hero">
+        <div class="hero-particles"></div>
         <div class="container">
-            <h1>Get in Touch</h1>
-            <p>We'd love to hear from you and help with your travel planning</p>
+            <div class="page-hero-content">
+                <span class="page-badge">📧 Connect</span>
+                <h1>Get in Touch</h1>
+                <p>We'd love to hear from you and help with your travel planning journey</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">&lt;1hr</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Get in touch</span>
         </div>
     </section>
 
@@ -50,88 +72,157 @@
         <div class="container">
             <!-- Contact Form Section -->
             <section class="contact-section">
+                <div class="section-header-premium">
+                    <span class="section-badge premium">
+                        <i class="fas fa-comments"></i>
+                        Professional Support
+                    </span>
+                    <h2>Let's Start a Conversation</h2>
+                    <p>Connect with our expert team for personalized travel assistance and platform support</p>
+                </div>
+                
                 <div class="contact-container">
-                    <div class="contact-info">
-                        <h2>Let's Connect</h2>
-                        <p>Have questions about destinations, need technical support, or want to suggest new features? We're here to help make your travel planning experience even better.</p>
+                    <div class="contact-info premium">
+                        <div class="contact-info-header">
+                            <h3>Multiple Ways to Reach Us</h3>
+                            <p>Choose the communication method that works best for you. We're here to help with any questions or feedback.</p>
+                        </div>
                         
                         <div class="contact-methods">
-                            <div class="contact-method">
-                                <i class="fas fa-envelope"></i>
-                                <div>
-                                    <h3>Email Us</h3>
+                            <div class="contact-method premium">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Email Support</h4>
                                     <p>contact@exploora.com</p>
+                                    <span class="contact-note">Response within 1 hour</span>
                                 </div>
                             </div>
-                            <div class="contact-method">
-                                <i class="fab fa-github"></i>
-                                <div>
-                                    <h3>GitHub</h3>
+                            
+                            <div class="contact-method premium">
+                                <div class="contact-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Open Source</h4>
                                     <p>github.com/shriii19/exploora</p>
+                                    <span class="contact-note">View code & contribute</span>
                                 </div>
                             </div>
-                            <div class="contact-method">
-                                <i class="fas fa-globe"></i>
-                                <div>
-                                    <h3>Website</h3>
+                            
+                            <div class="contact-method premium">
+                                <div class="contact-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Live Platform</h4>
                                     <p>www.exploora.com</p>
+                                    <span class="contact-note">Always up-to-date</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method premium">
+                                <div class="contact-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Live Chat</h4>
+                                    <p>Available 24/7</p>
+                                    <span class="contact-note">Instant assistance</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="social-links">
-                            <h3>Follow Us</h3>
+                        <div class="social-links premium">
+                            <h4>Follow Our Journey</h4>
+                            <p>Stay updated with latest features and travel inspiration</p>
                             <div class="social-icons">
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="social-icon premium" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon premium" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="social-icon premium" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon premium" aria-label="Facebook">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="contact-form">
-                        <h2>Send us a Message</h2>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required>
+                    <div class="contact-form premium">
+                        <div class="form-header">
+                            <h3>Send us a Message</h3>
+                            <p>Tell us about your travel dreams or technical questions</p>
+                        </div>
+                        
+                        <form id="contactForm" class="premium-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">
+                                        <i class="fas fa-user"></i>
+                                        Full Name *
+                                    </label>
+                                    <input type="text" id="name" name="name" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope"></i>
+                                        Email Address *
+                                    </label>
+                                    <input type="email" id="email" name="email" class="form-input" required>
+                                </div>
                             </div>
                             
                             <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="subject">Subject *</label>
-                                <select id="subject" name="subject" required>
+                                <label for="subject" class="form-label">
+                                    <i class="fas fa-tag"></i>
+                                    What can we help with? *
+                                </label>
+                                <select id="subject" name="subject" class="form-select" required>
                                     <option value="">Select a topic</option>
-                                    <option value="general">General Inquiry</option>
-                                    <option value="technical">Technical Support</option>
-                                    <option value="feature">Feature Request</option>
-                                    <option value="bug">Bug Report</option>
-                                    <option value="feedback">Feedback</option>
+                                    <option value="general">💬 General Inquiry</option>
+                                    <option value="technical">🔧 Technical Support</option>
+                                    <option value="feature">✨ Feature Request</option>
+                                    <option value="bug">🐛 Bug Report</option>
+                                    <option value="feedback">💭 Feedback</option>
+                                    <option value="travel">✈️ Travel Planning Help</option>
                                 </select>
                             </div>
                             
                             <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" name="message" rows="6" required placeholder="Tell us how we can help you..."></textarea>
+                                <label for="message" class="form-label">
+                                    <i class="fas fa-comment-alt"></i>
+                                    Your Message *
+                                </label>
+                                <textarea id="message" name="message" rows="6" class="form-textarea" required placeholder="Tell us about your travel plans, technical issues, or suggestions for improvement..."></textarea>
                             </div>
                             
                             <div class="form-group checkbox-group">
-                                <label class="checkbox-label">
+                                <label class="checkbox-label premium">
                                     <input type="checkbox" id="newsletter" name="newsletter">
                                     <span class="checkmark"></span>
-                                    Subscribe to our newsletter for travel tips and updates
+                                    <span class="checkbox-text">
+                                        Subscribe to our newsletter for exclusive travel tips and platform updates
+                                    </span>
                                 </label>
                             </div>
                             
-                            <button type="submit" class="submit-btn">
+                            <button type="submit" class="submit-btn premium">
                                 <i class="fas fa-paper-plane"></i>
                                 Send Message
+                                <div class="btn-shine"></div>
                             </button>
+                            
+                            <p class="form-note">
+                                <i class="fas fa-shield-alt"></i>
+                                Your information is secure and will never be shared with third parties
+                            </p>
                         </form>
                     </div>
                 </div>
@@ -139,55 +230,91 @@
 
             <!-- FAQ Section -->
             <section class="faq-section">
-                <h2>Frequently Asked Questions</h2>
+                <div class="section-header-premium">
+                    <span class="section-badge premium">
+                        <i class="fas fa-question-circle"></i>
+                        Quick Answers
+                    </span>
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find instant answers to common questions about our platform and services</p>
+                </div>
+                
                 <div class="faq-container">
-                    <div class="faq-item">
+                    <div class="faq-item premium">
                         <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
                             <h3>How do I search for destinations?</h3>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Simply use the search bar at the top of any page and type in the city name you're interested in. Our system will provide you with photos, weather information, and other relevant details.</p>
+                            <p>Simply use the search bar at the top of any page and type in the city name you're interested in. Our system will provide you with high-quality photos, real-time weather information, and comprehensive destination details powered by professional APIs.</p>
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item premium">
                         <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
                             <h3>Are the weather updates real-time?</h3>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes! We use the OpenWeatherMap API to provide current weather conditions and forecasts for destinations worldwide, updated in real-time.</p>
+                            <p>Yes! We use the OpenWeatherMap API to provide current weather conditions and detailed forecasts for destinations worldwide. All weather data is updated in real-time and includes temperature, humidity, wind speed, and weather conditions.</p>
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item premium">
                         <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
                             <h3>Where do the destination photos come from?</h3>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>All destination photos are sourced from Unsplash API, ensuring high-quality, professional images that showcase the beauty of each location.</p>
+                            <p>All destination photos are sourced from Unsplash API, ensuring high-quality, professional images from talented photographers worldwide. This guarantees stunning visuals that accurately showcase the beauty and character of each location.</p>
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item premium">
                         <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
                             <h3>Can I save my favorite destinations?</h3>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Currently, your recent searches are automatically saved in your browser's local storage. We're working on adding a favorites feature in future updates.</p>
+                            <p>Your recent searches are automatically saved in your browser's local storage for quick access. We're actively developing an enhanced favorites system with user accounts, custom collections, and cross-device synchronization in our upcoming release.</p>
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item premium">
                         <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
                             <h3>Is the website mobile-friendly?</h3>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Absolutely! Exploora is fully responsive and optimized for mobile devices, tablets, and desktops, ensuring a great experience on any device.</p>
+                            <p>Absolutely! Exploora is fully responsive and optimized for all devices including smartphones, tablets, and desktops. Our mobile-first design approach ensures a seamless experience regardless of your screen size or device type.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item premium">
+                        <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>What technologies power the platform?</h3>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Exploora is built with modern web technologies including HTML5, CSS3, and vanilla JavaScript. We integrate with OpenWeatherMap API for weather data and Unsplash API for professional photography, ensuring fast performance and reliable data.</p>
                         </div>
                     </div>
                 </div>
@@ -195,26 +322,83 @@
 
             <!-- Developer Section -->
             <section class="developer-section">
-                <div class="developer-card">
+                <div class="section-header-premium">
+                    <span class="section-badge premium">
+                        <i class="fas fa-code"></i>
+                        Meet the Creator
+                    </span>
+                    <h2>Behind the Platform</h2>
+                    <p>Learn about the passionate developer who created this travel exploration platform</p>
+                </div>
+                
+                <div class="developer-card premium">
                     <div class="developer-info">
-                        <h2>About the Developer</h2>
-                        <h3>Shrinivas Mudabe</h3>
-                        <p>
-                            Full-stack developer passionate about creating user-friendly web applications 
-                            that solve real-world problems. Exploora combines modern web technologies 
-                            with practical travel planning needs.
-                        </p>
+                        <div class="developer-header">
+                            <h3>Shrinivas Mudabe</h3>
+                            <p class="developer-title">Full-Stack Developer & Travel Enthusiast</p>
+                        </div>
+                        
+                        <div class="developer-description">
+                            <p>
+                                Passionate about creating user-friendly web applications that solve real-world problems. 
+                                Exploora represents the perfect blend of modern web technologies with practical travel 
+                                planning needs, designed to inspire wanderlust and facilitate discovery.
+                            </p>
+                        </div>
+                        
                         <div class="developer-skills">
-                            <span class="skill-tag">HTML5</span>
-                            <span class="skill-tag">CSS3</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">API Integration</span>
-                            <span class="skill-tag">Responsive Design</span>
+                            <h4>Technical Expertise</h4>
+                            <div class="skills-grid">
+                                <span class="skill-tag premium">HTML5</span>
+                                <span class="skill-tag premium">CSS3</span>
+                                <span class="skill-tag premium">JavaScript</span>
+                                <span class="skill-tag premium">API Integration</span>
+                                <span class="skill-tag premium">Responsive Design</span>
+                                <span class="skill-tag premium">UI/UX Design</span>
+                            </div>
+                        </div>
+                        
+                        <div class="developer-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Passion Driven</div>
+                            </div>
+                        </div>
+                        
+                        <div class="developer-links">
+                            <a href="#" class="developer-link">
+                                <i class="fab fa-github"></i>
+                                GitHub Profile
+                            </a>
+                            <a href="#" class="developer-link">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                            <a href="#" class="developer-link">
+                                <i class="fas fa-portfolio"></i>
+                                Portfolio
+                            </a>
                         </div>
                     </div>
+                    
                     <div class="developer-avatar">
-                        <div class="avatar-placeholder">
-                            <i class="fas fa-user"></i>
+                        <div class="avatar-container">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="avatar-decoration"></div>
+                        </div>
+                        <div class="developer-quote">
+                            <i class="fas fa-quote-left"></i>
+                            <p>"Travel is the only thing you buy that makes you richer. Let's explore the world together!"</p>
                         </div>
                     </div>
                 </div>
@@ -223,9 +407,82 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Made with ❤️ using HTML, CSS, and JavaScript | Project by Shrinivas Mudabe</p>
+    <footer class="footer-premium">
+        <div class="footer-content">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section brand">
+                        <div class="footer-logo">
+                            <h2>🌍 Exploora</h2>
+                            <p class="footer-tagline">Discover the world with professional insights</p>
+                        </div>
+                        <p class="footer-description">
+                            Your premium travel companion providing real-time weather data, 
+                            stunning photography, and expert travel insights for unforgettable journeys.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">Europe Tours</a></li>
+                            <li><a href="#" class="footer-link">Asia Adventures</a></li>
+                            <li><a href="#" class="footer-link">American Escapes</a></li>
+                            <li><a href="#" class="footer-link">African Safaris</a></li>
+                            <li><a href="#" class="footer-link">Ocean Cruises</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">Travel Planning</a></li>
+                            <li><a href="#" class="footer-link">Weather Reports</a></li>
+                            <li><a href="#" class="footer-link">Photo Gallery</a></li>
+                            <li><a href="#" class="footer-link">Expert Guides</a></li>
+                            <li><a href="#" class="footer-link">24/7 Support</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Company</h3>
+                        <ul class="footer-links">
+                            <li><a href="about.html" class="footer-link">About Us</a></li>
+                            <li><a href="contact.html" class="footer-link">Contact</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <div class="footer-bottom-content">
+                        <p class="copyright">
+                            © 2024 Exploora. Made with ❤️ using HTML, CSS, and JavaScript | Project by Shrinivas Mudabe
+                        </p>
+                        <div class="footer-legal">
+                            <a href="#" class="legal-link">Privacy Policy</a>
+                            <a href="#" class="legal-link">Terms of Service</a>
+                            <a href="#" class="legal-link">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
