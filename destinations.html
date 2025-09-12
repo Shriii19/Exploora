@@ -39,82 +39,562 @@
 
     <!-- Page Header -->
     <section class="page-hero">
+        <div class="hero-particles"></div>
         <div class="container">
-            <h1>Popular Destinations</h1>
-            <p>Discover amazing places around the world</p>
+            <div class="page-hero-content">
+                <span class="page-badge">🌍 Explore</span>
+                <h1>Popular Destinations</h1>
+                <p>Discover breathtaking places around the world with real-time insights and professional photography</p>
+                <div class="hero-search-demo">
+                    <div class="search-demo-inline">
+                        <input type="text" placeholder="Search any destination..." class="hero-search-input">
+                        <button class="btn btn-primary hero-search-btn">
+                            <i class="fas fa-search"></i>
+                            Explore
+                        </button>
+                    </div>
+                    <p class="search-hint">Try: Paris, Tokyo, New York, Sydney...</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Browse destinations</span>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Filter Section -->
-            <section class="filter-section">
-                <h2>Explore by Region</h2>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-region="all">All Destinations</button>
-                    <button class="filter-btn" data-region="europe">Europe</button>
-                    <button class="filter-btn" data-region="asia">Asia</button>
-                    <button class="filter-btn" data-region="america">America</button>
-                    <button class="filter-btn" data-region="oceania">Oceania</button>
+            <!-- Filters Section -->
+            <section class="destination-filters">
+                <div class="section-header-premium">
+                    <span class="section-badge premium">
+                        <i class="fas fa-filter"></i>
+                        Smart Filters
+                    </span>
+                    <h2>Find Your Perfect Destination</h2>
+                    <p>Use our intelligent filters to discover destinations that match your travel style</p>
+                </div>
+                
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-globe"></i>
+                            Region
+                        </label>
+                        <select class="filter-select" id="regionFilter">
+                            <option value="">All Regions</option>
+                            <option value="europe">Europe</option>
+                            <option value="asia">Asia</option>
+                            <option value="america">America</option>
+                            <option value="africa">Africa</option>
+                            <option value="oceania">Oceania</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-thermometer-half"></i>
+                            Climate
+                        </label>
+                        <select class="filter-select" id="climateFilter">
+                            <option value="">Any Climate</option>
+                            <option value="tropical">Tropical</option>
+                            <option value="temperate">Temperate</option>
+                            <option value="cold">Cold</option>
+                            <option value="desert">Desert</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-dollar-sign"></i>
+                            Budget
+                        </label>
+                        <select class="filter-select" id="budgetFilter">
+                            <option value="">Any Budget</option>
+                            <option value="budget">Budget ($)</option>
+                            <option value="mid">Mid-range ($$)</option>
+                            <option value="luxury">Luxury ($$$)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-calendar"></i>
+                            Best Time
+                        </label>
+                        <select class="filter-select" id="seasonFilter">
+                            <option value="">Any Season</option>
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="autumn">Autumn</option>
+                            <option value="winter">Winter</option>
+                        </select>
+                    </div>
                 </div>
             </section>
 
             <!-- Destinations Grid -->
-            <section class="destinations-grid" id="destinationsGrid">
-                <!-- Destinations will be loaded here by JavaScript -->
+            <section class="destinations-showcase">
+                <div class="destinations-grid" id="destinationsGrid">
+                    <div class="destination-card featured" data-region="europe" data-climate="temperate" data-budget="mid" data-season="summer">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1502602898536-47ad22581b52?auto=format&fit=crop&w=800&q=80" alt="Paris" loading="lazy">
+                            <div class="destination-overlay">
+                                <div class="destination-badges">
+                                    <span class="badge badge-featured">Featured</span>
+                                    <span class="badge badge-climate">Temperate</span>
+                                </div>
+                                <div class="destination-quick-info">
+                                    <div class="weather-preview">
+                                        <i class="fas fa-sun"></i>
+                                        <span>22°C</span>
+                                    </div>
+                                    <div class="rating-preview">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Paris, France</h3>
+                                <div class="destination-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Europe
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        Mid-range
+                                    </span>
+                                </div>
+                            </div>
+                            <p>The City of Light offers iconic landmarks, world-class cuisine, and romantic atmosphere perfect for any traveler.</p>
+                            <div class="destination-features">
+                                <span class="feature-tag">Architecture</span>
+                                <span class="feature-tag">Cuisine</span>
+                                <span class="feature-tag">Art</span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary destination-btn">
+                                    <i class="fas fa-search"></i>
+                                    Explore
+                                </button>
+                                <button class="btn btn-secondary destination-btn">
+                                    <i class="fas fa-heart"></i>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-region="asia" data-climate="temperate" data-budget="mid" data-season="spring">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?auto=format&fit=crop&w=800&q=80" alt="Tokyo" loading="lazy">
+                            <div class="destination-overlay">
+                                <div class="destination-badges">
+                                    <span class="badge badge-trending">Trending</span>
+                                    <span class="badge badge-climate">Temperate</span>
+                                </div>
+                                <div class="destination-quick-info">
+                                    <div class="weather-preview">
+                                        <i class="fas fa-cloud-sun"></i>
+                                        <span>18°C</span>
+                                    </div>
+                                    <div class="rating-preview">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Tokyo, Japan</h3>
+                                <div class="destination-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Asia
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        Mid-range
+                                    </span>
+                                </div>
+                            </div>
+                            <p>Experience the perfect blend of traditional culture and cutting-edge technology in Japan's vibrant capital.</p>
+                            <div class="destination-features">
+                                <span class="feature-tag">Technology</span>
+                                <span class="feature-tag">Culture</span>
+                                <span class="feature-tag">Food</span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary destination-btn">
+                                    <i class="fas fa-search"></i>
+                                    Explore
+                                </button>
+                                <button class="btn btn-secondary destination-btn">
+                                    <i class="fas fa-heart"></i>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-region="america" data-climate="temperate" data-budget="luxury" data-season="autumn">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80" alt="New York" loading="lazy">
+                            <div class="destination-overlay">
+                                <div class="destination-badges">
+                                    <span class="badge badge-luxury">Luxury</span>
+                                    <span class="badge badge-climate">Temperate</span>
+                                </div>
+                                <div class="destination-quick-info">
+                                    <div class="weather-preview">
+                                        <i class="fas fa-cloud"></i>
+                                        <span>15°C</span>
+                                    </div>
+                                    <div class="rating-preview">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>New York City, USA</h3>
+                                <div class="destination-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        North America
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        Luxury
+                                    </span>
+                                </div>
+                            </div>
+                            <p>The city that never sleeps offers world-class entertainment, dining, and cultural experiences.</p>
+                            <div class="destination-features">
+                                <span class="feature-tag">Entertainment</span>
+                                <span class="feature-tag">Business</span>
+                                <span class="feature-tag">Shopping</span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary destination-btn">
+                                    <i class="fas fa-search"></i>
+                                    Explore
+                                </button>
+                                <button class="btn btn-secondary destination-btn">
+                                    <i class="fas fa-heart"></i>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-region="oceania" data-climate="temperate" data-budget="mid" data-season="summer">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80" alt="Sydney" loading="lazy">
+                            <div class="destination-overlay">
+                                <div class="destination-badges">
+                                    <span class="badge badge-nature">Nature</span>
+                                    <span class="badge badge-climate">Temperate</span>
+                                </div>
+                                <div class="destination-quick-info">
+                                    <div class="weather-preview">
+                                        <i class="fas fa-sun"></i>
+                                        <span>25°C</span>
+                                    </div>
+                                    <div class="rating-preview">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Sydney, Australia</h3>
+                                <div class="destination-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Oceania
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        Mid-range
+                                    </span>
+                                </div>
+                            </div>
+                            <p>Stunning harbor views, iconic landmarks, and beautiful beaches make Sydney a must-visit destination.</p>
+                            <div class="destination-features">
+                                <span class="feature-tag">Beaches</span>
+                                <span class="feature-tag">Harbor</span>
+                                <span class="feature-tag">Wildlife</span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary destination-btn">
+                                    <i class="fas fa-search"></i>
+                                    Explore
+                                </button>
+                                <button class="btn btn-secondary destination-btn">
+                                    <i class="fas fa-heart"></i>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-region="asia" data-climate="tropical" data-budget="budget" data-season="winter">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="Bali" loading="lazy">
+                            <div class="destination-overlay">
+                                <div class="destination-badges">
+                                    <span class="badge badge-budget">Budget</span>
+                                    <span class="badge badge-climate">Tropical</span>
+                                </div>
+                                <div class="destination-quick-info">
+                                    <div class="weather-preview">
+                                        <i class="fas fa-sun"></i>
+                                        <span>28°C</span>
+                                    </div>
+                                    <div class="rating-preview">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Bali, Indonesia</h3>
+                                <div class="destination-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Asia
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        Budget
+                                    </span>
+                                </div>
+                            </div>
+                            <p>Tropical paradise with stunning beaches, ancient temples, and rich cultural heritage at affordable prices.</p>
+                            <div class="destination-features">
+                                <span class="feature-tag">Temples</span>
+                                <span class="feature-tag">Beaches</span>
+                                <span class="feature-tag">Culture</span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary destination-btn">
+                                    <i class="fas fa-search"></i>
+                                    Explore
+                                </button>
+                                <button class="btn btn-secondary destination-btn">
+                                    <i class="fas fa-heart"></i>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card" data-region="europe" data-climate="cold" data-budget="luxury" data-season="winter">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80" alt="Iceland" loading="lazy">
+                            <div class="destination-overlay">
+                                <div class="destination-badges">
+                                    <span class="badge badge-adventure">Adventure</span>
+                                    <span class="badge badge-climate">Cold</span>
+                                </div>
+                                <div class="destination-quick-info">
+                                    <div class="weather-preview">
+                                        <i class="fas fa-snowflake"></i>
+                                        <span>-2°C</span>
+                                    </div>
+                                    <div class="rating-preview">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Reykjavik, Iceland</h3>
+                                <div class="destination-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Europe
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        Luxury
+                                    </span>
+                                </div>
+                            </div>
+                            <p>Experience the Northern Lights, geothermal wonders, and dramatic landscapes in this Nordic paradise.</p>
+                            <div class="destination-features">
+                                <span class="feature-tag">Northern Lights</span>
+                                <span class="feature-tag">Geysers</span>
+                                <span class="feature-tag">Adventure</span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary destination-btn">
+                                    <i class="fas fa-search"></i>
+                                    Explore
+                                </button>
+                                <button class="btn btn-secondary destination-btn">
+                                    <i class="fas fa-heart"></i>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="load-more-section">
+                    <button class="btn btn-outline load-more-btn">
+                        <i class="fas fa-plus"></i>
+                        Load More Destinations
+                    </button>
+                    <p class="load-more-text">Showing 7 of 50+ destinations</p>
+                </div>
             </section>
 
-            <!-- Featured Destinations -->
+            <!-- Why Choose Section -->
             <section class="featured-section">
-                <h2>Why Choose These Destinations?</h2>
+                <div class="section-header-premium">
+                    <span class="section-badge premium">
+                        <i class="fas fa-star"></i>
+                        Premium Experience
+                    </span>
+                    <h2>Why Choose These Destinations?</h2>
+                    <p>Each destination is carefully curated for unforgettable experiences and lasting memories</p>
+                </div>
+                
                 <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <i class="fas fa-plane"></i>
-                        <h3>Easy Access</h3>
-                        <p>Well-connected airports and transportation systems make these destinations easily accessible from major cities worldwide.</p>
+                    <div class="benefit-card premium">
+                        <div class="benefit-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Easy Access</h3>
+                            <p>Well-connected airports and transportation systems make these destinations easily accessible from major cities worldwide.</p>
+                            <div class="benefit-features">
+                                <span class="feature-item">Direct flights available</span>
+                                <span class="feature-item">Modern infrastructure</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="benefit-card">
-                        <i class="fas fa-camera"></i>
-                        <h3>Photo Opportunities</h3>
-                        <p>Instagram-worthy spots and iconic landmarks that provide endless opportunities for memorable photography.</p>
+                    
+                    <div class="benefit-card premium">
+                        <div class="benefit-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Photo Opportunities</h3>
+                            <p>Instagram-worthy spots and iconic landmarks that provide endless opportunities for memorable photography.</p>
+                            <div class="benefit-features">
+                                <span class="feature-item">Iconic landmarks</span>
+                                <span class="feature-item">Hidden gems</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="benefit-card">
-                        <i class="fas fa-utensils"></i>
-                        <h3>Local Cuisine</h3>
-                        <p>Experience authentic local flavors and culinary traditions that reflect the unique culture of each destination.</p>
+                    
+                    <div class="benefit-card premium">
+                        <div class="benefit-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Local Cuisine</h3>
+                            <p>Experience authentic local flavors and culinary traditions that reflect the unique culture of each destination.</p>
+                            <div class="benefit-features">
+                                <span class="feature-item">Michelin restaurants</span>
+                                <span class="feature-item">Street food tours</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="benefit-card">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <h3>Rich Culture</h3>
-                        <p>Immerse yourself in diverse cultures, historical sites, and traditions that span centuries of human civilization.</p>
+                    
+                    <div class="benefit-card premium">
+                        <div class="benefit-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Rich Culture</h3>
+                            <p>Immerse yourself in diverse cultures, historical sites, and traditions that span centuries of human civilization.</p>
+                            <div class="benefit-features">
+                                <span class="feature-item">UNESCO sites</span>
+                                <span class="feature-item">Cultural festivals</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Travel Tips -->
             <section class="tips-section">
-                <h2>Travel Planning Tips</h2>
+                <div class="section-header-premium">
+                    <span class="section-badge premium">
+                        <i class="fas fa-lightbulb"></i>
+                        Expert Tips
+                    </span>
+                    <h2>Professional Travel Planning</h2>
+                    <p>Master the art of travel planning with insider knowledge and proven strategies</p>
+                </div>
+                
                 <div class="tips-container">
-                    <div class="tip-card">
+                    <div class="tip-card premium">
                         <div class="tip-number">1</div>
-                        <h3>Check Weather Conditions</h3>
-                        <p>Always check current weather and seasonal patterns before traveling. Our weather integration helps you plan the perfect time to visit.</p>
+                        <div class="tip-content">
+                            <h3>Check Weather Conditions</h3>
+                            <p>Always check current weather and seasonal patterns before traveling. Our weather integration helps you plan the perfect time to visit.</p>
+                            <div class="tip-highlight">
+                                <i class="fas fa-cloud-sun"></i>
+                                <span>Real-time weather data</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tip-card">
+                    
+                    <div class="tip-card premium">
                         <div class="tip-number">2</div>
-                        <h3>Research Local Attractions</h3>
-                        <p>Browse through destination photos to identify must-see landmarks and hidden gems that match your interests.</p>
+                        <div class="tip-content">
+                            <h3>Research Local Attractions</h3>
+                            <p>Browse through destination photos to identify must-see landmarks and hidden gems that match your interests.</p>
+                            <div class="tip-highlight">
+                                <i class="fas fa-camera"></i>
+                                <span>Professional photography</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tip-card">
+                    
+                    <div class="tip-card premium">
                         <div class="tip-number">3</div>
-                        <h3>Plan Your Itinerary</h3>
-                        <p>Use our destination information to create a balanced itinerary that includes both popular attractions and local experiences.</p>
+                        <div class="tip-content">
+                            <h3>Plan Your Itinerary</h3>
+                            <p>Use our destination information to create a balanced itinerary that includes both popular attractions and local experiences.</p>
+                            <div class="tip-highlight">
+                                <i class="fas fa-route"></i>
+                                <span>Smart planning tools</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tip-card">
+                    
+                    <div class="tip-card premium">
                         <div class="tip-number">4</div>
-                        <h3>Save Your Searches</h3>
-                        <p>Keep track of destinations you're interested in using our recent searches feature for easy comparison and planning.</p>
+                        <div class="tip-content">
+                            <h3>Save Your Searches</h3>
+                            <p>Keep track of destinations you're interested in using our recent searches feature for easy comparison and planning.</p>
+                            <div class="tip-highlight">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Smart bookmarking</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -122,9 +602,82 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Made with ❤️ using HTML, CSS, and JavaScript | Project by Shrinivas Mudabe</p>
+    <footer class="footer-premium">
+        <div class="footer-content">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section brand">
+                        <div class="footer-logo">
+                            <h2>🌍 Exploora</h2>
+                            <p class="footer-tagline">Discover the world with professional insights</p>
+                        </div>
+                        <p class="footer-description">
+                            Your premium travel companion providing real-time weather data, 
+                            stunning photography, and expert travel insights for unforgettable journeys.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Destinations</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">Europe Tours</a></li>
+                            <li><a href="#" class="footer-link">Asia Adventures</a></li>
+                            <li><a href="#" class="footer-link">American Escapes</a></li>
+                            <li><a href="#" class="footer-link">African Safaris</a></li>
+                            <li><a href="#" class="footer-link">Ocean Cruises</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" class="footer-link">Travel Planning</a></li>
+                            <li><a href="#" class="footer-link">Weather Reports</a></li>
+                            <li><a href="#" class="footer-link">Photo Gallery</a></li>
+                            <li><a href="#" class="footer-link">Expert Guides</a></li>
+                            <li><a href="#" class="footer-link">24/7 Support</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Company</h3>
+                        <ul class="footer-links">
+                            <li><a href="about.html" class="footer-link">About Us</a></li>
+                            <li><a href="contact.html" class="footer-link">Contact</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Press</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <div class="footer-bottom-content">
+                        <p class="copyright">
+                            © 2024 Exploora. Made with ❤️ using HTML, CSS, and JavaScript | Project by Shrinivas Mudabe
+                        </p>
+                        <div class="footer-legal">
+                            <a href="#" class="legal-link">Privacy Policy</a>
+                            <a href="#" class="legal-link">Terms of Service</a>
+                            <a href="#" class="legal-link">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
