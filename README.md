@@ -88,21 +88,6 @@ The website includes data for popular destinations worldwide:
 4. **Learn more**: Check the About page for project details
 5. **Get in touch**: Use the Contact page for feedback or questions
 
-## 📁 File Structure
-
-```
-travel-explorer/
-├── index.html          # Home page with search functionality
-├── about.html          # About page with project information
-├── destinations.html   # Destinations gallery with regional filtering
-├── contact.html        # Contact form and FAQ
-├── styles.css          # Main CSS styling and responsive design
-├── script.js           # Main JavaScript functionality and API integration
-├── destinations.js     # Destinations page specific functionality
-├── contact.js          # Contact page functionality
-└── README.md           # Project documentation
-```
-
 ## 🔧 API Integration
 
 ### Unsplash API
