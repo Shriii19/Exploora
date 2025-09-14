@@ -1703,7 +1703,7 @@ body {
     width: 200%;
     height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
-    animation: float 10s ease-in-out infinite;
+    animation: footerFloat 10s ease-in-out infinite;
     pointer-events: none;
 }
 
@@ -4865,7 +4865,7 @@ body {
     width: 200%;
     height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-    animation: float 10s ease-in-out infinite;
+    animation: footerFloat 10s ease-in-out infinite;
     pointer-events: none;
 }
 
@@ -5054,7 +5054,7 @@ body {
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-@keyframes float {
+@keyframes footerFloat {
     0%, 100% { transform: rotate(0deg) translateX(0px); }
     50% { transform: rotate(180deg) translateX(10px); }
 }
