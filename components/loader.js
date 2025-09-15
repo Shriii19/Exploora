@@ -9,6 +9,7 @@ class ComponentLoader {
         this.setActiveNavigation();
         this.initializeSearch();
         this.initializeMobileMenu();
+        this.initializeTrendingDropdown();
     }
 
     async loadComponents() {
@@ -100,6 +101,58 @@ class ComponentLoader {
                         navMenu.classList.remove('active');
                     }
                 });
+            }
+        }, 100);
+    }
+
+    initializeTrendingDropdown() {
+        setTimeout(() => {
+            const trendingItems = document.querySelectorAll('.trending-item');
+            
+            if (trendingItems.length > 0) {
+                trendingItems.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const destination = item.getAttribute('data-destination');
+                        
+                        if (destination) {
+                            // Navigate to home page and trigger search
+                            if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+                                // Already on home page, just search
+                                const searchInput = document.getElementById('demo-search') || document.getElementById('searchInput');
+                                if (searchInput && window.performSearch) {
+                                    searchInput.value = destination;
+                                    window.performSearch(destination);
+                                    
+                                    // Scroll to search demo section
+                                    setTimeout(() => {
+                                        const searchDemo = document.getElementById('search-demo');
+                                        if (searchDemo) {
+                                            searchDemo.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }, 100);
+                                }
+                            } else {
+                                // Redirect to home page with search query
+                                window.location.href = `index.html?search=${encodeURIComponent(destination)}`;
+                            }
+                        }
+                    });
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    const trendingDropdown = document.querySelector('.trending-dropdown');
+                    if (trendingDropdown && !trendingDropdown.contains(e.target)) {
+                        // Force close dropdown by removing hover state temporarily
+                        trendingDropdown.style.pointerEvents = 'none';
+                        setTimeout(() => {
+                            trendingDropdown.style.pointerEvents = '';
+                        }, 100);
+                    }
+                });
+
+                console.log('🔥 Trending destinations dropdown initialized');
             }
         }, 100);
     }
