@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Destinations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="destinations-container">
+        <div class="destinations-grid" id="destinationsGrid">
+            <!-- Cards will be generated here -->
+        </div>
+    </div>
+
+    <script src="destinations.js"></script>
+    <script>
+        // Test the card generation
+        console.log('Loading destinations...');
+        
+        // Wait a moment for the DOM and script to load
+        setTimeout(() => {
+            if (typeof displayDestinations === 'function') {
+                displayDestinations('all');
+                console.log('Destinations rendered successfully');
+            } else {
+                console.error('displayDestinations function not found');
+                console.log('Available functions:', Object.getOwnPropertyNames(window).filter(name => typeof window[name] === 'function'));
+            }
+        }, 100);
+    </script>
+</body>
+</html>
