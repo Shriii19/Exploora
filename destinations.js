@@ -100,6 +100,8 @@ const destinationsData = [
 function initializeDestinationsPage() {
     const destinationsGrid = document.getElementById('destinationsGrid');
     const filterButtons = document.querySelectorAll('.filter-btn');
+    const heroSearchBtn = document.querySelector('.hero-search-btn');
+    const heroSearchInput = document.querySelector('.hero-search-input');
     
     if (destinationsGrid) {
         displayDestinations('all');
@@ -115,6 +117,22 @@ function initializeDestinationsPage() {
                 const region = this.dataset.region;
                 displayDestinations(region);
             });
+        });
+    }
+    
+    // Hero search functionality
+    if (heroSearchBtn && heroSearchInput) {
+        heroSearchBtn.addEventListener('click', function() {
+            const query = heroSearchInput.value.trim();
+            if (query) {
+                window.location.href = `index.html?search=${encodeURIComponent(query)}`;
+            }
+        });
+        
+        heroSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                heroSearchBtn.click();
+            }
         });
     }
 }
@@ -154,66 +172,75 @@ function createDestinationCard(destination) {
     card.className = 'destination-card fade-in';
     card.dataset.city = destination.name.toLowerCase();
     
+    // Get appropriate emoji for destination
+    const destinationEmojis = {
+        'Paris': '🗼',
+        'Tokyo': '🏯',
+        'London': '🏰',
+        'New York': '🗽',
+        'Sydney': '🏖️',
+        'Rome': '🏛️',
+        'Dubai': '🏙️',
+        'Barcelona': '🏖️',
+        'Los Angeles': '🌴',
+        'Bangkok': '🛕'
+    };
+    
+    const emoji = destinationEmojis[destination.name] || '🏙️';
+    
     card.innerHTML = `
-        <div class="destination-image" style="background: ${destination.gradient}; position: relative; overflow: hidden;">
-            <div style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
-                background-size: 30px 30px;
-                opacity: 0.5;
-            "></div>
-            <div style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 4rem;
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            ">🏙️</div>
-            <div style="
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                background: rgba(255,255,255,0.9);
-                backdrop-filter: blur(10px);
-                padding: 0.5rem 1rem;
-                border-radius: 2rem;
-                font-size: 0.875rem;
-                font-weight: 600;
-                color: var(--gray-700);
-            ">${destination.region.charAt(0).toUpperCase() + destination.region.slice(1)}</div>
+        <div class="destination-image" style="background: ${destination.gradient};">
+            <div class="destination-pattern"></div>
+            <div class="destination-emoji">${emoji}</div>
+            <div class="destination-badges">
+                <span class="destination-region-badge">${destination.region.charAt(0).toUpperCase() + destination.region.slice(1)}</span>
+            </div>
+            <div class="destination-favorite">
+                <i class="fas fa-heart"></i>
+            </div>
         </div>
         <div class="destination-info">
             <h3>${destination.name}, ${destination.country}</h3>
             <p>${destination.description}</p>
-            <div class="destination-highlights" style="margin: 1rem 0; padding: 0.75rem; background: var(--gray-50); border-radius: 0.5rem;">
-                <strong style="color: var(--primary-color);">Must-see:</strong> ${destination.highlights.slice(0, 2).join(', ')}
+            <div class="destination-highlights">
+                <div class="highlights-header">
+                    <i class="fas fa-star"></i>
+                    Must-see attractions
+                </div>
+                <div class="highlights-list">${destination.highlights.slice(0, 3).join(' • ')}</div>
             </div>
             <div class="destination-meta">
-                <span><i class="fas fa-calendar" style="color: var(--primary-color);"></i> ${destination.bestTime}</span>
-                <span><i class="fas fa-star" style="color: var(--accent-color);"></i> Featured</span>
+                <span class="meta-time">
+                    <i class="fas fa-calendar"></i> 
+                    ${destination.bestTime}
+                </span>
+                <button class="btn btn-primary destination-explore-btn">
+                    <i class="fas fa-search"></i>
+                    Explore
+                </button>
             </div>
         </div>
     `;
     
     // Add click event to search for this destination
-    card.addEventListener('click', function() {
+    const exploreBtn = card.querySelector('.destination-explore-btn');
+    exploreBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
         // Add click animation
-        card.style.transform = 'scale(0.98)';
+        exploreBtn.style.transform = 'scale(0.95)';
         setTimeout(() => {
-            card.style.transform = '';
+            exploreBtn.style.transform = '';
         }, 150);
         
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.value = destination.name;
-            // Navigate to home page and trigger search
-            window.location.href = `index.html?search=${encodeURIComponent(destination.name)}`;
-        }
+        // Navigate to home page and trigger search
+        window.location.href = `index.html?search=${encodeURIComponent(destination.name)}`;
+    });
+    
+    // Add favorite button functionality
+    const favoriteBtn = card.querySelector('.destination-favorite');
+    favoriteBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
     });
     
     return card;
