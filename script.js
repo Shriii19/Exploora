@@ -166,6 +166,21 @@ const sampleDestinations = {
             icon: 'fas fa-cloud-sun'
         }
     },
+    'dubai': {
+        name: 'Dubai, UAE',
+        photos: [
+            { title: 'Burj Khalifa', description: 'World\'s tallest building' },
+            { title: 'Palm Jumeirah', description: 'Artificial palm-shaped island' },
+            { title: 'Burj Al Arab', description: 'Luxury sail-shaped hotel' },
+            { title: 'Dubai Mall', description: 'One of the world\'s largest shopping malls' },
+            { title: 'Dubai Fountain', description: 'Choreographed fountain system' }
+        ],
+        weather: {
+            temperature: '32°C',
+            condition: 'Sunny',
+            icon: 'fas fa-sun'
+        }
+    },
     'rome': {
         name: 'Rome, Italy',
         photos: [
@@ -463,7 +478,9 @@ function showSearchResults() {
 
 // Search for destination
 function searchDestination(query) {
-    const destination = sampleDestinations[query];
+    // Normalize the query to lowercase for matching
+    const normalizedQuery = query.toLowerCase().trim();
+    const destination = sampleDestinations[normalizedQuery];
     
     if (destination) {
         // Add to recent searches
@@ -492,6 +509,11 @@ function searchDestination(query) {
         searchInput.value = '';
     }
 }
+
+// Global performSearch function for trending dropdown and external calls
+window.performSearch = function(query) {
+    searchDestination(query);
+};
 
 // Display destination information
 function displayDestination(destination) {
