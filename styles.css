@@ -3206,59 +3206,90 @@ body {
 
 .destinations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-3xl);
 }
 
 .destination-card {
-    background: white;
-    border-radius: 15px;
+    background: var(--white);
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 520px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.destination-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.02) 0%, rgba(59, 130, 246, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    border-radius: 24px;
 }
 
 .destination-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.destination-card:hover::before {
+    opacity: 1;
 }
 
 .destination-image {
     position: relative;
     overflow: hidden;
-    height: 250px;
-    border-radius: 16px 16px 0 0;
+    height: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 3rem;
+    color: var(--white);
+    font-size: 4rem;
+    flex-shrink: 0;
 }
 
 .destination-info {
-    padding: 1.5rem;
+    padding: var(--space-xl);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .destination-info h3 {
-    color: #0077b6;
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
+    color: var(--gray-800);
+    margin-bottom: var(--space-sm);
+    font-size: 1.375rem;
+    font-weight: var(--font-weight-bold);
 }
 
 .destination-info p {
-    color: #666;
-    margin-bottom: 1rem;
+    color: var(--gray-600);
+    margin-bottom: var(--space-lg);
     line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .destination-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9rem;
-    color: #999;
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-top: auto;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--gray-200);
 }
 
 .destination-pattern {
@@ -3283,36 +3314,45 @@ body {
 
 .destination-badges {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: var(--space-lg);
+    left: var(--space-lg);
     display: flex;
-    gap: 0.5rem;
+    gap: var(--space-sm);
+    z-index: 2;
 }
 
 .destination-region-badge {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    font-size: 0.875rem;
-    font-weight: 600;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: var(--font-weight-semibold);
     color: var(--gray-700);
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 .destination-favorite {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(255,255,255,0.9);
+    top: var(--space-lg);
+    right: var(--space-lg);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
-    padding: 0.5rem;
-    border-radius: 50%;
+    padding: var(--space-sm);
+    border-radius: var(--radius-full);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.destination-favorite:hover {
+    background: var(--white);
+    transform: scale(1.1);
 }
 
 .destination-favorite i {
     color: var(--gray-400);
+    transition: color var(--transition-fast);
 }
 
 .destination-favorite.active i {
@@ -3320,20 +3360,22 @@ body {
 }
 
 .destination-highlights {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: linear-gradient(135deg, var(--gray-50) 0%, rgba(37, 99, 235, 0.05) 100%);
-    border-radius: 12px;
-    border: 1px solid rgba(37, 99, 235, 0.1);
+    margin: var(--space-lg) 0;
+    padding: var(--space-lg);
+    background: linear-gradient(135deg, var(--gray-50) 0%, rgba(37, 99, 235, 0.03) 100%);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-100);
+    flex-grow: 1;
 }
 
 .highlights-header {
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-sm);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
 }
 
 .highlights-header i {
@@ -3341,16 +3383,18 @@ body {
 }
 
 .highlights-list {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     color: var(--gray-700);
+    line-height: 1.5;
 }
 
 .meta-time {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--gray-500);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-sm);
+    font-weight: var(--font-weight-medium);
 }
 
 .meta-time i {
@@ -3358,26 +3402,22 @@ body {
 }
 
 .destination-explore-btn {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.8125rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
+    gap: var(--space-sm);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-normal);
+    font-weight: var(--font-weight-semibold);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border: none;
+    color: var(--white);
 }
 
 .destination-explore-btn:hover {
     transform: translateY(-2px);
-}
-
-.destination-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-lg);
 }
 
 /* Benefits Grid */
@@ -4799,83 +4839,6 @@ body {
     color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
-}
-
-.destinations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--space-xl);
-    margin-bottom: var(--space-3xl);
-}
-
-.destination-card {
-    background: var(--white);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    transition: all var(--transition-normal);
-    cursor: pointer;
-    border: 2px solid var(--gray-200);
-    position: relative;
-}
-
-.destination-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-}
-
-.destination-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: var(--shadow-2xl);
-    border-color: var(--primary-color);
-}
-
-.destination-image {
-    height: 240px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-size: 4rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.destination-info {
-    padding: var(--space-xl);
-}
-
-.destination-info h3 {
-    color: var(--gray-800);
-    margin-bottom: var(--space-md);
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-semibold);
-}
-
-.destination-info p {
-    color: var(--gray-600);
-    margin-bottom: var(--space-lg);
-    line-height: 1.6;
-}
-
-.destination-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: var(--text-sm);
-    color: var(--gray-500);
-    margin-top: var(--space-md);
-}
-
-.destination-meta span {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
 }
 
 /* Enhanced Contact Page Styles */
