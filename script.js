@@ -225,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     initializeHeaderScroll();
     initializeDestinationHighlights();
+    initializeTrendingDropdown(); // Add this for the trending dropdown
     displayRecentSearches();
     
     // Add some sample searches if none exist
@@ -538,6 +539,53 @@ function searchDestination(query) {
     // Clear search input
     if (searchInput) {
         searchInput.value = '';
+    }
+}
+
+// Initialize trending dropdown
+function initializeTrendingDropdown() {
+    const trendingItems = document.querySelectorAll('.trending-item');
+    
+    if (trendingItems.length > 0) {
+        trendingItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const destination = item.getAttribute('data-destination');
+                
+                if (destination) {
+                    // Set the search input and trigger search
+                    const searchInput = document.getElementById('searchInput');
+                    if (searchInput) {
+                        searchInput.value = destination;
+                        
+                        // Add visual feedback
+                        item.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            item.style.transform = '';
+                        }, 150);
+                        
+                        // Trigger search
+                        setTimeout(() => {
+                            handleSearch();
+                        }, 200);
+                    }
+                }
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const trendingDropdown = document.querySelector('.trending-dropdown');
+            if (trendingDropdown && !trendingDropdown.contains(e.target)) {
+                // Force close dropdown by removing hover state temporarily
+                trendingDropdown.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    trendingDropdown.style.pointerEvents = '';
+                }, 100);
+            }
+        });
+
+        console.log('🔥 Trending destinations dropdown initialized');
     }
 }
 
