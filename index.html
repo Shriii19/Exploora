@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <!-- Mast Preloader Script - Load first for immediate display -->
+    <script>
+        // Preload critical resources
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preload';
+        preloadLink.as = 'style';
+        preloadLink.href = 'styles.css';
+        document.head.appendChild(preloadLink);
+    </script>
     <script src="components/preloader.js"></script>
 </head>
 <body>
@@ -48,12 +56,12 @@
                 </div>
             </div>
             <div class="hero-actions">
-                <a href="#search-demo" class="btn btn-primary btn-hero pulse-animation">
-                    <i class="fas fa-search"></i>
+                <a href="#search-demo" class="btn btn-primary btn-hero pulse-animation" role="button" aria-label="Try the search demo">
+                    <i class="fas fa-search" aria-hidden="true"></i>
                     Try Search Demo
                 </a>
-                <a href="#popular-destinations" class="btn btn-glass btn-hero">
-                    <i class="fas fa-play"></i>
+                <a href="#popular-destinations" class="btn btn-glass btn-hero" role="button" aria-label="Watch travel exploration in action">
+                    <i class="fas fa-play" aria-hidden="true"></i>
                     Watch in Action
                 </a>
             </div>
