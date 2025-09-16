@@ -79,13 +79,24 @@ function setupIntersectionObserver() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-fade-in-up');
+                // Add staggered animation for child elements
+                const children = entry.target.querySelectorAll('.feature-card, .photo-card, .tip-card, .benefit-item, .stat-item');
+                children.forEach((child, index) => {
+                    setTimeout(() => {
+                        child.classList.add('animate-fade-in-up');
+                    }, index * 100);
+                });
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
     // Observe elements that should animate when scrolled into view
-    const elementsToObserve = document.querySelectorAll('.feature-card, .photo-card, .destination-section, .weather-section');
+    const elementsToObserve = document.querySelectorAll(
+        '.welcome-section, .destination-section, .weather-section, .popular-destinations-section, ' +
+        '.why-choose-section, .travel-tips-section, .stats-section, .cta-section, ' +
+        '.benefits-grid, .tips-container, .stats-container'
+    );
     elementsToObserve.forEach(el => observer.observe(el));
 }
 
@@ -317,18 +328,38 @@ function initializeSearch() {
 function handleDemoSearch() {
     const query = demoSearchInput?.value.trim();
     if (query) {
-        // Copy the search to the main search input
+        // Copy the search to the main search input if it exists
         if (searchInput) {
             searchInput.value = query;
         }
-        // Trigger the main search
-        handleSearch();
-        // Scroll to results
+        
+        // Add visual feedback
+        if (demoSearchBtn) {
+            demoSearchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+            demoSearchBtn.disabled = true;
+        }
+        
+        // Trigger the main search after a brief delay for UX
         setTimeout(() => {
-            document.getElementById('destinationSection')?.scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }, 300);
+            handleSearch();
+            
+            // Reset button
+            if (demoSearchBtn) {
+                demoSearchBtn.innerHTML = '<i class="fas fa-magic"></i> Search';
+                demoSearchBtn.disabled = false;
+            }
+            
+            // Scroll to results
+            setTimeout(() => {
+                const destinationSection = document.getElementById('destinationSection');
+                if (destinationSection && !destinationSection.classList.contains('hidden')) {
+                    destinationSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }, 300);
+        }, 800);
     } else {
         alert('Please enter a city name to search.');
     }
@@ -689,8 +720,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add modern button ripple effect
     document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('btn')) {
-            const btn = e.target;
+        if (e.target.classList.contains('btn') || e.target.closest('.btn')) {
+            const btn = e.target.classList.contains('btn') ? e.target : e.target.closest('.btn');
             const rect = btn.getBoundingClientRect();
             const ripple = document.createElement('span');
             const size = Math.max(rect.width, rect.height);
@@ -708,6 +739,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 transform: scale(0);
                 animation: ripple 0.6s ease-out;
                 pointer-events: none;
+                z-index: 1;
             `;
             
             btn.style.position = 'relative';
@@ -718,17 +750,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Add CSS for ripple animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes ripple {
-            to {
-                transform: scale(2);
-                opacity: 0;
+    // Enhanced hover effects for cards
+    const cards = document.querySelectorAll('.feature-card, .photo-card, .destination-highlight, .benefit-item');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+            this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+    
+    // Add CSS for ripple animation if not exists
+    if (!document.querySelector('#ripple-styles')) {
+        const style = document.createElement('style');
+        style.id = 'ripple-styles';
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
             }
-        }
-    `;
-    document.head.appendChild(style);
+            
+            .floating-element {
+                animation: float 3s ease-in-out infinite;
+            }
+            
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
 });
 
 // Enhanced smooth scrolling for internal links
@@ -750,13 +807,23 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Add parallax effect to hero section
-window.addEventListener('scroll', function() {
+// Add parallax effect to hero section with performance optimization
+let ticking = false;
+
+function updateParallax() {
     const hero = document.querySelector('.hero');
     if (hero) {
         const scrolled = window.pageYOffset;
         const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
+        hero.style.transform = `translate3d(0, ${rate}px, 0)`;
+    }
+    ticking = false;
+}
+
+window.addEventListener('scroll', function() {
+    if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
     }
 });
 
