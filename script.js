@@ -260,19 +260,24 @@ function initializeScrollAnimations() {
 // Initialize header scroll effect
 function initializeHeaderScroll() {
     const header = document.querySelector('.header');
-    if (!header) return;
+    if (!header) {
+        console.log('Header not found!');
+        return;
+    }
 
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
         
-        if (currentScrollY > 100) {
+        if (currentScrollY > 50) {
             header.classList.add('scrolled');
+            console.log('Header scrolled class added');
             // Initialize dynamic island search functionality
             initializeDynamicIslandSearch();
         } else {
             header.classList.remove('scrolled');
+            console.log('Header scrolled class removed');
         }
 
         lastScrollY = currentScrollY;
