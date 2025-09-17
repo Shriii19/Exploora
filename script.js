@@ -269,12 +269,65 @@ function initializeHeaderScroll() {
         
         if (currentScrollY > 100) {
             header.classList.add('scrolled');
+            // Initialize dynamic island search functionality
+            initializeDynamicIslandSearch();
         } else {
             header.classList.remove('scrolled');
         }
 
         lastScrollY = currentScrollY;
     });
+}
+
+// Initialize Dynamic Island search functionality
+function initializeDynamicIslandSearch() {
+    const searchContainer = document.querySelector('.header.scrolled .search-container');
+    const searchBtn = document.querySelector('.header.scrolled .search-btn');
+    const searchInput = document.querySelector('.header.scrolled .search-input');
+    
+    if (!searchContainer || !searchBtn) return;
+
+    // Remove existing listeners to prevent duplicates
+    searchBtn.removeEventListener('click', handleSearchToggle);
+    document.removeEventListener('click', handleOutsideClick);
+    
+    // Add search button click handler
+    searchBtn.addEventListener('click', handleSearchToggle);
+    
+    // Add outside click handler to close search
+    document.addEventListener('click', handleOutsideClick);
+    
+    function handleSearchToggle(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (searchContainer.classList.contains('expanded')) {
+            // If expanded and has value, perform search
+            if (searchInput && searchInput.value.trim()) {
+                performSearch(searchInput.value.trim());
+            }
+        } else {
+            // Expand search
+            searchContainer.classList.add('expanded');
+            setTimeout(() => {
+                if (searchInput) {
+                    searchInput.focus();
+                }
+            }, 200);
+        }
+    }
+    
+    function handleOutsideClick(e) {
+        if (!searchContainer.contains(e.target)) {
+            searchContainer.classList.remove('expanded');
+        }
+    }
+    
+    function performSearch(query) {
+        // Existing search functionality
+        console.log('Searching for:', query);
+        // Add your search logic here
+    }
 }
 
 // Initialize navigation
