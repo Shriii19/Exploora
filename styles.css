@@ -472,7 +472,6 @@ body {
     z-index: 1000;
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(37, 99, 235, 0.1);
     transition: all var(--transition-normal);
 
 }
@@ -482,6 +481,32 @@ body {
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
     border-bottom: 1px solid rgba(37, 99, 235, 0.2);
     transform: translateY(0);
+}
+
+.header.scrolled .search-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.header.scrolled .search-input {
+    color: var(--gray-700);
+}
+
+.header.scrolled .search-input::placeholder {
+    color: var(--gray-500);
+}
+
+.header.scrolled .search-btn {
+    background: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+}
+
+.header.scrolled .search-btn:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
 .header .container {
@@ -505,13 +530,13 @@ body {
 }
 
 .logo h1 {
-    font-size: var(--text-xl);
+    font-size: 350x;
     font-weight: var(--font-weight-bold);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--white) 0%, var(--secondary-color) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin: 0;
+    margin-right: 50px;
     transition: all 0.3s ease;
 }
 
@@ -544,12 +569,13 @@ body {
 .nav-link {
     color: white;
     text-decoration: none;
+
     font-weight: var(--font-weight-medium);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-md);
     transition: color 0.2s ease, background-color 0.2s ease;
     position: relative;
-    font-size: var(--text-sm);
+    font-size: 20px;
 }
 
 .nav-link::after {
@@ -789,19 +815,21 @@ body {
 .search-container {
     display: flex;
     align-items: center;
-    background: white;
-    border: 1px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 25px;
     padding: 0.25rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     max-width: 300px;
     width: 100%;
+    backdrop-filter: blur(10px);
 }
 
 .search-container:focus-within {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .search-input {
@@ -811,18 +839,20 @@ body {
     border-radius: 25px;
     flex: 1;
     font-size: 0.9rem;
-    color: #374151;
+    color: white;
     background: transparent;
+    font-weight: 400;
 }
 
 .search-input::placeholder {
-    color: #9ca3af;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
 }
 
 .search-btn {
-    background: var(--primary-color);
+    background: rgba(255, 255, 255, 0.2);
     color: white;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -831,11 +861,14 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .search-btn:hover {
-    background: var(--primary-dark);
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
     transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 
 .search-btn:active {
@@ -1000,7 +1033,34 @@ body {
     }
 
     .search-container {
-        display: none; /* Hide in mobile navigation, show separately */
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .search-container .search-input {
+        color: var(--gray-700);
+    }
+
+    .search-container .search-input::placeholder {
+        color: var(--gray-500);
+    }
+
+    .search-container .search-btn {
+        background: var(--primary-color);
+        border: none;
+        color: white;
+    }
+
+    .search-container .search-btn:hover {
+        background: var(--primary-dark);
+        border: none;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
     }
 
     /* Trending dropdown adjustments for mobile */
