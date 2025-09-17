@@ -495,6 +495,7 @@ body {
     opacity: 1 !important;
     display: block !important;
     transform: none !important;
+    position: fixed !important;
 }
 
 .header.scrolled .container {
