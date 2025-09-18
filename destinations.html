@@ -120,6 +120,52 @@
             <span>Browse destinations</span>
         </div>
     </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Filter Section -->
+            <section class="filter-section">
+                <div class="section-header">
+                    <h2>Filter by Region</h2>
+                    <p>Explore destinations by geographic region</p>
+                </div>
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-region="all">
+                        <i class="fas fa-globe"></i>
+                        All Destinations
+                    </button>
+                    <button class="filter-btn" data-region="europe">
+                        <i class="fas fa-crown"></i>
+                        Europe
+                    </button>
+                    <button class="filter-btn" data-region="asia">
+                        <i class="fas fa-torii-gate"></i>
+                        Asia
+                    </button>
+                    <button class="filter-btn" data-region="america">
+                        <i class="fas fa-flag-usa"></i>
+                        Americas
+                    </button>
+                    <button class="filter-btn" data-region="oceania">
+                        <i class="fas fa-water"></i>
+                        Oceania
+                    </button>
+                </div>
+            </section>
+
+            <!-- Destinations Grid -->
+            <section class="destinations-section">
+                <div class="destinations-grid" id="destinationsGrid">
+                    <!-- Destination cards will be dynamically loaded here -->
+                    <div class="loading-placeholder">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading amazing destinations...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
