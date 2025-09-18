@@ -2,8 +2,27 @@
 let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
 
 // API Keys (Replace with your actual API keys)
-const UNSPLASH_API_KEY = 'your_unsplash_api_key_here';
-const OPENWEATHER_API_KEY = 'your_openweather_api_key_here';
+const UNSPLASH_API_KEY = 'your_unsplash_api_key_here';// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded - initializing components...');
+    
+    // Initialize navigation only (no scroll effect)
+    initializeNavigation();
+    initializeSearch();
+    initializeScrollAnimations();
+    initializeDestinationHighlights();
+    initializeTrendingDropdown(); // Add this for the trending dropdown
+    displayRecentSearches();
+    
+    // Add some sample searches if none exist
+    if (recentSearches.length === 0) {
+        recentSearches = ['Paris', 'Tokyo', 'London'];
+        localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+        displayRecentSearches();
+    }
+    
+    console.log('All components initialized successfully');
+});ER_API_KEY = 'your_openweather_api_key_here';
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
@@ -206,6 +225,7 @@ const cardColors = [
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    initializeHeaderScroll();
     initializeNavigation();
     initializeSearch();
     initializeScrollAnimations();
