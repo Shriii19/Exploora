@@ -209,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeSearch();
     initializeScrollAnimations();
-    initializeHeaderScroll();
     initializeDestinationHighlights();
     initializeTrendingDropdown(); // Add this for the trending dropdown
     displayRecentSearches();
@@ -244,94 +243,7 @@ function initializeScrollAnimations() {
 }
 
 /* ===================================
-   HEADER & DYNAMIC ISLAND FUNCTIONALITY
-   =================================== */
-
-// Initialize header scroll effect
-function initializeHeaderScroll() {
-    const header = document.querySelector('.header');
-    if (!header) {
-        console.log('Header not found!');
-        return;
-    }
-
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        if (currentScrollY > 50) {
-            header.classList.add('scrolled');
-            console.log('Header scrolled class added');
-            // Initialize dynamic island search functionality
-            initializeDynamicIslandSearch();
-        } else {
-            header.classList.remove('scrolled');
-            console.log('Header scrolled class removed');
-        }
-
-        lastScrollY = currentScrollY;
-    });
-}
-
-// Initialize Dynamic Island search functionality
-function initializeDynamicIslandSearch() {
-    const header = document.querySelector('.header.scrolled');
-    if (!header) return;
-    
-    const searchContainer = header.querySelector('.search-container');
-    const searchBtn = header.querySelector('.search-btn');
-    const searchInput = header.querySelector('.search-input');
-    
-    if (!searchContainer || !searchBtn) return;
-
-    // Remove existing listeners to prevent duplicates
-    const existingHandler = searchBtn.getAttribute('data-handler-attached');
-    if (existingHandler) return;
-    
-    searchBtn.setAttribute('data-handler-attached', 'true');
-    
-    // Add search button click handler
-    searchBtn.addEventListener('click', handleSearchToggle);
-    
-    // Add outside click handler to close search
-    document.addEventListener('click', handleOutsideClick);
-    
-    function handleSearchToggle(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        if (searchContainer.classList.contains('expanded')) {
-            // If expanded and has value, perform search
-            if (searchInput && searchInput.value.trim()) {
-                performSearch(searchInput.value.trim());
-            }
-        } else {
-            // Expand search
-            searchContainer.classList.add('expanded');
-            setTimeout(() => {
-                if (searchInput) {
-                    searchInput.focus();
-                }
-            }, 200);
-        }
-    }
-    
-    function handleOutsideClick(e) {
-        if (!searchContainer.contains(e.target)) {
-            searchContainer.classList.remove('expanded');
-        }
-    }
-    
-    function performSearch(query) {
-        // Existing search functionality
-        console.log('Searching for:', query);
-        // Add your search logic here
-    }
-}
-
-/* ===================================
-   NAVIGATION FUNCTIONALITY
+   HEADER FUNCTIONALITY
    =================================== */
 
 // Initialize navigation

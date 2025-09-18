@@ -464,7 +464,7 @@ body {
 }
 
 /* ===================================
-   HEADER & DYNAMIC ISLAND STYLES
+   HEADER STYLES
    =================================== */
 
 /* Base Header Styles */
@@ -491,205 +491,153 @@ body {
     padding: 15px 25px;
 }
 
-.header.scrolled .container {
-    padding: 8px 20px;
-    max-width: none;
-    margin: 0;
-}
-
 /* Logo Styles */
-.header.scrolled .logo h1 {
-    color: white;
-    font-size: 1.2rem;
-    margin: 0;
-}
-
-.header.scrolled .logo h1 span {
-    display: none; /* Hide "Exploora" text, show only emoji */
-}
-
-/* Navigation Styles in Dynamic Island */
-.header .navigation {
-    display: flex;
-}
-
-.header.scrolled .navigation {
-    display: flex;
-}
-
-.header.scrolled .nav-menu {
-    display: flex;
-    gap: 8px;
-    margin: 0;
-    padding: 0;
-}
-
-.header.scrolled .nav-menu li {
-    margin: 0;
-}
-
-.header.scrolled .nav-link {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.85rem;
-    padding: 6px 12px;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.header.scrolled .nav-link:hover,
-.header.scrolled .nav-link.active {
-    color: white;
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.header.scrolled .trending-dropdown {
-    display: none; /* Hide trending in dynamic island for cleaner look */
-}
-
-/* Search Styles in Dynamic Island */
-.header .search-container {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    padding: 8px 15px;
+.logo {
     display: flex;
     align-items: center;
-    transition: all 0.4s ease;
-}
-
-.header.scrolled .search-container {
-    background: transparent;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    padding: 0;
+    gap: var(--space-sm);
+    text-decoration: none;
+    animation: slideInLeft 0.8s ease-out;
     position: relative;
-    transition: all 0.4s ease;
 }
 
-.header.scrolled .search-container.expanded {
-    width: 200px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.logo h1 {
+    font-size: 24px;
+    font-weight: var(--font-weight-bold);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.logo:hover h1 {
+    transform: scale(1.05);
+}
+
+/* Navigation Styles */
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    animation: slideInRight 0.8s ease-out;
+    animation-delay: 0.3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    transition: color 0.2s ease, background-color 0.2s ease;
+    position: relative;
+    font-size: 16px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.2s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.nav-link.active::after {
+    width: 90%;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 25px;
+    padding: 0.25rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    max-width: 300px;
+    width: 100%;
     backdrop-filter: blur(10px);
 }
 
-.header .search-btn {
-    background: rgba(255, 255, 255, 0.2);
+.search-container:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background: rgba(37, 99, 235, 0.15);
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    background: transparent;
+    font-weight: 400;
+}
+
+.search-input::placeholder {
+    color: var(--gray-500);
+    font-weight: 300;
+}
+
+.search-btn {
+    background: var(--primary-color);
     color: white;
     border: none;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    cursor: pointer;
 }
 
-.header.scrolled .search-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: rgba(255, 255, 255, 0.2);
+.search-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
-.header .search-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.header .search-input {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: white;
-    flex: 1;
-    padding: 0 10px;
-}
-
-.header.scrolled .search-input {
-    opacity: 0;
-    width: 0;
-    padding: 0;
-    background: transparent;
-    color: white;
-    border: none;
-    transition: all 0.4s ease;
-}
-
-.header.scrolled .search-container.expanded .search-input {
-    opacity: 1;
-    width: 140px;
-    padding: 8px 12px;
-}
-
-.header .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+.search-btn:active {
+    transform: scale(0.95);
 }
 
 /* ===================================
-   DYNAMIC ISLAND MOBILE RESPONSIVE
+   MOBILE RESPONSIVE STYLES
    =================================== */
-@media (max-width: 768px) {
-    .header.scrolled {
-        width: calc(100% - 24px);
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-        border-radius: 25px;
-        top: 10px;
-        margin: 0 auto;
-    }
-    
-    .header.scrolled .container {
-        padding: 6px 16px;
-        min-height: 40px;
-    }
-    
-    .header.scrolled .logo h1 {
-        font-size: 1rem;
-    }
-    
-    .header.scrolled .nav-link {
-        font-size: 0.8rem;
-        padding: 3px 6px;
-    }
-    
-    .header.scrolled .search-container {
-        width: 30px;
-        height: 30px;
-    }
-    
-    .header.scrolled .search-container.expanded {
-        width: 150px;
-    }
-    
-    .header.scrolled .search-btn {
-        width: 30px;
-        height: 30px;
-    }
-    
-    .header.scrolled .hamburger {
-        display: block;
-    }
-    
-    .header.scrolled .hamburger span {
-        background: white;
-    }
-    
-    .header.scrolled .navigation {
-        display: none; /* Hide navigation on mobile, use hamburger */
-    }
-    
-    .header.scrolled .trending-dropdown {
-        display: none; /* Hide trending on mobile for cleaner look */
-    }
-}
 
 /* ===================================
    LOGO STYLES
