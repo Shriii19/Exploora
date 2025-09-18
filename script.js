@@ -42,29 +42,15 @@ function initializeAnimations() {
     });
 }
 
-// Setup scroll effects for header and other elements
+// Setup scroll effects for hero parallax only (header handled elsewhere)
 function setupScrollEffects() {
-    let lastScrollY = window.scrollY;
-    
     window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        // Header scroll effect
-        if (currentScrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
-        // Parallax effect for hero section
         const hero = document.querySelector('.hero');
         if (hero) {
             const scrolled = window.pageYOffset;
             const parallax = scrolled * 0.5;
             hero.style.transform = `translateY(${parallax}px)`;
         }
-        
-        lastScrollY = currentScrollY;
     });
 }
 
@@ -257,6 +243,10 @@ function initializeScrollAnimations() {
     });
 }
 
+/* ===================================
+   HEADER & DYNAMIC ISLAND FUNCTIONALITY
+   =================================== */
+
 // Initialize header scroll effect
 function initializeHeaderScroll() {
     const header = document.querySelector('.header');
@@ -286,15 +276,20 @@ function initializeHeaderScroll() {
 
 // Initialize Dynamic Island search functionality
 function initializeDynamicIslandSearch() {
-    const searchContainer = document.querySelector('.header.scrolled .search-container');
-    const searchBtn = document.querySelector('.header.scrolled .search-btn');
-    const searchInput = document.querySelector('.header.scrolled .search-input');
+    const header = document.querySelector('.header.scrolled');
+    if (!header) return;
+    
+    const searchContainer = header.querySelector('.search-container');
+    const searchBtn = header.querySelector('.search-btn');
+    const searchInput = header.querySelector('.search-input');
     
     if (!searchContainer || !searchBtn) return;
 
     // Remove existing listeners to prevent duplicates
-    searchBtn.removeEventListener('click', handleSearchToggle);
-    document.removeEventListener('click', handleOutsideClick);
+    const existingHandler = searchBtn.getAttribute('data-handler-attached');
+    if (existingHandler) return;
+    
+    searchBtn.setAttribute('data-handler-attached', 'true');
     
     // Add search button click handler
     searchBtn.addEventListener('click', handleSearchToggle);
@@ -334,6 +329,10 @@ function initializeDynamicIslandSearch() {
         // Add your search logic here
     }
 }
+
+/* ===================================
+   NAVIGATION FUNCTIONALITY
+   =================================== */
 
 // Initialize navigation
 function initializeNavigation() {

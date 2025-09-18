@@ -463,69 +463,93 @@ body {
     display: none;
 }
 
-/* Header Styles */
+/* ===================================
+   HEADER & DYNAMIC ISLAND STYLES
+   =================================== */
+
+/* Base Header Styles */
 .header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 1000 !important;
-    background: rgba(255, 255, 255, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: transparent;
+    transition: all 0.4s ease;
     backdrop-filter: blur(25px);
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    border-radius: 0;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
 }
 
+/* Dynamic Island (Scrolled State) */
 .header.scrolled {
-    background: rgba(255, 255, 255, 0) !important;
-    backdrop-filter: blur(25px);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-    border-radius: 30px !important;
-    top: 60px !important;
-    left: 50% !important;
-    right: auto !important;
-    width: 500px !important;
-    margin-left: -250px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    z-index: 9999 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
-    transform: none !important;
-    position: fixed !important;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    width: 500px;
+    margin: 0 auto;
+    top: 20px;
+    border-radius: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 56px;
+}
+
+/* Header Container */
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 15px 25px;
 }
 
 .header.scrolled .container {
     padding: 8px 20px;
-    min-height: 45px;
     max-width: none;
     margin: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
+/* Logo Styles */
 .header.scrolled .logo h1 {
     color: white;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
+    font-size: 1.2rem;
+    margin: 0;
 }
 
 .header.scrolled .logo h1 span {
-    display: none;
+    display: none; /* Hide "Exploora" text, show only emoji */
+}
+
+/* Navigation Styles in Dynamic Island */
+.header .navigation {
+    display: flex;
+}
+
+.header.scrolled .navigation {
+    display: flex;
+}
+
+.header.scrolled .nav-menu {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.header.scrolled .nav-menu li {
+    margin: 0;
 }
 
 .header.scrolled .nav-link {
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.85rem;
-    padding: 4px 8px;
+    padding: 6px 12px;
     border-radius: 15px;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .header.scrolled .nav-link:hover,
@@ -534,24 +558,31 @@ body {
     background: rgba(255, 255, 255, 0.15);
 }
 
-.header.scrolled .nav-menu {
-    display: flex;
-    gap: 5px;
+.header.scrolled .trending-dropdown {
+    display: none; /* Hide trending in dynamic island for cleaner look */
 }
 
-.header.scrolled .nav-menu li {
-    margin: 0;
+/* Search Styles in Dynamic Island */
+.header .search-container {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    transition: all 0.4s ease;
 }
 
 .header.scrolled .search-container {
     background: transparent;
     border: none;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    padding: 0;
     position: relative;
+    transition: all 0.4s ease;
 }
 
 .header.scrolled .search-container.expanded {
@@ -559,6 +590,41 @@ body {
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.header .search-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.header.scrolled .search-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.header .search-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.header .search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    flex: 1;
+    padding: 0 10px;
 }
 
 .header.scrolled .search-input {
@@ -577,93 +643,22 @@ body {
     padding: 8px 12px;
 }
 
-.header.scrolled .search-btn {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: all 0.3s ease;
-}
-
-.header.scrolled .search-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.header.scrolled .search-container {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    box-shadow: none;
-    backdrop-filter: blur(10px);
-}
-
-.header.scrolled .search-input {
-    color: white;
-    background: transparent;
-}
-
-.header.scrolled .search-input::placeholder {
+.header .search-input::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.header.scrolled .search-btn {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
-}
-
-.header.scrolled .search-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-}
-
-.header.scrolled .hamburger span {
-    background: white;
-}
-
-.header.scrolled .trending-dropdown .nav-link {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.header.scrolled .trending-trigger::before {
-    content: "Trending";
-}
-
-.header.scrolled .trending-trigger {
-    font-size: 0;
-}
-
-.header.scrolled .trending-trigger .dropdown-arrow {
-    font-size: 0.7rem;
-}
-
-.header.scrolled .trending-dropdown .dropdown-arrow {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.header.scrolled .trending-menu {
-    background: rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(25px);
-}
-
-/* Dynamic Island Mobile Responsive */
+/* ===================================
+   DYNAMIC ISLAND MOBILE RESPONSIVE
+   =================================== */
 @media (max-width: 768px) {
     .header.scrolled {
-        width: 90%;
-        margin-left: -45%;
+        width: calc(100% - 24px);
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
         border-radius: 25px;
-        top: 6px;
+        top: 10px;
+        margin: 0 auto;
     }
     
     .header.scrolled .container {
@@ -694,21 +689,26 @@ body {
         height: 30px;
     }
     
+    .header.scrolled .hamburger {
+        display: block;
+    }
+    
+    .header.scrolled .hamburger span {
+        background: white;
+    }
+    
+    .header.scrolled .navigation {
+        display: none; /* Hide navigation on mobile, use hamburger */
+    }
+    
     .header.scrolled .trending-dropdown {
         display: none; /* Hide trending on mobile for cleaner look */
     }
 }
 
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-md) var(--space-lg);
-    position: relative;
-    max-width: 1280px;
-    margin: 0 auto;
-    min-height: 60px;
-}
+/* ===================================
+   LOGO STYLES
+   =================================== */
 
 .logo {
     display: flex;
@@ -720,7 +720,7 @@ body {
 }
 
 .logo h1 {
-    font-size: 350x;
+    font-size: 24px;
     font-weight: var(--font-weight-bold);
     background: linear-gradient(135deg, var(--white) 0%, var(--secondary-color) 100%);
     -webkit-background-clip: text;
