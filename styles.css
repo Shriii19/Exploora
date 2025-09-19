@@ -2967,13 +2967,24 @@ body {
 
 /* Page Hero */
 .page-hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 50%, var(--secondary-color) 100%);
-    color: white;
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.9) 0%, 
+        rgba(29, 78, 216, 0.8) 50%,
+        rgba(6, 182, 212, 0.7) 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="800" fill="%23667eea"/><rect width="1200" height="800" fill="url(%23grid)"/><circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="800" cy="300" r="200" fill="rgba(255,255,255,0.05)"/><circle cx="1000" cy="600" r="180" fill="rgba(255,255,255,0.05)"/></svg>');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--white);
     text-align: center;
     padding: 140px 0 80px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
-    height: 55em;
+    animation: fadeIn 1.2s ease-out;
 }
 
 .page-hero::before {
@@ -3002,6 +3013,18 @@ body {
 .page-hero .container {
     position: relative;
     z-index: 2;
+}
+
+.page-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    animation: fadeInUp 1.2s ease-out;
+    animation-delay: 0.3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 
 .page-hero h1 {
@@ -3483,33 +3506,233 @@ body {
 }
 
 .destination-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .destination-card:hover::before {
-    opacity: 1;
+    opacity: 0.5;
 }
 
 .destination-image {
     position: relative;
     overflow: hidden;
     height: 280px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-size: 4rem;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: var(--space-lg);
     flex-shrink: 0;
 }
 
-.destination-info {
+/* Destination-specific backgrounds */
+.destination-card[data-destination="paris"] .destination-image {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.destination-card[data-destination="tokyo"] .destination-image {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.destination-card[data-destination="new york"] .destination-image {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.destination-card[data-destination="sydney"] .destination-image {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.destination-card[data-destination="london"] .destination-image {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.destination-card[data-destination="dubai"] .destination-image {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.destination-card:hover .image-overlay {
+    opacity: 1;
+}
+
+.destination-badge {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-color);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-semibold);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 3;
+}
+
+.destination-content {
     padding: var(--space-2xl);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     position: relative;
     z-index: 2;
+}
+
+.destination-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-lg);
+}
+
+.destination-header h3 {
+    color: var(--gray-900);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.destination-rating {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: rgba(255, 193, 7, 0.1);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+.destination-rating i {
+    color: #ffc107;
+    font-size: 0.75rem;
+}
+
+.destination-description {
+    color: var(--gray-600);
+    margin-bottom: var(--space-xl);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.destination-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.feature-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary-color);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-medium);
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    transition: all 0.2s ease;
+}
+
+.feature-tag:hover {
+    background: rgba(37, 99, 235, 0.12);
+    transform: translateY(-1px);
+}
+
+.feature-tag i {
+    font-size: 0.7rem;
+}
+
+.destination-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    margin-top: auto;
+}
+
+.explore-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.explore-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+}
+
+.explore-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.3s ease;
+}
+
+.explore-btn:hover::before {
+    left: 100%;
+}
+
+.search-count {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--gray-500);
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-medium);
+}
+
+.search-count i {
+    color: var(--gray-400);
+    font-size: 0.75rem;
 }
 
 .destination-info h3 {
