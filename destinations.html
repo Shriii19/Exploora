@@ -4,22 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destinations - Exploora</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="components/preloader.css">
+    <!-- Enhanced Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <h1><span class="logo-full">🌍 Exploora</span><span class="logo-mini">E</span></h1>
+            </a>
+            <nav class="navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="destinations.html" class="nav-link active" data-page="destinations">Destinations</a></li>
+                    <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search destinations..." class="search-input">
+                <button id="searchBtn" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
     <!-- Page Header -->
-    <section class="page-hero">
+    <section class="hero page-hero">
         <div class="hero-particles"></div>
+        <div class="background-mesh"></div>
         <div class="container">
-            <div class="page-hero-content">
-                <span class="page-badge">🌍 Explore</span>
-                <h1>Popular Destinations</h1>
-                <p>Discover breathtaking places around the world with real-time insights and professional photography</p>
+            <div class="hero-content">
+                <div class="hero-announcement">
+                    <i class="fas fa-globe-americas"></i>
+                    <span>Explore the World</span>
+                    <div class="announcement-badge">LIVE</div>
+                </div>
+                <h1 class="hero-title">
+                    Popular <span class="gradient-text-animated">Destinations</span>
+                </h1>
+                <p class="hero-description">
+                    Discover breathtaking places around the world with real-time insights and professional photography
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature" data-reveal="scale" data-delay="100">
+                        <i class="fas fa-camera"></i>
+                        <span>HD Photography</span>
+                    </div>
+                    <div class="hero-feature" data-reveal="scale" data-delay="200">
+                        <i class="fas fa-cloud-sun"></i>
+                        <span>Live Weather</span>
+                    </div>
+                    <div class="hero-feature" data-reveal="scale" data-delay="300">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Global Coverage</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="hero-scroll-indicator">
@@ -27,10 +80,304 @@
             <span>Browse destinations</span>
         </div>
     </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Featured Destinations Section -->
+            <section class="destinations-section" data-reveal="fade">
+                <div class="section-header">
+                    <span class="section-badge premium">
+                        <i class="fas fa-star"></i>
+                        Featured
+                    </span>
+                    <h2 class="section-title">Top Travel Destinations</h2>
+                    <p class="section-description">
+                        Handpicked destinations that capture the imagination and inspire wanderlust
+                    </p>
+                </div>
+                
+                <div class="destinations-grid" data-animate="stagger">
+                    <div class="destination-card premium" data-destination="paris">
+                        <div class="destination-image">
+                            <div class="image-overlay"></div>
+                            <div class="destination-badge">Most Popular</div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Paris, France</h3>
+                                <div class="destination-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <p class="destination-description">
+                                The City of Light beckons with world-class museums, romantic boulevards, and iconic landmarks like the Eiffel Tower.
+                            </p>
+                            <div class="destination-features">
+                                <span class="feature-tag">
+                                    <i class="fas fa-monument"></i>
+                                    Historic Sites
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-palette"></i>
+                                    Art & Culture
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-utensils"></i>
+                                    Fine Dining
+                                </span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary explore-btn" data-city="paris">
+                                    <i class="fas fa-compass"></i>
+                                    Explore Now
+                                </button>
+                                <div class="search-count">
+                                    <i class="fas fa-users"></i>
+                                    <span>2.4k searches this week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card premium" data-destination="tokyo">
+                        <div class="destination-image">
+                            <div class="image-overlay"></div>
+                            <div class="destination-badge">Trending</div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Tokyo, Japan</h3>
+                                <div class="destination-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                            <p class="destination-description">
+                                Where ancient traditions seamlessly blend with cutting-edge technology and culinary excellence.
+                            </p>
+                            <div class="destination-features">
+                                <span class="feature-tag">
+                                    <i class="fas fa-torii-gate"></i>
+                                    Temples
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-robot"></i>
+                                    Technology
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-fish"></i>
+                                    Sushi
+                                </span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary explore-btn" data-city="tokyo">
+                                    <i class="fas fa-compass"></i>
+                                    Explore Now
+                                </button>
+                                <div class="search-count">
+                                    <i class="fas fa-users"></i>
+                                    <span>1.9k searches this week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card premium" data-destination="new york">
+                        <div class="destination-image">
+                            <div class="image-overlay"></div>
+                            <div class="destination-badge">Hot</div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>New York City, USA</h3>
+                                <div class="destination-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                            <p class="destination-description">
+                                The city that never sleeps offers Broadway magic, world-class dining, and endless urban adventures.
+                            </p>
+                            <div class="destination-features">
+                                <span class="feature-tag">
+                                    <i class="fas fa-building"></i>
+                                    Skyscrapers
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-theater-masks"></i>
+                                    Broadway
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    Shopping
+                                </span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary explore-btn" data-city="new york">
+                                    <i class="fas fa-compass"></i>
+                                    Explore Now
+                                </button>
+                                <div class="search-count">
+                                    <i class="fas fa-users"></i>
+                                    <span>1.7k searches this week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card premium" data-destination="sydney">
+                        <div class="destination-image">
+                            <div class="image-overlay"></div>
+                            <div class="destination-badge">Featured</div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Sydney, Australia</h3>
+                                <div class="destination-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                            <p class="destination-description">
+                                Harbor city paradise featuring stunning architecture, pristine beaches, and laid-back coastal vibes.
+                            </p>
+                            <div class="destination-features">
+                                <span class="feature-tag">
+                                    <i class="fas fa-water"></i>
+                                    Beaches
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-music"></i>
+                                    Opera House
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-bridge"></i>
+                                    Harbor Bridge
+                                </span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary explore-btn" data-city="sydney">
+                                    <i class="fas fa-compass"></i>
+                                    Explore Now
+                                </button>
+                                <div class="search-count">
+                                    <i class="fas fa-users"></i>
+                                    <span>1.2k searches this week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card premium" data-destination="london">
+                        <div class="destination-image">
+                            <div class="image-overlay"></div>
+                            <div class="destination-badge">Classic</div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>London, United Kingdom</h3>
+                                <div class="destination-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.6</span>
+                                </div>
+                            </div>
+                            <p class="destination-description">
+                                A perfect blend of historic charm and modern innovation, from Big Ben to world-class museums.
+                            </p>
+                            <div class="destination-features">
+                                <span class="feature-tag">
+                                    <i class="fas fa-crown"></i>
+                                    Royal Sites
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-university"></i>
+                                    Museums
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-leaf"></i>
+                                    Parks
+                                </span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary explore-btn" data-city="london">
+                                    <i class="fas fa-compass"></i>
+                                    Explore Now
+                                </button>
+                                <div class="search-count">
+                                    <i class="fas fa-users"></i>
+                                    <span>1.5k searches this week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="destination-card premium" data-destination="dubai">
+                        <div class="destination-image">
+                            <div class="image-overlay"></div>
+                            <div class="destination-badge">Luxury</div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-header">
+                                <h3>Dubai, UAE</h3>
+                                <div class="destination-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <p class="destination-description">
+                                A futuristic oasis in the desert, featuring world-record architecture and luxury experiences.
+                            </p>
+                            <div class="destination-features">
+                                <span class="feature-tag">
+                                    <i class="fas fa-building"></i>
+                                    Skyscrapers
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-gem"></i>
+                                    Luxury
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Shopping
+                                </span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="btn btn-primary explore-btn" data-city="dubai">
+                                    <i class="fas fa-compass"></i>
+                                    Explore Now
+                                </button>
+                                <div class="search-count">
+                                    <i class="fas fa-users"></i>
+                                    <span>1.1k searches this week</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search Results Section -->
+            <section id="searchResults" class="search-results-section hidden">
+                <div class="section-header">
+                    <h2 class="section-title">Search Results</h2>
+                    <p class="section-description">Explore your chosen destination with comprehensive information</p>
+                </div>
+                
+                <div id="destinationDetails" class="destination-details">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
     <script src="components/loader.js"></script>
+    <script src="components/particles.js"></script>
+    <script src="components/scroll-animations.js"></script>
     <script src="script.js"></script>
     <script src="destinations.js"></script>
 </body>
