@@ -2,27 +2,8 @@
 let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
 
 // API Keys (Replace with your actual API keys)
-const UNSPLASH_API_KEY = 'your_unsplash_api_key_here';// Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded - initializing components...');
-    
-    // Initialize navigation only (no scroll effect)
-    initializeNavigation();
-    initializeSearch();
-    initializeScrollAnimations();
-    initializeDestinationHighlights();
-    initializeTrendingDropdown(); // Add this for the trending dropdown
-    displayRecentSearches();
-    
-    // Add some sample searches if none exist
-    if (recentSearches.length === 0) {
-        recentSearches = ['Paris', 'Tokyo', 'London'];
-        localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
-        displayRecentSearches();
-    }
-    
-    console.log('All components initialized successfully');
-});ER_API_KEY = 'your_openweather_api_key_here';
+const UNSPLASH_API_KEY = 'your_unsplash_api_key_here';
+const OPENWEATHER_API_KEY = 'your_openweather_api_key_here';
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
@@ -61,15 +42,29 @@ function initializeAnimations() {
     });
 }
 
-// Setup scroll effects for hero parallax only (header handled elsewhere)
+// Setup scroll effects for header and other elements
 function setupScrollEffects() {
+    let lastScrollY = window.scrollY;
+    
     window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Header scroll effect
+        if (currentScrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Parallax effect for hero section
         const hero = document.querySelector('.hero');
         if (hero) {
             const scrolled = window.pageYOffset;
             const parallax = scrolled * 0.5;
             hero.style.transform = `translateY(${parallax}px)`;
         }
+        
+        lastScrollY = currentScrollY;
     });
 }
 
@@ -225,10 +220,10 @@ const cardColors = [
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
-    initializeHeaderScroll();
     initializeNavigation();
     initializeSearch();
     initializeScrollAnimations();
+    initializeHeaderScroll();
     initializeDestinationHighlights();
     initializeTrendingDropdown(); // Add this for the trending dropdown
     displayRecentSearches();
@@ -262,9 +257,25 @@ function initializeScrollAnimations() {
     });
 }
 
-/* ===================================
-   HEADER FUNCTIONALITY
-   =================================== */
+// Initialize header scroll effect
+function initializeHeaderScroll() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        lastScrollY = currentScrollY;
+    });
+}
 
 // Initialize navigation
 function initializeNavigation() {
