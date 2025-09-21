@@ -35,6 +35,7 @@ class ComponentLoader {
             'index': 'home',
             'about': 'about',
             'destinations': 'destinations',
+            'blog': 'blog',
             'contact': 'contact'
         };
 
