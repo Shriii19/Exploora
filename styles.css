@@ -568,7 +568,6 @@ body {
 .nav-link {
     color: white;
     text-decoration: none;
-
     font-weight: var(--font-weight-medium);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-md);
@@ -3565,6 +3564,65 @@ body {
     background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
                       url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+/* Trending destinations with blue color themes */
+.destination-highlight[data-city="new york"] .destination-image {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    background-image: linear-gradient(rgba(37, 99, 235, 0.3), rgba(30, 64, 175, 0.5)), 
+                      url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-highlight[data-city="sydney"] .destination-image {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    background-image: linear-gradient(rgba(14, 165, 233, 0.3), rgba(2, 132, 199, 0.5)), 
+                      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-highlight[data-city="london"] .destination-image {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background-image: linear-gradient(rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.5)), 
+                      url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-highlight[data-city="dubai"] .destination-image {
+    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    background-image: linear-gradient(rgba(30, 64, 175, 0.3), rgba(30, 58, 138, 0.5)), 
+                      url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&h=600&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-highlight[data-city="singapore"] .destination-image {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    background-image: linear-gradient(rgba(6, 182, 212, 0.3), rgba(8, 145, 178, 0.5)), 
+                      url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&h=600&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-highlight[data-city="barcelona"] .destination-image {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+    background-image: linear-gradient(rgba(29, 78, 216, 0.3), rgba(30, 58, 138, 0.5)), 
+                      url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&h=600&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Hover effects for trending destination images */
+.destination-highlight:hover .destination-image {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.destination-highlight .destination-image {
+    transition: transform 0.3s ease;
 }
 
 .image-overlay {
