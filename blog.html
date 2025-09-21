@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog - Exploora</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components/preloader.css">
+    <!-- Enhanced Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Blog Hero Section -->
+    <section class="page-hero">
+        <div class="hero-particles"></div>
+        <div class="background-mesh"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-announcement">
+                    <i class="fas fa-feather"></i>
+                    <span>Travel Stories</span>
+                    <div class="announcement-badge">NEW</div>
+                </div>
+                <h1 class="hero-title">
+                    Travel <span class="gradient-text-animated">Blog</span>
+                </h1>
+                <p class="hero-description">
+                    Discover inspiring travel stories, destination guides, and insider tips from fellow explorers around the world
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature" data-reveal="scale" data-delay="100">
+                        <i class="fas fa-book-open"></i>
+                        <span>250+ Articles</span>
+                    </div>
+                    <div class="hero-feature" data-reveal="scale" data-delay="200">
+                        <i class="fas fa-globe-americas"></i>
+                        <span>50+ Countries</span>
+                    </div>
+                    <div class="hero-feature" data-reveal="scale" data-delay="300">
+                        <i class="fas fa-users"></i>
+                        <span>100K+ Readers</span>
+                    </div>
+                </div>
+                
+                <!-- Blog Search -->
+                <div class="hero-actions">
+                    <div class="blog-search-container">
+                        <div class="blog-search">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="blogSearchInput" placeholder="Search articles, destinations, or topics..." autocomplete="off">
+                            <button id="blogSearchBtn" class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Explore our stories</span>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Blog Content -->
+        <section class="blog-section">
+            <div class="container">
+                <!-- Category Filter -->
+                <div class="blog-filters">
+                    <div class="section-header-premium">
+                        <span class="section-badge premium">📖 Browse by Category</span>
+                        <h2>Find Your Perfect Story</h2>
+                        <p>Explore curated content from travel experts and fellow adventurers</p>
+                    </div>
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-category="all">
+                            <i class="fas fa-globe"></i>
+                            All Articles
+                        </button>
+                        <button class="filter-btn" data-category="guides">
+                            <i class="fas fa-map"></i>
+                            Travel Guides
+                        </button>
+                        <button class="filter-btn" data-category="tips">
+                            <i class="fas fa-lightbulb"></i>
+                            Travel Tips
+                        </button>
+                        <button class="filter-btn" data-category="culture">
+                            <i class="fas fa-users"></i>
+                            Culture & Food
+                        </button>
+                        <button class="filter-btn" data-category="adventure">
+                            <i class="fas fa-mountain"></i>
+                            Adventure
+                        </button>
+                        <button class="filter-btn" data-category="photography">
+                            <i class="fas fa-camera"></i>
+                            Photography
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Featured Articles -->
+                <div class="featured-articles content-section">
+                    <div class="section-header-premium">
+                        <span class="section-badge premium">🌟 Featured Stories</span>
+                        <h2>Editor's Picks</h2>
+                        <p>Hand-selected stories that inspire and inform your next adventure</p>
+                    </div>
+                    <div class="featured-grid">
+                        <article class="featured-article" data-category="guides">
+                            <div class="article-image">
+                                <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&h=600&fit=crop" alt="Tokyo at night" loading="lazy">
+                                <div class="article-category">Travel Guide</div>
+                            </div>
+                            <div class="article-content">
+                                <h4>The Ultimate Guide to Tokyo: Hidden Gems & Local Secrets</h4>
+                                <p>Discover the authentic side of Tokyo beyond the tourist trails. From secret ramen shops to hidden temples, explore the city like a local.</p>
+                                <div class="article-meta">
+                                    <span class="author">
+                                        <i class="fas fa-user"></i>
+                                        Yuki Tanaka
+                                    </span>
+                                    <span class="date">
+                                        <i class="fas fa-calendar"></i>
+                                        Sep 15, 2025
+                                    </span>
+                                    <span class="read-time">
+                                        <i class="fas fa-clock"></i>
+                                        8 min read
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="featured-article" data-category="photography">
+                            <div class="article-image">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Mountain landscape" loading="lazy">
+                                <div class="article-category">Photography</div>
+                            </div>
+                            <div class="article-content">
+                                <h4>Capturing the Perfect Mountain Sunrise: A Photographer's Guide</h4>
+                                <p>Learn the techniques and equipment needed to capture breathtaking mountain sunrises that will leave your audience in awe.</p>
+                                <div class="article-meta">
+                                    <span class="author">
+                                        <i class="fas fa-user"></i>
+                                        Alex Rodriguez
+                                    </span>
+                                    <span class="date">
+                                        <i class="fas fa-calendar"></i>
+                                        Sep 12, 2025
+                                    </span>
+                                    <span class="read-time">
+                                        <i class="fas fa-clock"></i>
+                                        6 min read
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Blog Articles Grid -->
+                <div class="blog-articles content-section">
+                    <div class="section-header-premium">
+                        <span class="section-badge premium">📰 Latest Articles</span>
+                        <h2>Fresh Stories</h2>
+                        <div class="articles-count">
+                            <span id="articlesCount">24 articles</span>
+                        </div>
+                    </div>
+                    
+                    <div class="articles-grid" id="articlesGrid">
+                        <!-- Articles will be dynamically loaded here -->
+                    </div>
+
+                    <!-- Load More -->
+                    <div class="load-more-container">
+                        <button class="load-more-btn" id="loadMoreBtn">
+                            <i class="fas fa-plus"></i>
+                            Load More Articles
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Newsletter Signup -->
+                <div class="newsletter-section content-section">
+                    <div class="section-header-premium">
+                        <span class="section-badge premium">📬 Stay Updated</span>
+                        <h2>Never Miss a Story</h2>
+                        <p>Get the latest travel articles, destination guides, and insider tips delivered straight to your inbox</p>
+                    </div>
+                    <div class="newsletter-content">
+                        <div class="newsletter-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="form-group">
+                                <input type="email" placeholder="Enter your email address" required>
+                                <button type="submit">
+                                    <i class="fas fa-arrow-right"></i>
+                                    Subscribe
+                                </button>
+                            </div>
+                            <p class="newsletter-note">Join 50,000+ travel enthusiasts. Unsubscribe anytime.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Load component system first -->
+    <script src="components/loader.js"></script>
+    <!-- Blog-specific JavaScript -->
+    <script src="blog.js"></script>
+</body>
+</html>
