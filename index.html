@@ -303,96 +303,153 @@
                 </div>
             </section>
 
-            <!-- Popular Destinations Section -->
-            <section id="popular-destinations" class="popular-destinations-section animate-fade-in-up">
+            <!-- Trending Destinations Section -->
+            <section id="trending-destinations" class="popular-destinations-section animate-fade-in-up">
                 <div class="section-header">
-                    <span class="section-badge">🌍 Trending Now</span>
-                    <h3>Most Searched Destinations</h3>
-                    <p>Discover where travelers are heading next—from romantic European capitals to vibrant Asian metropolises</p>
+                    <div class="header-badges">
+                        <span class="section-badge">🌍 Trending Now</span>
+                        <span class="section-badge secondary">🔥 Hot Picks</span>
+                    </div>
+                    <h3>Most Searched Destinations This Week</h3>
+                    <p>Real-time data reveals where millions of travelers are planning their next adventures. Join the movement and discover what's capturing hearts worldwide.</p>
+                    <div class="section-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10M+</span>
+                            <span class="stat-label">Weekly Searches</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Live</span>
+                            <span class="stat-label">Trending Data</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Global</span>
+                            <span class="stat-label">Hotspots</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="destinations-showcase">
-                    <div class="destination-highlight featured" data-city="paris">
+                    <div class="destination-highlight" data-city="new york" role="article" tabindex="0">
                         <div class="destination-image">
                             <div class="image-overlay">
-                                <span class="destination-emoji">🗼</span>
+                                <span class="destination-emoji" aria-label="New York landmark">🗽</span>
                             </div>
                             <div class="destination-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.9</span>
-                            </div>
-                        </div>
-                        <div class="destination-details">
-                            <h4>Paris, France</h4>
-                            <p>The City of Light beckons with world-class museums, romantic boulevards, and iconic landmarks</p>
-                            <div class="destination-meta">
-                                <span class="destination-tag">Europe</span>
-                                <span class="search-count">↗ 2.4k searches</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="destination-highlight" data-city="tokyo">
-                        <div class="destination-image">
-                            <div class="image-overlay">
-                                <span class="destination-emoji">🏯</span>
-                            </div>
-                            <div class="destination-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.8</span>
-                            </div>
-                        </div>
-                        <div class="destination-details">
-                            <h4>Tokyo, Japan</h4>
-                            <p>Where ancient traditions seamlessly blend with cutting-edge technology and culinary excellence</p>
-                            <div class="destination-meta">
-                                <span class="destination-tag">Asia</span>
-                                <span class="search-count">↗ 1.9k searches</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="destination-highlight" data-city="new york">
-                        <div class="destination-image">
-                            <div class="image-overlay">
-                                <span class="destination-emoji">🗽</span>
-                            </div>
-                            <div class="destination-rating">
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
                                 <span>4.7</span>
                             </div>
+                            <div class="destination-actions">
+                                <button class="action-btn favorite" aria-label="Add New York to favorites">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="action-btn share" aria-label="Share New York destination">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="destination-details">
-                            <h4>New York City, USA</h4>
-                            <p>The city that never sleeps offers Broadway magic, world-class dining, and endless urban adventures</p>
+                            <div class="destination-header">
+                                <h4>New York City, USA</h4>
+                                <span class="destination-price">From $259/night</span>
+                            </div>
+                            <p>The city that never sleeps offers Broadway magic, world-class dining, and endless urban adventures in the concrete jungle</p>
+                            <div class="destination-highlights">
+                                <span class="highlight-tag">🎭 Broadway</span>
+                                <span class="highlight-tag">🏙️ Skyline</span>
+                                <span class="highlight-tag">🛍️ Shopping</span>
+                            </div>
                             <div class="destination-meta">
                                 <span class="destination-tag">America</span>
                                 <span class="search-count">↗ 1.7k searches</span>
+                                <span class="destination-season">🍂 Best: Fall</span>
+                            </div>
+                            <div class="destination-cta">
+                                <button class="btn btn-primary btn-sm" onclick="searchDestination('new york')">
+                                    <i class="fas fa-search"></i>
+                                    Explore Now
+                                </button>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-bookmark"></i>
+                                    Save for Later
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="destination-highlight" data-city="sydney">
+                    <div class="destination-highlight" data-city="sydney" role="article" tabindex="0">
                         <div class="destination-image">
                             <div class="image-overlay">
-                                <span class="destination-emoji">🏖️</span>
+                                <span class="destination-emoji" aria-label="Sydney landmark">🏖️</span>
                             </div>
                             <div class="destination-rating">
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
                                 <span>4.8</span>
+                            </div>
+                            <div class="destination-actions">
+                                <button class="action-btn favorite" aria-label="Add Sydney to favorites">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="action-btn share" aria-label="Share Sydney destination">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
                             </div>
                         </div>
                         <div class="destination-details">
-                            <h4>Sydney, Australia</h4>
-                            <p>Harbor city paradise featuring stunning architecture, pristine beaches, and laid-back coastal vibes</p>
+                            <div class="destination-header">
+                                <h4>Sydney, Australia</h4>
+                                <span class="destination-price">From $179/night</span>
+                            </div>
+                            <p>Harbor city paradise featuring stunning architecture, pristine beaches, and laid-back coastal vibes under endless blue skies</p>
+                            <div class="destination-highlights">
+                                <span class="highlight-tag">🏖️ Beaches</span>
+                                <span class="highlight-tag">🏛️ Opera House</span>
+                                <span class="highlight-tag">🦘 Wildlife</span>
+                            </div>
                             <div class="destination-meta">
                                 <span class="destination-tag">Oceania</span>
                                 <span class="search-count">↗ 1.2k searches</span>
+                                <span class="destination-season">☀️ Best: Summer</span>
+                            </div>
+                            <div class="destination-cta">
+                                <button class="btn btn-primary btn-sm" onclick="searchDestination('sydney')">
+                                    <i class="fas fa-search"></i>
+                                    Explore Now
+                                </button>
+                                <button class="btn btn-outline btn-sm">
+                                    <i class="fas fa-bookmark"></i>
+                                    Save for Later
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="destinations-cta">
-                    <a href="destinations.html" class="btn btn-outline">
-                        <i class="fas fa-globe"></i>
-                        Explore All Destinations
-                    </a>
+                    <div class="cta-content">
+                        <h4>Stay Ahead of Travel Trends</h4>
+                        <p>Be the first to discover emerging destinations before they become mainstream</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a href="destinations.html?category=trending" class="btn btn-primary">
+                            <i class="fas fa-fire"></i>
+                            See All Trending
+                        </a>
+                        <a href="#search-demo" class="btn btn-outline">
+                            <i class="fas fa-search"></i>
+                            Find Hidden Gems
+                        </a>
+                        <button class="btn btn-glass" onclick="subscribeToTrends()">
+                            <i class="fas fa-bell"></i>
+                            Get Trend Alerts
+                        </button>
+                    </div>
+                    <div class="cta-stats">
+                        <div class="cta-stat">
+                            <span class="stat-icon">📈</span>
+                            <span class="stat-text">Real-time trend analysis</span>
+                        </div>
+                        <div class="cta-stat">
+                            <span class="stat-icon">⚡</span>
+                            <span class="stat-text">Instant notifications available</span>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
