@@ -592,12 +592,6 @@ body {
     width: 80%;
 }
 
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary-color);
-    background: rgba(255, 255, 255, 0.08);
-}
-
 .nav-link.active::after {
     width: 90%;
 }
@@ -2364,7 +2358,7 @@ body {
 .destination-rating {
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    left: 1rem;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     padding: 0.5rem 0.8rem;
@@ -3504,22 +3498,22 @@ body {
 .destinations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: var(--space-2xl);
+    gap: 2rem;
     margin-bottom: var(--space-3xl);
 }
 
 .destination-card {
     background: var(--white);
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 520px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 650px;
 }
 
 .destination-card::before {
@@ -3528,27 +3522,20 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.02) 0%, rgba(59, 130, 246, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-    border-radius: 24px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-500), var(--primary-400));
+    z-index: 2;
 }
 
 .destination-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-}
-
-.destination-card:hover::before {
-    opacity: 0.5;
+    background: rgba(37, 99, 235, 0.05);
+    border-color: var(--primary-300);
 }
 
 .destination-image {
     position: relative;
     overflow: hidden;
-    height: 280px;
+    height: 320px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -3594,6 +3581,24 @@ body {
     background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
                       url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.destination-card[data-destination="bali"] .destination-image {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.destination-card[data-destination="rome"] .destination-image {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=600&fit=crop&crop=entropy&auto=format');
+}
+
+.destination-card[data-destination="santorini"] .destination-image {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=600&fit=crop&crop=entropy&auto=format');
 }
 
 /* Trending destinations with blue color themes */
@@ -4238,18 +4243,20 @@ body {
     display: inline-flex;
     align-items: center;
     gap: var(--space-xs);
-    background: rgba(37, 99, 235, 0.08);
-    color: var(--primary-color);
+    background: var(--gray-100);
+    color: var(--gray-700);
     padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-md);
     font-size: 0.8rem;
     font-weight: var(--font-weight-medium);
-    border: 1px solid rgba(37, 99, 235, 0.15);
-    transition: all 0.2s ease;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
 }
 
 .feature-tag:hover {
-    background: rgba(37, 99, 235, 0.12);
+    background: var(--primary-100);
+    color: var(--primary-700);
+    border-color: var(--primary-300);
     transform: translateY(-1px);
 }
 
@@ -4272,21 +4279,38 @@ body {
     justify-content: center;
     gap: var(--space-sm);
     padding: var(--space-md) var(--space-lg);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
     color: white;
     border: none;
-    border-radius: var(--radius-lg);
-    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-medium);
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+}
+
+.explore-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.explore-btn:hover::before {
+    left: 100%;
 }
 
 .explore-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
 }
 
 .explore-btn::before {
