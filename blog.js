@@ -7,91 +7,135 @@ document.addEventListener('DOMContentLoaded', function() {
 const blogArticles = [
     {
         id: 1,
-        title: "10 Hidden Gems in Southeast Asia You've Never Heard Of",
-        excerpt: "Discover remote islands, ancient temples, and pristine beaches away from the tourist crowds in these lesser-known Southeast Asian destinations.",
-        image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&h=400&fit=crop",
-        author: "Sarah Chen",
-        date: "2025-09-18",
-        readTime: "7 min read",
+        title: "Morocco Travel Guide: From Marrakech to the Sahara",
+        excerpt: "Experience the magic of Morocco with our comprehensive guide covering the best souks, desert adventures, and cultural experiences.",
+        image: "https://images.unsplash.com/photo-1539650116574-75c0c6d73aeb?w=600&h=400&fit=crop",
+        author: "Sarah Johnson",
+        date: "2025-09-20",
+        readTime: "5 min read",
         category: "guides",
-        tags: ["Southeast Asia", "Hidden Gems", "Adventure"]
+        tags: ["Morocco", "Desert", "Culture"]
     },
     {
         id: 2,
-        title: "Budget Travel: How to See Europe for Under $50 a Day",
-        excerpt: "Complete guide to backpacking through Europe on a shoestring budget, including accommodation, food, and transportation tips.",
-        image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&h=400&fit=crop",
-        author: "Mike Johnson",
-        date: "2025-09-16",
-        readTime: "10 min read",
+        title: "Smart Packing: Essential Items for Every Traveler",
+        excerpt: "Discover the must-have items and clever packing hacks that will transform your travel experience and save space in your luggage.",
+        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop",
+        author: "Mike Chen",
+        date: "2025-09-18",
+        readTime: "3 min read",
         category: "tips",
-        tags: ["Budget Travel", "Europe", "Backpacking"]
+        tags: ["Packing", "Tips", "Travel Gear"]
     },
     {
         id: 3,
-        title: "Street Food Adventures: Bangkok's Best Local Eats",
-        excerpt: "Navigate Bangkok's incredible street food scene like a pro with this comprehensive guide to the city's most delicious local dishes.",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop",
-        author: "Lila Patel",
-        date: "2025-09-14",
-        readTime: "6 min read",
+        title: "A Culinary Journey Through Italy: Beyond Pizza and Pasta",
+        excerpt: "Explore Italy's diverse regional cuisines and discover hidden culinary gems that locals cherish but tourists often miss.",
+        image: "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?w=600&h=400&fit=crop",
+        author: "Marco Rossi",
+        date: "2025-09-16",
+        readTime: "7 min read",
         category: "culture",
-        tags: ["Bangkok", "Street Food", "Culture"]
+        tags: ["Italy", "Food", "Culture"]
     },
     {
         id: 4,
-        title: "Hiking the Inca Trail: Everything You Need to Know",
-        excerpt: "Complete preparation guide for one of the world's most famous treks, including permits, packing lists, and training tips.",
-        image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600&h=400&fit=crop",
-        author: "Carlos Rivera",
-        date: "2025-09-12",
-        readTime: "12 min read",
+        title: "Hiking New Zealand: Top Trails for Every Skill Level",
+        excerpt: "From beginner-friendly walks to challenging multi-day treks, discover New Zealand's most spectacular hiking trails and what to expect.",
+        image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&h=400&fit=crop",
+        author: "Emma Walsh",
+        date: "2025-09-14",
+        readTime: "6 min read",
         category: "adventure",
-        tags: ["Peru", "Hiking", "Machu Picchu"]
+        tags: ["New Zealand", "Hiking", "Adventure"]
     },
     {
         id: 5,
-        title: "Golden Hour Photography: Capturing Cities at Sunset",
-        excerpt: "Master the art of urban photography during golden hour with these professional tips and camera settings.",
-        image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
-        author: "Emma Thompson",
-        date: "2025-09-10",
+        title: "Iceland's Ring Road: Complete Planning Guide",
+        excerpt: "Plan the perfect Ring Road adventure with our detailed guide covering routes, accommodations, and must-see attractions around Iceland.",
+        image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600&h=400&fit=crop",
+        author: "Lars Andersen",
+        date: "2025-09-12",
         readTime: "8 min read",
-        category: "photography",
-        tags: ["Photography", "Golden Hour", "Cities"]
+        category: "guides",
+        tags: ["Iceland", "Road Trip", "Planning"]
     },
     {
         id: 6,
-        title: "Solo Female Travel: Safety Tips and Empowering Destinations",
-        excerpt: "Comprehensive guide for women traveling alone, featuring the safest destinations and practical safety advice.",
-        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop",
-        author: "Jessica Williams",
-        date: "2025-09-08",
-        readTime: "9 min read",
-        category: "tips",
-        tags: ["Solo Travel", "Women", "Safety"]
+        title: "Photographing the Northern Lights: Camera Settings & Tips",
+        excerpt: "Master the art of aurora photography with our expert guide to camera settings, locations, and timing for capturing the northern lights.",
+        image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=400&fit=crop",
+        author: "Anna Petrov",
+        date: "2025-09-10",
+        readTime: "4 min read",
+        category: "photography",
+        tags: ["Photography", "Northern Lights", "Technique"]
     },
     {
         id: 7,
-        title: "Island Hopping in Greece: The Ultimate Cyclades Adventure",
-        excerpt: "Plan the perfect Greek island adventure with ferry schedules, accommodation tips, and must-see destinations.",
-        image: "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=600&h=400&fit=crop",
-        author: "Andreas Kostas",
-        date: "2025-09-06",
-        readTime: "11 min read",
-        category: "guides",
-        tags: ["Greece", "Islands", "Mediterranean"]
+        title: "Budget Travel Secrets: See More, Spend Less",
+        excerpt: "Discover insider strategies for affordable travel without compromising on experiences. Learn how to stretch your budget further.",
+        image: "https://images.unsplash.com/photo-1473625247510-8ceb1760943f?w=600&h=400&fit=crop",
+        author: "David Kim",
+        date: "2025-09-08",
+        readTime: "5 min read",
+        category: "tips",
+        tags: ["Budget Travel", "Money Saving", "Tips"]
     },
     {
         id: 8,
-        title: "Digital Nomad Guide: Working from Bali",
-        excerpt: "Everything you need to know about living and working remotely in Bali, from visa requirements to co-working spaces.",
-        image: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=600&h=400&fit=crop",
-        author: "Ryan Mitchell",
+        title: "Japanese Temple Etiquette: A Respectful Visitor's Guide",
+        excerpt: "Learn the essential customs and etiquette for visiting Japanese temples and shrines to show proper respect and enhance your experience.",
+        image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&h=400&fit=crop",
+        author: "Keiko Nakamura",
+        date: "2025-09-06",
+        readTime: "6 min read",
+        category: "culture",
+        tags: ["Japan", "Culture", "Temples"]
+    },
+    {
+        id: 9,
+        title: "Maldives Diving Guide: Best Spots for Underwater Adventures",
+        excerpt: "Explore the world's most pristine diving locations in the Maldives, from coral gardens to thrilling encounters with marine life.",
+        image: "https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=600&h=400&fit=crop",
+        author: "Ahmed Hassan",
         date: "2025-09-04",
+        readTime: "7 min read",
+        category: "adventure",
+        tags: ["Maldives", "Diving", "Marine Life"]
+    },
+    {
+        id: 10,
+        title: "The Ultimate Guide to Tokyo: Hidden Gems & Local Secrets",
+        excerpt: "Discover the authentic side of Tokyo beyond the tourist trails. From secret ramen shops to hidden temples, explore the city like a local.",
+        image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&h=600&fit=crop",
+        author: "Yuki Tanaka",
+        date: "2025-09-15",
+        readTime: "8 min read",
+        category: "guides",
+        tags: ["Tokyo", "Hidden Gems", "Local Culture"]
+    },
+    {
+        id: 11,
+        title: "Capturing the Perfect Mountain Sunrise: A Photographer's Guide",
+        excerpt: "Learn the techniques and equipment needed to capture breathtaking mountain sunrises that will leave your audience in awe.",
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+        author: "Alex Rodriguez",
+        date: "2025-09-12",
+        readTime: "6 min read",
+        category: "photography",
+        tags: ["Photography", "Mountains", "Sunrise"]
+    },
+    {
+        id: 12,
+        title: "Digital Nomad Guide: Working from Thailand",
+        excerpt: "Everything you need to know about living and working remotely in Thailand, from visa requirements to co-working spaces.",
+        image: "https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=600&h=400&fit=crop",
+        author: "Ryan Mitchell",
+        date: "2025-09-02",
         readTime: "15 min read",
         category: "tips",
-        tags: ["Digital Nomad", "Bali", "Remote Work"]
+        tags: ["Digital Nomad", "Thailand", "Remote Work"]
     }
 ];
 
@@ -102,9 +146,12 @@ function initializeBlogPage() {
     setupCategoryFilters();
     setupBlogSearch();
     setupNewsletterForm();
+    setupDestinationTags();
+    setupAuthorCards();
     renderArticles();
     updateArticlesCount();
     setupLoadMore();
+    initializeScrollAnimations();
 }
 
 // Setup category filters
@@ -413,3 +460,290 @@ function searchBlogFromTrending(destination) {
         }
     }
 }
+
+// Setup destination tags functionality
+function setupDestinationTags() {
+    const destinationTags = document.querySelectorAll('.destination-tag');
+    
+    destinationTags.forEach(tag => {
+        tag.addEventListener('click', function(e) {
+            e.preventDefault();
+            const destination = this.dataset.destination;
+            
+            // Search for articles related to this destination
+            const searchInput = document.getElementById('blogSearchInput');
+            if (searchInput) {
+                searchInput.value = destination;
+                performBlogSearch();
+                
+                // Scroll to articles section
+                const articlesSection = document.querySelector('.blog-articles');
+                if (articlesSection) {
+                    articlesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+        
+        // Add hover effect
+        tag.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.15)';
+        });
+        
+        tag.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        });
+    });
+}
+
+// Setup author cards functionality
+function setupAuthorCards() {
+    const authorCards = document.querySelectorAll('.author-card');
+    
+    authorCards.forEach(card => {
+        // Add click functionality to view author articles
+        card.addEventListener('click', function() {
+            const authorName = this.querySelector('h3').textContent;
+            
+            // Search for articles by this author
+            const searchInput = document.getElementById('blogSearchInput');
+            if (searchInput) {
+                searchInput.value = authorName;
+                performBlogSearch();
+                
+                // Scroll to articles section
+                const articlesSection = document.querySelector('.blog-articles');
+                if (articlesSection) {
+                    articlesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+        
+        // Add hover effects
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.15)';
+            this.style.cursor = 'pointer';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+        });
+    });
+}
+
+// Initialize scroll animations
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements for animation
+    const animatedElements = document.querySelectorAll('.content-section, .featured-article, .author-card, .resource-category');
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Enhanced article filtering with multiple criteria
+function advancedFilter(searchTerm, category, author) {
+    let filtered = [...blogArticles];
+    
+    // Filter by search term
+    if (searchTerm) {
+        filtered = filtered.filter(article => 
+            article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        );
+    }
+    
+    // Filter by category
+    if (category && category !== 'all') {
+        filtered = filtered.filter(article => article.category === category);
+    }
+    
+    // Filter by author
+    if (author) {
+        filtered = filtered.filter(article => 
+            article.author.toLowerCase().includes(author.toLowerCase())
+        );
+    }
+    
+    return filtered;
+}
+
+// Social sharing functionality
+function shareArticle(articleId, platform) {
+    const article = blogArticles.find(a => a.id === articleId);
+    if (!article) return;
+    
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(article.title);
+    const text = encodeURIComponent(article.excerpt);
+    
+    let shareUrl = '';
+    
+    switch(platform) {
+        case 'twitter':
+            shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+            break;
+        case 'facebook':
+            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            break;
+        case 'linkedin':
+            shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+            break;
+        case 'pinterest':
+            shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${title}`;
+            break;
+    }
+    
+    if (shareUrl) {
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+}
+
+// Enhanced newsletter form with validation
+function handleNewsletterSignup() {
+    const form = document.getElementById('newsletterForm');
+    const emailInput = form.querySelector('input[type="email"]');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const email = emailInput.value.trim();
+    
+    // Enhanced email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showFormError('Please enter a valid email address.');
+        return;
+    }
+    
+    // Check for common email providers
+    const commonProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com'];
+    const domain = email.split('@')[1];
+    
+    // Show loading state
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+    submitBtn.disabled = true;
+    
+    // Simulate API call with realistic delay
+    setTimeout(() => {
+        // Reset button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        
+        // Show success message
+        showNewsletterSuccess();
+        
+        // Clear form
+        emailInput.value = '';
+        
+        // Add to local storage (for demo purposes)
+        let subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+        if (!subscribers.includes(email)) {
+            subscribers.push(email);
+            localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+        }
+    }, 2000);
+}
+
+// Show form error
+function showFormError(message) {
+    const form = document.getElementById('newsletterForm');
+    let errorElement = form.querySelector('.error-message');
+    
+    if (!errorElement) {
+        errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        form.appendChild(errorElement);
+    }
+    
+    errorElement.innerHTML = `
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>${message}</span>
+    `;
+    
+    // Remove error after 5 seconds
+    setTimeout(() => {
+        if (errorElement.parentNode) {
+            errorElement.parentNode.removeChild(errorElement);
+        }
+    }, 5000);
+}
+
+// Add CSS styles for new functionality
+const blogStyles = document.createElement('style');
+blogStyles.textContent = `
+    .content-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+    }
+    
+    .content-section.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .author-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .destination-tag {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .error-message {
+        background: #fee;
+        color: #c33;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        border: 1px solid #fcc;
+    }
+    
+    .success-message {
+        background: #efe;
+        color: #363;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        border: 1px solid #cfc;
+    }
+    
+    .article-card {
+        transition: all 0.3s ease;
+    }
+    
+    .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .no-articles {
+        text-align: center;
+        padding: 40px 20px;
+        color: #666;
+    }
+    
+    .no-articles i {
+        font-size: 48px;
+        margin-bottom: 20px;
+        opacity: 0.5;
+    }
+`;
+document.head.appendChild(blogStyles);
