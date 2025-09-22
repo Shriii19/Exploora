@@ -950,3 +950,538 @@ searchInput.addEventListener('input', function() {
 searchInput.addEventListener('blur', function() {
     this.style.background = 'white';
 });
+
+// Destination Modal Functionality
+let currentModalDestination = null;
+
+const destinationData = {
+    paris: {
+        title: "Paris, France",
+        weather: "22°C Partly Cloudy",
+        rating: "4.8/5",
+        bestTime: "Best: Apr-Jun, Sep-Oct",
+        description: "The City of Light enchants millions with its timeless beauty, world-class museums, and romantic atmosphere. From the iconic Eiffel Tower to charming riverside cafés, Paris offers an unparalleled blend of art, culture, and gastronomy that defines European elegance.",
+        highlights: [
+            { icon: "🗼", text: "Eiffel Tower" },
+            { icon: "🏛️", text: "Louvre Museum" },
+            { icon: "⛪", text: "Notre-Dame" },
+            { icon: "🎨", text: "Montmartre" },
+            { icon: "🌊", text: "Seine River" },
+            { icon: "🥐", text: "French Cuisine" }
+        ],
+        tips: [
+            { icon: "💡", text: "Visit museums on first Sunday mornings for free entry to many attractions" },
+            { icon: "🚇", text: "Buy a weekly metro pass (Navigo) for convenient transportation" },
+            { icon: "🍷", text: "Try local bistros away from tourist areas for authentic French dining" },
+            { icon: "📱", text: "Download offline maps as WiFi can be limited in some areas" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1549144511-f099e773c147?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1502175353174-a7a70e73b362?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?w=200&h=150&fit=crop"
+        ]
+    },
+    tokyo: {
+        title: "Tokyo, Japan",
+        weather: "18°C Clear",
+        rating: "4.9/5",
+        bestTime: "Best: Mar-May, Sep-Nov",
+        description: "A mesmerizing metropolis where ultra-modern skyscrapers stand alongside ancient temples, and cutting-edge technology blends seamlessly with centuries-old traditions. Tokyo offers an incredible journey through Japanese culture, cuisine, and innovation.",
+        highlights: [
+            { icon: "🏯", text: "Senso-ji Temple" },
+            { icon: "🌸", text: "Cherry Blossoms" },
+            { icon: "🍣", text: "Sushi & Ramen" },
+            { icon: "🛍️", text: "Shibuya Crossing" },
+            { icon: "🎌", text: "Imperial Palace" },
+            { icon: "🎮", text: "Gaming Culture" }
+        ],
+        tips: [
+            { icon: "🚄", text: "Get a JR Pass for unlimited train travel throughout Japan" },
+            { icon: "🎭", text: "Experience a traditional tea ceremony in historic districts" },
+            { icon: "🍜", text: "Try different ramen styles in various neighborhoods" },
+            { icon: "📱", text: "Download Google Translate app with camera function for signs" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1492804080853-c00a4b19c02c?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=200&h=150&fit=crop"
+        ]
+    },
+    bali: {
+        title: "Bali, Indonesia",
+        weather: "28°C Sunny",
+        rating: "4.7/5",
+        bestTime: "Best: Apr-Jun, Sep-Nov",
+        description: "A tropical paradise that captivates visitors with its lush rice terraces, pristine beaches, and rich spiritual heritage. Bali offers the perfect blend of relaxation, adventure, and cultural immersion in an island setting that feels like heaven on earth.",
+        highlights: [
+            { icon: "🏖️", text: "Beautiful Beaches" },
+            { icon: "🌾", text: "Rice Terraces" },
+            { icon: "🛕", text: "Hindu Temples" },
+            { icon: "🌺", text: "Tropical Flora" },
+            { icon: "🏄", text: "Surfing Spots" },
+            { icon: "💆", text: "Spa & Wellness" }
+        ],
+        tips: [
+            { icon: "🏍️", text: "Rent a scooter for easy transportation around the island" },
+            { icon: "💧", text: "Always carry bottled water and stay hydrated" },
+            { icon: "🍽️", text: "Try local warungs (small restaurants) for authentic Indonesian food" },
+            { icon: "🌅", text: "Wake up early for sunrise at Mount Batur - it's unforgettable" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1555400113-e0c7c40cf73c?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    rome: {
+        title: "Rome, Italy",
+        weather: "25°C Sunny",
+        rating: "4.6/5",
+        bestTime: "Best: Apr-Jun, Sep-Oct",
+        description: "The Eternal City stands as a living museum where every street corner tells a story spanning over 2,000 years. From the mighty Colosseum to the spiritual Vatican, Rome offers an unparalleled journey through the heart of Western civilization.",
+        highlights: [
+            { icon: "🏛️", text: "Colosseum" },
+            { icon: "⛲", text: "Trevi Fountain" },
+            { icon: "⛪", text: "Vatican City" },
+            { icon: "🎨", text: "Sistine Chapel" },
+            { icon: "🏺", text: "Roman Forum" },
+            { icon: "🍝", text: "Italian Cuisine" }
+        ],
+        tips: [
+            { icon: "🎫", text: "Book skip-the-line tickets for major attractions in advance" },
+            { icon: "🚶", text: "Wear comfortable walking shoes - Rome is best explored on foot" },
+            { icon: "🍕", text: "Try authentic Roman pizza al taglio (by the slice)" },
+            { icon: "⛪", text: "Dress modestly when visiting religious sites" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1555992336-fb0d29498b13?w=200&h=150&fit=crop"
+        ]
+    },
+    iceland: {
+        title: "Iceland",
+        weather: "12°C Partly Cloudy",
+        rating: "4.9/5",
+        bestTime: "Best: Jun-Aug, Nov-Mar",
+        description: "A Nordic island of dramatic contrasts where fire meets ice, creating some of Earth's most spectacular landscapes. From the Northern Lights to geothermal hot springs, Iceland offers otherworldly experiences that redefine natural beauty.",
+        highlights: [
+            { icon: "🌋", text: "Geysir Hot Springs" },
+            { icon: "❄️", text: "Northern Lights" },
+            { icon: "🏔️", text: "Glaciers" },
+            { icon: "💎", text: "Diamond Beach" },
+            { icon: "🌈", text: "Waterfalls" },
+            { icon: "🐋", text: "Whale Watching" }
+        ],
+        tips: [
+            { icon: "🧥", text: "Pack warm, waterproof clothing regardless of season" },
+            { icon: "🚗", text: "Rent a 4WD vehicle for exploring the Ring Road" },
+            { icon: "🌙", text: "Visit between September-March for best Northern Lights viewing" },
+            { icon: "♨️", text: "Don't miss the Blue Lagoon geothermal spa experience" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    santorini: {
+        title: "Santorini, Greece",
+        weather: "26°C Sunny",
+        rating: "4.8/5",
+        bestTime: "Best: Apr-Jun, Sep-Oct",
+        description: "A volcanic island paradise in the Aegean Sea, famous for its dramatic cliffs, white-washed buildings, and stunning sunsets. Santorini offers a perfect blend of ancient history, romantic ambiance, and Mediterranean charm.",
+        highlights: [
+            { icon: "🌅", text: "Oia Sunset" },
+            { icon: "🏛️", text: "Ancient Akrotiri" },
+            { icon: "🍷", text: "Wine Tasting" },
+            { icon: "🏖️", text: "Red Beach" },
+            { icon: "⛪", text: "Blue Domes" },
+            { icon: "🛥️", text: "Volcano Tours" }
+        ],
+        tips: [
+            { icon: "📸", text: "Arrive early at Oia for the best sunset viewing spots" },
+            { icon: "🍽️", text: "Try local specialties like fava beans and fresh seafood" },
+            { icon: "🚶", text: "Wear comfortable shoes for walking on cobblestone streets" },
+            { icon: "💰", text: "Book accommodations early - prices rise quickly in peak season" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1516650281061-5f44b1b7e8b9?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    dubai: {
+        title: "Dubai, UAE",
+        weather: "32°C Sunny",
+        rating: "4.5/5",
+        bestTime: "Best: Nov-Mar",
+        description: "A gleaming metropolis that rose from the desert to become a global hub of luxury, innovation, and architectural marvels. Dubai offers world-class shopping, dining, and entertainment in a setting that defies imagination.",
+        highlights: [
+            { icon: "🏗️", text: "Burj Khalifa" },
+            { icon: "🏖️", text: "Jumeirah Beach" },
+            { icon: "🛍️", text: "Dubai Mall" },
+            { icon: "🏜️", text: "Desert Safari" },
+            { icon: "🏨", text: "Luxury Hotels" },
+            { icon: "⛵", text: "Marina District" }
+        ],
+        tips: [
+            { icon: "🌡️", text: "Visit during winter months (Nov-Mar) for comfortable weather" },
+            { icon: "👗", text: "Dress conservatively in public areas and malls" },
+            { icon: "💳", text: "Use metro system for convenient and affordable transportation" },
+            { icon: "🕌", text: "Respect local customs, especially during Ramadan" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1580295189149-20a2eb6e7d14?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    maldives: {
+        title: "Maldives",
+        weather: "30°C Sunny",
+        rating: "4.9/5",
+        bestTime: "Best: Nov-Apr",
+        description: "A tropical nation of 1,192 coral islands scattered across the Indian Ocean, offering some of the world's most pristine beaches, crystal-clear waters, and luxurious overwater accommodations that define paradise.",
+        highlights: [
+            { icon: "🏖️", text: "Private Beaches" },
+            { icon: "🏠", text: "Overwater Villas" },
+            { icon: "🐠", text: "Snorkeling" },
+            { icon: "🐋", text: "Diving" },
+            { icon: "🌺", text: "Spa Treatments" },
+            { icon: "🛥️", text: "Island Hopping" }
+        ],
+        tips: [
+            { icon: "🏊", text: "Bring reef-safe sunscreen to protect marine life" },
+            { icon: "💰", text: "All-inclusive packages often provide better value" },
+            { icon: "📱", text: "WiFi may be limited - perfect for digital detox" },
+            { icon: "🌊", text: "Book excursions through your resort for safety and convenience" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    switzerland: {
+        title: "Switzerland",
+        weather: "15°C Clear",
+        rating: "4.9/5",
+        bestTime: "Best: Jun-Sep, Dec-Mar",
+        description: "A Alpine wonderland of snow-capped peaks, pristine lakes, and charming villages. Switzerland offers world-class skiing, hiking, and some of the most breathtaking mountain scenery on Earth.",
+        highlights: [
+            { icon: "🏔️", text: "Swiss Alps" },
+            { icon: "🚂", text: "Scenic Railways" },
+            { icon: "🏔️", text: "Matterhorn" },
+            { icon: "🧀", text: "Swiss Cheese" },
+            { icon: "⛷️", text: "Skiing" },
+            { icon: "🍫", text: "Swiss Chocolate" }
+        ],
+        tips: [
+            { icon: "🚂", text: "Get a Swiss Travel Pass for unlimited train travel" },
+            { icon: "💰", text: "Switzerland is expensive - budget accordingly" },
+            { icon: "🧥", text: "Pack layers - mountain weather changes quickly" },
+            { icon: "📱", text: "Download SBB app for train schedules and tickets" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    thailand: {
+        title: "Thailand",
+        weather: "29°C Sunny",
+        rating: "4.7/5",
+        bestTime: "Best: Nov-Apr",
+        description: "The Land of Smiles captivates visitors with its golden temples, pristine beaches, bustling markets, and incredibly hospitable people. Experience a perfect blend of ancient culture and modern attractions.",
+        highlights: [
+            { icon: "🛕", text: "Buddhist Temples" },
+            { icon: "🏖️", text: "Tropical Beaches" },
+            { icon: "🍜", text: "Street Food" },
+            { icon: "🐘", text: "Elephant Sanctuaries" },
+            { icon: "💆", text: "Thai Massage" },
+            { icon: "🏝️", text: "Island Hopping" }
+        ],
+        tips: [
+            { icon: "👗", text: "Dress modestly when visiting temples" },
+            { icon: "🌶️", text: "Start with mild spice levels and work your way up" },
+            { icon: "💰", text: "Bargain at markets but be respectful" },
+            { icon: "🚕", text: "Use Grab app for convenient transportation" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    morocco: {
+        title: "Morocco",
+        weather: "24°C Sunny",
+        rating: "4.6/5",
+        bestTime: "Best: Oct-Apr",
+        description: "A North African kingdom where ancient traditions meet stunning landscapes. From the bustling souks of Marrakech to the vast Sahara Desert, Morocco offers an exotic adventure filled with rich culture and hospitality.",
+        highlights: [
+            { icon: "🕌", text: "Historic Medinas" },
+            { icon: "🏜️", text: "Sahara Desert" },
+            { icon: "🍃", text: "Mint Tea Culture" },
+            { icon: "🧶", text: "Berber Carpets" },
+            { icon: "🏰", text: "Kasbahs" },
+            { icon: "🌶️", text: "Tagine Cuisine" }
+        ],
+        tips: [
+            { icon: "🧥", text: "Pack layers - desert nights can be cold" },
+            { icon: "💰", text: "Haggling is expected in souks and markets" },
+            { icon: "👗", text: "Dress conservatively, especially in rural areas" },
+            { icon: "💧", text: "Drink bottled water and avoid ice in drinks" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1539650116574-75c0c6d73aeb?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    newzealand: {
+        title: "New Zealand",
+        weather: "16°C Partly Cloudy",
+        rating: "4.8/5",
+        bestTime: "Best: Dec-Mar, Sep-Nov",
+        description: "A land of dramatic landscapes and outdoor adventures, where snow-capped mountains meet pristine beaches. New Zealand offers world-class hiking, extreme sports, and breathtaking scenery at every turn.",
+        highlights: [
+            { icon: "🏔️", text: "Mountain Ranges" },
+            { icon: "🚁", text: "Adventure Sports" },
+            { icon: "🐧", text: "Wildlife" },
+            { icon: "🎬", text: "Movie Locations" },
+            { icon: "🌿", text: "National Parks" },
+            { icon: "🍷", text: "Wine Regions" }
+        ],
+        tips: [
+            { icon: "👟", text: "Bring quality hiking boots for trails" },
+            { icon: "🌦️", text: "Weather changes quickly - pack layers" },
+            { icon: "🚗", text: "Road trips offer the best way to explore" },
+            { icon: "📱", text: "Book activities in advance during peak season" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    peru: {
+        title: "Peru",
+        weather: "20°C Sunny",
+        rating: "4.7/5",
+        bestTime: "Best: May-Sep",
+        description: "Home to the legendary Machu Picchu and rich Incan heritage, Peru combines ancient mysteries with stunning Andean landscapes. Experience colorful markets, delicious cuisine, and some of the world's most iconic archaeological sites.",
+        highlights: [
+            { icon: "🏛️", text: "Machu Picchu" },
+            { icon: "🏔️", text: "Andes Mountains" },
+            { icon: "🦙", text: "Llamas & Alpacas" },
+            { icon: "🍽️", text: "Peruvian Cuisine" },
+            { icon: "🎨", text: "Inca Heritage" },
+            { icon: "🌈", text: "Rainbow Mountain" }
+        ],
+        tips: [
+            { icon: "💊", text: "Prepare for altitude sickness in Cusco" },
+            { icon: "🎫", text: "Book Machu Picchu tickets months in advance" },
+            { icon: "🥤", text: "Try coca tea to help with altitude adjustment" },
+            { icon: "👟", text: "Bring comfortable hiking shoes for ruins" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    norway: {
+        title: "Norway",
+        weather: "8°C Clear",
+        rating: "4.9/5",
+        bestTime: "Best: May-Sep, Nov-Mar",
+        description: "A Nordic wonderland of dramatic fjords, northern lights, and midnight sun. Norway offers some of Europe's most spectacular natural beauty, from deep blue fjords to the magical aurora borealis dancing across polar skies.",
+        highlights: [
+            { icon: "🌊", text: "Norwegian Fjords" },
+            { icon: "❄️", text: "Northern Lights" },
+            { icon: "🌅", text: "Midnight Sun" },
+            { icon: "🏔️", text: "Arctic Circle" },
+            { icon: "🚢", text: "Coastal Cruises" },
+            { icon: "🏠", text: "Traditional Villages" }
+        ],
+        tips: [
+            { icon: "🧥", text: "Pack warm, waterproof clothing year-round" },
+            { icon: "💰", text: "Norway is expensive - budget accordingly" },
+            { icon: "🚂", text: "Take scenic train routes for amazing views" },
+            { icon: "🌙", text: "Best northern lights viewing: September-March" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    },
+    australia: {
+        title: "Australia",
+        weather: "22°C Sunny",
+        rating: "4.8/5",
+        bestTime: "Best: Sep-Nov, Mar-May",
+        description: "A vast continent of diverse landscapes and unique wildlife. From the Great Barrier Reef to the red heart of the Outback, Australia offers urban sophistication, natural wonders, and adventures found nowhere else on Earth.",
+        highlights: [
+            { icon: "🐨", text: "Unique Wildlife" },
+            { icon: "🏖️", text: "Great Barrier Reef" },
+            { icon: "🏜️", text: "Outback Adventure" },
+            { icon: "🏙️", text: "Modern Cities" },
+            { icon: "🏄", text: "Surfing Culture" },
+            { icon: "🍷", text: "Wine Regions" }
+        ],
+        tips: [
+            { icon: "☀️", text: "Use strong sunscreen - UV levels are intense" },
+            { icon: "🚗", text: "Distances are vast - plan travel time carefully" },
+            { icon: "🦘", text: "Respect wildlife and maintain safe distances" },
+            { icon: "🏊", text: "Learn about local water safety before swimming" }
+        ],
+        mainImage: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&h=400&fit=crop&crop=entropy&auto=format",
+        gallery: [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop",
+            "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=150&fit=crop"
+        ]
+    }
+};
+
+function openDestinationModal(destination) {
+    currentModalDestination = destination;
+    const modal = document.getElementById('destinationModal');
+    const data = destinationData[destination];
+    
+    if (!data) return;
+    
+    // Update modal content
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalWeather').textContent = data.weather;
+    document.getElementById('modalRating').textContent = data.rating;
+    document.getElementById('modalBestTime').textContent = data.bestTime;
+    document.getElementById('modalDescription').textContent = data.description;
+    
+    // Set main image
+    const modalImage = document.getElementById('modalImage');
+    modalImage.style.backgroundImage = `url(${data.mainImage})`;
+    
+    // Load gallery
+    const gallery = document.getElementById('modalGallery');
+    gallery.innerHTML = '';
+    data.gallery.forEach((imgUrl, index) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'modal-gallery-thumb';
+        thumb.style.backgroundImage = `url(${imgUrl})`;
+        thumb.onclick = () => {
+            modalImage.style.backgroundImage = `url(${imgUrl})`;
+            document.querySelectorAll('.modal-gallery-thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        };
+        if (index === 0) thumb.classList.add('active');
+        gallery.appendChild(thumb);
+    });
+    
+    // Load highlights
+    const highlights = document.getElementById('modalHighlights');
+    highlights.innerHTML = '';
+    data.highlights.forEach(highlight => {
+        const item = document.createElement('div');
+        item.className = 'modal-highlight-item';
+        item.innerHTML = `
+            <span class="highlight-icon">${highlight.icon}</span>
+            <span class="highlight-text">${highlight.text}</span>
+        `;
+        highlights.appendChild(item);
+    });
+    
+    // Load tips
+    const tips = document.getElementById('modalTips');
+    tips.innerHTML = '';
+    data.tips.forEach(tip => {
+        const item = document.createElement('div');
+        item.className = 'travel-tip-item';
+        item.innerHTML = `
+            <i class="fas fa-lightbulb tip-icon"></i>
+            <span class="tip-text">${tip.text}</span>
+        `;
+        tips.appendChild(item);
+    });
+    
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDestinationModal() {
+    const modal = document.getElementById('destinationModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    currentModalDestination = null;
+}
+
+function addToFavorites(destination) {
+    // Add to favorites functionality
+    alert(`${destinationData[destination]?.title || destination} added to favorites!`);
+}
+
+function shareDestination(destination) {
+    // Share functionality
+    if (navigator.share) {
+        navigator.share({
+            title: destinationData[destination]?.title || destination,
+            text: `Check out this amazing destination: ${destinationData[destination]?.title}`,
+            url: window.location.href
+        });
+    } else {
+        // Fallback to clipboard
+        const shareText = `Check out ${destinationData[destination]?.title || destination} on Exploora!`;
+        navigator.clipboard.writeText(shareText).then(() => {
+            alert('Share link copied to clipboard!');
+        });
+    }
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('destinationModal');
+    if (e.target === modal) {
+        closeDestinationModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeDestinationModal();
+    }
+});

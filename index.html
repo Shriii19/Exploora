@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exploora - Discover the World</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="components/preloader.css">
+    <link rel="stylesheet" href="styles.css?v=2.0">
+    <link rel="stylesheet" href="components/preloader.css?v=2.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -94,6 +94,7 @@
                                     <div class="trending-badge">🏖️</div>
                                 </a>
                             </div>
+
                             <div class="trending-footer">
                                 <a href="destinations.html" class="view-all-btn">
                                     <i class="fas fa-globe"></i>
@@ -295,13 +296,372 @@
             <!-- Recent Searches Section -->
             <section class="recent-searches-section animate-fade-in-up">
                 <div class="section-header">
-                    <h3>Recent Searches</h3>
-                    <p>Quickly revisit destinations you've explored</p>
+                    <div class="header-badges" style="justify-content: center;">
+                        <span class="section-badge">🕒 Recent Activity</span>
+                        <span class="section-badge secondary">⭐ Quick Access</span>
+                    </div>
+                    <h3>Your Travel History & Popular Destinations</h3>
+                    <p>Instantly access your recent searches or explore these handpicked destinations with comprehensive details</p>
                 </div>
                 <div class="recent-searches" id="recentSearches">
-                    <p class="no-searches">No recent searches yet. Start exploring amazing destinations!</p>
+                    <div class="popular-quick-access">
+                        <div class="quick-access-grid">
+                            <div class="quick-destination-card" data-destination="paris" onclick="openDestinationModal('paris')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇫🇷</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Paris, France</h4>
+                                    <p>City of Love & Lights</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">22°C</span>
+                                        <span class="rating">⭐ 4.8</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="tokyo" onclick="openDestinationModal('tokyo')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇯🇵</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Tokyo, Japan</h4>
+                                    <p>Modern Meets Traditional</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">18°C</span>
+                                        <span class="rating">⭐ 4.9</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="bali" onclick="openDestinationModal('bali')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇮🇩</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Bali, Indonesia</h4>
+                                    <p>Tropical Paradise</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">28°C</span>
+                                        <span class="rating">⭐ 4.7</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="rome" onclick="openDestinationModal('rome')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇮🇹</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Rome, Italy</h4>
+                                    <p>Eternal City</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">25°C</span>
+                                        <span class="rating">⭐ 4.6</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="iceland" onclick="openDestinationModal('iceland')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇮🇸</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Iceland</h4>
+                                    <p>Land of Fire & Ice</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">12°C</span>
+                                        <span class="rating">⭐ 4.9</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="quick-destination-card" data-destination="santorini" onclick="openDestinationModal('santorini')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇬🇷</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Santorini, Greece</h4>
+                                    <p>Aegean Paradise</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">26°C</span>
+                                        <span class="rating">⭐ 4.8</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="dubai" onclick="openDestinationModal('dubai')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇦🇪</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Dubai, UAE</h4>
+                                    <p>Desert Metropolis</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">32°C</span>
+                                        <span class="rating">⭐ 4.5</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="maldives" onclick="openDestinationModal('maldives')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇲🇻</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Maldives</h4>
+                                    <p>Tropical Heaven</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">30°C</span>
+                                        <span class="rating">⭐ 4.9</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                              <div class="quick-destination-card" data-destination="switzerland" onclick="openDestinationModal('switzerland')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇨🇭</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Switzerland</h4>
+                                    <p>Alpine Paradise</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">15°C</span>
+                                        <span class="rating">⭐ 4.9</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="thailand" onclick="openDestinationModal('thailand')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇹🇭</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Thailand</h4>
+                                    <p>Land of Smiles</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">29°C</span>
+                                        <span class="rating">⭐ 4.7</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="morocco" onclick="openDestinationModal('morocco')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇲🇦</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Morocco</h4>
+                                    <p>Gateway to Africa</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">24°C</span>
+                                        <span class="rating">⭐ 4.6</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="newzealand" onclick="openDestinationModal('newzealand')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇳🇿</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>New Zealand</h4>
+                                    <p>Adventure Capital</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">16°C</span>
+                                        <span class="rating">⭐ 4.8</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="peru" onclick="openDestinationModal('peru')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇵🇪</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Peru</h4>
+                                    <p>Machu Picchu & Andes</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">20°C</span>
+                                        <span class="rating">⭐ 4.7</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="norway" onclick="openDestinationModal('norway')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇳🇴</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Norway</h4>
+                                    <p>Fjords & Northern Lights</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">8°C</span>
+                                        <span class="rating">⭐ 4.9</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-destination-card" data-destination="australia" onclick="openDestinationModal('australia')">
+                                <div class="quick-dest-image">
+                                    <div class="image-overlay-quick">
+                                        <span class="dest-emoji">🇦🇺</span>
+                                    </div>
+                                </div>
+                                <div class="quick-dest-info">
+                                    <h4>Australia</h4>
+                                    <p>Outback & Reef</p>
+                                    <div class="quick-stats">
+                                        <span class="temp">22°C</span>
+                                        <span class="rating">⭐ 4.8</span>
+                                    </div>
+                                </div>
+                                <div class="quick-action">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-searches-list" id="recentSearchesList" style="display: none;">
+                        <p class="no-searches">No recent searches yet. Start exploring amazing destinations!</p>
+                    </div>
                 </div>
             </section>
+
+            <!-- Destination Modal -->
+            <div id="destinationModal" class="destination-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalTitle">Destination Details</h2>
+                        <button class="modal-close" onclick="closeDestinationModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-image-section">
+                            <div id="modalImage" class="modal-main-image"></div>
+                            <div class="modal-image-gallery" id="modalGallery">
+                                <!-- Gallery images will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="modal-info-section">
+                            <div class="modal-quick-info">
+                                <div class="modal-weather">
+                                    <i class="fas fa-thermometer-half"></i>
+                                    <span id="modalWeather">25°C Sunny</span>
+                                </div>
+                                <div class="modal-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span id="modalRating">4.8/5</span>
+                                </div>
+                                <div class="modal-best-time">
+                                    <i class="fas fa-calendar"></i>
+                                    <span id="modalBestTime">Best: Spring</span>
+                                </div>
+                            </div>
+                            <div class="modal-description">
+                                <p id="modalDescription">Destination description will appear here...</p>
+                            </div>
+                            <div class="modal-highlights">
+                                <h4>Top Attractions</h4>
+                                <div class="modal-highlights-grid" id="modalHighlights">
+                                    <!-- Highlights will be loaded here -->
+                                </div>
+                            </div>
+                            <div class="modal-travel-tips">
+                                <h4>Travel Tips</h4>
+                                <div class="travel-tips-list" id="modalTips">
+                                    <!-- Tips will be loaded here -->
+                                </div>
+                            </div>
+                            <div class="modal-actions">
+                                <button class="btn btn-primary" onclick="searchDestination(currentModalDestination)">
+                                    <i class="fas fa-search"></i>
+                                    Explore in Detail
+                                </button>
+                                <button class="btn btn-outline" onclick="addToFavorites(currentModalDestination)">
+                                    <i class="fas fa-heart"></i>
+                                    Add to Favorites
+                                </button>
+                                <button class="btn btn-glass" onclick="shareDestination(currentModalDestination)">
+                                    <i class="fas fa-share"></i>
+                                    Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Trending Destinations Section -->
             <section id="trending-destinations" class="popular-destinations-section animate-fade-in-up">
@@ -699,8 +1059,8 @@
         </div>
     </footer>
 
-    <script src="components/particles.js"></script>
-    <script src="components/scroll-animations.js"></script>
-    <script src="script.js"></script>
+    <script src="components/particles.js?v=2.0"></script>
+    <script src="components/scroll-animations.js?v=2.0"></script>
+    <script src="script.js?v=2.0"></script>
 </body>
 </html>

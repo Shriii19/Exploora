@@ -3625,6 +3625,499 @@ body {
     transition: transform 0.3s ease;
 }
 
+/* Recent Searches / Quick Access Styling */
+.popular-quick-access {
+    margin-top: 2rem;
+}
+
+.quick-access-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.quick-destination-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.quick-destination-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.quick-dest-image {
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-destination-card[data-destination="paris"] .quick-dest-image {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: linear-gradient(rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.5)), 
+                      url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="tokyo"] .quick-dest-image {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.5)), 
+                      url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="bali"] .quick-dest-image {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    background-image: linear-gradient(rgba(67, 233, 123, 0.3), rgba(56, 249, 215, 0.5)), 
+                      url('https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="rome"] .quick-dest-image {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    background-image: linear-gradient(rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.5)), 
+                      url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="iceland"] .quick-dest-image {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: linear-gradient(rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.5)), 
+                      url('https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="santorini"] .quick-dest-image {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background-image: linear-gradient(rgba(79, 172, 254, 0.3), rgba(0, 242, 254, 0.5)), 
+                      url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="dubai"] .quick-dest-image {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.5)), 
+                      url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="maldives"] .quick-dest-image {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    background-image: linear-gradient(rgba(67, 233, 123, 0.3), rgba(56, 249, 215, 0.5)), 
+                      url('https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="switzerland"] .quick-dest-image {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: linear-gradient(rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.5)), 
+                      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="thailand"] .quick-dest-image {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.5)), 
+                      url('https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="morocco"] .quick-dest-image {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: linear-gradient(rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.5)), 
+                      url('https://images.unsplash.com/photo-1539650116574-75c0c6d73aeb?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="newzealand"] .quick-dest-image {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    background-image: linear-gradient(rgba(67, 233, 123, 0.3), rgba(56, 249, 215, 0.5)), 
+                      url('https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="peru"] .quick-dest-image {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    background-image: linear-gradient(rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.5)), 
+                      url('https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="norway"] .quick-dest-image {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background-image: linear-gradient(rgba(79, 172, 254, 0.3), rgba(0, 242, 254, 0.5)), 
+                      url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.quick-destination-card[data-destination="australia"] .quick-dest-image {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.5)), 
+                      url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop&crop=entropy&auto=format');
+    background-size: cover;
+    background-position: center;
+}
+
+.image-overlay-quick {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dest-emoji {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.quick-dest-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.quick-dest-info h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+}
+
+.quick-dest-info p {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.quick-stats {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.quick-stats .temp {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.quick-stats .rating {
+    color: var(--gray-600);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.quick-action {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.quick-destination-card:hover .quick-action {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Destination Modal Styling */
+.destination-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.destination-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.modal-content {
+    background: white;
+    border-radius: var(--radius-2xl);
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-2xl);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: scale(0.9) translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--gray-500);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: var(--gray-100);
+    color: var(--gray-700);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-image-section {
+    margin-bottom: 2rem;
+}
+
+.modal-main-image {
+    height: 300px;
+    border-radius: var(--radius-lg);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.5rem;
+}
+
+.modal-gallery-thumb {
+    height: 80px;
+    border-radius: var(--radius-md);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.modal-gallery-thumb:hover,
+.modal-gallery-thumb.active {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.modal-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-quick-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+}
+
+.modal-quick-info > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.modal-quick-info i {
+    color: var(--primary-color);
+}
+
+.modal-description p {
+    color: var(--gray-600);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.modal-highlights h4,
+.modal-travel-tips h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+}
+
+.modal-highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.modal-highlight-item {
+    background: white;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.modal-highlight-item:hover {
+    border-color: var(--primary-color);
+    background: var(--gray-50);
+}
+
+.modal-highlight-item .highlight-icon {
+    font-size: 1.5rem;
+}
+
+.modal-highlight-item .highlight-text {
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.travel-tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.travel-tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+}
+
+.travel-tip-item .tip-icon {
+    color: var(--primary-color);
+    margin-top: 0.2rem;
+}
+
+.travel-tip-item .tip-text {
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.modal-actions .btn {
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .destination-modal.active {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        max-height: 95vh;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .modal-main-image {
+        height: 200px;
+    }
+    
+    .modal-quick-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-highlights-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+}
+
 .image-overlay {
     position: absolute;
     top: 0;
