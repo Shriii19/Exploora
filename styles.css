@@ -1464,6 +1464,12 @@ body {
     z-index: 2;
 }
 
+.section-title {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
 .search-demo-container {
     max-width: 800px;
     margin: 0 auto;
@@ -7280,7 +7286,7 @@ body {
     align-items: center;
     gap: var(--space-md);
     padding: 1.5rem;
-    background: var(--white);
+    /* background: blue; */
     border: 1px solid var(--gray-200);
     border-radius: var(--radius-lg);
     text-decoration: none;
