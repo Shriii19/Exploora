@@ -1,9 +1,7 @@
 // Global variables
 let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
 
-// API Keys (Replace with your actual API keys)
-const UNSPLASH_API_KEY = 'your_unsplash_api_key_here';
-const OPENWEATHER_API_KEY = 'your_openweather_api_key_here';
+// Note: API keys are now managed by the API configuration system in js/api-config.js
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
