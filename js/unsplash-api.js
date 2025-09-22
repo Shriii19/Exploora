@@ -142,16 +142,6 @@ function displayTrendingPhotos(photos) {
         <div class="trending-photos-grid">
             ${photoCards}
         </div>
-        <div class="trending-actions">
-            <button class="btn btn-outline" onclick="loadMoreTrendingPhotos()">
-                <i class="fas fa-plus"></i>
-                Load More Photos
-            </button>
-            <a href="https://unsplash.com/" target="_blank" class="unsplash-credit">
-                <span>Photos provided by</span>
-                <img src="https://unsplash.com/assets/core/logo-white-8962708214629a3e8f4c6b97e919af0265c651fcc8e1b3c1f43c5fdbac7b5cc3.svg" alt="Unsplash" />
-            </a>
-        </div>
     `;
     
     trendingContainer.style.display = 'block';
