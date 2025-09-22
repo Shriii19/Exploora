@@ -1,17 +1,17 @@
 // API Configuration
-// Replace these with your actual API keys
+// Your actual API keys configured
 const API_CONFIG = {
     OPENWEATHER: {
-        key: 'YOUR_OPENWEATHER_API_KEY',
+        key: 'aff6496c6e7ebc7689c124fa287c2085',
         baseUrl: 'https://api.openweathermap.org/data/2.5'
     },
     UNSPLASH: {
-        accessKey: 'YOUR_UNSPLASH_ACCESS_KEY',
+        accessKey: 'v8R5H9rR-0BH0f-wb-n6o4zkDEDaRG6RhdR1WcuJMEs',
         baseUrl: 'https://api.unsplash.com'
     },
     AMADEUS: {
-        clientId: 'YOUR_AMADEUS_CLIENT_ID',
-        clientSecret: 'YOUR_AMADEUS_CLIENT_SECRET',
+        clientId: '8NaeMAQ2MWMqkCIOVGXkK1igGDdD5ZQ6',
+        clientSecret: 'GZDdmQA1KYDJOy6Q',
         baseUrl: 'https://test.api.amadeus.com/v1'
     },
     TELEPORT: {
