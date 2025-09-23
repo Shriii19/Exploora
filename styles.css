@@ -2531,6 +2531,9 @@ body {
     position: relative;
     overflow: hidden;
     min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .destination-highlight::before {
@@ -2581,6 +2584,12 @@ body {
 .destination-emoji {
     font-size: 4rem;
     filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+}
+
+.destination-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .destination-details h4 {
@@ -7907,7 +7916,7 @@ body {
 .destination-cta {
     display: flex;
     gap: 0.75rem;
-    margin-top: 1.5rem;
+    margin-top: auto;
     flex-wrap: wrap;
 }
 
