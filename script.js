@@ -373,63 +373,12 @@ function handleSearch() {
         return;
     }
     
-    // Use real APIs or fallback to sample data
-    if (UNSPLASH_API_KEY !== 'your_unsplash_api_key_here' && OPENWEATHER_API_KEY !== 'your_openweather_api_key_here') {
-        searchWithAPIs(query);
-    } else {
-        // Fallback to sample data
-        searchDestination(query);
-    }
+    // Use the sample data system for demonstration
+    searchDestination(query);
 }
 
-// Search using real APIs
-async function searchWithAPIs(query) {
-    try {
-        const [photosData, weatherData] = await Promise.all([
-            fetchUnsplashPhotos(query),
-            fetchWeatherData(query)
-        ]);
-
-        if (photosData && weatherData) {
-            displayRealDestination(query, photosData, weatherData);
-            addToRecentSearches(query);
-            showSearchResults();
-        } else {
-            showCityNotFound(query);
-        }
-    } catch (error) {
-        console.error('API Error:', error);
-        // Fallback to sample data
-        searchDestination(query);
-    }
-}
-
-// Fetch photos from Unsplash API
-async function fetchUnsplashPhotos(query) {
-    try {
-        const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&per_page=5&client_id=${UNSPLASH_API_KEY}`);
-        const data = await response.json();
-        return data.results;
-    } catch (error) {
-        console.error('Unsplash API Error:', error);
-        return null;
-    }
-}
-
-// Fetch weather data from OpenWeatherMap API
-async function fetchWeatherData(query) {
-    try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${OPENWEATHER_API_KEY}&units=metric`);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Weather API Error:', error);
-        return null;
-    }
-}
-
-// Display destination with real API data
-function displayRealDestination(query, photos, weatherData) {
+// Display destination information
+function displayDestination(destination) {
     if (cityNameElement) {
         cityNameElement.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
     }
