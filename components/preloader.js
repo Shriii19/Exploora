@@ -16,19 +16,15 @@
     
     // Check if this is a fresh website visit (not navigation)
     function isFreshWebsiteVisit() {
-        // Check if it's a direct visit (typing URL, new tab, bookmark, etc.)
-        // navigation type 0 = navigate (including home button clicks)
-        // navigation type 1 = reload/refresh
-        // navigation type 2 = back/forward
-        
+        // Check if it's a direct visit, refresh, or new tab
         const navEntry = performance.getEntriesByType('navigation')[0];
         if (navEntry) {
-            // Only show on reload/refresh, not on navigation
-            return navEntry.type === 'reload';
+            // Show on reload, navigate (direct URL), or when coming from external site
+            return navEntry.type === 'reload' || navEntry.type === 'navigate';
         }
         
-        // Fallback for older browsers
-        return performance.navigation && performance.navigation.type === 1; // reload only
+        // Fallback for older browsers - show preloader by default
+        return true;
     }
     
     // Create and inject preloader
@@ -151,22 +147,23 @@
     
     // Initialize preloader immediately
     function initPreloader() {
-        // Only show preloader on fresh visits or refreshes, not on navigation
+        // Check if preloader should be shown
         const isFreshVisit = isFreshWebsiteVisit();
-        const isFirstTimeInSession = !sessionStorage.getItem('exploora_visited');
+        const isFirstLoad = !sessionStorage.getItem('exploora_page_loaded');
         
-        // Show preloader only if:
-        // 1. It's a refresh (F5, Ctrl+R)
-        // 2. It's the first time visiting in this browser session
-        const shouldShowPreloader = isFreshVisit || isFirstTimeInSession;
+        // Show preloader on:
+        // 1. First visit to any page in session
+        // 2. Page refresh (F5, Ctrl+R)
+        // 3. Direct navigation to page (typing URL, bookmark, etc.)
+        const shouldShowPreloader = isFirstLoad || isFreshVisit;
         
         if (!shouldShowPreloader) {
-            console.log('🚢 Navigation detected (home button/link click), skipping preloader...');
+            console.log('🚢 Subsequent navigation detected, skipping preloader...');
             return;
         }
         
-        // Mark as visited in this session (so home button clicks won't trigger preloader)
-        sessionStorage.setItem('exploora_visited', 'true');
+        // Mark page as loaded in this session
+        sessionStorage.setItem('exploora_page_loaded', 'true');
         
         // Prevent body scroll during loading
         document.body.style.overflow = 'hidden';
@@ -174,7 +171,7 @@
         // Create preloader
         createPreloader();
         
-        console.log('🚢 Mast preloader initialized (fresh visit or refresh)');
+        console.log('🚢 Mast preloader initialized');
         
         // Auto-hide when page is fully loaded
         if (PRELOADER_CONFIG.autoHide) {
