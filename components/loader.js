@@ -14,15 +14,21 @@ class ComponentLoader {
 
     async loadComponents() {
         try {
-            // Load header
-            const headerResponse = await fetch('components/header.html');
-            const headerHTML = await headerResponse.text();
-            document.getElementById('header-placeholder').innerHTML = headerHTML;
+            // Load header if placeholder exists
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            if (headerPlaceholder) {
+                const headerResponse = await fetch('components/header.html');
+                const headerHTML = await headerResponse.text();
+                headerPlaceholder.innerHTML = headerHTML;
+            }
 
-            // Load footer
-            const footerResponse = await fetch('components/footer.html');
-            const footerHTML = await footerResponse.text();
-            document.getElementById('footer-placeholder').innerHTML = footerHTML;
+            // Load footer if placeholder exists
+            const footerPlaceholder = document.getElementById('footer-placeholder');
+            if (footerPlaceholder) {
+                const footerResponse = await fetch('components/footer.html');
+                const footerHTML = await footerResponse.text();
+                footerPlaceholder.innerHTML = footerHTML;
+            }
         } catch (error) {
             console.error('Error loading components:', error);
         }
