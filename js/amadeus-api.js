@@ -1,4 +1,8 @@
-import { API_CONFIG, amadeusToken, tokenExpiry } from './api-config.js';
+import { API_CONFIG } from './api-config.js';
+
+// Local token management to avoid mutating imported bindings
+let amadeusToken = null;
+let tokenExpiry = null;
 
 /**
  * Get Amadeus access token

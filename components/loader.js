@@ -121,29 +121,28 @@ class ComponentLoader {
                     item.addEventListener('click', (e) => {
                         e.preventDefault();
                         const destination = item.getAttribute('data-destination');
-                        
-                        if (destination) {
-                            // Navigate to home page and trigger search
-                            if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
-                                // Already on home page, just search
-                                const searchInput = document.getElementById('demo-search') || document.getElementById('searchInput');
-                                if (searchInput && window.performSearch) {
-                                    searchInput.value = destination;
-                                    window.performSearch(destination);
-                                    
-                                    // Scroll to search demo section
-                                    setTimeout(() => {
-                                        const searchDemo = document.getElementById('search-demo');
-                                        if (searchDemo) {
-                                            searchDemo.scrollIntoView({ behavior: 'smooth' });
-                                        }
-                                    }, 100);
-                                }
-                            } else {
-                                // Redirect to home page with search query
-                                window.location.href = `index.html?search=${encodeURIComponent(destination)}`;
+
+                        if (!destination) return;
+
+                        const onHome = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+                        if (onHome) {
+                            const searchInput = document.getElementById('demo-search') || document.getElementById('searchInput');
+                            if (searchInput && window.handleSearch) {
+                                searchInput.value = destination;
+                                // call the existing search handler
+                                window.handleSearch();
+
+                                setTimeout(() => {
+                                    const searchDemo = document.getElementById('search-demo');
+                                    if (searchDemo) {
+                                        searchDemo.scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                }, 100);
+                                return;
                             }
                         }
+                        // Fallback: redirect with query param
+                        window.location.href = `index.html?search=${encodeURIComponent(destination)}`;
                     });
                 });
 

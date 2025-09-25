@@ -8,6 +8,8 @@ import { getFlightsHotels } from './amadeus-api.js';
  */
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
+    // Apply URL-driven search on homepage after init
+    applyUrlSearchIfPresent();
 });
 
 /**
@@ -33,6 +35,26 @@ function initializeApp() {
     initializeNavigation();
     
     console.log('✅ Travel Explorer initialized successfully!');
+}
+
+/**
+ * If on homepage and URL has ?search=, populate input and trigger search
+ */
+function applyUrlSearchIfPresent() {
+    try {
+        if (!isHomePage()) return;
+        const params = new URLSearchParams(window.location.search);
+        const q = params.get('search');
+        if (!q) return;
+        const searchInput = document.getElementById('searchInput') || document.getElementById('demo-search');
+        if (searchInput) {
+            searchInput.value = q;
+            // defer slightly to ensure listeners are attached
+            setTimeout(() => handleSearch(), 100);
+        }
+    } catch (e) {
+        console.warn('applyUrlSearchIfPresent failed', e);
+    }
 }
 
 /**
@@ -373,6 +395,7 @@ window.searchCity = searchCity;
 window.getWeather = getWeather;
 window.getFlightsHotels = getFlightsHotels;
 window.getTrendingPhotos = getTrendingPhotos;
+window.handleSearch = handleSearch;
 
 // Export for use in other modules
 export {
