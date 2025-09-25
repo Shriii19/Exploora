@@ -84,7 +84,7 @@ class ComponentLoader {
 
     initializeMobileMenu() {
         setTimeout(() => {
-            const hamburger = document.querySelector('.hamburger');
+            const hamburger = document.querySelector('.hamburger') || document.querySelector('.mobile-menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
 
             if (hamburger && navMenu) {
