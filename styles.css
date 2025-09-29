@@ -954,7 +954,7 @@ body {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Mobile Navigation Styles */
+/* Mobile Navigation Styles with Integrated Search */
 @media (max-width: 768px) {
     .header .container {
         position: relative;
@@ -962,6 +962,11 @@ body {
     
     .navigation {
         position: relative;
+    }
+    
+    /* Hide header search bar on mobile */
+    .search-container {
+        display: none;
     }
     
     .nav-menu {
@@ -1023,38 +1028,64 @@ body {
         display: flex;
         z-index: 1001;
     }
-
-    .search-container {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        margin-top: 1rem;
-        background: rgba(255, 255, 255, 0.95);
+    
+    /* Mobile Search Form Inside Navigation */
+    .mobile-search-container {
+        width: 100%;
+        margin: 1.5rem 0;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(37, 99, 235, 0.1);
+    }
+    
+    .mobile-search-form {
+        display: flex;
+        width: 100%;
+        background: rgba(37, 99, 235, 0.1);
         border: 1px solid rgba(37, 99, 235, 0.2);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-radius: var(--radius-full);
+        padding: 0.25rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
-
-    .search-container .search-input {
+    
+    .mobile-search-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 0.75rem 1rem;
+        border-radius: var(--radius-full) 0 0 var(--radius-full);
+        font-size: 1rem;
         color: var(--gray-700);
+        background: transparent;
     }
-
-    .search-container .search-input::placeholder {
+    
+    .mobile-search-input::placeholder {
         color: var(--gray-500);
     }
-
-    .search-container .search-btn {
+    
+    .mobile-search-btn {
         background: var(--primary-color);
-        border: none;
         color: white;
-    }
-
-    .search-container .search-btn:hover {
-        background: var(--primary-dark);
         border: none;
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
     }
-
+    
+    .mobile-search-btn:hover {
+        background: var(--primary-dark);
+        transform: scale(1.05);
+    }
+    
+    .mobile-search-btn:active {
+        transform: scale(0.95);
+    }
+    
     /* Trending dropdown adjustments for mobile */
     .trending-dropdown .trending-menu {
         position: static;
@@ -2085,6 +2116,10 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 2rem;
     text-align: center;
+}
+
+.footer-bottom a  {
+    text-decoration: none;
 }
 
 .footer-credits {
