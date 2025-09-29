@@ -299,6 +299,36 @@ function initializeNavigation() {
             }
         });
     }
+    
+    // Initialize mobile search form
+    const mobileSearchForm = document.getElementById('mobileSearchForm');
+    const mobileSearchInput = document.getElementById('mobileSearchInput');
+    
+    if (mobileSearchForm && mobileSearchInput) {
+        mobileSearchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = mobileSearchInput.value.trim();
+            
+            if (query) {
+                // Close mobile menu
+                if (hamburger && navMenu) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+                
+                // Set the main search input value
+                if (searchInput) {
+                    searchInput.value = query;
+                }
+                
+                // Trigger the main search
+                handleSearch();
+                
+                // Clear mobile search input
+                mobileSearchInput.value = '';
+            }
+        });
+    }
 }
 
 // Initialize search functionality
