@@ -8,7 +8,7 @@ class ComponentLoader {
         await this.loadComponents();
         this.setActiveNavigation();
         this.initializeSearch();
-        // Removed initializeMobileMenu() since it's now handled in the header component
+        this.initializeMobileMenu();
         this.initializeTrendingDropdown();
     }
 
@@ -82,7 +82,35 @@ class ComponentLoader {
         }, 100);
     }
 
-    // Removed initializeMobileMenu() function since it's now handled in the header component
+    initializeMobileMenu() {
+        setTimeout(() => {
+            const hamburger = document.querySelector('.hamburger') || document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        }, 100);
+    }
 
     initializeTrendingDropdown() {
         setTimeout(() => {
