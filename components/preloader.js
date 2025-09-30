@@ -1,4 +1,4 @@
-// Mast Preloader JavaScript
+// Modern Modal Preloader JavaScript
 (function() {
     'use strict';
     
@@ -13,6 +13,7 @@
     let preloaderStartTime = Date.now();
     let preloaderElement = null;
     let isPreloaderShown = false;
+    let progressInterval = null;
     
     // Check if this is a fresh website visit (not navigation)
     function isFreshWebsiteVisit() {
@@ -35,32 +36,16 @@
         const preloaderHTML = `
             <div id="preloader" class="preloader">
                 <div class="preloader-content">
-                    <!-- Ship Mast Animation -->
-                    <div class="ship-container">
-                        <div class="ship-mast">
-                            <div class="mast-pole"></div>
-                            <div class="sail sail-main">
-                                <div class="sail-curve"></div>
-                            </div>
-                            <div class="sail sail-front">
-                                <div class="sail-curve"></div>
-                            </div>
-                            <div class="ship-flag"></div>
-                        </div>
-                        <div class="ship-hull"></div>
-                    </div>
+                    <!-- Modern Logo -->
+                    <div class="preloader-logo">🌍</div>
                     
-                    <!-- Wave Animation -->
-                    <div class="waves">
-                        <div class="wave wave-1"></div>
-                        <div class="wave wave-2"></div>
-                        <div class="wave wave-3"></div>
-                    </div>
+                    <!-- Loading Spinner -->
+                    <div class="loading-spinner"></div>
                     
                     <!-- Loading Text -->
                     <div class="loading-text">
-                        <span class="loading-word">Setting</span>
-                        <span class="loading-word">Sail</span>
+                        <span class="loading-word">Exploring</span>
+                        <span class="loading-word">Destinations</span>
                         <span class="loading-dots">
                             <span class="dot">.</span>
                             <span class="dot">.</span>
@@ -68,10 +53,9 @@
                         </span>
                     </div>
                     
-                    <!-- Progress Indicator -->
-                    <div class="sailing-progress">
-                        <div class="horizon-line"></div>
-                        <div class="progress-ship">⛵</div>
+                    <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress-bar" id="preloader-progress"></div>
                     </div>
                 </div>
             </div>
@@ -85,34 +69,34 @@
         // Start progress animation
         startProgressAnimation();
         
-        console.log('🚢 Mast preloader created and displayed');
+        console.log('🌍 Modern preloader created and displayed');
     }
     
-    // Progress animation for sailing ship
+    // Progress animation for loading bar
     function startProgressAnimation() {
-        const progressShip = document.querySelector('.progress-ship');
-        if (!progressShip) return;
+        const progressBar = document.getElementById('preloader-progress');
+        if (!progressBar) return;
         
-        // Simulate loading progress with ship movement
+        // Simulate loading progress
         let progress = 0;
-        const interval = setInterval(() => {
+        progressInterval = setInterval(() => {
             progress += Math.random() * 15 + 5; // Random progress increment
             
             if (progress >= 100) {
                 progress = 100;
-                clearInterval(interval);
+                clearInterval(progressInterval);
                 
                 // Add completion effect
                 setTimeout(() => {
                     const loadingText = document.querySelector('.loading-text');
                     if (loadingText) {
-                        loadingText.innerHTML = '<span style="color: #90EE90;">⚓ Ready to Explore!</span>';
+                        loadingText.innerHTML = '<span style="color: #90EE90;">Ready to Explore!</span>';
                     }
                 }, 200);
             }
             
-            // Update ship position
-            progressShip.style.left = `${progress}%`;
+            // Update progress bar
+            progressBar.style.width = `${progress}%`;
         }, 200);
     }
     
@@ -130,6 +114,11 @@
             // Add fade-out class
             preloader.classList.add('fade-out');
             
+            // Clear progress interval
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+            
             // Remove element after animation
             setTimeout(() => {
                 if (preloader.parentNode) {
@@ -140,7 +129,7 @@
                 // Restore body scroll
                 document.body.style.overflow = '';
                 
-                console.log('⚓ Mast preloader hidden');
+                console.log('🌍 Modern preloader hidden');
             }, PRELOADER_CONFIG.fadeOutDuration);
         }, remainingTime);
     }
@@ -158,7 +147,7 @@
         const shouldShowPreloader = isFirstLoad || isFreshVisit;
         
         if (!shouldShowPreloader) {
-            console.log('🚢 Subsequent navigation detected, skipping preloader...');
+            console.log('🌍 Subsequent navigation detected, skipping preloader...');
             return;
         }
         
@@ -171,7 +160,7 @@
         // Create preloader
         createPreloader();
         
-        console.log('🚢 Mast preloader initialized');
+        console.log('🌍 Modern preloader initialized');
         
         // Auto-hide when page is fully loaded
         if (PRELOADER_CONFIG.autoHide) {

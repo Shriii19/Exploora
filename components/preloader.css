@@ -1,11 +1,11 @@
-/* Mast Preloader Styles */
+/* Modern Modal Preloader Styles */
 .preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #87CEEB 0%, #4682B4 50%, #1e3a8a 100%);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(6, 182, 212, 0.9));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,6 +13,7 @@
     opacity: 1;
     transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    backdrop-filter: blur(10px);
 }
 
 .preloader.fade-out {
@@ -21,153 +22,77 @@
 }
 
 .preloader-content {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    border-radius: 20px;
+    padding: 40px;
     text-align: center;
+    width: 350px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
-    width: 300px;
-    height: 400px;
-}
-
-/* Ship Container */
-.ship-container {
-    position: relative;
-    width: 200px;
-    height: 250px;
-    margin: 0 auto 40px;
-    animation: shipFloat 4s ease-in-out infinite;
-}
-
-/* Ship Hull */
-.ship-hull {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 30px;
-    background: linear-gradient(145deg, #8B4513, #A0522D);
-    border-radius: 0 0 60px 60px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.ship-hull::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: 10px;
-    right: 10px;
-    height: 8px;
-    background: #654321;
-    border-radius: 4px;
-}
-
-/* Mast Structure */
-.ship-mast {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 180px;
-}
-
-.mast-pole {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 100%;
-    background: linear-gradient(to bottom, #8B4513, #654321);
-    border-radius: 4px;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Sails */
-.sail {
-    position: absolute;
-    border-radius: 8px;
-    animation: sailWave 3s ease-in-out infinite;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.sail-main {
-    width: 80px;
-    height: 100px;
-    background: linear-gradient(135deg, #FFFFFF, #F0F8FF);
-    top: 20px;
-    left: 8px;
-    animation-delay: 0s;
-}
-
-.sail-front {
-    width: 60px;
-    height: 80px;
-    background: linear-gradient(135deg, #FFFACD, #F5F5DC);
-    top: 40px;
-    left: -50px;
-    animation-delay: 0.5s;
-}
-
-.sail-curve {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: 0 8px 8px 0;
-    animation: sailBillowing 2s ease-in-out infinite;
-}
-
-/* Ship Flag */
-.ship-flag {
-    position: absolute;
-    top: 10px;
-    left: 8px;
-    width: 30px;
-    height: 20px;
-    background: linear-gradient(45deg, #0077b6, #00b4d8);
-    border-radius: 0 4px 4px 0;
-    animation: flagWave 1.5s ease-in-out infinite;
-    transform-origin: left center;
-}
-
-/* Wave Animations */
-.waves {
-    position: absolute;
-    bottom: 80px;
-    left: 0;
-    width: 100%;
-    height: 60px;
     overflow: hidden;
 }
 
-.wave {
+.preloader-content::before {
+    content: '';
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, #4169E1, transparent);
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+/* Modern Logo/Icon */
+.preloader-logo {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff, #a5f3fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: logoPulse 2s ease-in-out infinite;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.loading-spinner::before,
+.loading-spinner::after {
+    content: '';
+    position: absolute;
     border-radius: 50%;
     opacity: 0.6;
-    animation: waveMotion 3s linear infinite;
 }
 
-.wave-1 {
-    animation-delay: 0s;
-    opacity: 0.8;
+.loading-spinner::before {
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: #ffffff;
+    animation: spin 1.5s linear infinite;
 }
 
-.wave-2 {
-    animation-delay: -1s;
-    opacity: 0.6;
-    transform: scale(1.1);
-}
-
-.wave-3 {
-    animation-delay: -2s;
-    opacity: 0.4;
-    transform: scale(1.2);
+.loading-spinner::after {
+    width: 80%;
+    height: 80%;
+    border: 3px solid transparent;
+    border-bottom-color: #06b6d4;
+    animation: spinReverse 1s linear infinite;
+    top: 10%;
+    left: 10%;
 }
 
 /* Loading Text */
@@ -176,11 +101,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 30px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     color: #FFFFFF;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
 }
 
 .loading-word {
@@ -199,65 +124,46 @@
 
 .dot {
     animation: dotBounce 1.5s ease-in-out infinite;
+    font-size: 24px;
 }
 
 .dot:nth-child(1) { animation-delay: 0s; }
 .dot:nth-child(2) { animation-delay: 0.2s; }
 .dot:nth-child(3) { animation-delay: 0.4s; }
 
-/* Progress Indicator */
-.sailing-progress {
-    position: relative;
+/* Progress Bar */
+.progress-container {
     width: 100%;
-    height: 20px;
-    margin-top: 40px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
     overflow: hidden;
+    margin-top: 20px;
 }
 
-.horizon-line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #FFFFFF, transparent);
-    transform: translateY(-50%);
-}
-
-.progress-ship {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    animation: sailProgress 4s ease-in-out infinite;
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #2563eb, #06b6d4);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
 }
 
 /* Keyframe Animations */
-@keyframes shipFloat {
-    0%, 100% { transform: translateY(0px) rotate(-1deg); }
-    50% { transform: translateY(-15px) rotate(1deg); }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-@keyframes sailWave {
-    0%, 100% { transform: skewX(0deg) scaleX(1); }
-    25% { transform: skewX(2deg) scaleX(1.05); }
-    75% { transform: skewX(-2deg) scaleX(0.95); }
+@keyframes spinReverse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
 }
 
-@keyframes sailBillowing {
-    0%, 100% { border-radius: 0 8px 8px 0; }
-    50% { border-radius: 0 20px 20px 0; }
-}
-
-@keyframes flagWave {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    75% { transform: rotate(-5deg); }
-}
-
-@keyframes waveMotion {
-    0% { transform: translateX(-50%) translateY(100%); }
-    100% { transform: translateX(-50%) translateY(-100%); }
+@keyframes logoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 @keyframes textGlow {
@@ -266,47 +172,25 @@
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
     100% { 
-        color: #87CEEB; 
-        text-shadow: 0 2px 15px rgba(135, 206, 235, 0.6);
+        color: #a5f3fc; 
+        text-shadow: 0 2px 15px rgba(165, 243, 252, 0.6);
     }
 }
 
 @keyframes dotBounce {
     0%, 100% { transform: translateY(0px); opacity: 0.6; }
-    50% { transform: translateY(-8px); opacity: 1; }
-}
-
-@keyframes sailProgress {
-    0% { left: -30px; }
-    100% { left: calc(100% + 10px); }
+    50% { transform: translateY(-10px); opacity: 1; }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .preloader-content {
-        width: 250px;
-        height: 350px;
+        width: 300px;
+        padding: 30px;
     }
     
-    .ship-container {
-        width: 150px;
-        height: 200px;
-    }
-    
-    .ship-hull {
-        width: 90px;
-        height: 25px;
-    }
-    
-    .sail-main {
-        width: 60px;
-        height: 80px;
-    }
-    
-    .sail-front {
-        width: 45px;
-        height: 60px;
-        left: -35px;
+    .preloader-logo {
+        font-size: 2.5rem;
     }
     
     .loading-text {
@@ -315,12 +199,17 @@
 }
 
 @media (max-width: 480px) {
+    .preloader-content {
+        width: 250px;
+        padding: 25px;
+    }
+    
     .loading-text {
         font-size: 18px;
     }
     
-    .preloader-content {
-        width: 200px;
-        height: 300px;
+    .loading-spinner {
+        width: 50px;
+        height: 50px;
     }
 }
