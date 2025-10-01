@@ -329,6 +329,97 @@ function initializeNavigation() {
             }
         });
     }
+
+    // Initialize expandable search icon
+    initializeExpandableSearch();
+}
+
+// Initialize expandable search icon
+function initializeExpandableSearch() {
+    const searchIcon = document.getElementById('navbarSearchIcon');
+    const searchIconBtn = document.getElementById('searchIconBtn');
+    const searchInputContainer = document.getElementById('searchInputContainer');
+    const navbarSearchInput = document.getElementById('navbarSearchInput');
+    const navbarSearchBtn = document.getElementById('navbarSearchBtn');
+
+    if (!searchIcon || !searchIconBtn || !searchInputContainer || !navbarSearchInput || !navbarSearchBtn) {
+        return;
+    }
+
+    // Toggle search expansion on icon click
+    searchIconBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        searchIcon.classList.toggle('expanded');
+        
+        if (searchIcon.classList.contains('expanded')) {
+            // Focus on input when expanded
+            setTimeout(() => {
+                navbarSearchInput.focus();
+            }, 300);
+        } else {
+            // Clear input when collapsed
+            navbarSearchInput.value = '';
+        }
+    });
+
+    // Handle search submission
+    navbarSearchBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        handleNavbarSearch();
+    });
+
+    // Handle enter key in search input
+    navbarSearchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleNavbarSearch();
+        }
+    });
+
+    // Close search when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchIcon.contains(e.target)) {
+            searchIcon.classList.remove('expanded');
+            navbarSearchInput.value = '';
+        }
+    });
+
+    // Close search on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && searchIcon.classList.contains('expanded')) {
+            searchIcon.classList.remove('expanded');
+            navbarSearchInput.value = '';
+        }
+    });
+}
+
+// Handle navbar search functionality
+function handleNavbarSearch() {
+    const navbarSearchInput = document.getElementById('navbarSearchInput');
+    const searchIcon = document.getElementById('navbarSearchIcon');
+    
+    if (!navbarSearchInput) return;
+    
+    const query = navbarSearchInput.value.trim();
+    
+    if (query) {
+        // Set the main search input value
+        if (searchInput) {
+            searchInput.value = query;
+        }
+        
+        // Collapse the search icon
+        if (searchIcon) {
+            searchIcon.classList.remove('expanded');
+        }
+        
+        // Clear navbar search input
+        navbarSearchInput.value = '';
+        
+        // Trigger the main search
+        handleSearch();
+    }
 }
 
 // Initialize search functionality
