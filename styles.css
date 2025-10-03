@@ -3027,125 +3027,761 @@ body {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Styles for New Sections */
+/* Enhanced Mobile Responsive Styles */
+
+/* Mobile Typography Improvements */
 @media (max-width: 768px) {
-    .hero-stats {
-        gap: 2rem;
+    /* Hero Section Mobile Typography */
+    .hero-content h2 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
     }
-    
-    .hero-stats .stat-number {
-        font-size: 2rem;
+
+    .hero-content p {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        line-height: 1.6;
+        margin-bottom: 2rem;
     }
-    
-    .hero-actions {
-        flex-direction: column;
-        align-items: center;
+
+    /* General Typography Improvements */
+    h1, h2, h3 {
+        line-height: 1.3;
     }
-    
-    .btn-hero {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
+
+    h1 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+    h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
+    h3 { font-size: clamp(1.3rem, 4vw, 1.8rem); }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
     }
-    
-    .destinations-showcase {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+
+    /* Section Headers */
+    .section-header h2 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        margin-bottom: 1.5rem;
     }
-    
-    .benefits-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+
+    /* Welcome Section */
+    .welcome-section h3 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        margin-bottom: 1.5rem;
     }
-    
-    .tip-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
+
+    .problem-statement {
+        font-size: 1.1rem;
+        line-height: 1.7;
     }
-    
-    .stats-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+
+    /* Feature Cards */
+    .feature-card h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
     }
-    
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
+
+    .feature-card p {
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
-    
-    .cta-stats {
-        gap: 2rem;
+
+    /* Destination Cards */
+    .destination-details h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
     }
-    
-    .cta-trust {
-        gap: 1rem;
-        flex-direction: column;
-        align-items: center;
+
+    .destination-details p {
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
-    
-    .btn-large {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
+
+    /* Statistics */
+    .stat-number {
+        font-size: clamp(2rem, 8vw, 3rem);
     }
-    
-    .content-section:nth-child(even) {
-        margin: 60px 0;
-        padding: 60px 30px;
+
+    .stat-label {
+        font-size: 1rem;
     }
-    
-    .popular-destinations-section,
-    .travel-tips-section {
-        padding: 3rem 0;
-        margin: 4rem 0;
-    }
-    
-    .cta-section {
-        padding: 4rem 0;
-        margin: 4rem 0;
+
+    .stat-description {
+        font-size: 0.9rem;
     }
 }
 
-@media (max-width: 480px) {
+/* Touch-Friendly Elements */
+@media (max-width: 768px) {
+    /* Buttons - Minimum 44px touch target */
+    .btn, .btn-hero, .btn-large, .btn-outline {
+        min-height: 48px;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    /* Search Elements */
+    .search-container, .search-input-container {
+        min-height: 48px;
+    }
+
+    .search-input, .navbar-search-input, .mobile-search-input {
+        font-size: 1rem;
+        padding: 0.875rem 1rem;
+        min-height: 48px;
+    }
+
+    .search-btn, .navbar-search-btn, .mobile-search-btn {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+    }
+
+    /* Navigation Elements */
+    .hamburger {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+    }
+
+    .nav-link {
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Form Elements */
+    input, select, textarea {
+        min-height: 48px;
+        font-size: 1rem;
+    }
+
+    /* Interactive Elements */
+    .destination-card, .feature-card, .benefit-item, .tip-card {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .destination-card:active, .feature-card:active, .benefit-item:active, .tip-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Layout Fixes and Spacing */
+@media (max-width: 768px) {
+    /* Container and Spacing */
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Hero Section Layout */
+    .hero {
+        padding: 100px 0 60px;
+        min-height: auto;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+        text-align: center;
+    }
+
     .hero-stats {
-        flex-direction: column;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .hero-stats .stat-item {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .hero-actions {
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+
+    /* Section Spacing */
+    .content-section {
+        margin-bottom: 60px;
+        padding: 40px 0;
+    }
+
+    .content-section:nth-child(even) {
+        margin: 40px 0;
+        padding: 40px 1rem;
+    }
+
+    /* Grid Layouts */
+    .features-grid, .benefits-grid, .destinations-showcase {
         gap: 1.5rem;
     }
-    
-    .cta-stats {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .stats-container {
+
+    .features-grid {
         grid-template-columns: 1fr;
     }
-    
-    .tip-card {
-        padding: 2rem;
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
     }
-    
-    .benefit-item {
-        padding: 2rem 1.5rem;
+
+    .destinations-showcase {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
-    
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    /* Card Spacing */
+    .feature-card, .benefit-item, .destination-highlight {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
     .destination-highlight {
-        padding: 1.2rem;
+        min-width: auto;
+        max-width: 100%;
     }
-    
+
+    /* Text Content */
+    .text-content {
+        padding: 1.5rem;
+    }
+
+    .section-content {
+        gap: 2rem;
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer-content {
+        gap: 2rem;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+}
+
+/* Image and Media Responsiveness */
+@media (max-width: 768px) {
+    /* Destination Images */
     .destination-image {
-        height: 150px;
+        height: 180px;
+        margin-bottom: 1rem;
     }
-    
+
     .destination-emoji {
         font-size: 3rem;
     }
-    
-    .destination-meta {
+
+    /* Photo Gallery */
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .photo-card img {
+        height: 200px;
+    }
+
+    /* Background Images */
+    .destination-card[data-destination] .destination-image {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Quick Access Images */
+    .quick-dest-image {
+        height: 100px;
+    }
+
+    .dest-emoji {
+        font-size: 2rem;
+    }
+
+    /* Modal Images */
+    .modal-main-image {
+        height: 250px;
+    }
+
+    .modal-image-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    }
+
+    .modal-gallery-thumb {
+        height: 70px;
+    }
+}
+
+/* Navigation Improvements */
+@media (max-width: 768px) {
+    /* Header */
+    .header {
+        padding: 0.75rem 0;
+    }
+
+    /* Mobile Navigation */
+    .nav-menu {
+        padding: 4rem 1.5rem 2rem;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    /* Mobile Search */
+    .mobile-search-container {
+        margin: 1rem 0;
+        padding-top: 0.5rem;
+    }
+
+    .mobile-search-form {
+        padding: 0.5rem;
+    }
+
+    .mobile-search-input {
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+    }
+
+    .mobile-search-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    /* Expandable Search */
+    .navbar-search-icon.expanded .search-input-container {
+        width: 240px;
+    }
+
+    .navbar-search-input {
+        width: 180px;
+        padding: 0.75rem 0.875rem;
+    }
+
+    .navbar-search-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Small Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    /* Typography */
+    .hero-content h2 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .hero-content p {
+        font-size: clamp(0.95rem, 4vw, 1.2rem);
+    }
+
+    /* Spacing */
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .hero {
+        padding: 80px 0 40px;
+    }
+
+    .hero-content {
+        padding: 0 0.75rem;
+    }
+
+    /* Stats */
+    .hero-stats {
         flex-direction: column;
         gap: 1rem;
-        align-items: flex-start;
+        margin: 1.5rem 0;
+    }
+
+    .hero-stats .stat-number {
+        font-size: 1.8rem;
+    }
+
+    /* Buttons */
+    .hero-actions {
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+    }
+
+    .btn-hero, .btn-large {
+        width: 100%;
+        max-width: none;
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+    }
+
+    /* Cards */
+    .feature-card, .benefit-item, .destination-highlight {
+        padding: 1.25rem;
+    }
+
+    .destination-image {
+        height: 150px;
+    }
+
+    .destination-emoji {
+        font-size: 2.5rem;
+    }
+
+    /* Navigation */
+    .nav-menu {
+        padding: 3rem 1rem 1.5rem;
+    }
+
+    .nav-link {
+        padding: 0.875rem 0;
+        font-size: 1rem;
+    }
+
+    /* Stats Container */
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .stat-item {
+        padding: 2rem 1rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 3rem 0 1.5rem;
+    }
+
+    .footer-content {
+        gap: 1.5rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        margin: 1rem;
+        max-height: 90vh;
+    }
+
+    .modal-header, .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-main-image {
+        height: 200px;
+    }
+}
+
+/* Prevent Horizontal Scrolling */
+@media (max-width: 768px) {
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container, .hero-content, .section-content {
+        overflow: hidden;
+    }
+
+    /* Grid Items */
+    .feature-card, .benefit-item, .destination-highlight, .photo-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Text Wrapping */
+    h1, h2, h3, h4, h5, h6, p, span, div {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Mobile Accessibility and Touch Features */
+@media (max-width: 768px) {
+    /* Skip Link */
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 1000;
+        font-weight: 600;
+    }
+
+    .skip-link:focus {
+        top: 6px;
+    }
+
+    /* Screen Reader Only Content */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Enhanced Focus States */
+    .btn:focus,
+    .search-input:focus,
+    .nav-link:focus,
+    .hamburger:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px rgba(67, 156, 255, 0.3);
+    }
+
+    /* Touch Active States */
+    .nav-link.touch-active,
+    .btn.touch-active {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: scale(0.98);
+    }
+
+    /* Mobile Context Menu */
+    .mobile-context-menu {
+        position: fixed;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        z-index: 2000;
+        min-width: 160px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+    }
+
+    .context-menu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        font-size: 14px;
+    }
+
+    .context-menu-item:last-child {
+        border-bottom: none;
+    }
+
+    .context-menu-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    .context-menu-item i {
+        color: var(--primary-color);
+        width: 16px;
+    }
+
+    /* Voice Search Button */
+    .voice-search-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-size: 18px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+
+    .voice-search-btn:hover {
+        background-color: rgba(67, 156, 255, 0.1);
+    }
+
+    .voice-search-btn:active {
+        transform: translateY(-50%) scale(0.9);
+    }
+
+    /* Voice Search Active State */
+    .voice-searching {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(67, 156, 255, 0.3);
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+
+    /* Low Battery Mode */
+    .low-battery * {
+        animation-duration: 0.3s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0.2s !important;
+    }
+
+    .low-battery .floating-element {
+        animation: none !important;
+    }
+
+    /* Slow Connection Optimizations */
+    .slow-connection img {
+        filter: blur(1px);
+        transition: filter 0.3s ease;
+    }
+
+    .slow-connection img.loaded {
+        filter: none;
+    }
+
+    .slow-connection .photo-card,
+    .slow-connection .destination-highlight {
+        background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+                    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+                    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+        background-size: 20px 20px;
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        animation: loading-pattern 1s linear infinite;
+    }
+
+    @keyframes loading-pattern {
+        0% { background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
+        100% { background-position: 20px 0, 20px 10px, 30px -10px, 10px 0px; }
+    }
+
+    /* Viewport Height Fix */
+    .hero, .modal-content {
+        height: calc(var(--vh, 1vh) * 100);
+        max-height: calc(var(--vh, 1vh) * 100);
+    }
+
+    /* Mobile Modal Improvements */
+    .destination-modal.active {
+        padding: 0;
+    }
+
+    .modal-content {
+        margin: 1rem;
+        max-height: calc(var(--vh, 1vh) * 90);
+        overflow-y: auto;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
+
+    /* Improved Button States */
+    .btn:active,
+    .btn.touch-active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+
+    /* Better Input Handling */
+    input[type="text"],
+    input[type="search"],
+    select,
+    textarea {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Prevent text selection on interactive elements */
+    .btn,
+    .nav-link,
+    .hamburger,
+    .destination-card,
+    .feature-card {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Improved Scroll Behavior */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Better Modal Scrolling */
+    .modal-content {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Smooth Scaling for Grids and Flexbox */
+@media (max-width: 768px) {
+    .features-grid, .benefits-grid, .destinations-showcase, .photo-gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .features-grid > *, .benefits-grid > *, .destinations-showcase > *, .photo-gallery > * {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    /* Flexbox improvements */
+    .hero-stats, .hero-actions, .cta-buttons, .footer-badges {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Grid fallbacks */
+    @supports not (display: flex) {
+        .features-grid, .benefits-grid, .destinations-showcase, .photo-gallery {
+            display: block;
+        }
+
+        .features-grid > *, .benefits-grid > *, .destinations-showcase > *, .photo-gallery > * {
+            display: block;
+            margin-bottom: 1.5rem;
+        }
     }
 }
 

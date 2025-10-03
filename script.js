@@ -990,34 +990,165 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Add search suggestions (simple implementation)
-const searchSuggestions = Object.keys(sampleDestinations);
-let currentSuggestionIndex = -1;
+// Enhanced Mobile Touch and Accessibility Features
+document.addEventListener('DOMContentLoaded', function() {
+    initializeMobileTouchFeatures();
+    initializeAccessibilityFeatures();
+    initializeMobileOptimizations();
+});
 
-searchInput.addEventListener('input', function() {
-    const query = this.value.toLowerCase();
-    
-    if (query.length > 0) {
-        const matches = searchSuggestions.filter(city => 
-            city.toLowerCase().includes(query)
-        );
-        
-        // You could implement a dropdown here for suggestions
-        // For now, we'll just update placeholder text
-        if (matches.length > 0 && matches[0] !== query) {
-            this.style.background = `linear-gradient(to right, transparent ${query.length}ch, #f0f8ff ${query.length}ch)`;
-        } else {
-            this.style.background = 'white';
+// Mobile Touch Features
+function initializeMobileTouchFeatures() {
+    // Touch-friendly navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('touchstart', function(e) {
+            this.classList.add('touch-active');
+        });
+
+        link.addEventListener('touchend', function(e) {
+            this.classList.remove('touch-active');
+        });
+    });
+
+    // Swipe gestures for mobile navigation
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    });
+
+    function handleSwipeGesture() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchEndX - touchStartX;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0 && navMenu && navMenu.classList.contains('active')) {
+                // Swipe right to close menu
+                if (hamburger) hamburger.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+            } else if (swipeDistance < 0 && navMenu && !navMenu.classList.contains('active')) {
+                // Swipe left to open menu (only if hamburger is visible)
+                if (window.innerWidth <= 768 && hamburger) {
+                    hamburger.classList.add('active');
+                    navMenu.classList.add('active');
+                }
+            }
         }
-    } else {
-        this.style.background = 'white';
     }
-});
 
-// Clear background on focus out
-searchInput.addEventListener('blur', function() {
-    this.style.background = 'white';
-});
+    // Touch feedback for interactive elements
+    const interactiveElements = document.querySelectorAll('.btn, .destination-card, .feature-card, .quick-destination-card');
+    interactiveElements.forEach(element => {
+        element.addEventListener('touchstart', function(e) {
+            this.style.transform = 'scale(0.98)';
+            this.style.transition = 'transform 0.1s ease';
+        });
+
+        element.addEventListener('touchend', function(e) {
+            this.style.transform = '';
+        });
+    });
+}
+
+// Accessibility Features
+function initializeAccessibilityFeatures() {
+    // Skip to main content link
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.className = 'skip-link sr-only';
+    skipLink.textContent = 'Skip to main content';
+    document.body.insertBefore(skipLink, document.body.firstChild);
+
+    // Enhanced focus management
+    const focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+
+    focusableElements.forEach(element => {
+        element.addEventListener('focus', function() {
+            this.classList.add('focused');
+        });
+
+        element.addEventListener('blur', function() {
+            this.classList.remove('focused');
+        });
+    });
+
+    // Screen reader announcements
+    const announceElement = document.createElement('div');
+    announceElement.setAttribute('aria-live', 'polite');
+    announceElement.setAttribute('aria-atomic', 'true');
+    announceElement.className = 'sr-only';
+    announceElement.id = 'screen-reader-announcements';
+    document.body.appendChild(announceElement);
+
+    window.announceToScreenReader = function(message) {
+        announceElement.textContent = message;
+        setTimeout(() => {
+            announceElement.textContent = '';
+        }, 1000);
+    };
+}
+
+// Mobile Optimizations
+function initializeMobileOptimizations() {
+    // Viewport height fix for mobile browsers
+    function setVH() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setVH();
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', setVH);
+
+    // Prevent zoom on input focus (iOS)
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.setAttribute('data-original-font-size', this.style.fontSize || '');
+            this.style.fontSize = '16px'; // Prevent zoom on iOS
+        });
+
+        input.addEventListener('blur', function() {
+            const originalSize = this.getAttribute('data-original-font-size');
+            if (originalSize) {
+                this.style.fontSize = originalSize;
+            } else {
+                this.style.fontSize = '';
+            }
+        });
+    });
+
+    // Optimize scroll performance on mobile
+    let scrollTimer;
+    window.addEventListener('scroll', function() {
+        if (!scrollTimer) {
+            scrollTimer = setTimeout(function() {
+                updateScrollDependentElements();
+                scrollTimer = null;
+            }, 16); // ~60fps
+        }
+    });
+
+    function updateScrollDependentElements() {
+        const scrolled = window.pageYOffset;
+        const header = document.querySelector('.header');
+
+        if (header) {
+            if (scrolled > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+    }
+}
 
 // Destination Modal Functionality
 let currentModalDestination = null;
