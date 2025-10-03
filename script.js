@@ -346,20 +346,38 @@ function initializeExpandableSearch() {
         return;
     }
 
-    // Toggle search expansion on icon click
-    searchIconBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        searchIcon.classList.toggle('expanded');
-        
-        if (searchIcon.classList.contains('expanded')) {
-            // Focus on input when expanded
+    let isExpanded = false;
+    let isHovering = false;
+
+    // Function to expand search
+    function expandSearch() {
+        if (!isExpanded) {
+            isExpanded = true;
+            searchIcon.classList.add('expanded');
             setTimeout(() => {
                 navbarSearchInput.focus();
             }, 300);
-        } else {
-            // Clear input when collapsed
+        }
+    }
+
+    // Function to collapse search
+    function collapseSearch() {
+        if (isExpanded && !isHovering) {
+            isExpanded = false;
+            searchIcon.classList.remove('expanded');
             navbarSearchInput.value = '';
+        }
+    }
+
+    // Click the search icon to toggle
+    searchIconBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (isExpanded) {
+            collapseSearch();
+        } else {
+            expandSearch();
         }
     });
 
@@ -377,20 +395,50 @@ function initializeExpandableSearch() {
         }
     });
 
-    // Close search when clicking outside
+    // Desktop hover expansion (optional)
+    if (window.innerWidth > 768) {
+        searchIcon.addEventListener('mouseenter', function() {
+            isHovering = true;
+            expandSearch();
+        });
+
+        searchIcon.addEventListener('mouseleave', function() {
+            isHovering = false;
+            // Delay collapse to allow moving to input
+            setTimeout(() => {
+                if (!isHovering && !document.activeElement.closest('.navbar-search-icon')) {
+                    collapseSearch();
+                }
+            }, 100);
+        });
+    }
+
+    // Click outside to close
     document.addEventListener('click', function(e) {
-        if (!searchIcon.contains(e.target)) {
-            searchIcon.classList.remove('expanded');
-            navbarSearchInput.value = '';
+        if (!searchIcon.contains(e.target) && isExpanded) {
+            collapseSearch();
         }
     });
 
-    // Close search on escape key
+    // Close on escape key
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && searchIcon.classList.contains('expanded')) {
-            searchIcon.classList.remove('expanded');
-            navbarSearchInput.value = '';
+        if (e.key === 'Escape' && isExpanded) {
+            collapseSearch();
         }
+    });
+
+    // Keep expanded when input is focused
+    navbarSearchInput.addEventListener('focus', function() {
+        isHovering = true;
+    });
+
+    navbarSearchInput.addEventListener('blur', function() {
+        isHovering = false;
+        setTimeout(() => {
+            if (!document.activeElement.closest('.navbar-search-icon')) {
+                collapseSearch();
+            }
+        }, 100);
     });
 }
 

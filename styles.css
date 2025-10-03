@@ -1061,6 +1061,16 @@ body {
     }
 }
 
+/* Desktop hover expansion for search icon */
+@media (min-width: 769px) {
+    .navbar-search-icon:hover .search-input-container {
+        transform: translateY(-50%) scaleX(1);
+        opacity: 1;
+        width: 280px;
+        pointer-events: auto;
+    }
+}
+
 .hamburger::before {
     content: '';
     position: absolute;
