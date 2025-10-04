@@ -1,0 +1,64 @@
+<!-- Navbar Component -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <div class="logo">🌍 Exploora</div>
+        </div>
+
+        <!-- Nav Links (Centered) -->
+        <ul class="navbar-nav">
+            <!-- Mobile Search (only visible in mobile menu) -->
+            <li class="nav-item mobile-search-item" style="display: none;">
+                <input type="text" id="mobile-navbar-search" placeholder="Search destinations..." class="mobile-search">
+            </li>
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="destinations.html" class="nav-link">
+                    <i class="fas fa-map-marked-alt" style="margin-right: 0.5rem;"></i>
+                    Destinations
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="blog.html" class="nav-link">
+                    <i class="fas fa-blog" style="margin-right: 0.5rem;"></i>
+                    Blog
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="about.html" class="nav-link">
+                    <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
+                    About
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                    Contact
+                </a>
+            </li>
+        </ul>
+
+        <!-- Search Bar (Extreme Right) -->
+        <div class="navbar-search">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="navbar-search" placeholder="Search destinations..." class="navbar-search-input">
+                <button type="button" id="navbar-search-btn" class="navbar-search-btn">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Hamburger Icon -->
+        <div class="menu-toggle" onclick="document.querySelector('.navbar-nav').classList.toggle('active'); this.classList.toggle('active');">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
