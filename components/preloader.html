@@ -1,42 +1,69 @@
 <div id="preloader" class="preloader">
     <div class="preloader-content">
-        <!-- Ship Mast Animation -->
-        <div class="ship-container">
-            <div class="ship-mast">
-                <div class="mast-pole"></div>
-                <div class="sail sail-main">
-                    <div class="sail-curve"></div>
-                </div>
-                <div class="sail sail-front">
-                    <div class="sail-curve"></div>
-                </div>
-                <div class="ship-flag"></div>
-            </div>
-            <div class="ship-hull"></div>
+        <!-- Background Elements -->
+        <div class="bg-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
         
-        <!-- Wave Animation -->
-        <div class="waves">
-            <div class="wave wave-1"></div>
-            <div class="wave wave-2"></div>
-            <div class="wave wave-3"></div>
+        <!-- Main Loading Animation -->
+        <div class="travel-animation">
+            <!-- Globe Container -->
+            <div class="globe-container">
+                <div class="globe">
+                    <div class="globe-shadow"></div>
+                    <div class="continents">
+                        <div class="continent continent-1"></div>
+                        <div class="continent continent-2"></div>
+                        <div class="continent continent-3"></div>
+                    </div>
+                    <div class="latitude-lines">
+                        <div class="lat-line lat-1"></div>
+                        <div class="lat-line lat-2"></div>
+                        <div class="lat-line lat-3"></div>
+                    </div>
+                </div>
+                
+                <!-- Airplane Animation -->
+                <div class="airplane-path">
+                    <div class="airplane">
+                        <div class="plane-body"></div>
+                        <div class="plane-wing"></div>
+                        <div class="plane-tail"></div>
+                    </div>
+                    <div class="flight-trail"></div>
+                </div>
+            </div>
         </div>
         
         <!-- Loading Text -->
         <div class="loading-text">
-            <span class="loading-word">Setting</span>
-            <span class="loading-word">Sail</span>
-            <span class="loading-dots">
-                <span class="dot">.</span>
-                <span class="dot">.</span>
-                <span class="dot">.</span>
-            </span>
+            <div class="brand-logo">🌍 Exploora</div>
+            <div class="loading-message">
+                <span class="loading-word">Preparing</span>
+                <span class="loading-word">Your</span>
+                <span class="loading-word">Journey</span>
+                <div class="loading-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
         </div>
         
-        <!-- Progress Indicator -->
-        <div class="sailing-progress">
-            <div class="horizon-line"></div>
-            <div class="progress-ship">⛵</div>
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+                <div class="progress-plane">✈️</div>
+            </div>
+            <div class="progress-text">
+                <span id="progress-percentage">0%</span>
+                <span class="progress-label">Loading destinations...</span>
+            </div>
         </div>
     </div>
 </div>
