@@ -79,30 +79,48 @@ export async function getWeatherForDestinations(destinations) {
  * @param {Object} weatherInfo - Weather information object
  */
 function displayWeatherInfo(weatherInfo) {
-    // Check if we're in a city search context or destination card context
-    const weatherContainer = document.getElementById('weather-display') || createWeatherContainer();
-    
-    const iconUrl = `https://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png`;
-    
-    weatherContainer.innerHTML = `
-        <div class="weather-card">
-            <div class="weather-header">
-                <div class="weather-location">
-                    <h3>${weatherInfo.city}, ${weatherInfo.country}</h3>
-                    <p class="weather-time">Updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-                </div>
-                <div class="weather-icon">
-                    <img src="${iconUrl}" alt="${weatherInfo.description}" />
+    try {
+        // Validate weatherInfo object
+        if (!weatherInfo || typeof weatherInfo !== 'object') {
+            throw new Error('Invalid weather information provided');
+        }
+        
+        // Check if we're in a city search context or destination card context
+        const weatherContainer = document.getElementById('weather-display') || createWeatherContainer();
+        
+        if (!weatherContainer) {
+            console.warn('Weather container not found, skipping display');
+            return;
+        }
+        
+        // Safely construct icon URL with fallback
+        const iconCode = weatherInfo.icon || '01d'; // Default to clear sky icon
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        
+        // Safely get values with fallbacks
+        const city = weatherInfo.city || 'Unknown';
+        const country = weatherInfo.country || '';
+        const description = weatherInfo.description || 'No description';
+        
+        weatherContainer.innerHTML = `
+            <div class="weather-card">
+                <div class="weather-header">
+                    <div class="weather-location">
+                        <h3>${city}${country ? `, ${country}` : ''}</h3>
+                        <p class="weather-time">Updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    </div>
+                    <div class="weather-icon">
+                        <img src="${iconUrl}" alt="${description}" onerror="this.style.display='none'" />
                 </div>
             </div>
             
             <div class="weather-main">
                 <div class="temperature">
-                    <span class="temp-value">${weatherInfo.temperature}°C</span>
-                    <span class="feels-like">Feels like ${weatherInfo.feelsLike}°C</span>
+                    <span class="temp-value">${temperature}°C</span>
+                    <span class="feels-like">Feels like ${feelsLike}°C</span>
                 </div>
                 <div class="weather-description">
-                    <p>${weatherInfo.description.charAt(0).toUpperCase() + weatherInfo.description.slice(1)}</p>
+                    <p>${description.charAt(0).toUpperCase() + description.slice(1)}</p>
                 </div>
             </div>
             
@@ -110,39 +128,44 @@ function displayWeatherInfo(weatherInfo) {
                 <div class="weather-detail">
                     <i class="fas fa-tint"></i>
                     <span>Humidity</span>
-                    <strong>${weatherInfo.humidity}%</strong>
+                    <strong>${humidity}%</strong>
                 </div>
                 <div class="weather-detail">
                     <i class="fas fa-wind"></i>
                     <span>Wind</span>
+                    <strong>${windSpeed} m/s</strong>
                     <strong>${weatherInfo.windSpeed} m/s</strong>
                 </div>
                 <div class="weather-detail">
                     <i class="fas fa-eye"></i>
                     <span>Visibility</span>
-                    <strong>${weatherInfo.visibility} km</strong>
+                    <strong>${visibility} km</strong>
                 </div>
                 <div class="weather-detail">
                     <i class="fas fa-thermometer-half"></i>
                     <span>Pressure</span>
-                    <strong>${weatherInfo.pressure} hPa</strong>
+                    <strong>${pressure} hPa</strong>
                 </div>
             </div>
             
             <div class="sun-times">
                 <div class="sun-time">
                     <i class="fas fa-sunrise"></i>
-                    <span>Sunrise: ${weatherInfo.sunrise}</span>
+                    <span>Sunrise: ${sunrise}</span>
                 </div>
                 <div class="sun-time">
                     <i class="fas fa-sunset"></i>
-                    <span>Sunset: ${weatherInfo.sunset}</span>
+                    <span>Sunset: ${sunset}</span>
                 </div>
             </div>
         </div>
     `;
     
     weatherContainer.style.display = 'block';
+    } catch (error) {
+        console.error('Error displaying weather information:', error);
+        displayWeatherError('Unable to display weather information');
+    }
 }
 
 /**

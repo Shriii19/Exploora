@@ -3,7 +3,7 @@ let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
 
 // Note: API keys are now managed by the API configuration system in js/api-config.js
 
-// DOM elements
+// DOM elements - with safe querySelector
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
 const demoSearchInput = document.getElementById('demo-search');
@@ -19,10 +19,23 @@ const weatherCondition = document.getElementById('weatherCondition');
 const weatherLocation = document.getElementById('weatherLocation');
 const recentSearchesContainer = document.getElementById('recentSearches');
 
-// Navigation elements
+// Navigation elements - with null checks
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const header = document.querySelector('.header');
+
+// Error handling utility function
+function safeElementOperation(element, operation, fallback = null) {
+    try {
+        if (element && typeof operation === 'function') {
+            return operation(element);
+        }
+        return fallback;
+    } catch (error) {
+        console.warn('Element operation failed:', error);
+        return fallback;
+    }
+}
 
 // Animation and scroll handling
 document.addEventListener('DOMContentLoaded', function() {
