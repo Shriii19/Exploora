@@ -834,7 +834,7 @@ body {
 }
 
 .navbar-nav .nav-link.active:hover {
-    /* box-shadow: 0 0 25px rgba(6, 182, 212, 0.4); */
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
 }
 
 .navbar-nav .nav-link i {
