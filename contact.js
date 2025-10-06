@@ -1,8 +1,14 @@
-// Simple contact page functionality
+// Contact page functionality
 document.addEventListener('DOMContentLoaded', function() {
-    initializeContactForm();
+    initializeContactPage();
 });
 
+function initializeContactPage() {
+    initializeContactForm();
+    initializeFAQ();
+}
+
+// Initialize contact form
 function initializeContactForm() {
     const contactForm = document.getElementById('contactForm');
     
@@ -11,166 +17,126 @@ function initializeContactForm() {
             e.preventDefault();
             handleFormSubmission();
         });
-        
-        // Add real-time validation
-        const inputs = contactForm.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', () => validateField(input));
-            input.addEventListener('input', () => clearErrors(input));
-        });
     }
 }
 
+// Handle form submission
 function handleFormSubmission() {
+    // Validate form first
     if (!validateForm()) {
         return;
     }
     
-    const submitBtn = document.querySelector('.btn-submit');
-    if (!submitBtn) return;
+    const formData = new FormData(document.getElementById('contactForm'));
+    const data = Object.fromEntries(formData);
     
     // Show loading state
+    const submitBtn = document.querySelector('.submit-btn');
+    if (!submitBtn) return;
+    
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
     
-    // Simulate form submission
+    // Simulate form submission (replace with actual form handling)
     setTimeout(() => {
+        // Reset button
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-        showSuccess();
-        document.getElementById('contactForm').reset();
+        
+        // Show success message
+        showFormSuccess();
+        
+        // Reset form
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.reset();
+        }
     }, 2000);
 }
 
+// Show form success message
+function showFormSuccess() {
+    const form = document.getElementById('contactForm');
+    const successMessage = document.createElement('div');
+    successMessage.className = 'success-message';
+    successMessage.innerHTML = `
+        <div style="
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        ">
+            <i class="fas fa-check-circle"></i>
+            <span>Thank you for your message! We'll get back to you soon.</span>
+        </div>
+    `;
+    
+    form.insertBefore(successMessage, form.firstChild);
+    
+    // Remove success message after 5 seconds
+    setTimeout(() => {
+        successMessage.remove();
+    }, 5000);
+}
+
+// Initialize FAQ functionality
+function initializeFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', function() {
+            const isActive = item.classList.contains('active');
+            
+            // Close all FAQ items
+            faqItems.forEach(faqItem => {
+                faqItem.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
+// Form validation
 function validateForm() {
     const requiredFields = ['name', 'email', 'subject', 'message'];
     let isValid = true;
     
     requiredFields.forEach(fieldName => {
         const field = document.getElementById(fieldName);
-        if (!validateField(field)) {
+        const value = field.value.trim();
+        
+        // Remove existing error styling
+        field.classList.remove('error');
+        
+        if (!value) {
+            field.classList.add('error');
             isValid = false;
+        }
+        
+        // Email validation
+        if (fieldName === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                field.classList.add('error');
+                isValid = false;
+            }
         }
     });
     
     return isValid;
 }
-
-function validateField(field) {
-    const value = field.value.trim();
-    clearErrors(field);
-    
-    if (!value) {
-        showError(field, `${getFieldLabel(field)} is required`);
-        return false;
-    }
-    
-    if (field.type === 'email' && value) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) {
-            showError(field, 'Please enter a valid email address');
-            return false;
-        }
-    }
-    
-    return true;
-}
-
-function showError(field, message) {
-    field.style.borderColor = '#dc3545';
-    field.style.backgroundColor = 'rgba(220, 53, 69, 0.05)';
-    
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-    errorDiv.style.cssText = `
-        color: #dc3545;
-        font-size: 0.875rem;
-        margin-top: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        animation: fadeIn 0.3s ease;
-    `;
-    
-    field.parentNode.appendChild(errorDiv);
-}
-
-function clearErrors(field) {
-    field.style.borderColor = '';
-    field.style.backgroundColor = '';
-    
-    const errorMsg = field.parentNode.querySelector('.error-message');
-    if (errorMsg) {
-        errorMsg.remove();
-    }
-}
-
-function showSuccess() {
-    const form = document.getElementById('contactForm');
-    const successDiv = document.createElement('div');
-    successDiv.className = 'success-message';
-    successDiv.innerHTML = `
-        <div style="
-            background: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: 1px solid #c3e6cb;
-            animation: slideDown 0.3s ease;
-        ">
-            <i class="fas fa-check-circle"></i>
-            <span>Thank you! Your message has been sent successfully.</span>
-        </div>
-    `;
-    
-    form.insertBefore(successDiv, form.firstChild);
-    
-    setTimeout(() => {
-        if (successDiv.parentNode) {
-            successDiv.remove();
-        }
-    }, 5000);
-}
-
-function getFieldLabel(field) {
-    const labels = {
-        'name': 'Name',
-        'email': 'Email',
-        'subject': 'Subject',
-        'message': 'Message'
-    };
-    return labels[field.id] || field.id;
-}
-
-// Add simple animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes slideDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    
-    .fa-spinner {
-        animation: spin 1s linear infinite;
-    }
-`;
-document.head.appendChild(style);
 
 // Add error styling to CSS
 const style = document.createElement('style');

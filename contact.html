@@ -16,112 +16,8 @@
     <script src="components/preloader.js"></script>
     <script src="components/navbar.js"></script>
     <script type="module" src="js/error-handler.js"></script>
-    <style>
-        /* Contact Form Styles */
-        .contact-section {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-        .contact-header {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .contact-header h2 {
-            margin: 0 0 10px;
-            font-size: 28px;
-            font-weight: 600;
-        }
-        .contact-header p {
-            margin: 0;
-            opacity: 0.9;
-        }
-        .contact-form {
-            padding: 40px;
-        }
-        .form-group {
-            margin-bottom: 25px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #333;
-        }
-        .form-control {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #e1e5e9;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-            font-family: 'Inter', sans-serif;
-        }
-        .form-control:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-        .btn-submit {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            width: 100%;
-        }
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
-        }
-        .contact-info {
-            margin-top: 40px;
-            text-align: center;
-            color: #666;
-        }
-        .contact-info-item {
-            display: inline-block;
-            margin: 0 15px;
-        }
-        .contact-info-item i {
-            margin-right: 8px;
-            color: #6366f1;
-        }
-        @media (max-width: 768px) {
-            .contact-form {
-                padding: 25px;
-            }
-            .contact-info-item {
-                display: block;
-                margin: 10px 0;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar"></nav>
-    
-    <!-- Preloader -->
-    <div id="preloader"></div>
-
     <!-- Page Header -->
     <section class="page-hero">
         <div class="hero-particles"></div>
@@ -134,10 +30,10 @@
                     <div class="announcement-badge">24/7</div>
                 </div>
                 <h1 class="hero-title">
-                    Contact <span class="gradient-text-animated">Us</span>
+                    Get in <span class="gradient-text-animated">Touch</span>
                 </h1>
                 <p class="hero-description">
-                    We'd love to hear from you. Reach out via form or the details below.
+                    We'd love to hear from you and help with your travel planning journey
                 </p>
                 <div class="hero-features">
                     <div class="hero-feature" data-reveal="scale" data-delay="100">
@@ -161,50 +57,188 @@
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact-section">
+    <!-- Main Content -->
+    <main class="main-content">
         <div class="container">
-            <div class="contact-container">
-                <div class="contact-header">
-                    <h2>Get In Touch</h2>
-                    <p>We'll respond as soon as possible</p>
+            <!-- Contact Form Section -->
+            <section class="contact-section">
+                <div class="section-header-premium">
+                    <span class="section-badge premium">
+                        <i class="fas fa-comments"></i>
+                        Professional Support
+                    </span>
+                    <h2>Let's Start a Conversation</h2>
+                    <p>Connect with our expert team for personalized travel assistance and platform support</p>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" class="form-control" id="subject" placeholder="How can we help?" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea class="form-control" id="message" placeholder="Type your message here..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Send Message</button>
-                </form>
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <i class="fas fa-envelope"></i> contact@exploora.com
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fas fa-phone"></i> +1 (555) 123-4567
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i> 123 Travel Street, Adventure City
+                
+                <div class="contact-container">
+                    <div class="contact-form premium centered-form">
+                        <div class="form-header">
+                            <h3>Send us a Message</h3>
+                            <p>Tell us about your travel dreams or technical questions</p>
+                        </div>
+                        
+                        <form id="contactForm" class="premium-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">
+                                        <i class="fas fa-user"></i>
+                                        Full Name *
+                                    </label>
+                                    <input type="text" id="name" name="name" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope"></i>
+                                        Email Address *
+                                    </label>
+                                    <input type="email" id="email" name="email" class="form-input" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">
+                                    <i class="fas fa-tag"></i>
+                                    What can we help with? *
+                                </label>
+                                <select id="subject" name="subject" class="form-select" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="general">💬 General Inquiry</option>
+                                    <option value="technical">🔧 Technical Support</option>
+                                    <option value="feature">✨ Feature Request</option>
+                                    <option value="bug">🐛 Bug Report</option>
+                                    <option value="feedback">💭 Feedback</option>
+                                    <option value="travel">✈️ Travel Planning Help</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">
+                                    <i class="fas fa-comment-alt"></i>
+                                    Your Message *
+                                </label>
+                                <textarea id="message" name="message" rows="6" class="form-textarea" required placeholder="Tell us about your travel plans, technical issues, or suggestions for improvement..."></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label premium">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">
+                                        Subscribe to our newsletter for exclusive travel tips and platform updates
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn premium">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                                <div class="btn-shine"></div>
+                            </button>
+                            
+                            <p class="form-note">
+                                <i class="fas fa-shield-alt"></i>
+                                Your information is secure and will never be shared with third parties
+                            </p>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Footer -->
-    <footer id="footer"></footer>
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <div class="section-header-premium">
+                    <span class="section-badge premium">
+                        <i class="fas fa-question-circle"></i>
+                        Quick Answers
+                    </span>
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find instant answers to common questions about our platform and services</p>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item premium">
+                        <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>How do I search for destinations?</h3>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Simply use the search bar at the top of any page and type in the city name you're interested in. Our system will provide you with high-quality photos, real-time weather information, and comprehensive destination details powered by professional APIs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item premium">
+                        <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                            <h3>Are the weather updates real-time?</h3>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We use the OpenWeatherMap API to provide current weather conditions and detailed forecasts for destinations worldwide. All weather data is updated in real-time and includes temperature, humidity, wind speed, and weather conditions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item premium">
+                        <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h3>Where do the destination photos come from?</h3>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>All destination photos are sourced from Unsplash API, ensuring high-quality, professional images from talented photographers worldwide. This guarantees stunning visuals that accurately showcase the beauty and character of each location.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item premium">
+                        <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Can I save my favorite destinations?</h3>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Your recent searches are automatically saved in your browser's local storage for quick access. We're actively developing an enhanced favorites system with user accounts, custom collections, and cross-device synchronization in our upcoming release.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item premium">
+                        <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Is the website mobile-friendly?</h3>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! Exploora is fully responsive and optimized for all devices including smartphones, tablets, and desktops. Our mobile-first design approach ensures a seamless experience regardless of your screen size or device type.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item premium">
+                        <div class="faq-question">
+                            <div class="faq-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>What technologies power the platform?</h3>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Exploora is built with modern web technologies including HTML5, CSS3, and vanilla JavaScript. We integrate with OpenWeatherMap API for weather data and Unsplash API for professional photography, ensuring fast performance and reliable data.</p>
+                        </div>
+                    </div>
+                </div>
+            </section> 
+        </div>
+    </main>
 
     <script src="components/particles.js"></script>
     <script src="components/scroll-animations.js"></script>
