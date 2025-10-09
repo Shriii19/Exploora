@@ -5061,7 +5061,7 @@ body {
     border-radius: var(--radius-xl);
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     border: 2px solid transparent;
     position: relative;
@@ -5071,6 +5071,11 @@ body {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
     border-color: var(--primary-color);
+}
+
+.quick-destination-card:active {
+    transform: translateY(-4px) scale(0.98);
+    transition: all 0.15s ease;
 }
 
 .quick-dest-image {
@@ -5267,14 +5272,26 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--primary-color);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .quick-destination-card:hover .quick-action {
     background: var(--primary-color);
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.6);
+    }
 }
 
 /* Destination Modal Styling */
@@ -5285,9 +5302,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0);
     z-index: 1000;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(0px);
+    transition: all 0.3s ease;
 }
 
 .destination-modal.active {
@@ -5295,6 +5313,20 @@ body {
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: backdropFadeIn 0.3s ease-out;
+}
+
+@keyframes backdropFadeIn {
+    from {
+        background: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+    }
+    to {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+    }
 }
 
 .modal-content {
@@ -5304,18 +5336,62 @@ body {
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: var(--shadow-2xl);
-    animation: modalSlideIn 0.3s ease-out;
+    overflow-x: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar for Modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
 }
 
 @keyframes modalSlideIn {
     from {
-        transform: scale(0.9) translateY(50px);
+        transform: scale(0.85) translateY(60px);
         opacity: 0;
     }
     to {
         transform: scale(1) translateY(0);
         opacity: 1;
+    }
+}
+
+@keyframes modalSlideOut {
+    from {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.9) translateY(30px);
+        opacity: 0;
+    }
+}
+
+@keyframes backdropFadeOut {
+    from {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+    }
+    to {
+        background: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
     }
 }
 
@@ -5325,6 +5401,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: fadeInDown 0.4s ease-out 0.1s both;
 }
 
 .modal-header h2 {
@@ -5352,6 +5429,7 @@ body {
 .modal-close:hover {
     background: var(--gray-100);
     color: var(--gray-700);
+    transform: rotate(90deg);
 }
 
 .modal-body {
@@ -5360,6 +5438,29 @@ body {
 
 .modal-image-section {
     margin-bottom: 2rem;
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .modal-main-image {
@@ -5370,6 +5471,26 @@ body {
     margin-bottom: 1rem;
     position: relative;
     overflow: hidden;
+    cursor: zoom-in;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.modal-main-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-main-image:hover::before {
+    opacity: 1;
+}
+
+.modal-main-image:hover {
+    transform: scale(1.02);
 }
 
 .modal-image-gallery {
@@ -5385,19 +5506,36 @@ body {
     background-position: center;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-gallery-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(37, 99, 235, 0.3), rgba(6, 182, 212, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-gallery-thumb:hover::before {
+    opacity: 1;
 }
 
 .modal-gallery-thumb:hover,
 .modal-gallery-thumb.active {
     border-color: var(--primary-color);
-    transform: scale(1.05);
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .modal-info-section {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    animation: fadeInUp 0.5s ease-out 0.3s both;
 }
 
 .modal-quick-info {
@@ -5449,16 +5587,42 @@ body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-highlight-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
 }
 
 .modal-highlight-item:hover {
     border-color: var(--primary-color);
-    background: var(--gray-50);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(6, 182, 212, 0.05));
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.modal-highlight-item:hover::before {
+    transform: scaleY(1);
 }
 
 .modal-highlight-item .highlight-icon {
     font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.modal-highlight-item:hover .highlight-icon {
+    transform: scale(1.15);
 }
 
 .modal-highlight-item .highlight-text {
@@ -5497,12 +5661,23 @@ body {
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1rem;
+    animation: fadeInUp 0.5s ease-out 0.4s both;
 }
 
 .modal-actions .btn {
     flex: 1;
     min-width: 140px;
     justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+.modal-actions .btn:active {
+    transform: translateY(0);
 }
 
 /* Responsive Modal */

@@ -1704,9 +1704,20 @@ function openDestinationModal(destination) {
 
 function closeDestinationModal() {
     const modal = document.getElementById('destinationModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-    currentModalDestination = null;
+    const modalContent = modal.querySelector('.modal-content');
+    
+    // Add closing animation
+    modalContent.style.animation = 'modalSlideOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards';
+    modal.style.animation = 'backdropFadeOut 0.3s ease-out forwards';
+    
+    // Wait for animation to complete before removing
+    setTimeout(() => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        modalContent.style.animation = '';
+        modal.style.animation = '';
+        currentModalDestination = null;
+    }, 300);
 }
 
 function addToFavorites(destination) {
