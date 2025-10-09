@@ -9,7 +9,7 @@ Planning a trip can be overwhelming without easy access to destination informati
 ## ✨ Features
 
 ### 🎯 Core Features
-- **Multi-page Architecture** with Home, About, Destinations, and Contact pages
+- **Multi-page Architecture** with Home, About, Destinations, Blog, Trip Planner, and Contact pages
 - **Modern Header** with responsive navigation and search functionality
 - **Hero Section** with beautiful gradient background and travel-themed design
 - **Real API Integration** with Unsplash API for photos and OpenWeatherMap API for weather
@@ -17,6 +17,7 @@ Planning a trip can be overwhelming without easy access to destination informati
 - **Weather Info Section** showing real-time temperature, weather condition, and weather icons
 - **Recent Searches Section** with interactive cards showing previously searched cities
 - **Destinations Gallery** with filtering by regions (Europe, Asia, America, Oceania)
+- **Trip Planner** 🆕 - Create, manage, and share multi-day travel itineraries
 - **Contact Form** with validation and FAQ section
 
 ### 🎨 Design & Styling
@@ -30,13 +31,17 @@ Planning a trip can be overwhelming without easy access to destination informati
 
 ### 🚀 Interactive Features
 - **Real-time search** with API integration and fallback to sample data
-- **Local storage** for recent searches persistence
+- **Local storage** for recent searches and saved trips
 - **Click-to-search** recent search cards and destination cards
 - **Keyboard navigation** (Enter to search, Escape to reset)
 - **Responsive photo gallery** with real Unsplash images
 - **Weather icons** that change based on real weather conditions
 - **FAQ accordion** with smooth animations
 - **Form validation** with real-time feedback
+- **Itinerary Builder** 🆕 - Drag-and-drop trip planning with auto-save
+- **Activity Management** 🆕 - Add, edit, delete activities with categories
+- **Smart Suggestions** 🆕 - AI-powered destination activity recommendations
+- **Export & Share** 🆕 - Download trips and share via social media
 
 ## 🛠️ Technologies Used
 
