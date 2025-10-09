@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner - Exploora</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css?v=2.0">
+    <link rel="stylesheet" href="components/preloader.css?v=2.0">
+    <link rel="stylesheet" href="css/api-styles.css">
+    <link rel="stylesheet" href="css/planner.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="components/preloader.js?v=2.0"></script>
+    <script src="components/navbar.js?v=2.0"></script>
+    <script type="module" src="js/error-handler.js?v=2.0"></script>
+</head>
+<body>
+    <!-- Page Header -->
+    <section class="page-hero">
+        <div class="hero-particles"></div>
+        <div class="background-mesh"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-announcement">
+                    <i class="fas fa-route"></i>
+                    <span>Plan Your Dream Trip</span>
+                    <div class="announcement-badge">NEW</div>
+                </div>
+                <h1 class="hero-title">
+                    Trip <span class="gradient-text-animated">Planner</span>
+                </h1>
+                <p class="hero-description">
+                    Create personalized multi-day itineraries with drag-and-drop simplicity. Save, edit, and share your perfect travel plans.
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature" data-reveal="scale" data-delay="100">
+                        <i class="fas fa-calendar-plus"></i>
+                        <span>Multi-Day Itineraries</span>
+                    </div>
+                    <div class="hero-feature" data-reveal="scale" data-delay="200">
+                        <i class="fas fa-save"></i>
+                        <span>Auto-Save</span>
+                    </div>
+                    <div class="hero-feature" data-reveal="scale" data-delay="300">
+                        <i class="fas fa-share-nodes"></i>
+                        <span>Easy Sharing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Start planning</span>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content planner-main">
+        <div class="container-fluid">
+            <!-- Planner Header -->
+            <div class="planner-header">
+                <div class="planner-actions">
+                    <button class="btn btn-primary" id="newTripBtn">
+                        <i class="fas fa-plus"></i>
+                        New Trip
+                    </button>
+                    <button class="btn btn-outline" id="loadTripBtn">
+                        <i class="fas fa-folder-open"></i>
+                        Load Trip
+                    </button>
+                    <button class="btn btn-outline" id="saveTripBtn" disabled>
+                        <i class="fas fa-save"></i>
+                        Save
+                    </button>
+                    <button class="btn btn-outline" id="exportTripBtn" disabled>
+                        <i class="fas fa-download"></i>
+                        Export PDF
+                    </button>
+                    <button class="btn btn-glass" id="shareTripBtn" disabled>
+                        <i class="fas fa-share-nodes"></i>
+                        Share
+                    </button>
+                </div>
+            </div>
+
+            <!-- Planner Grid -->
+            <div class="planner-grid">
+                <!-- Sidebar -->
+                <aside class="planner-sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">
+                            <i class="fas fa-info-circle"></i>
+                            Trip Details
+                        </h3>
+                        <div class="trip-details-form">
+                            <div class="form-group">
+                                <label for="tripName">Trip Name</label>
+                                <input type="text" id="tripName" placeholder="e.g., European Adventure 2025" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="tripDestination">Main Destination</label>
+                                <input type="text" id="tripDestination" placeholder="e.g., Paris, France" class="form-input">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tripStartDate">Start Date</label>
+                                    <input type="date" id="tripStartDate" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tripEndDate">End Date</label>
+                                    <input type="date" id="tripEndDate" class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tripBudget">Budget (Optional)</label>
+                                <input type="number" id="tripBudget" placeholder="5000" class="form-input">
+                            </div>
+                            <div class="trip-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span id="tripDuration">0 days</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span id="totalDestinations">0 destinations</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-tasks"></i>
+                                    <span id="totalActivities">0 activities</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Add Section -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">
+                            <i class="fas fa-bolt"></i>
+                            Quick Add
+                        </h3>
+                        <div class="quick-add-categories">
+                            <button class="category-btn" data-type="sightseeing">
+                                <i class="fas fa-camera"></i>
+                                <span>Sightseeing</span>
+                            </button>
+                            <button class="category-btn" data-type="food">
+                                <i class="fas fa-utensils"></i>
+                                <span>Dining</span>
+                            </button>
+                            <button class="category-btn" data-type="shopping">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>Shopping</span>
+                            </button>
+                            <button class="category-btn" data-type="entertainment">
+                                <i class="fas fa-theater-masks"></i>
+                                <span>Entertainment</span>
+                            </button>
+                            <button class="category-btn" data-type="transport">
+                                <i class="fas fa-plane"></i>
+                                <span>Transport</span>
+                            </button>
+                            <button class="category-btn" data-type="accommodation">
+                                <i class="fas fa-hotel"></i>
+                                <span>Accommodation</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Suggested Activities -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">
+                            <i class="fas fa-lightbulb"></i>
+                            Suggestions
+                        </h3>
+                        <div class="suggestions-list" id="suggestionsList">
+                            <p class="suggestions-empty">Enter a destination to see suggestions</p>
+                        </div>
+                    </div>
+
+                    <!-- Saved Trips -->
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">
+                            <i class="fas fa-bookmark"></i>
+                            My Trips
+                        </h3>
+                        <div class="saved-trips-list" id="savedTripsList">
+                            <p class="trips-empty">No saved trips yet</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Planner Area -->
+                <div class="planner-content">
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h2>Start Planning Your Adventure</h2>
+                        <p>Create a new trip or load an existing one to begin crafting your perfect itinerary</p>
+                        <button class="btn btn-primary btn-lg" id="startPlanningBtn">
+                            <i class="fas fa-plus"></i>
+                            Create New Trip
+                        </button>
+                    </div>
+
+                    <!-- Itinerary Timeline -->
+                    <div class="itinerary-timeline" id="itineraryTimeline" style="display: none;">
+                        <div class="timeline-header">
+                            <h2 id="timelineTripName">My Trip</h2>
+                            <div class="timeline-controls">
+                                <button class="btn btn-sm btn-outline" id="addDayBtn">
+                                    <i class="fas fa-plus"></i>
+                                    Add Day
+                                </button>
+                                <button class="btn btn-sm btn-glass" id="collapseAllBtn">
+                                    <i class="fas fa-compress"></i>
+                                    Collapse All
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Days Container -->
+                        <div class="days-container" id="daysContainer">
+                            <!-- Days will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Activity Modal -->
+    <div id="activityModal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Add Activity</h2>
+                <button class="modal-close" onclick="closeActivityModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="activityForm">
+                    <div class="form-group">
+                        <label for="activityName">Activity Name *</label>
+                        <input type="text" id="activityName" placeholder="e.g., Visit Eiffel Tower" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="activityType">Category *</label>
+                            <select id="activityType" class="form-input" required>
+                                <option value="">Select Category</option>
+                                <option value="sightseeing">Sightseeing</option>
+                                <option value="food">Dining</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="transport">Transport</option>
+                                <option value="accommodation">Accommodation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="activityTime">Time</label>
+                            <input type="time" id="activityTime" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="activityDuration">Duration (hours)</label>
+                            <input type="number" id="activityDuration" min="0.5" step="0.5" placeholder="2" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="activityCost">Cost ($)</label>
+                            <input type="number" id="activityCost" min="0" step="0.01" placeholder="50.00" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activityLocation">Location</label>
+                        <input type="text" id="activityLocation" placeholder="e.g., Champ de Mars, Paris" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activityNotes">Notes</label>
+                        <textarea id="activityNotes" rows="3" placeholder="Add any additional notes..." class="form-input"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activityUrl">Website/Booking Link</label>
+                        <input type="url" id="activityUrl" placeholder="https://..." class="form-input">
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeActivityModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Add Activity
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Trip Modal -->
+    <div id="loadTripModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Load Trip</h2>
+                <button class="modal-close" onclick="closeLoadTripModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="loadTripsList" class="load-trips-list">
+                    <!-- Trips will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Trip Modal -->
+    <div id="shareTripModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Share Your Trip</h2>
+                <button class="modal-close" onclick="closeShareTripModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">Share your itinerary with friends and family</p>
+                <div class="share-options">
+                    <button class="share-btn" onclick="shareViaEmail()">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </button>
+                    <button class="share-btn" onclick="shareViaWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button class="share-btn" onclick="shareViaFacebook()">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </button>
+                    <button class="share-btn" onclick="shareViaTwitter()">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </button>
+                </div>
+                <div class="share-link-section">
+                    <label>Or copy the link:</label>
+                    <div class="share-link-input">
+                        <input type="text" id="shareLinkInput" readonly class="form-input">
+                        <button class="btn btn-primary" onclick="copyShareLink()">
+                            <i class="fas fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="components/particles.js?v=2.0"></script>
+    <script src="components/scroll-animations.js?v=2.0"></script>
+    <script src="components/footer.js?v=2.0"></script>
+    <script src="js/planner.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
