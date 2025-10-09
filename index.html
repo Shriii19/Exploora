@@ -199,7 +199,7 @@
                 <div class="recent-searches" id="recentSearches">
                     <div class="popular-quick-access">
                         <div class="quick-access-grid">
-                            <div class="quick-destination-card" data-destination="paris" onclick="openDestinationModal('paris')">
+                            <div class="quick-destination-card" data-destination="paris">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇫🇷</span>
@@ -216,9 +216,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🗼 Eiffel Tower · 🎨 Louvre Museum</h5>
+                                        <p>The City of Light offers world-class art, iconic monuments, and exquisite cuisine. Best visited in spring for perfect weather.</p>
+                                        <div class="hover-tags">
+                                            <span>🍷 Fine Dining</span>
+                                            <span>🎭 Culture</span>
+                                            <span>🛍️ Fashion</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('paris')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="tokyo" onclick="openDestinationModal('tokyo')">
+                            <div class="quick-destination-card" data-destination="tokyo">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇯🇵</span>
@@ -235,9 +249,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🗼 Tokyo Tower · ⛩️ Senso-ji Temple</h5>
+                                        <p>A mesmerizing blend of ancient traditions and cutting-edge technology. Experience cherry blossoms, temples, and neon-lit streets.</p>
+                                        <div class="hover-tags">
+                                            <span>🍣 Sushi</span>
+                                            <span>🎌 Culture</span>
+                                            <span>🏮 Temples</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('tokyo')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="bali" onclick="openDestinationModal('bali')">
+                            <div class="quick-destination-card" data-destination="bali">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇮🇩</span>
@@ -254,9 +282,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏖️ Beaches · 🛕 Temples · 🌴 Rice Terraces</h5>
+                                        <p>Tropical paradise with stunning beaches, ancient temples, and lush rice paddies. Perfect for relaxation and adventure.</p>
+                                        <div class="hover-tags">
+                                            <span>🏄 Surfing</span>
+                                            <span>🧘 Yoga</span>
+                                            <span>🌺 Nature</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('bali')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="rome" onclick="openDestinationModal('rome')">
+                            <div class="quick-destination-card" data-destination="rome">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇮🇹</span>
@@ -273,9 +315,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏛️ Colosseum · ⛲ Trevi Fountain</h5>
+                                        <p>Ancient Rome's glory awaits with iconic ruins, Renaissance art, and authentic Italian cuisine at every corner.</p>
+                                        <div class="hover-tags">
+                                            <span>🍝 Pasta</span>
+                                            <span>🏛️ History</span>
+                                            <span>🎨 Art</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('rome')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="iceland" onclick="openDestinationModal('iceland')">
+                            <div class="quick-destination-card" data-destination="iceland">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇮🇸</span>
@@ -292,10 +348,24 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🌌 Northern Lights · ♨️ Hot Springs</h5>
+                                        <p>Witness nature's raw power with glaciers, volcanoes, waterfalls, and the magical Aurora Borealis.</p>
+                                        <div class="hover-tags">
+                                            <span>🌋 Volcanoes</span>
+                                            <span>🌌 Aurora</span>
+                                            <span>🏔️ Glaciers</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('iceland')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
                             
-                            <div class="quick-destination-card" data-destination="santorini" onclick="openDestinationModal('santorini')">
+                            <div class="quick-destination-card" data-destination="santorini">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇬🇷</span>
@@ -312,9 +382,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏛️ White Villages · 🌅 Sunset Views</h5>
+                                        <p>Iconic whitewashed buildings, blue-domed churches, and the most spectacular sunsets over the Aegean Sea.</p>
+                                        <div class="hover-tags">
+                                            <span>🌅 Sunsets</span>
+                                            <span>🍷 Wine</span>
+                                            <span>📸 Photos</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('santorini')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="dubai" onclick="openDestinationModal('dubai')">
+                            <div class="quick-destination-card" data-destination="dubai">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇦🇪</span>
@@ -331,9 +415,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏙️ Burj Khalifa · 🏖️ Palm Islands</h5>
+                                        <p>Futuristic skyline meets desert adventures with luxury shopping, world-class dining, and innovative architecture.</p>
+                                        <div class="hover-tags">
+                                            <span>🏗️ Skyscrapers</span>
+                                            <span>🛍️ Shopping</span>
+                                            <span>🏜️ Desert</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('dubai')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="maldives" onclick="openDestinationModal('maldives')">
+                            <div class="quick-destination-card" data-destination="maldives">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇲🇻</span>
@@ -350,8 +448,22 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏝️ Private Islands · 🤿 Coral Reefs</h5>
+                                        <p>Ultimate paradise with crystal-clear waters, overwater bungalows, and world-class diving in pristine coral reefs.</p>
+                                        <div class="hover-tags">
+                                            <span>🤿 Diving</span>
+                                            <span>🌴 Luxury</span>
+                                            <span>🌊 Ocean</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('maldives')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                              <div class="quick-destination-card" data-destination="switzerland" onclick="openDestinationModal('switzerland')">
+                              <div class="quick-destination-card" data-destination="switzerland">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇨🇭</span>
@@ -368,9 +480,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>⛰️ Swiss Alps · 🍫 Chocolate</h5>
+                                        <p>Majestic mountain peaks, pristine lakes, charming villages, and world-famous chocolate and cheese experiences.</p>
+                                        <div class="hover-tags">
+                                            <span>⛷️ Skiing</span>
+                                            <span>🍫 Chocolate</span>
+                                            <span>🏔️ Alps</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('switzerland')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="thailand" onclick="openDestinationModal('thailand')">
+                            <div class="quick-destination-card" data-destination="thailand">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇹🇭</span>
@@ -387,9 +513,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏯 Temples · 🌴 Islands</h5>
+                                        <p>Golden temples, tropical islands, vibrant street food, and warm hospitality create an unforgettable Southeast Asian adventure.</p>
+                                        <div class="hover-tags">
+                                            <span>🍜 Thai Food</span>
+                                            <span>🏯 Temples</span>
+                                            <span>🏖️ Beaches</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('thailand')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="morocco" onclick="openDestinationModal('morocco')">
+                            <div class="quick-destination-card" data-destination="morocco">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇲🇦</span>
@@ -406,9 +546,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏜️ Sahara Desert · 🕌 Medinas</h5>
+                                        <p>Exotic bazaars, ancient medinas, vast deserts, and Atlas Mountains create a magical North African experience.</p>
+                                        <div class="hover-tags">
+                                            <span>🏄 Souks</span>
+                                            <span>🐪 Camels</span>
+                                            <span>🏜️ Desert</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('morocco')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="newzealand" onclick="openDestinationModal('newzealand')">
+                            <div class="quick-destination-card" data-destination="newzealand">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇳🇿</span>
@@ -425,9 +579,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏞️ Milford Sound · 🥝 Hobbits</h5>
+                                        <p>Breathtaking fjords, Middle-earth filming locations, adventure sports, and stunning landscapes at every turn.</p>
+                                        <div class="hover-tags">
+                                            <span>🤺 Hiking</span>
+                                            <span>🎥 LOTR</span>
+                                            <span>🌋 Adventure</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('newzealand')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="peru" onclick="openDestinationModal('peru')">
+                            <div class="quick-destination-card" data-destination="peru">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇵🇪</span>
@@ -444,9 +612,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏞️ Machu Picchu · 🌆 Amazon</h5>
+                                        <p>Ancient Incan citadel, Amazon rainforest, colorful markets, and rich cultural heritage in the heart of South America.</p>
+                                        <div class="hover-tags">
+                                            <span>🏛️ Ruins</span>
+                                            <span>🦙 Llamas</span>
+                                            <span>⛰️ Andes</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('peru')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="norway" onclick="openDestinationModal('norway')">
+                            <div class="quick-destination-card" data-destination="norway">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇳🇴</span>
@@ -463,9 +645,23 @@
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🏞️ Fjords · 🌌 Aurora Borealis</h5>
+                                        <p>Dramatic fjords, midnight sun, Northern Lights, and pristine Scandinavian nature create unforgettable memories.</p>
+                                        <div class="hover-tags">
+                                            <span>⛵ Cruises</span>
+                                            <span>🌌 Lights</span>
+                                            <span>🏔️ Nature</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('norway')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="quick-destination-card" data-destination="australia" onclick="openDestinationModal('australia')">
+                            <div class="quick-destination-card" data-destination="australia">
                                 <div class="quick-dest-image">
                                     <div class="image-overlay-quick">
                                         <span class="dest-emoji">🇦🇺</span>
@@ -481,6 +677,20 @@
                                 </div>
                                 <div class="quick-action">
                                     <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="hover-info-panel">
+                                    <div class="hover-info-content">
+                                        <h5>🌊 Great Barrier Reef · 🦘 Wildlife</h5>
+                                        <p>Iconic Opera House, stunning beaches, unique wildlife, and the world's largest coral reef system await exploration.</p>
+                                        <div class="hover-tags">
+                                            <span>🌊 Diving</span>
+                                            <span>🦘 Kangaroos</span>
+                                            <span>🏖️ Beaches</span>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openDestinationModal('australia')">
+                                            <i class="fas fa-info-circle"></i> View Details
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
