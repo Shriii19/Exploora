@@ -1,6 +1,15 @@
 // Destinations page functionality
 document.addEventListener('DOMContentLoaded', function() {
     initializeDestinationsPage();
+    
+    // Check if there's a destination parameter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const destinationParam = urlParams.get('destination');
+    
+    if (destinationParam) {
+        // Scroll to the specific destination or highlight it
+        scrollToDestination(destinationParam);
+    }
 });
 
 // Sample destinations data with regions
@@ -94,6 +103,114 @@ const destinationsData = [
         highlights: ['Grand Palace', 'Wat Pho Temple', 'Floating Markets', 'Khao San Road'],
         bestTime: 'November to February',
         gradient: 'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)'
+    },
+    {
+        name: 'Bali',
+        country: 'Indonesia',
+        region: 'asia',
+        description: 'Tropical paradise with stunning beaches, ancient temples, and lush rice paddies. Perfect for relaxation and adventure.',
+        highlights: ['Beaches', 'Temples', 'Rice Terraces', 'Surfing'],
+        bestTime: 'April to October',
+        gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+    },
+    {
+        name: 'Iceland',
+        country: 'Iceland',
+        region: 'europe',
+        description: 'Witness nature\'s raw power with glaciers, volcanoes, waterfalls, and the magical Aurora Borealis.',
+        highlights: ['Northern Lights', 'Hot Springs', 'Glaciers', 'Waterfalls'],
+        bestTime: 'June to August (summer), September to March (Northern Lights)',
+        gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+    },
+    {
+        name: 'Santorini',
+        country: 'Greece',
+        region: 'europe',
+        description: 'Iconic whitewashed buildings, blue-domed churches, and the most spectacular sunsets over the Aegean Sea.',
+        highlights: ['White Villages', 'Sunset Views', 'Wine Tasting', 'Beaches'],
+        bestTime: 'April to November',
+        gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+    },
+    {
+        name: 'Maldives',
+        country: 'Maldives',
+        region: 'asia',
+        description: 'Ultimate paradise with crystal-clear waters, overwater bungalows, and world-class diving in pristine coral reefs.',
+        highlights: ['Private Islands', 'Coral Reefs', 'Diving', 'Luxury Resorts'],
+        bestTime: 'November to April',
+        gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+    },
+    {
+        name: 'Switzerland',
+        country: 'Switzerland',
+        region: 'europe',
+        description: 'Majestic mountain peaks, pristine lakes, charming villages, and world-famous chocolate and cheese experiences.',
+        highlights: ['Swiss Alps', 'Chocolate', 'Lakes', 'Skiing'],
+        bestTime: 'December to March (skiing), June to September (hiking)',
+        gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+    },
+    {
+        name: 'Thailand',
+        country: 'Thailand',
+        region: 'asia',
+        description: 'Golden temples, tropical islands, vibrant street food, and warm hospitality create an unforgettable Southeast Asian adventure.',
+        highlights: ['Temples', 'Islands', 'Thai Food', 'Beaches'],
+        bestTime: 'November to February',
+        gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+    },
+    {
+        name: 'Morocco',
+        country: 'Morocco',
+        region: 'africa',
+        description: 'Exotic bazaars, ancient medinas, vast deserts, and Atlas Mountains create a magical North African experience.',
+        highlights: ['Sahara Desert', 'Medinas', 'Souks', 'Atlas Mountains'],
+        bestTime: 'March to May, September to November',
+        gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+    },
+    {
+        name: 'New Zealand',
+        country: 'New Zealand',
+        region: 'oceania',
+        description: 'Breathtaking fjords, Middle-earth filming locations, adventure sports, and stunning landscapes at every turn.',
+        highlights: ['Milford Sound', 'LOTR Locations', 'Adventure Sports', 'Nature'],
+        bestTime: 'December to February (summer), June to August (skiing)',
+        gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+    },
+    {
+        name: 'Peru',
+        country: 'Peru',
+        region: 'america',
+        description: 'Ancient Incan citadel, Amazon rainforest, colorful markets, and rich cultural heritage in the heart of South America.',
+        highlights: ['Machu Picchu', 'Amazon', 'Cusco', 'Lake Titicaca'],
+        bestTime: 'May to September',
+        gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+    },
+    {
+        name: 'Norway',
+        country: 'Norway',
+        region: 'europe',
+        description: 'Dramatic fjords, midnight sun, Northern Lights, and pristine Scandinavian nature create unforgettable memories.',
+        highlights: ['Fjords', 'Aurora Borealis', 'Midnight Sun', 'Viking Heritage'],
+        bestTime: 'May to September (fjords), September to March (Northern Lights)',
+        gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+    },
+    {
+        name: 'Australia',
+        country: 'Australia',
+        region: 'oceania',
+        description: 'Iconic Opera House, stunning beaches, unique wildlife, and the world\'s largest coral reef system await exploration.',
+        highlights: ['Great Barrier Reef', 'Sydney Opera House', 'Outback', 'Beaches'],
+        bestTime: 'September to November, March to May',
+        gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+    },
+    {
+        name: 'Singapore',
+        country: 'Singapore',
+        region: 'asia',
+        description: 'Garden city-state where East meets West with architectural marvels and diverse cuisines.',
+        highlights: ['Gardens by the Bay', 'Marina Bay Sands', 'Food Scene', 'Sentosa'],
+        bestTime: 'February to April',
+        gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
     }
 ];
 
@@ -244,6 +361,108 @@ function createDestinationCard(destination) {
     });
     
     return card;
+}
+
+// Scroll to and highlight specific destination or show detailed view
+function scrollToDestination(destinationName) {
+    setTimeout(() => {
+        const normalizedName = destinationName.toLowerCase();
+        
+        // Find the destination in data
+        const destinationData = destinationsData.find(dest => 
+            dest.name.toLowerCase() === normalizedName || 
+            dest.name.toLowerCase().includes(normalizedName) ||
+            normalizedName.includes(dest.name.toLowerCase())
+        );
+        
+        if (destinationData) {
+            // Show detailed view for the destination
+            showDestinationDetails(destinationData);
+        } else {
+            // Try to find and scroll to the card
+            const destinationCard = document.querySelector(`[data-destination="${normalizedName}"]`);
+            
+            if (destinationCard) {
+                destinationCard.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                // Add highlight effect
+                destinationCard.style.animation = 'pulse 1s ease-in-out 3';
+                destinationCard.style.boxShadow = '0 0 30px rgba(102, 126, 234, 0.6)';
+                
+                setTimeout(() => {
+                    destinationCard.style.boxShadow = '';
+                }, 3000);
+            }
+        }
+    }, 500);
+}
+
+// Show detailed destination information
+function showDestinationDetails(destination) {
+    const searchResults = document.getElementById('searchResults');
+    const destinationDetails = document.getElementById('destinationDetails');
+    
+    if (!searchResults || !destinationDetails) return;
+    
+    // Hide regular destinations grid and show search results
+    const regularSection = document.querySelector('.destinations-section');
+    if (regularSection) {
+        regularSection.style.display = 'none';
+    }
+    
+    searchResults.classList.remove('hidden');
+    
+    // Create detailed view
+    destinationDetails.innerHTML = `
+        <div class="destination-detail-card">
+            <div class="detail-hero" style="background: ${destination.gradient};">
+                <div class="detail-hero-content">
+                    <h1>${destination.name}, ${destination.country}</h1>
+                    <p class="detail-subtitle">${destination.description}</p>
+                    <div class="detail-badges">
+                        <span class="detail-badge"><i class="fas fa-calendar"></i> Best Time: ${destination.bestTime}</span>
+                        <span class="detail-badge"><i class="fas fa-map-marker-alt"></i> ${destination.region.toUpperCase()}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3><i class="fas fa-star"></i> Top Attractions</h3>
+                    <div class="highlights-grid">
+                        ${destination.highlights.map(highlight => `
+                            <div class="highlight-item">
+                                <i class="fas fa-map-pin"></i>
+                                <span>${highlight}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3><i class="fas fa-info-circle"></i> About This Destination</h3>
+                    <p class="detail-description">${destination.description}</p>
+                </div>
+                
+                <div class="detail-actions">
+                    <button class="btn btn-primary btn-lg" onclick="window.location.href='index.html?search=${destination.name.toLowerCase()}'">
+                        <i class="fas fa-search"></i>
+                        Explore in Detail
+                    </button>
+                    <button class="btn btn-outline btn-lg" onclick="window.location.href='destinations.html'">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to All Destinations
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Handle search parameter from URL
