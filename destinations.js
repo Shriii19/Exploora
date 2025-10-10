@@ -331,10 +331,16 @@ function createDestinationCard(destination) {
                     <i class="fas fa-calendar"></i> 
                     ${destination.bestTime}
                 </span>
-                <button class="btn btn-primary destination-explore-btn">
-                    <i class="fas fa-search"></i>
-                    Explore
-                </button>
+                <div class="destination-actions">
+                    <button class="btn btn-primary destination-explore-btn">
+                        <i class="fas fa-search"></i>
+                        Explore
+                    </button>
+                    <a href="destination-detail.html?destination=${destination.name.toLowerCase().replace(/\s+/g, '')}" class="btn btn-outline destination-info-btn">
+                        <i class="fas fa-info-circle"></i>
+                        More Info
+                    </a>
+                </div>
             </div>
         </div>
     `;
@@ -366,36 +372,37 @@ function createDestinationCard(destination) {
 // Scroll to and highlight specific destination or show detailed view
 function scrollToDestination(destinationName) {
     setTimeout(() => {
-        const normalizedName = destinationName.toLowerCase();
+        const normalizedName = destinationName.toLowerCase().replace(/\s+/g, '');
         
-        // Find the destination in data
-        const destinationData = destinationsData.find(dest => 
-            dest.name.toLowerCase() === normalizedName || 
-            dest.name.toLowerCase().includes(normalizedName) ||
-            normalizedName.includes(dest.name.toLowerCase())
-        );
+        // Try to find the destination card by data-city attribute
+        const allCards = document.querySelectorAll('.destination-card[data-city]');
+        let destinationCard = null;
         
-        if (destinationData) {
-            // Show detailed view for the destination
-            showDestinationDetails(destinationData);
-        } else {
-            // Try to find and scroll to the card
-            const destinationCard = document.querySelector(`[data-destination="${normalizedName}"]`);
-            
-            if (destinationCard) {
-                destinationCard.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-                
-                // Add highlight effect
-                destinationCard.style.animation = 'pulse 1s ease-in-out 3';
-                destinationCard.style.boxShadow = '0 0 30px rgba(102, 126, 234, 0.6)';
-                
-                setTimeout(() => {
-                    destinationCard.style.boxShadow = '';
-                }, 3000);
+        for (let card of allCards) {
+            const cardCity = card.dataset.city.toLowerCase().replace(/\s+/g, '');
+            if (cardCity === normalizedName || cardCity.includes(normalizedName) || normalizedName.includes(cardCity)) {
+                destinationCard = card;
+                break;
             }
+        }
+        
+        if (destinationCard) {
+            // Scroll to the card smoothly
+            destinationCard.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // Add highlight effect
+            destinationCard.style.animation = 'pulse 1s ease-in-out 3';
+            destinationCard.style.boxShadow = '0 0 30px rgba(102, 126, 234, 0.6)';
+            destinationCard.style.transform = 'scale(1.05)';
+            destinationCard.style.transition = 'all 0.3s ease';
+            
+            setTimeout(() => {
+                destinationCard.style.boxShadow = '';
+                destinationCard.style.transform = 'scale(1)';
+            }, 3000);
         }
     }, 500);
 }
