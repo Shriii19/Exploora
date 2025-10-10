@@ -6117,6 +6117,28 @@ body {
     border-top: 1px solid var(--gray-200);
 }
 
+.destination-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.destination-info-btn {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.destination-info-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
 .destination-pattern {
     position: absolute;
     top: 0;
