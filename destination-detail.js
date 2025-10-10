@@ -376,6 +376,141 @@ const detailedDestinationsData = {
             'Stay hydrated - it\'s hot and humid year-round',
             'Book Sentosa attractions as packages for better value'
         ]
+    },
+    'bali': {
+        name: 'Bali',
+        country: 'Indonesia',
+        region: 'Asia',
+        emoji: '🏝️',
+        gradient: 'linear-gradient(135deg, #56CCF2 0%, #2F80ED 100%)',
+        description: 'Bali is Indonesia\'s tropical paradise, known for its stunning beaches, ancient temples, and rich cultural heritage. This island offers a perfect blend of spiritual tranquility, adventure activities, and natural beauty. From terraced rice paddies to sacred monkey forests, Bali captivates every traveler.',
+        bestTime: 'April to October',
+        language: 'Indonesian, Balinese',
+        currency: 'Indonesian Rupiah (IDR)',
+        timezone: 'GMT+8',
+        attractions: [
+            {
+                name: 'Tanah Lot Temple',
+                description: 'Iconic sea temple perched on a rock formation, offering spectacular sunset views and spiritual significance.'
+            },
+            {
+                name: 'Ubud Rice Terraces',
+                description: 'Stunning UNESCO-listed rice paddies with traditional irrigation system and lush green landscapes.'
+            },
+            {
+                name: 'Sacred Monkey Forest',
+                description: 'Ancient temple complex in the jungle inhabited by playful long-tailed macaque monkeys.'
+            },
+            {
+                name: 'Mount Batur',
+                description: 'Active volcano offering sunrise trekking experiences with breathtaking panoramic views.'
+            },
+            {
+                name: 'Seminyak Beach',
+                description: 'Upscale beach area known for surfing, beach clubs, boutique shopping, and vibrant nightlife.'
+            },
+            {
+                name: 'Tirta Empul Temple',
+                description: 'Sacred water temple where locals perform purification rituals in natural spring-fed pools.'
+            }
+        ],
+        tips: [
+            'Dress modestly when visiting temples - sarongs are often required',
+            'Negotiate prices at local markets - haggling is expected',
+            'Rent a scooter for easy transportation, but drive carefully',
+            'Try traditional Balinese massage and spa treatments',
+            'Book sunrise Mount Batur trek at least a day in advance'
+        ]
+    },
+    'rome': {
+        name: 'Rome',
+        country: 'Italy',
+        region: 'Europe',
+        emoji: '🏛️',
+        gradient: 'linear-gradient(135deg, #F093FB 0%, #F5576C 100%)',
+        description: 'Rome, the Eternal City, is a living museum where ancient history meets modern Italian life. With nearly 3,000 years of history, Rome offers unparalleled historical sites, world-class art, and delicious cuisine. Every corner reveals stunning architecture, fountains, and piazzas.',
+        bestTime: 'April to June, September to October',
+        language: 'Italian',
+        currency: 'Euro (EUR)',
+        timezone: 'GMT+1',
+        attractions: [
+            {
+                name: 'Colosseum',
+                description: 'Ancient amphitheater and iconic symbol of Imperial Rome, once hosting gladiatorial contests.'
+            },
+            {
+                name: 'Vatican Museums',
+                description: 'Vast museum complex featuring the Sistine Chapel with Michelangelo\'s magnificent frescoes.'
+            },
+            {
+                name: 'Trevi Fountain',
+                description: 'Baroque masterpiece where tradition says throwing a coin ensures your return to Rome.'
+            },
+            {
+                name: 'Roman Forum',
+                description: 'Ancient plaza surrounded by ruins of important government buildings from Roman civilization.'
+            },
+            {
+                name: 'Pantheon',
+                description: 'Remarkably preserved Roman temple with the world\'s largest unreinforced concrete dome.'
+            },
+            {
+                name: 'Spanish Steps',
+                description: 'Monumental stairway of 135 steps, a popular gathering place in the heart of Rome.'
+            }
+        ],
+        tips: [
+            'Book Colosseum and Vatican tickets online weeks in advance',
+            'Visit popular sites early morning or late afternoon to avoid crowds',
+            'Try authentic Roman cuisine: carbonara, cacio e pepe, supplì',
+            'Dress modestly for churches - cover shoulders and knees',
+            'Get a Roma Pass for skip-the-line access and public transport'
+        ]
+    },
+    'santorini': {
+        name: 'Santorini',
+        country: 'Greece',
+        region: 'Europe',
+        emoji: '🇬🇷',
+        gradient: 'linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%)',
+        description: 'Santorini is Greece\'s most spectacular island, famous for its dramatic cliffs, white-washed buildings with blue domes, and stunning sunsets. This volcanic island in the Aegean Sea offers romantic ambiance, excellent wine, and breathtaking caldera views that make it a bucket-list destination.',
+        bestTime: 'April to November',
+        language: 'Greek',
+        currency: 'Euro (EUR)',
+        timezone: 'GMT+2',
+        attractions: [
+            {
+                name: 'Oia Village',
+                description: 'Picture-perfect village with iconic blue-domed churches and the world\'s most famous sunset views.'
+            },
+            {
+                name: 'Red Beach',
+                description: 'Unique beach with dramatic red volcanic cliffs and crystal-clear turquoise waters.'
+            },
+            {
+                name: 'Akrotiri Archaeological Site',
+                description: 'Ancient Minoan city preserved by volcanic ash, often called the "Greek Pompeii".'
+            },
+            {
+                name: 'Wine Tours',
+                description: 'Visit traditional wineries carved into volcanic rock, tasting unique Assyrtiko and Vinsanto wines.'
+            },
+            {
+                name: 'Caldera Cruise',
+                description: 'Boat tours around the volcanic caldera with hot springs swimming and sunset viewing.'
+            },
+            {
+                name: 'Fira Town',
+                description: 'Island capital with stunning caldera views, cable car access, and vibrant nightlife.'
+            }
+        ],
+        tips: [
+            'Book accommodations with caldera views well in advance for sunset rooms',
+            'Arrive in Oia by 7 PM to secure a good sunset viewing spot',
+            'Rent an ATV or quad bike to explore the island independently',
+            'Try local specialties: fava, tomatokeftedes, and fresh seafood',
+            'Visit in shoulder seasons (May or October) to avoid peak crowds'
+        ]
     }
 };
 

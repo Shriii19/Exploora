@@ -60,6 +60,98 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
+            <!-- Search and Filter Section -->
+            <section class="search-filter-section" data-reveal="fade">
+                <div class="search-filter-container">
+                    <!-- Search Bar -->
+                    <div class="search-bar-wrapper">
+                        <div class="search-input-group">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="destinationSearch" class="search-input" placeholder="Search destinations...">
+                            <button class="clear-search" id="clearSearch" style="display: none;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Tabs -->
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-region="all">
+                            <i class="fas fa-globe"></i>
+                            All Regions
+                        </button>
+                        <button class="filter-tab" data-region="europe">
+                            <i class="fas fa-landmark"></i>
+                            Europe
+                        </button>
+                        <button class="filter-tab" data-region="asia">
+                            <i class="fas fa-torii-gate"></i>
+                            Asia
+                        </button>
+                        <button class="filter-tab" data-region="americas">
+                            <i class="fas fa-flag-usa"></i>
+                            Americas
+                        </button>
+                        <button class="filter-tab" data-region="oceania">
+                            <i class="fas fa-water"></i>
+                            Oceania
+                        </button>
+                        <button class="filter-tab" data-region="middleeast">
+                            <i class="fas fa-mosque"></i>
+                            Middle East
+                        </button>
+                    </div>
+
+                    <!-- Advanced Filters -->
+                    <div class="advanced-filters">
+                        <div class="filter-group">
+                            <label><i class="fas fa-tag"></i> Budget</label>
+                            <select id="budgetFilter" class="filter-select">
+                                <option value="all">All Budgets</option>
+                                <option value="budget">Budget-Friendly</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="luxury">Luxury</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label><i class="fas fa-hiking"></i> Activities</label>
+                            <select id="activityFilter" class="filter-select">
+                                <option value="all">All Activities</option>
+                                <option value="beach">Beach & Relaxation</option>
+                                <option value="adventure">Adventure</option>
+                                <option value="culture">Culture & History</option>
+                                <option value="urban">City & Urban</option>
+                                <option value="nature">Nature & Wildlife</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label><i class="fas fa-sort"></i> Sort By</label>
+                            <select id="sortFilter" class="filter-select">
+                                <option value="popular">Most Popular</option>
+                                <option value="name">Name (A-Z)</option>
+                                <option value="recent">Recently Added</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-outline reset-filters" id="resetFilters">
+                            <i class="fas fa-redo"></i>
+                            Reset Filters
+                        </button>
+                    </div>
+
+                    <!-- Results Summary -->
+                    <div class="results-summary">
+                        <span id="resultsCount">Showing 9 destinations</span>
+                        <button class="btn btn-outline view-favorites" id="viewFavorites">
+                            <i class="fas fa-heart"></i>
+                            View Saved (<span id="favCount">0</span>)
+                        </button>
+                    </div>
+                </div>
+            </section>
+
             <!-- Featured Destinations Section -->
             <section class="destinations-section" data-reveal="fade">
                 <div class="section-header">
@@ -74,10 +166,13 @@
                 </div>
                 
                 <div class="destinations-grid" data-animate="stagger">
-                    <div class="destination-card premium" data-destination="paris">
+                    <div class="destination-card premium" data-destination="paris" data-region="europe" data-budget="luxury" data-activity="culture">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Most Popular</div>
+                            <button class="favorite-btn" data-destination="paris" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
@@ -105,18 +200,21 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>2.4k searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=paris" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="destination-card premium" data-destination="tokyo">
+                    <div class="destination-card premium" data-destination="tokyo" data-region="asia" data-budget="moderate" data-activity="culture">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Trending</div>
+                            <button class="favorite-btn" data-destination="tokyo" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
@@ -144,18 +242,21 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>1.9k searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=tokyo" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="destination-card premium" data-destination="new york">
+                    <div class="destination-card premium" data-destination="new york" data-region="americas" data-budget="luxury" data-activity="urban">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Hot</div>
+                            <button class="favorite-btn" data-destination="newyork" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
@@ -183,18 +284,21 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>1.7k searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=newyork" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="destination-card premium" data-destination="sydney">
+                    <div class="destination-card premium" data-destination="sydney" data-region="oceania" data-budget="moderate" data-activity="beach">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Featured</div>
+                            <button class="favorite-btn" data-destination="sydney" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
@@ -222,18 +326,21 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>1.2k searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=sydney" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="destination-card premium" data-destination="london">
+                    <div class="destination-card premium" data-destination="london" data-region="europe" data-budget="moderate" data-activity="culture">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Classic</div>
+                            <button class="favorite-btn" data-destination="london" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
@@ -261,18 +368,21 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>1.5k searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=london" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="destination-card premium" data-destination="dubai">
+                    <div class="destination-card premium" data-destination="dubai" data-region="middleeast" data-budget="luxury" data-activity="urban">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Luxury</div>
+                            <button class="favorite-btn" data-destination="dubai" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
@@ -300,23 +410,25 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>1.1k searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=dubai" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="destination-card premium" data-destination="bali">
+                    <div class="destination-card premium" data-destination="bali" data-region="asia" data-budget="budget" data-activity="beach">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Paradise</div>
+                            <button class="favorite-btn" data-destination="bali" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
                                 <h3>Bali, Indonesia</h3>
-                                
                             </div>
                             <p class="destination-description">
                                 Tropical paradise with ancient temples, pristine beaches, and vibrant cultural traditions.
@@ -340,18 +452,21 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>1.8k searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=bali" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="destination-card premium" data-destination="rome">
+                    <div class="destination-card premium" data-destination="rome" data-region="europe" data-budget="moderate" data-activity="culture">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Historic</div>
+                            <button class="favorite-btn" data-destination="rome" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
@@ -379,18 +494,21 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>1.3k searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=rome" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="destination-card premium" data-destination="santorini">
+                    <div class="destination-card premium" data-destination="santorini" data-region="europe" data-budget="luxury" data-activity="beach">
                         <div class="destination-image">
                             <div class="image-overlay"></div>
                             <div class="destination-badge">Romantic</div>
+                            <button class="favorite-btn" data-destination="santorini" title="Save to favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
                         </div>
                         <div class="destination-content">
                             <div class="destination-header">
@@ -418,10 +536,10 @@
                                     <i class="fas fa-compass"></i>
                                     Explore Now
                                 </button>
-                                <div class="search-count">
-                                    <i class="fas fa-users"></i>
-                                    <span>950 searches this week</span>
-                                </div>
+                                <a href="destination-detail.html?destination=santorini" class="btn btn-outline">
+                                    <i class="fas fa-info-circle"></i>
+                                    More Info
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -447,6 +565,7 @@
     <script src="components/footer.js?v=2.0"></script>
     <script src="script.js?v=2.0"></script>
     <script src="destinations.js?v=2.0"></script>
+    <script src="js/destinations-advanced.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>
