@@ -257,6 +257,126 @@
             margin-top: 2px;
         }
 
+        /* Plan Your Trip CTA Section */
+        .plan-trip-cta-section {
+            margin: 60px 0;
+        }
+
+        .plan-trip-cta-card {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            padding: 50px;
+            color: white;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .plan-trip-cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cta-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .cta-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-description {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .cta-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .cta-feature i {
+            color: #48bb78;
+            font-size: 20px;
+        }
+
+        .cta-button-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            color: #667eea;
+            padding: 20px 45px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid transparent;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: #ffd700;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+        }
+
+        .cta-button-large i:last-child {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button-large:hover i:last-child {
+            transform: translateX(5px);
+        }
+
+        .cta-decoration {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            font-size: 300px;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
         @media (max-width: 768px) {
             .detail-hero-title {
                 font-size: 36px;
@@ -273,6 +393,27 @@
             .action-btn {
                 width: 100%;
                 justify-content: center;
+            }
+            .plan-trip-cta-card {
+                padding: 35px 25px;
+            }
+            .cta-title {
+                font-size: 28px;
+            }
+            .cta-description {
+                font-size: 16px;
+            }
+            .cta-features {
+                grid-template-columns: 1fr;
+            }
+            .cta-button-large {
+                width: 100%;
+                justify-content: center;
+                font-size: 18px;
+                padding: 18px 35px;
+            }
+            .cta-icon {
+                font-size: 50px;
             }
         }
     </style>
@@ -329,6 +470,47 @@
                         Travel Tips
                     </h2>
                     <ul class="tips-list" id="tipsList"></ul>
+                </div>
+
+                <!-- Plan Your Trip CTA Section -->
+                <div class="detail-section plan-trip-cta-section">
+                    <div class="plan-trip-cta-card">
+                        <div class="cta-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="cta-content">
+                            <h2 class="cta-title">Ready to Plan Your Journey?</h2>
+                            <p class="cta-description">
+                                Create your personalized itinerary, book accommodations, and discover the best activities for your dream vacation.
+                            </p>
+                            <div class="cta-features">
+                                <div class="cta-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Personalized Itineraries</span>
+                                </div>
+                                <div class="cta-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Budget Planning</span>
+                                </div>
+                                <div class="cta-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Activity Recommendations</span>
+                                </div>
+                                <div class="cta-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Real-time Updates</span>
+                                </div>
+                            </div>
+                            <a href="planner.html" class="cta-button-large">
+                                <i class="fas fa-paper-plane"></i>
+                                Plan Your Trip Here
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="cta-decoration">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Action Buttons -->
