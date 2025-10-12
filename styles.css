@@ -10653,14 +10653,54 @@ body {
 /* Update destination-actions to fit both buttons */
 .destination-actions {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .destination-actions .btn {
     flex: 1;
-    min-width: 120px;
+    min-width: 140px;
     justify-content: center;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.destination-actions .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.destination-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.destination-actions .btn-outline {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.destination-actions .btn-outline:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.destination-actions .btn i {
+    font-size: 1rem;
 }
 
 /* No Results Message */
@@ -10739,9 +10779,11 @@ body {
     
     .destination-actions {
         flex-direction: column;
+        gap: 10px;
     }
     
     .destination-actions .btn {
         width: 100%;
+        min-width: unset;
     }
 }
