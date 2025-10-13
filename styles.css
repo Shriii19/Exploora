@@ -4967,20 +4967,28 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-bottom: var(--space-3xl);
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 1200px) {
     .destinations-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+        width: 100%;
     }
     
     .destination-card {
         min-height: 550px;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
     .destination-image {
         height: 280px;
+        background-color: #f3f4f6;
     }
     
     .destination-content {
@@ -4988,18 +4996,76 @@ body {
     }
 }
 
+@media (max-width: 320px) {
+    .destinations-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        width: 100%;
+        padding: 0;
+    }
+    
+    .destination-card {
+        min-height: auto;
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin: 0 auto 1rem;
+        max-width: 100%;
+    }
+    
+    .destination-image {
+        height: 200px;
+        background-color: #f3f4f6;
+    }
+    
+    .destination-content {
+        padding: 0.875rem;
+    }
+    
+    .destination-header h3 {
+        font-size: 1.1rem;
+    }
+}
+
 @media (max-width: 900px) {
     .destinations-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.25rem;
+        width: 100%;
     }
     
     .destination-card {
         min-height: 520px;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
     .destination-image {
         height: 240px;
+        background-color: #f3f4f6;
+    }
+}
+
+@media (max-width: 480px) {
+    .destinations-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        width: 100%;
+    }
+    
+    .destination-card {
+        min-height: auto;
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-bottom: 1rem;
+    }
+    
+    .destination-image {
+        height: 220px;
+        background-color: #f3f4f6;
+    }
+    
+    .destination-content {
+        padding: 1rem;
     }
 }
 
@@ -5007,15 +5073,21 @@ body {
     .destinations-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        width: 100%;
+        display: grid;
     }
     
     .destination-card {
         min-height: auto;
         max-width: 100%;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: white;
     }
     
     .destination-image {
         height: 250px;
+        background-color: #f3f4f6;
     }
     
     .destination-content {
@@ -5039,7 +5111,7 @@ body {
 .destination-card {
     background: var(--white);
     border-radius: var(--radius-lg);
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
@@ -5049,6 +5121,9 @@ body {
     flex-direction: column;
     height: 100%;
     min-height: 600px;
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
 }
 
 .destination-card::before {
@@ -5075,11 +5150,13 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: #f3f4f6;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
     padding: var(--space-lg);
     flex-shrink: 0;
+    z-index: 1;
 }
 
 /* Destination-specific backgrounds */
@@ -6009,6 +6086,9 @@ body {
     flex-direction: column;
     position: relative;
     z-index: 2;
+    background: white;
+    opacity: 1;
+    visibility: visible;
 }
 
 .destination-header {
@@ -6049,6 +6129,51 @@ body {
     line-height: 1.6;
     font-size: 0.95rem;
     flex-grow: 1;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Force all destination cards to be visible */
+.destinations-section {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    min-height: auto;
+}
+
+.destinations-section .destination-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+}
+
+.destinations-section .destinations-grid {
+    display: grid !important;
+    width: 100%;
+    grid-auto-rows: auto;
+}
+
+/* Ensure images always have a background */
+.destination-card .destination-image {
+    background-color: #f3f4f6;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Smooth fade-in animation for cards */
+@keyframes smoothFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.destination-card.fade-in-ready {
+    animation: smoothFadeIn 0.5s ease-out forwards;
 }
 
 .destination-features {

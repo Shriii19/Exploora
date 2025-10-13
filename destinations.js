@@ -269,19 +269,37 @@ function displayDestinations(region) {
         destinationsGrid.appendChild(destinationCard);
     });
     
-    // Add animation
+    // Ensure all cards are visible immediately, then add smooth animation
+    const cards = destinationsGrid.querySelectorAll('.destination-card');
+    
+    // First, make all cards visible to prevent black screen
+    cards.forEach(card => {
+        card.style.visibility = 'visible';
+        card.style.display = 'flex';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(15px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    // Then animate them in with a slight delay
     setTimeout(() => {
-        destinationsGrid.querySelectorAll('.destination-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.5s ease';
-            
+        cards.forEach((card, index) => {
             setTimeout(() => {
                 card.style.opacity = '1';
                 card.style.transform = 'translateY(0)';
-            }, index * 100);
+                card.classList.add('fade-in-ready');
+            }, index * 80);
         });
-    }, 50);
+    }, 100);
+    
+    // Fallback: ensure all cards are visible after 2 seconds
+    setTimeout(() => {
+        cards.forEach(card => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+            card.style.visibility = 'visible';
+        });
+    }, 2000);
 }
 
 function createDestinationCard(destination) {
