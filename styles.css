@@ -4963,11 +4963,12 @@ body {
 }
 
 .destinations-grid {
-    display: grid;
+    display: grid !important;
+    width: 100%;
+    grid-auto-rows: auto;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-bottom: var(--space-3xl);
-    width: 100%;
     min-height: auto;
     position: relative;
     z-index: 1;
@@ -5109,9 +5110,12 @@ body {
 }
 
 .destination-card {
-    background: var(--white);
+    overflow: visible; /* Changed from hidden */
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1;
+    background: white;
     border-radius: var(--radius-lg);
-    overflow: visible;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
@@ -5121,9 +5125,6 @@ body {
     flex-direction: column;
     height: 100%;
     min-height: 600px;
-    opacity: 1;
-    visibility: visible;
-    z-index: 1;
 }
 
 .destination-card::before {
@@ -5144,13 +5145,13 @@ body {
 }
 
 .destination-image {
+    background-color: #f3f4f6; /* Fallback gray */
     position: relative;
     overflow: hidden;
     height: 320px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #f3f4f6;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
