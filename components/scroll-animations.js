@@ -12,14 +12,16 @@ class ScrollAnimations {
 
     setupIntersectionObserver() {
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.05,
+            rootMargin: '50px 0px 50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-in');
+                    // Unobserve after animating to improve performance
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -29,10 +31,27 @@ class ScrollAnimations {
             '.feature-card, .destination-card, .section-content, .hero-content, .stats-item, .blog-card'
         );
         
-        animateElements.forEach(el => {
+        animateElements.forEach((el, index) => {
             el.classList.add('animate-on-scroll');
             observer.observe(el);
+            
+            // Fallback: Ensure all elements become visible after 3 seconds
+            setTimeout(() => {
+                if (!el.classList.contains('animate-in')) {
+                    el.classList.add('animate-in');
+                }
+            }, 3000 + (index * 50));
         });
+        
+        // Immediately show elements that are already in viewport
+        setTimeout(() => {
+            animateElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('animate-in');
+                }
+            });
+        }, 100);
     }
 
     setupScrollEffects() {
@@ -104,13 +123,21 @@ class ScrollAnimations {
 const animationStyles = `
     .animate-on-scroll {
         opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(20px);
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
     }
 
     .animate-in {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* Ensure destination cards are always visible after load */
+    .destination-card {
+        min-height: 500px;
+        background: white;
     }
 
     .floating-element {
@@ -128,6 +155,21 @@ const animationStyles = `
     .animate-on-scroll:nth-child(4) { transition-delay: 300ms; }
     .animate-on-scroll:nth-child(5) { transition-delay: 400ms; }
     .animate-on-scroll:nth-child(6) { transition-delay: 500ms; }
+    .animate-on-scroll:nth-child(7) { transition-delay: 600ms; }
+    .animate-on-scroll:nth-child(8) { transition-delay: 700ms; }
+    .animate-on-scroll:nth-child(9) { transition-delay: 800ms; }
+    .animate-on-scroll:nth-child(n+10) { transition-delay: 900ms; }
+    
+    /* Force visibility for destination cards after animation */
+    .destinations-grid .destination-card {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .destinations-grid .animate-on-scroll.animate-in {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
 
     /* Pulse animation for loading states */
     @keyframes pulse {
