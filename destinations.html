@@ -670,14 +670,21 @@
             };
             
             // Open modal when clicking destination card
-            destinationCards.forEach(card => {
+            destinationCards.forEach((card, index) => {
+                console.log(`Setting up card ${index + 1}:`, card.dataset.destination);
+                
                 card.addEventListener('click', function(e) {
-                    // Don't open modal if clicking buttons or favorite button
-                    if (e.target.closest('.destination-actions') || e.target.closest('.favorite-btn')) {
+                    console.log('Card clicked:', this.dataset.destination);
+                    console.log('Click target:', e.target);
+                    
+                    // Don't open modal if clicking buttons inside destination-actions
+                    if (e.target.closest('.btn') || e.target.closest('.favorite-btn')) {
+                        console.log('Button clicked, not opening modal');
                         return;
                     }
                     
                     const destination = this.dataset.destination;
+                    console.log('Opening modal for:', destination);
                     const data = destinationData[destination];
                     
                     if (data) {
@@ -691,9 +698,15 @@
                         
                         modal.classList.add('active');
                         document.body.style.overflow = 'hidden';
+                        console.log('Modal opened successfully');
+                    } else {
+                        console.error('No data found for destination:', destination);
+                        console.log('Available destinations:', Object.keys(destinationData));
                     }
                 });
             });
+            
+            console.log(`Total cards with listeners: ${destinationCards.length}`);
             
             // Close modal functions
             function closeModal() {
