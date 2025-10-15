@@ -617,42 +617,62 @@ function loadDestinationDetails(destinationName) {
     
     // Update "Add to Trip Planner" button to include destination data
     const addToTripBtn = document.getElementById('addToTripBtn');
-    addToTripBtn.href = `planner.html?add=${normalizedName}`;
+    if (addToTripBtn) {
+        addToTripBtn.href = `planner.html?add=${normalizedName}`;
+    }
+    
+    console.log(`Successfully loaded details for ${destination.name}`);
+    } catch (error) {
+        console.error('Error loading destination details:', error);
+        alert('Error loading destination details. Redirecting...');
+        setTimeout(() => {
+            window.location.href = 'destinations.html';
+        }, 2000);
+    }
 }
 
 function setupSaveButton() {
-    const saveBtn = document.getElementById('saveBtn');
-    const urlParams = new URLSearchParams(window.location.search);
-    const destinationName = urlParams.get('destination');
-    
-    // Check if already saved
-    const savedDestinations = JSON.parse(localStorage.getItem('savedDestinations') || '[]');
-    if (savedDestinations.includes(destinationName)) {
-        saveBtn.innerHTML = '<i class="fas fa-bookmark"></i> Saved';
-        saveBtn.style.background = '#48bb78';
-        saveBtn.style.color = 'white';
-        saveBtn.style.borderColor = '#48bb78';
-    }
-    
-    saveBtn.addEventListener('click', function() {
-        let saved = JSON.parse(localStorage.getItem('savedDestinations') || '[]');
+    try {
+        const saveBtn = document.getElementById('saveBtn');
+        if (!saveBtn) {
+            console.warn('Save button not found');
+            return;
+        }
         
-        if (saved.includes(destinationName)) {
-            // Remove from saved
-            saved = saved.filter(d => d !== destinationName);
-            saveBtn.innerHTML = '<i class="fas fa-bookmark"></i> Save for Later';
-            saveBtn.style.background = '';
-            saveBtn.style.color = '';
-            saveBtn.style.borderColor = '';
-        } else {
-            // Add to saved
-            saved.push(destinationName);
+        const urlParams = new URLSearchParams(window.location.search);
+        const destinationName = urlParams.get('destination');
+        
+        // Check if already saved
+        const savedDestinations = JSON.parse(localStorage.getItem('savedDestinations') || '[]');
+        if (savedDestinations.includes(destinationName)) {
             saveBtn.innerHTML = '<i class="fas fa-bookmark"></i> Saved';
             saveBtn.style.background = '#48bb78';
             saveBtn.style.color = 'white';
             saveBtn.style.borderColor = '#48bb78';
         }
         
-        localStorage.setItem('savedDestinations', JSON.stringify(saved));
-    });
+        saveBtn.addEventListener('click', function() {
+            let saved = JSON.parse(localStorage.getItem('savedDestinations') || '[]');
+            
+            if (saved.includes(destinationName)) {
+                // Remove from saved
+                saved = saved.filter(d => d !== destinationName);
+                saveBtn.innerHTML = '<i class="fas fa-bookmark"></i> Save for Later';
+                saveBtn.style.background = '';
+                saveBtn.style.color = '';
+                saveBtn.style.borderColor = '';
+            } else {
+                // Add to saved
+                saved.push(destinationName);
+                saveBtn.innerHTML = '<i class="fas fa-bookmark"></i> Saved';
+                saveBtn.style.background = '#48bb78';
+                saveBtn.style.color = 'white';
+                saveBtn.style.borderColor = '#48bb78';
+            }
+            
+            localStorage.setItem('savedDestinations', JSON.stringify(saved));
+        });
+    } catch (error) {
+        console.error('Error setting up save button:', error);
+    }
 }
