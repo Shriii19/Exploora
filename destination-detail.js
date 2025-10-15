@@ -1,18 +1,25 @@
 // Destination detail page functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Get destination from URL parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const destinationName = urlParams.get('destination');
-    
-    if (destinationName) {
-        loadDestinationDetails(destinationName);
-    } else {
-        // If no destination specified, redirect to destinations page
-        window.location.href = 'destinations.html';
+    try {
+        // Get destination from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const destinationName = urlParams.get('destination');
+        
+        if (destinationName) {
+            loadDestinationDetails(destinationName);
+        } else {
+            // If no destination specified, redirect to destinations page
+            console.warn('No destination specified in URL');
+            setTimeout(() => {
+                window.location.href = 'destinations.html';
+            }, 2000);
+        }
+        
+        // Setup save button
+        setupSaveButton();
+    } catch (error) {
+        console.error('Error initializing destination detail page:', error);
     }
-    
-    // Setup save button
-    setupSaveButton();
 });
 
 // Extended destination data with full details
@@ -515,26 +522,36 @@ const detailedDestinationsData = {
 };
 
 function loadDestinationDetails(destinationName) {
-    const normalizedName = destinationName.toLowerCase().replace(/\s+/g, '');
-    const destination = detailedDestinationsData[normalizedName];
-    
-    if (!destination) {
-        // If destination not found, redirect to destinations page
-        alert('Destination not found. Redirecting to destinations page...');
-        window.location.href = 'destinations.html';
-        return;
-    }
-    
-    // Update page title
-    document.title = `${destination.name} - Travel Explorer`;
-    
-    // Update hero section
-    const detailHero = document.getElementById('detailHero');
-    detailHero.style.background = destination.gradient;
-    
-    document.getElementById('heroEmoji').textContent = destination.emoji;
-    document.getElementById('heroTitle').textContent = destination.name;
-    document.getElementById('heroSubtitle').textContent = destination.country;
+    try {
+        const normalizedName = destinationName.toLowerCase().replace(/\s+/g, '');
+        const destination = detailedDestinationsData[normalizedName];
+        
+        if (!destination) {
+            // If destination not found, redirect to destinations page
+            console.error(`Destination '${destinationName}' not found in data`);
+            alert('Destination not found. Redirecting to destinations page...');
+            window.location.href = 'destinations.html';
+            return;
+        }
+        
+        console.log(`Loading details for: ${destination.name}`);
+        
+        // Update page title
+        document.title = `${destination.name} - Travel Explorer`;
+        
+        // Update hero section
+        const detailHero = document.getElementById('detailHero');
+        if (detailHero) {
+            detailHero.style.background = destination.gradient;
+        }
+        
+        const heroEmoji = document.getElementById('heroEmoji');
+        const heroTitle = document.getElementById('heroTitle');
+        const heroSubtitle = document.getElementById('heroSubtitle');
+        
+        if (heroEmoji) heroEmoji.textContent = destination.emoji;
+        if (heroTitle) heroTitle.textContent = destination.name;
+        if (heroSubtitle) heroSubtitle.textContent = destination.country;
     
     // Update hero badges
     const heroBadges = document.getElementById('heroBadges');
