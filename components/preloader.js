@@ -26,18 +26,15 @@
     
     // Check if this is a fresh website visit
     function shouldShowPreloader() {
-        // Check if this is a page reload/refresh
-        const perfData = performance.getEntriesByType('navigation')[0];
-        const isReload = perfData && perfData.type === 'reload';
-        
-        // Check session storage
-        const hasVisited = sessionStorage.getItem('exploora_visited');
-        
-        // Show preloader on:
-        // 1. First visit (no session storage) 
-        // 2. Page refresh/reload
-        if (!hasVisited || isReload) {
+        // Always show on first visit in session
+        if (!sessionStorage.getItem('exploora_visited')) {
             sessionStorage.setItem('exploora_visited', 'true');
+            return true;
+        }
+        
+        // Show on page refresh
+        const navEntry = performance.getEntriesByType('navigation')[0];
+        if (navEntry && navEntry.type === 'reload') {
             return true;
         }
         
@@ -103,8 +100,8 @@
         let messageIndex = 0;
         
         progressInterval = setInterval(() => {
-            // Simulate realistic loading progress with acceleration
-            const increment = Math.random() * 12 + 8; // Faster increments (8-20%)
+            // Simulate realistic loading progress
+            const increment = Math.random() * 15 + 5;
             progress = Math.min(100, progress + increment);
             
             // Update visual elements
@@ -138,9 +135,9 @@
                             </span>
                         `;
                     }
-                }, 200);
+                }, 300);
             }
-        }, 120); // Faster interval (120ms instead of 150ms)
+        }, 150);
     }
     
     // Hide preloader with animation
@@ -193,13 +190,10 @@
         // Auto-hide when page is fully loaded
         if (PRELOADER_CONFIG.autoHide) {
             if (document.readyState === 'complete') {
-                // Page already loaded, hide after short delay
-                setTimeout(hidePreloader, 500);
+                setTimeout(hidePreloader, 1000);
             } else {
-                // Wait for page to load, then hide
                 window.addEventListener('load', () => {
-                    // Give a moment for last render before hiding
-                    setTimeout(hidePreloader, 300);
+                    setTimeout(hidePreloader, 1000);
                 });
             }
         }
