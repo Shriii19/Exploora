@@ -199,6 +199,20 @@
                         </span>
                         <h2 class="destinations-title">Explore Popular Destinations</h2>
                         <p class="destinations-subtitle">Discover the world's most breathtaking places, handpicked for your next adventure</p>
+                        <div class="header-stats">
+                            <div class="header-stat-item">
+                                <div class="stat-number">150+</div>
+                                <div class="stat-label">Destinations</div>
+                            </div>
+                            <div class="header-stat-item">
+                                <div class="stat-number">2M+</div>
+                                <div class="stat-label">Travelers</div>
+                            </div>
+                            <div class="header-stat-item">
+                                <div class="stat-number">4.9★</div>
+                                <div class="stat-label">Avg Rating</div>
+                            </div>
+                        </div>
                     </div>
                     <a href="destinations.html" class="view-all-btn">
                         View All Destinations
@@ -465,6 +479,62 @@
                         <span>Browse All Destinations</span>
                     </a>
                 </div>
+
+                <!-- Why Choose Us Section -->
+                <div class="why-choose-section">
+                    <h3 class="why-choose-title">
+                        <span class="title-icon">✨</span>
+                        Why Travelers Love Exploora
+                    </h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Verified Reviews</h4>
+                            <p>All reviews from real travelers who've been there</p>
+                            <div class="benefit-stat">2M+ Reviews</div>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <h4>Best Price Guarantee</h4>
+                            <p>Find the best deals or we'll match the price</p>
+                            <div class="benefit-stat">Save up to 40%</div>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h4>24/7 Support</h4>
+                            <p>Always here to help, wherever you are</p>
+                            <div class="benefit-stat">< 2min Response</div>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h4>Secure Booking</h4>
+                            <p>Your payment and data are always protected</p>
+                            <div class="benefit-stat">256-bit SSL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Travel Tips -->
+                <div class="travel-tips-banner">
+                    <div class="tips-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="tips-content">
+                        <h4>Pro Travel Tip</h4>
+                        <p>Book 2-3 months in advance for the best deals on flights and hotels. Peak season? Book even earlier!</p>
+                    </div>
+                    <button class="tips-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </section>
 
             </div>
@@ -492,7 +562,79 @@
                     }
                 });
             });
+
+            // Travel tips banner close functionality
+            const tipsClose = document.querySelector('.tips-close');
+            const tipsBanner = document.querySelector('.travel-tips-banner');
+            
+            if (tipsClose && tipsBanner) {
+                tipsClose.addEventListener('click', function() {
+                    tipsBanner.style.animation = 'slide-out-down 0.4s ease-out forwards';
+                    setTimeout(() => {
+                        tipsBanner.style.display = 'none';
+                    }, 400);
+                });
+            }
+
+            // Add counting animation to header stats
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const animateValue = (element, start, end, duration) => {
+                const range = end - start;
+                const increment = end > start ? 1 : -1;
+                const stepTime = Math.abs(Math.floor(duration / range));
+                let current = start;
+                const originalText = element.textContent;
+                const suffix = originalText.replace(/[\d.+]+/, '');
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (suffix.includes('+')) {
+                        element.textContent = Math.floor(current / 10) * 10 + suffix;
+                    } else {
+                        element.textContent = current + suffix;
+                    }
+                    
+                    if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                        clearInterval(timer);
+                        element.textContent = originalText;
+                    }
+                }, stepTime);
+            };
+
+            // Trigger animation when section is in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach(stat => {
+                            const text = stat.textContent;
+                            const number = parseInt(text.replace(/\D/g, ''));
+                            if (number) {
+                                animateValue(stat, 0, number, 1500);
+                            }
+                        });
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const headerStats = document.querySelector('.header-stats');
+            if (headerStats) {
+                observer.observe(headerStats);
+            }
         });
     </script>
+
+    <style>
+        @keyframes slide-out-down {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+    </style>
 </body>
 </html>

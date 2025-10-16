@@ -12096,6 +12096,36 @@ body {
     color: var(--gray-600);
     line-height: 1.7;
     max-width: 600px;
+    margin-bottom: 1.5rem;
+}
+
+.header-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.header-stat-item {
+    text-align: left;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary-color), #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .view-all-btn {
@@ -12772,6 +12802,210 @@ body {
     transform: rotate(360deg) scale(1.1);
 }
 
+/* Why Choose Us Section */
+.why-choose-section {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, #f8f9ff, #fff);
+    border-radius: 32px;
+    border: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.why-choose-title {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: var(--gray-900);
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.title-icon {
+    font-size: 2.5rem;
+    animation: sparkle-rotate 3s ease-in-out infinite;
+}
+
+@keyframes sparkle-rotate {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 24px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #764ba2);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.benefit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.benefit-card h4 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 0.75rem;
+}
+
+.benefit-card p {
+    font-size: 0.9375rem;
+    color: var(--gray-600);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
+.benefit-stat {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    color: var(--primary-color);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* Travel Tips Banner */
+.travel-tips-banner {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 2.5rem;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-radius: 24px;
+    border: 2px solid #fbbf24;
+    position: relative;
+    animation: slide-in-up 0.6s ease-out;
+}
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tips-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: white;
+    flex-shrink: 0;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
+    }
+}
+
+.tips-content {
+    flex: 1;
+}
+
+.tips-content h4 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #92400e;
+    margin-bottom: 0.5rem;
+}
+
+.tips-content p {
+    font-size: 1rem;
+    color: #78350f;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.tips-close {
+    width: 36px;
+    height: 36px;
+    background: rgba(120, 53, 15, 0.1);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #78350f;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.tips-close:hover {
+    background: rgba(120, 53, 15, 0.2);
+    transform: rotate(90deg);
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .destinations-container {
@@ -12789,6 +13023,14 @@ body {
     
     .destinations-title {
         font-size: 2.25rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .header-stats {
+        gap: 1.5rem;
     }
 }
 
@@ -12838,9 +13080,66 @@ body {
         justify-content: center;
     }
     
+    .header-stats {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .stat-number {
+        font-size: 1.625rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
     .destinations-grid {
         grid-template-columns: 1fr;
         gap: 1.25rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .why-choose-section {
+        padding: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .why-choose-title {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .travel-tips-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .tips-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .tips-content h4 {
+        font-size: 1.125rem;
+    }
+    
+    .tips-content p {
+        font-size: 0.9375rem;
+    }
+    
+    .tips-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
     }
     
     .featured-card {
