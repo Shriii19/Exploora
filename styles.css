@@ -647,7 +647,7 @@ body {
     margin: 0 auto;
     padding: 0 var(--space-xl);
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 280px 1fr 280px;
     align-items: center;
     gap: 2rem;
     position: relative;
@@ -655,7 +655,6 @@ body {
 
 .navbar-brand {
     justify-self: start;
-    white-space: nowrap;
 }
 
 .navbar-nav {
@@ -670,8 +669,7 @@ body {
 
 .navbar-search {
     justify-self: end;
-    min-width: 280px;
-    max-width: 320px;
+    width: 100%;
 }
 
 .navbar-brand .logo {
@@ -705,7 +703,6 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    width: 100%;
     background: linear-gradient(135deg, 
         rgba(37, 99, 235, 0.15) 0%, 
         rgba(6, 182, 212, 0.12) 50%,
@@ -918,17 +915,12 @@ body {
 @media (max-width: 1024px) {
     .navbar-container {
         gap: 1rem;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: 200px 1fr 220px;
     }
     
     .navbar-nav .nav-link {
         padding: 0.75rem 0.6rem;
         font-size: 0.8rem;
-    }
-    
-    .navbar-search {
-        min-width: 200px;
-        max-width: 220px;
     }
     
     .search-input-wrapper {
