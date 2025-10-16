@@ -189,669 +189,268 @@
                 </div>
             </section>
 
-            <!-- Recent Searches Section -->
-            <section class="recent-searches-section animate-fade-in-up">
-                <div class="section-header">
-                    <span class="section-badge">🕒 Recent Activity</span>
-                    <h3>Popular Destinations</h3>
-                    <p>Instantly access recent searches or explore handpicked destinations with comprehensive details</p>
+            <!-- Popular Destinations Section - Completely Redesigned -->
+            <section class="popular-destinations-section animate-fade-in-up">
+                <div class="destinations-header">
+                    <div class="header-content">
+                        <span class="header-badge">
+                            <i class="fas fa-fire"></i>
+                            Trending Now
+                        </span>
+                        <h2 class="destinations-title">Explore Popular Destinations</h2>
+                        <p class="destinations-subtitle">Discover the world's most breathtaking places, handpicked for your next adventure</p>
+                    </div>
+                    <a href="destinations.html" class="view-all-btn">
+                        View All Destinations
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="recent-searches" id="recentSearches">
-                    <div class="popular-quick-access">
-                        <div class="quick-access-grid">
-                            <a href="destinations.html?destination=paris" class="quick-destination-card" data-destination="paris">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇫🇷</span>
+
+                <div class="destinations-container">
+                    <!-- Featured Large Card -->
+                    <div class="featured-destination">
+                        <a href="destination-detail.html?destination=paris" class="featured-card">
+                            <div class="featured-overlay"></div>
+                            <div class="featured-badge">
+                                <i class="fas fa-star"></i>
+                                Most Popular
+                            </div>
+                            <div class="featured-content">
+                                <div class="featured-emoji">🗼</div>
+                                <div class="featured-info">
+                                    <h3>Paris, France</h3>
+                                    <p>Experience the magic of the City of Light with iconic landmarks and world-class cuisine</p>
+                                    <div class="featured-stats">
+                                        <span class="stat-item">
+                                            <i class="fas fa-users"></i>
+                                            2.5M visitors
+                                        </span>
+                                        <span class="stat-item">
+                                            <i class="fas fa-star"></i>
+                                            4.9 Rating
+                                        </span>
+                                        <span class="stat-item">
+                                            <i class="fas fa-cloud-sun"></i>
+                                            22°C
+                                        </span>
+                                    </div>
+                                    <div class="featured-action">
+                                        <span>Explore Paris</span>
+                                        <i class="fas fa-arrow-right"></i>
                                     </div>
                                 </div>
-                                <div class="quick-dest-info">
-                                    <h4>Paris, France</h4>
-                                    <p>City of Love & Lights</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">22°C</span>
-                                        <span class="rating">⭐ 4.8</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=tokyo" class="quick-destination-card" data-destination="tokyo">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇯🇵</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Tokyo, Japan</h4>
-                                    <p>Modern Meets Traditional</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">18°C</span>
-                                        <span class="rating">⭐ 4.9</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=bali" class="quick-destination-card" data-destination="bali">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇮🇩</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Bali, Indonesia</h4>
-                                    <p>Tropical Paradise</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">28°C</span>
-                                        <span class="rating">⭐ 4.7</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=rome" class="quick-destination-card" data-destination="rome">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇮🇹</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Rome, Italy</h4>
-                                    <p>Eternal City</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">25°C</span>
-                                        <span class="rating">⭐ 4.6</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=iceland" class="quick-destination-card" data-destination="iceland">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇮🇸</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Iceland</h4>
-                                    <p>Land of Fire & Ice</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">12°C</span>
-                                        <span class="rating">⭐ 4.9</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            
-                            <a href="destinations.html?destination=santorini" class="quick-destination-card" data-destination="santorini">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇬🇷</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Santorini, Greece</h4>
-                                    <p>Aegean Paradise</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">26°C</span>
-                                        <span class="rating">⭐ 4.8</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=dubai" class="quick-destination-card" data-destination="dubai">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇦🇪</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Dubai, UAE</h4>
-                                    <p>Desert Metropolis</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">32°C</span>
-                                        <span class="rating">⭐ 4.5</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=maldives" class="quick-destination-card" data-destination="maldives">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇲🇻</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Maldives</h4>
-                                    <p>Tropical Heaven</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">30°C</span>
-                                        <span class="rating">⭐ 4.9</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                              <a href="destinations.html?destination=switzerland" class="quick-destination-card" data-destination="switzerland">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇨🇭</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Switzerland</h4>
-                                    <p>Alpine Paradise</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">15°C</span>
-                                        <span class="rating">⭐ 4.9</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=thailand" class="quick-destination-card" data-destination="thailand">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇹🇭</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Thailand</h4>
-                                    <p>Land of Smiles</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">29°C</span>
-                                        <span class="rating">⭐ 4.7</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=morocco" class="quick-destination-card" data-destination="morocco">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇲🇦</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Morocco</h4>
-                                    <p>Gateway to Africa</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">24°C</span>
-                                        <span class="rating">⭐ 4.6</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=newzealand" class="quick-destination-card" data-destination="newzealand">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇳🇿</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>New Zealand</h4>
-                                    <p>Adventure Capital</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">16°C</span>
-                                        <span class="rating">⭐ 4.8</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=peru" class="quick-destination-card" data-destination="peru">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇵🇪</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Peru</h4>
-                                    <p>Machu Picchu & Andes</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">20°C</span>
-                                        <span class="rating">⭐ 4.7</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=norway" class="quick-destination-card" data-destination="norway">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇳🇴</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Norway</h4>
-                                    <p>Fjords & Northern Lights</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">8°C</span>
-                                        <span class="rating">⭐ 4.9</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                            
-                            <a href="destinations.html?destination=australia" class="quick-destination-card" data-destination="australia">
-                                <div class="quick-dest-image">
-                                    <div class="image-overlay-quick">
-                                        <span class="dest-emoji">🇦🇺</span>
-                                    </div>
-                                </div>
-                                <div class="quick-dest-info">
-                                    <h4>Australia</h4>
-                                    <p>Outback & Reef</p>
-                                    <div class="quick-stats">
-                                        <span class="temp">22°C</span>
-                                        <span class="rating">⭐ 4.8</span>
-                                    </div>
-                                </div>
-                                <div class="quick-action">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="recent-searches-list" id="recentSearchesList" style="display: none;">
-                        <p class="no-searches">No recent searches yet. Start exploring amazing destinations!</p>
+
+                    <!-- Grid of Destination Cards -->
+                    <div class="destinations-grid">
+                        <!-- Tokyo -->
+                        <a href="destination-detail.html?destination=tokyo" class="destination-item">
+                            <div class="dest-item-image">
+                                <div class="dest-gradient"></div>
+                                <div class="dest-icon">🏯</div>
+                                <div class="dest-badge">Hot</div>
+                            </div>
+                            <div class="dest-item-content">
+                                <h4>Tokyo</h4>
+                                <p class="dest-country">Japan</p>
+                                <div class="dest-meta">
+                                    <span class="meta-rating">⭐ 4.9</span>
+                                    <span class="meta-temp">18°C</span>
+                                </div>
+                                <div class="dest-tags">
+                                    <span class="tag">Culture</span>
+                                    <span class="tag">Tech</span>
+                                </div>
+                            </div>
+                            <div class="dest-hover-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Bali -->
+                        <a href="destination-detail.html?destination=bali" class="destination-item">
+                            <div class="dest-item-image">
+                                <div class="dest-gradient"></div>
+                                <div class="dest-icon">🏝️</div>
+                                <div class="dest-badge">Trending</div>
+                            </div>
+                            <div class="dest-item-content">
+                                <h4>Bali</h4>
+                                <p class="dest-country">Indonesia</p>
+                                <div class="dest-meta">
+                                    <span class="meta-rating">⭐ 4.8</span>
+                                    <span class="meta-temp">28°C</span>
+                                </div>
+                                <div class="dest-tags">
+                                    <span class="tag">Beach</span>
+                                    <span class="tag">Tropical</span>
+                                </div>
+                            </div>
+                            <div class="dest-hover-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- New York -->
+                        <a href="destination-detail.html?destination=newyork" class="destination-item">
+                            <div class="dest-item-image">
+                                <div class="dest-gradient"></div>
+                                <div class="dest-icon">🗽</div>
+                            </div>
+                            <div class="dest-item-content">
+                                <h4>New York</h4>
+                                <p class="dest-country">USA</p>
+                                <div class="dest-meta">
+                                    <span class="meta-rating">⭐ 4.7</span>
+                                    <span class="meta-temp">15°C</span>
+                                </div>
+                                <div class="dest-tags">
+                                    <span class="tag">Urban</span>
+                                    <span class="tag">Culture</span>
+                                </div>
+                            </div>
+                            <div class="dest-hover-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Santorini -->
+                        <a href="destination-detail.html?destination=santorini" class="destination-item">
+                            <div class="dest-item-image">
+                                <div class="dest-gradient"></div>
+                                <div class="dest-icon">🏺</div>
+                                <div class="dest-badge">Romantic</div>
+                            </div>
+                            <div class="dest-item-content">
+                                <h4>Santorini</h4>
+                                <p class="dest-country">Greece</p>
+                                <div class="dest-meta">
+                                    <span class="meta-rating">⭐ 4.9</span>
+                                    <span class="meta-temp">26°C</span>
+                                </div>
+                                <div class="dest-tags">
+                                    <span class="tag">Island</span>
+                                    <span class="tag">Sunset</span>
+                                </div>
+                            </div>
+                            <div class="dest-hover-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Dubai -->
+                        <a href="destination-detail.html?destination=dubai" class="destination-item">
+                            <div class="dest-item-image">
+                                <div class="dest-gradient"></div>
+                                <div class="dest-icon">🏙️</div>
+                                <div class="dest-badge">Luxury</div>
+                            </div>
+                            <div class="dest-item-content">
+                                <h4>Dubai</h4>
+                                <p class="dest-country">UAE</p>
+                                <div class="dest-meta">
+                                    <span class="meta-rating">⭐ 4.6</span>
+                                    <span class="meta-temp">32°C</span>
+                                </div>
+                                <div class="dest-tags">
+                                    <span class="tag">Modern</span>
+                                    <span class="tag">Shopping</span>
+                                </div>
+                            </div>
+                            <div class="dest-hover-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Rome -->
+                        <a href="destination-detail.html?destination=rome" class="destination-item">
+                            <div class="dest-item-image">
+                                <div class="dest-gradient"></div>
+                                <div class="dest-icon">🏛️</div>
+                            </div>
+                            <div class="dest-item-content">
+                                <h4>Rome</h4>
+                                <p class="dest-country">Italy</p>
+                                <div class="dest-meta">
+                                    <span class="meta-rating">⭐ 4.8</span>
+                                    <span class="meta-temp">25°C</span>
+                                </div>
+                                <div class="dest-tags">
+                                    <span class="tag">History</span>
+                                    <span class="tag">Food</span>
+                                </div>
+                            </div>
+                            <div class="dest-hover-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- London -->
+                        <a href="destination-detail.html?destination=london" class="destination-item">
+                            <div class="dest-item-image">
+                                <div class="dest-gradient"></div>
+                                <div class="dest-icon">🏰</div>
+                            </div>
+                            <div class="dest-item-content">
+                                <h4>London</h4>
+                                <p class="dest-country">United Kingdom</p>
+                                <div class="dest-meta">
+                                    <span class="meta-rating">⭐ 4.7</span>
+                                    <span class="meta-temp">14°C</span>
+                                </div>
+                                <div class="dest-tags">
+                                    <span class="tag">Royal</span>
+                                    <span class="tag">Museums</span>
+                                </div>
+                            </div>
+                            <div class="dest-hover-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+
+                        <!-- Sydney -->
+                        <a href="destination-detail.html?destination=sydney" class="destination-item">
+                            <div class="dest-item-image">
+                                <div class="dest-gradient"></div>
+                                <div class="dest-icon">🦘</div>
+                            </div>
+                            <div class="dest-item-content">
+                                <h4>Sydney</h4>
+                                <p class="dest-country">Australia</p>
+                                <div class="dest-meta">
+                                    <span class="meta-rating">⭐ 4.8</span>
+                                    <span class="meta-temp">22°C</span>
+                                </div>
+                                <div class="dest-tags">
+                                    <span class="tag">Harbor</span>
+                                    <span class="tag">Beach</span>
+                                </div>
+                            </div>
+                            <div class="dest-hover-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
                     </div>
+                </div>
+
+                <!-- Bottom CTA -->
+                <div class="destinations-cta">
+                    <div class="cta-content">
+                        <h3>Can't find your dream destination?</h3>
+                        <p>Explore our complete collection of over 100+ destinations worldwide</p>
+                    </div>
+                    <a href="destinations.html" class="cta-button">
+                        <i class="fas fa-globe-americas"></i>
+                        Browse All Destinations
+                    </a>
                 </div>
             </section>
 
-            <!-- Destination Modal -->
-            <div id="destinationModal" class="destination-modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 id="modalTitle">Destination Details</h2>
-                        <button class="modal-close" onclick="closeDestinationModal()">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-image-section">
-                            <div id="modalImage" class="modal-main-image"></div>
-                            <div class="modal-image-gallery" id="modalGallery">
-                                <!-- Gallery images will be loaded here -->
-                            </div>
-                        </div>
-                        <div class="modal-info-section">
-                            <div class="modal-quick-info">
-                                <div class="modal-weather">
-                                    <i class="fas fa-thermometer-half"></i>
-                                    <span id="modalWeather">25°C Sunny</span>
-                                </div>
-                                <div class="modal-rating">
-                                    <i class="fas fa-star"></i>
-                                    <span id="modalRating">4.8/5</span>
-                                </div>
-                                <div class="modal-best-time">
-                                    <i class="fas fa-calendar"></i>
-                                    <span id="modalBestTime">Best: Spring</span>
-                                </div>
-                            </div>
-                            <div class="modal-description">
-                                <p id="modalDescription">Destination description will appear here...</p>
-                            </div>
-                            <div class="modal-highlights">
-                                <h4>Top Attractions</h4>
-                                <div class="modal-highlights-grid" id="modalHighlights">
-                                    <!-- Highlights will be loaded here -->
-                                </div>
-                            </div>
-                            <div class="modal-travel-tips">
-                                <h4>Travel Tips</h4>
-                                <div class="travel-tips-list" id="modalTips">
-                                    <!-- Tips will be loaded here -->
-                                </div>
-                            </div>
-                            <div class="modal-actions">
-                                <button class="btn btn-primary" onclick="searchDestination(currentModalDestination)">
-                                    <i class="fas fa-search"></i>
-                                    Explore in Detail
-                                </button>
-                                <button class="btn btn-outline" onclick="addToFavorites(currentModalDestination)">
-                                    <i class="fas fa-heart"></i>
-                                    Add to Favorites
-                                </button>
-                                <button class="btn btn-glass" onclick="shareDestination(currentModalDestination)">
-                                    <i class="fas fa-share"></i>
-                                    Share
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Trending Destinations Section -->
-            <section id="trending-destinations" class="popular-destinations-section animate-fade-in-up">
-                <div class="section-header">
-                    <span class="section-badge">🌍 Trending Now</span>
-                    <h3>Trending Destinations</h3>
-                    <p>Discover where millions of travelers are planning their next adventures with real-time search data.</p>
-                    <div class="section-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">10M+</span>
-                            <span class="stat-label">Weekly Searches</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Live</span>
-                            <span class="stat-label">Trending Data</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="destinations-showcase">
-                    <div class="destination-highlight" data-city="new york" role="article" tabindex="0">
-                        <div class="destination-image">
-                            <div class="image-overlay">
-                                <span class="destination-emoji" aria-label="New York landmark">🗽</span>
-                            </div>
-                            <div class="destination-rating">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span>4.7</span>
-                            </div>
-                            <div class="destination-actions">
-                                <button class="action-btn favorite" aria-label="Add New York to favorites">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="action-btn share" aria-label="Share New York destination">
-                                    <i class="fas fa-share-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="destination-details">
-                            <div class="destination-header">
-                                <h4>New York City, USA</h4>
-                                <span class="destination-price">From $259/night</span>
-                            </div>
-                            <p>The city that never sleeps with Broadway shows, world-class dining, and endless urban adventures</p>
-                            <div class="destination-highlights">
-                                <span class="highlight-tag">🎭 Broadway</span>
-                                <span class="highlight-tag">🏙️ Skyline</span>
-                                <span class="highlight-tag">🛍️ Shopping</span>
-                            </div>
-                            <div class="destination-meta">
-                                <span class="destination-tag">America</span>
-                                <span class="search-count">↗ 1.7k searches</span>
-                                <span class="destination-season">🍂 Best: Fall</span>
-                            </div>
-                            <div class="destination-cta">
-                                <a href="destinations.html?destination=newyork" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-search"></i>
-                                    Explore Now
-                                </a>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-bookmark"></i>
-                                    Save for Later
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="destination-highlight" data-city="sydney" role="article" tabindex="0">
-                        <div class="destination-image">
-                            <div class="image-overlay">
-                                <span class="destination-emoji" aria-label="Sydney landmark">🏖️</span>
-                            </div>
-                            <div class="destination-rating">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span>4.8</span>
-                            </div>
-                            <div class="destination-actions">
-                                <button class="action-btn favorite" aria-label="Add Sydney to favorites">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="action-btn share" aria-label="Share Sydney destination">
-                                    <i class="fas fa-share-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="destination-details">
-                            <div class="destination-header">
-                                <h4>Sydney, Australia</h4>
-                                <span class="destination-price">From $179/night</span>
-                            </div>
-                            <p>Harbor city featuring stunning architecture, pristine beaches, and laid-back coastal vibes</p>
-                            <div class="destination-highlights">
-                                <span class="highlight-tag">🏖️ Beaches</span>
-                                <span class="highlight-tag">🏛️ Opera House</span>
-                                <span class="highlight-tag">🦘 Wildlife</span>
-                            </div>
-                            <div class="destination-meta">
-                                <span class="destination-tag">Oceania</span>
-                                <span class="search-count">↗ 1.2k searches</span>
-                                <span class="destination-season">☀️ Best: Summer</span>
-                            </div>
-                            <div class="destination-cta">
-                                <a href="destinations.html?destination=sydney" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-search"></i>
-                                    Explore Now
-                                </a>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-bookmark"></i>
-                                    Save for Later
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="destination-highlight" data-city="london" role="article" tabindex="0">
-                        <div class="destination-image">
-                            <div class="image-overlay">
-                                <span class="destination-emoji" aria-label="London landmark">🏰</span>
-                            </div>
-                            <div class="destination-rating">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span>4.6</span>
-                            </div>
-                            <div class="destination-actions">
-                                <button class="action-btn favorite" aria-label="Add London to favorites">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="action-btn share" aria-label="Share London destination">
-                                    <i class="fas fa-share-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="destination-details">
-                            <div class="destination-header">
-                                <h4>London, United Kingdom</h4>
-                                <span class="destination-price">From $189/night</span>
-                            </div>
-                            <p>Royal heritage meets modern innovation with centuries of history and cutting-edge culture</p>
-                            <div class="destination-highlights">
-                                <span class="highlight-tag">👑 Royal Palaces</span>
-                                <span class="highlight-tag">🎭 Theatre</span>
-                                <span class="highlight-tag">🏛️ Museums</span>
-                            </div>
-                            <div class="destination-meta">
-                                <span class="destination-tag">Europe</span>
-                                <span class="search-count">↗ 1.5k searches</span>
-                                <span class="destination-season">🌸 Best: Spring</span>
-                            </div>
-                            <div class="destination-cta">
-                                <a href="destinations.html?destination=london" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-search"></i>
-                                    Explore Now
-                                </a>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-bookmark"></i>
-                                    Save for Later
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="destination-highlight" data-city="dubai" role="article" tabindex="0">
-                        <div class="destination-image">
-                            <div class="image-overlay">
-                                <span class="destination-emoji" aria-label="Dubai landmark">🏗️</span>
-                            </div>
-                            <div class="destination-rating">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span>4.5</span>
-                            </div>
-                            <div class="destination-actions">
-                                <button class="action-btn favorite" aria-label="Add Dubai to favorites">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="action-btn share" aria-label="Share Dubai destination">
-                                    <i class="fas fa-share-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="destination-details">
-                            <div class="destination-header">
-                                <h4>Dubai, UAE</h4>
-                                <span class="destination-price">From $299/night</span>
-                            </div>
-                            <p>Futuristic oasis where desert meets luxury with world-record skyscrapers and pristine beaches</p>
-                            <div class="destination-highlights">
-                                <span class="highlight-tag">🏙️ Skyscrapers</span>
-                                <span class="highlight-tag">🛍️ Luxury Shopping</span>
-                                <span class="highlight-tag">🏜️ Desert Safari</span>
-                            </div>
-                            <div class="destination-meta">
-                                <span class="destination-tag">Middle East</span>
-                                <span class="search-count">↗ 980 searches</span>
-                                <span class="destination-season">❄️ Best: Winter</span>
-                            </div>
-                            <div class="destination-cta">
-                                <a href="destinations.html?destination=dubai" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-search"></i>
-                                    Explore Now
-                                </a>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-bookmark"></i>
-                                    Save for Later
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="destination-highlight" data-city="singapore" role="article" tabindex="0">
-                        <div class="destination-image">
-                            <div class="image-overlay">
-                                <span class="destination-emoji" aria-label="Singapore landmark">🌺</span>
-                            </div>
-                            <div class="destination-rating">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span>4.7</span>
-                            </div>
-                            <div class="destination-actions">
-                                <button class="action-btn favorite" aria-label="Add Singapore to favorites">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="action-btn share" aria-label="Share Singapore destination">
-                                    <i class="fas fa-share-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="destination-details">
-                            <div class="destination-header">
-                                <h4>Singapore</h4>
-                                <span class="destination-price">From $219/night</span>
-                            </div>
-                            <p>Garden city-state where East meets West with architectural marvels and diverse cuisines</p>
-                            <div class="destination-highlights">
-                                <span class="highlight-tag">🌿 Gardens</span>
-                                <span class="highlight-tag">🍜 Food Scene</span>
-                                <span class="highlight-tag">🏛️ Architecture</span>
-                            </div>
-                            <div class="destination-meta">
-                                <span class="destination-tag">Asia</span>
-                                <span class="search-count">↗ 1.1k searches</span>
-                                <span class="destination-season">🌤️ Best: Year-round</span>
-                            </div>
-                            <div class="destination-cta">
-                                <a href="destinations.html?destination=singapore" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-search"></i>
-                                    Explore Now
-                                </a>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-bookmark"></i>
-                                    Save for Later
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="destination-highlight" data-city="barcelona" role="article" tabindex="0">
-                        <div class="destination-image">
-                            <div class="image-overlay">
-                                <span class="destination-emoji" aria-label="Barcelona landmark">🏛️</span>
-                            </div>
-                            <div class="destination-rating">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span>4.6</span>
-                            </div>
-                            <div class="destination-actions">
-                                <button class="action-btn favorite" aria-label="Add Barcelona to favorites">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="action-btn share" aria-label="Share Barcelona destination">
-                                    <i class="fas fa-share-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="destination-details">
-                            <div class="destination-header">
-                                <h4>Barcelona, Spain</h4>
-                                <span class="destination-price">From $159/night</span>
-                            </div>
-                            <p>Catalonian jewel where Gaudí's artistic vision transforms the cityscape with vibrant beaches</p>
-                            <div class="destination-highlights">
-                                <span class="highlight-tag">🎨 Gaudí Architecture</span>
-                                <span class="highlight-tag">🏖️ Beaches</span>
-                                <span class="highlight-tag">🍷 Tapas Culture</span>
-                            </div>
-                            <div class="destination-meta">
-                                <span class="destination-tag">Europe</span>
-                                <span class="search-count">↗ 890 searches</span>
-                                <span class="destination-season">🌞 Best: Summer</span>
-                            </div>
-                            <div class="destination-cta">
-                                <a href="destinations.html?destination=barcelona" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-search"></i>
-                                    Explore Now
-                                </a>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-bookmark"></i>
-                                    Save for Later
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
 
