@@ -221,9 +221,33 @@
                 </div>
 
                 <div class="destinations-container">
+                    <!-- Category Filter Tabs -->
+                    <div class="category-filters">
+                        <button class="category-btn active" data-category="all">
+                            <i class="fas fa-globe"></i>
+                            All Destinations
+                        </button>
+                        <button class="category-btn" data-category="beach">
+                            <i class="fas fa-umbrella-beach"></i>
+                            Beach & Islands
+                        </button>
+                        <button class="category-btn" data-category="cultural">
+                            <i class="fas fa-landmark"></i>
+                            Cultural
+                        </button>
+                        <button class="category-btn" data-category="adventure">
+                            <i class="fas fa-mountain"></i>
+                            Adventure
+                        </button>
+                        <button class="category-btn" data-category="luxury">
+                            <i class="fas fa-gem"></i>
+                            Luxury
+                        </button>
+                    </div>
+
                     <!-- Featured Large Card -->
                     <div class="featured-destination">
-                        <a href="destination-detail.html?destination=paris" class="featured-card">
+                        <a href="destination-detail.html?destination=paris" class="featured-card" data-destination="paris">
                             <div class="featured-bg-pattern"></div>
                             <div class="featured-overlay"></div>
                             <div class="featured-badge">
@@ -279,7 +303,7 @@
                     <!-- Grid of Destination Cards -->
                     <div class="destinations-grid">
                         <!-- Tokyo -->
-                        <a href="destination-detail.html?destination=tokyo" class="destination-item">
+                        <a href="destination-detail.html?destination=tokyo" class="destination-item" data-destination="tokyo">
                             <div class="dest-item-image">
                                 <div class="dest-gradient"></div>
                                 <div class="dest-icon">🏯</div>
@@ -303,7 +327,7 @@
                         </a>
 
                         <!-- Bali -->
-                        <a href="destination-detail.html?destination=bali" class="destination-item">
+                        <a href="destination-detail.html?destination=bali" class="destination-item" data-destination="bali">
                             <div class="dest-item-image">
                                 <div class="dest-gradient"></div>
                                 <div class="dest-icon">🏝️</div>
@@ -327,7 +351,7 @@
                         </a>
 
                         <!-- New York -->
-                        <a href="destination-detail.html?destination=newyork" class="destination-item">
+                        <a href="destination-detail.html?destination=newyork" class="destination-item" data-destination="newyork">
                             <div class="dest-item-image">
                                 <div class="dest-gradient"></div>
                                 <div class="dest-icon">🗽</div>
@@ -350,7 +374,7 @@
                         </a>
 
                         <!-- Santorini -->
-                        <a href="destination-detail.html?destination=santorini" class="destination-item">
+                        <a href="destination-detail.html?destination=santorini" class="destination-item" data-destination="santorini">
                             <div class="dest-item-image">
                                 <div class="dest-gradient"></div>
                                 <div class="dest-icon">🏺</div>
@@ -374,7 +398,7 @@
                         </a>
 
                         <!-- Dubai -->
-                        <a href="destination-detail.html?destination=dubai" class="destination-item">
+                        <a href="destination-detail.html?destination=dubai" class="destination-item" data-destination="dubai">
                             <div class="dest-item-image">
                                 <div class="dest-gradient"></div>
                                 <div class="dest-icon">🏙️</div>
@@ -398,7 +422,7 @@
                         </a>
 
                         <!-- Rome -->
-                        <a href="destination-detail.html?destination=rome" class="destination-item">
+                        <a href="destination-detail.html?destination=rome" class="destination-item" data-destination="rome">
                             <div class="dest-item-image">
                                 <div class="dest-gradient"></div>
                                 <div class="dest-icon">🏛️</div>
@@ -421,7 +445,7 @@
                         </a>
 
                         <!-- London -->
-                        <a href="destination-detail.html?destination=london" class="destination-item">
+                        <a href="destination-detail.html?destination=london" class="destination-item" data-destination="london">
                             <div class="dest-item-image">
                                 <div class="dest-gradient"></div>
                                 <div class="dest-icon">🏰</div>
@@ -444,7 +468,7 @@
                         </a>
 
                         <!-- Sydney -->
-                        <a href="destination-detail.html?destination=sydney" class="destination-item">
+                        <a href="destination-detail.html?destination=sydney" class="destination-item" data-destination="sydney">
                             <div class="dest-item-image">
                                 <div class="dest-gradient"></div>
                                 <div class="dest-icon">🦘</div>
@@ -519,6 +543,157 @@
                             <p>Your payment and data are always protected</p>
                             <div class="benefit-stat">256-bit SSL</div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials Carousel -->
+                <div class="testimonials-section">
+                    <div class="testimonials-header">
+                        <span class="testimonials-badge">
+                            <i class="fas fa-quote-left"></i>
+                            Traveler Stories
+                        </span>
+                        <h3>What Our Travelers Say</h3>
+                        <p>Real experiences from real adventurers around the world</p>
+                    </div>
+                    <div class="testimonials-carousel">
+                        <button class="carousel-btn prev" id="prevTestimonial">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="testimonials-track">
+                            <div class="testimonial-card active">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">"Exploora made planning our Paris honeymoon effortless! The recommendations were spot-on, and we discovered hidden gems we never would have found otherwise. Best trip ever!"</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">👩</div>
+                                    <div class="author-info">
+                                        <h5>Sarah Martinez</h5>
+                                        <span>Honeymooner, Paris 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">"As a solo traveler, I was nervous about Tokyo. Exploora's detailed guides and safety tips gave me the confidence to explore. I had an incredible adventure!"</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">👨</div>
+                                    <div class="author-info">
+                                        <h5>James Chen</h5>
+                                        <span>Solo Traveler, Tokyo 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">"Family vacation to Bali was a dream! The platform helped us find kid-friendly activities and the perfect beach resort. Our kids are already asking when we can go back!"</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">👨‍👩‍👧‍👦</div>
+                                    <div class="author-info">
+                                        <h5>The Johnson Family</h5>
+                                        <span>Family Trip, Bali 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn next" id="nextTestimonial">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                </div>
+
+                <!-- Special Offers Banner -->
+                <div class="special-offers-banner">
+                    <div class="offers-badge">
+                        <i class="fas fa-bolt"></i>
+                        Limited Time
+                    </div>
+                    <div class="offers-content">
+                        <h3>🎉 Early Bird Special - Book Now & Save!</h3>
+                        <p>Get up to <strong>30% OFF</strong> on selected destinations when you book 3+ months in advance</p>
+                        <div class="offers-countdown">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="days">23</span>
+                                <span class="countdown-label">Days</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="hours">14</span>
+                                <span class="countdown-label">Hours</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="minutes">27</span>
+                                <span class="countdown-label">Mins</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="seconds">45</span>
+                                <span class="countdown-label">Secs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="destinations.html" class="offers-cta">
+                        <span>Claim Offer</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Newsletter Section -->
+                <div class="newsletter-section">
+                    <div class="newsletter-content">
+                        <div class="newsletter-icon">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <div class="newsletter-text">
+                            <h3>Never Miss a Travel Deal</h3>
+                            <p>Subscribe to get exclusive offers, travel tips, and destination inspiration delivered to your inbox</p>
+                        </div>
+                    </div>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="form-group">
+                            <input 
+                                type="email" 
+                                placeholder="Enter your email address" 
+                                required 
+                                class="newsletter-input"
+                                id="newsletterEmail"
+                            />
+                            <button type="submit" class="newsletter-submit">
+                                <span>Subscribe</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="newsletter-privacy">
+                            <i class="fas fa-lock"></i>
+                            <span>We respect your privacy. Unsubscribe anytime.</span>
+                        </div>
+                    </form>
+                    <div class="newsletter-success" id="newsletterSuccess" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Thank you for subscribing! Check your email for confirmation.</span>
                     </div>
                 </div>
 
@@ -620,6 +795,188 @@
             const headerStats = document.querySelector('.header-stats');
             if (headerStats) {
                 observer.observe(headerStats);
+            }
+
+            // ==================== TESTIMONIALS CAROUSEL ====================
+            let currentTestimonial = 0;
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.carousel-dots .dot');
+            const totalTestimonials = testimonialCards.length;
+
+            function showTestimonial(index) {
+                // Update active card
+                testimonialCards.forEach((card, i) => {
+                    card.classList.toggle('active', i === index);
+                    card.style.display = i === index ? 'block' : 'none';
+                });
+
+                // Update dots
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+
+                currentTestimonial = index;
+            }
+
+            // Previous button
+            const prevBtn = document.getElementById('prevTestimonial');
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+                    showTestimonial(currentTestimonial);
+                });
+            }
+
+            // Next button
+            const nextBtn = document.getElementById('nextTestimonial');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+                    showTestimonial(currentTestimonial);
+                });
+            }
+
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    showTestimonial(index);
+                });
+            });
+
+            // Auto-play carousel (optional)
+            let autoPlayInterval = setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+
+            // Pause auto-play on hover
+            const carousel = document.querySelector('.testimonials-carousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                carousel.addEventListener('mouseleave', () => {
+                    autoPlayInterval = setInterval(() => {
+                        currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+                        showTestimonial(currentTestimonial);
+                    }, 5000);
+                });
+            }
+
+            // Initialize first testimonial
+            showTestimonial(0);
+
+            // ==================== COUNTDOWN TIMER ====================
+            function updateCountdown() {
+                // Set end date (30 days from now)
+                const endDate = new Date();
+                endDate.setDate(endDate.getDate() + 30);
+
+                function update() {
+                    const now = new Date().getTime();
+                    const distance = endDate - now;
+
+                    if (distance < 0) {
+                        // Reset to 30 days if expired
+                        endDate.setDate(new Date().getDate() + 30);
+                        return;
+                    }
+
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    const daysEl = document.getElementById('days');
+                    const hoursEl = document.getElementById('hours');
+                    const minutesEl = document.getElementById('minutes');
+                    const secondsEl = document.getElementById('seconds');
+
+                    if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+                    if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+                    if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+                    if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+                }
+
+                update();
+                setInterval(update, 1000);
+            }
+
+            updateCountdown();
+
+            // ==================== CATEGORY FILTERS ====================
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const destinationItems = document.querySelectorAll('.destination-item, .featured-card');
+
+            // Map categories to destinations
+            const categoryMap = {
+                'all': ['paris', 'tokyo', 'bali', 'newyork', 'santorini', 'dubai', 'rome', 'london', 'sydney'],
+                'beach': ['bali', 'santorini', 'dubai', 'sydney'],
+                'cultural': ['paris', 'tokyo', 'rome', 'london'],
+                'adventure': ['newyork', 'dubai', 'sydney', 'tokyo'],
+                'luxury': ['paris', 'dubai', 'santorini', 'london']
+            };
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Get selected category
+                    const category = button.getAttribute('data-category');
+                    const visibleDestinations = categoryMap[category] || categoryMap['all'];
+
+                    // Filter destinations with animation
+                    destinationItems.forEach(item => {
+                        const destId = item.getAttribute('data-destination');
+                        const shouldShow = category === 'all' || visibleDestinations.includes(destId);
+
+                        if (shouldShow) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // ==================== NEWSLETTER FORM ====================
+            const newsletterForm = document.getElementById('newsletterForm');
+            const newsletterSuccess = document.getElementById('newsletterSuccess');
+            const newsletterEmail = document.getElementById('newsletterEmail');
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const email = newsletterEmail.value.trim();
+                    
+                    if (email && email.includes('@')) {
+                        // Simulate successful subscription
+                        newsletterSuccess.style.display = 'block';
+                        newsletterSuccess.classList.add('show');
+                        newsletterEmail.value = '';
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            newsletterSuccess.classList.remove('show');
+                            setTimeout(() => {
+                                newsletterSuccess.style.display = 'none';
+                            }, 500);
+                        }, 5000);
+
+                        // In production, you would send this to your backend
+                        console.log('Newsletter subscription:', email);
+                    }
+                });
             }
         });
     </script>
