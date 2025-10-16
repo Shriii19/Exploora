@@ -800,15 +800,35 @@
             // ==================== TESTIMONIALS CAROUSEL ====================
             let currentTestimonial = 0;
             const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const testimonialTrack = document.querySelector('.testimonials-track');
             const dots = document.querySelectorAll('.carousel-dots .dot');
             const totalTestimonials = testimonialCards.length;
 
             function showTestimonial(index) {
-                // Update active card
-                testimonialCards.forEach((card, i) => {
-                    card.classList.toggle('active', i === index);
-                    card.style.display = i === index ? 'block' : 'none';
-                });
+                // Ensure index is within bounds
+                if (index < 0) index = totalTestimonials - 1;
+                if (index >= totalTestimonials) index = 0;
+
+                // For mobile, show one card at a time
+                const isMobile = window.innerWidth <= 768;
+                
+                if (isMobile && testimonialTrack) {
+                    const cardWidth = testimonialCards[0]?.offsetWidth || 0;
+                    const gap = 32; // 2rem
+                    const scrollAmount = (cardWidth + gap) * index;
+                    testimonialTrack.style.transform = `translateX(-${scrollAmount}px)`;
+                } else {
+                    // Desktop: just highlight the active card
+                    testimonialCards.forEach((card, i) => {
+                        if (i === index) {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        } else {
+                            card.style.opacity = '0.6';
+                            card.style.transform = 'scale(0.95)';
+                        }
+                    });
+                }
 
                 // Update dots
                 dots.forEach((dot, i) => {
@@ -844,7 +864,7 @@
                 });
             });
 
-            // Auto-play carousel (optional)
+            // Auto-play carousel
             let autoPlayInterval = setInterval(() => {
                 currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
                 showTestimonial(currentTestimonial);
@@ -861,6 +881,15 @@
                     }, 5000);
                 });
             }
+
+            // Reinitialize on resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    showTestimonial(currentTestimonial);
+                }, 250);
+            });
 
             // Initialize first testimonial
             showTestimonial(0);
