@@ -261,7 +261,7 @@ function renderArticles() {
     
     // Add scroll animation
     setTimeout(() => {
-        const newCards = articlesGrid.querySelectorAll('.article-card:not(.animated)');
+        const newCards = articlesGrid.querySelectorAll('.blog-article:not(.animated)');
         newCards.forEach((card, index) => {
             setTimeout(() => {
                 card.classList.add('animated');
@@ -273,7 +273,7 @@ function renderArticles() {
 // Create article card
 function createArticleCard(article) {
     const card = document.createElement('article');
-    card.className = 'article-card';
+    card.className = 'blog-article';
     card.setAttribute('data-category', article.category);
     
     const formattedDate = new Date(article.date).toLocaleDateString('en-US', {
@@ -288,31 +288,23 @@ function createArticleCard(article) {
         <div class="article-image">
             <img src="${article.image}" alt="${article.title}" loading="lazy">
             <div class="article-category">${categoryLabel}</div>
+            <div class="reading-time">${article.readTime.replace(' read', '')}</div>
         </div>
         <div class="article-content">
-            <h3 class="article-title">${article.title}</h3>
-            <p class="article-excerpt">${article.excerpt}</p>
+            <h3>${article.title}</h3>
+            <p>${article.excerpt}</p>
             <div class="article-tags">
                 ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
             </div>
             <div class="article-meta">
-                <span class="author">
-                    <i class="fas fa-user"></i>
-                    ${article.author}
-                </span>
-                <span class="date">
-                    <i class="fas fa-calendar"></i>
-                    ${formattedDate}
-                </span>
-                <span class="read-time">
-                    <i class="fas fa-clock"></i>
-                    ${article.readTime}
-                </span>
+                <div class="author-info">
+                    <div class="author-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="author-name">${article.author}</span>
+                </div>
+                <span class="publish-date">${formattedDate}</span>
             </div>
-            <button class="read-more-btn" onclick="readArticle(${article.id})">
-                Read Article
-                <i class="fas fa-arrow-right"></i>
-            </button>
         </div>
     `;
     
@@ -359,7 +351,7 @@ function loadMoreArticles() {
     
     // Smooth scroll to new content
     setTimeout(() => {
-        const lastCard = document.querySelector('.article-card:last-child');
+        const lastCard = document.querySelector('.blog-article:last-child');
         if (lastCard) {
             lastCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
