@@ -44,7 +44,7 @@ const destinationsData = [
     {
         name: 'New York',
         country: 'USA',
-        region: 'america',
+        region: 'americas',
         description: 'The city that never sleeps, offering Broadway shows, world-famous landmarks, and diverse culture.',
         highlights: ['Statue of Liberty', 'Times Square', 'Central Park', 'Brooklyn Bridge'],
         bestTime: 'April to June, September to November',
@@ -71,7 +71,7 @@ const destinationsData = [
     {
         name: 'Dubai',
         country: 'UAE',
-        region: 'asia',
+        region: 'middleeast',
         description: 'Modern oasis with luxury shopping, ultramodern architecture, and desert adventures.',
         highlights: ['Burj Khalifa', 'Dubai Mall', 'Palm Jumeirah', 'Desert Safari'],
         bestTime: 'November to March',
@@ -89,7 +89,7 @@ const destinationsData = [
     {
         name: 'Los Angeles',
         country: 'USA',
-        region: 'america',
+        region: 'americas',
         description: 'Entertainment capital with Hollywood glamour, beautiful beaches, and perfect weather.',
         highlights: ['Hollywood Sign', 'Santa Monica Pier', 'Getty Center', 'Venice Beach'],
         bestTime: 'March to May, September to November',
@@ -179,7 +179,7 @@ const destinationsData = [
     {
         name: 'Peru',
         country: 'Peru',
-        region: 'america',
+        region: 'americas',
         description: 'Ancient Incan citadel, Amazon rainforest, colorful markets, and rich cultural heritage in the heart of South America.',
         highlights: ['Machu Picchu', 'Amazon', 'Cusco', 'Lake Titicaca'],
         bestTime: 'May to September',
@@ -216,7 +216,7 @@ const destinationsData = [
 
 function initializeDestinationsPage() {
     const destinationsGrid = document.getElementById('destinationsGrid');
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterButtons = document.querySelectorAll('.filter-tab');
     const heroSearchBtn = document.querySelector('.hero-search-btn');
     const heroSearchInput = document.querySelector('.hero-search-input');
     
