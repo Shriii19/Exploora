@@ -270,12 +270,12 @@ function displayDestinations(region) {
     });
     
     // Ensure all cards are visible immediately, then add smooth animation
-    const cards = destinationsGrid.querySelectorAll('.destination-card');
+    const cards = destinationsGrid.querySelectorAll('.destination-item');
     
     // First, make all cards visible to prevent black screen
     cards.forEach(card => {
         card.style.visibility = 'visible';
-        card.style.display = 'flex';
+        card.style.display = 'block';
         card.style.opacity = '0';
         card.style.transform = 'translateY(15px)';
         card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -302,83 +302,117 @@ function displayDestinations(region) {
     }, 2000);
 }
 
+// Helper function to get Unsplash image IDs for destinations
+function getImageId(destinationName) {
+    const imageIds = {
+        'Paris': '1499856871958-5b9627545d1a',
+        'Tokyo': '1540959733332-eab4deabeeaf',
+        'London': '1513635269975-59663e0ac1ad',
+        'New York': '1496442226666-8d4d0e62e6e9',
+        'Sydney': '1506905925346-21bda4d32df4',
+        'Rome': '1552832230-c0197dd311b5',
+        'Dubai': '1512453979798-5ea266f8880c',
+        'Barcelona': '1539037116277-4db20889f2d4',
+        'Los Angeles': '1534190239940-9ba8944ea261',
+        'Bangkok': '1508009603792-1e4265b81167',
+        'Bali': '1537953773345-d172ccf13cf1',
+        'Santorini': '1570077188670-e3a8d69ac5ff'
+    };
+    return imageIds[destinationName] || '1234567890';
+}
+
+// Helper function to get tags for destinations
+function getTagsForDestination(destinationName) {
+    const tags = {
+        'Paris': ['Culture', 'Romance', 'Art'],
+        'Tokyo': ['Culture', 'Tech', 'Food'],
+        'London': ['Royal', 'Museums', 'Parks'],
+        'New York': ['Urban', 'Culture', 'Food'],
+        'Sydney': ['Beach', 'Opera', 'Harbor'],
+        'Rome': ['History', 'Art', 'Food'],
+        'Dubai': ['Luxury', 'Modern', 'Shopping'],
+        'Barcelona': ['Beach', 'Art', 'Food'],
+        'Los Angeles': ['Beach', 'Hollywood', 'Sun'],
+        'Bangkok': ['Culture', 'Food', 'Temples'],
+        'Bali': ['Beach', 'Tropical', 'Spa'],
+        'Santorini': ['Sunsets', 'Wine', 'Romance']
+    };
+    
+    const destTags = tags[destinationName] || ['Travel', 'Explore', 'Adventure'];
+    return destTags.map(tag => `<span class="tag">${tag}</span>`).join('');
+}
+
 function createDestinationCard(destination) {
-    const card = document.createElement('div');
-    card.className = 'destination-card fade-in';
+    const card = document.createElement('a');
+    card.className = 'destination-item fade-in';
+    card.href = `destination-detail.html?destination=${destination.name.toLowerCase().replace(/\s+/g, '')}`;
+    card.dataset.destination = destination.name.toLowerCase().replace(/\s+/g, '');
     card.dataset.city = destination.name.toLowerCase();
     
     // Get appropriate emoji for destination
     const destinationEmojis = {
         'Paris': '🗼',
         'Tokyo': '🏯',
-        'London': '🏰',
+        'London': '�🇧',
         'New York': '🗽',
-        'Sydney': '🏖️',
+        'Sydney': '�',
         'Rome': '🏛️',
-        'Dubai': '🏙️',
+        'Dubai': '�️',
         'Barcelona': '🏖️',
         'Los Angeles': '🌴',
-        'Bangkok': '🛕'
+        'Bangkok': '🛕',
+        'Bali': '🌴',
+        'Santorini': '🌅'
     };
     
     const emoji = destinationEmojis[destination.name] || '🏙️';
     
+    // Get temperature (mock data)
+    const temps = {
+        'Paris': '22°C',
+        'Tokyo': '18°C',
+        'London': '17°C',
+        'New York': '15°C',
+        'Sydney': '24°C',
+        'Rome': '25°C',
+        'Dubai': '32°C',
+        'Barcelona': '23°C',
+        'Los Angeles': '21°C',
+        'Bangkok': '30°C',
+        'Bali': '28°C',
+        'Santorini': '26°C'
+    };
+    
+    const rating = '4.' + (7 + Math.floor(Math.random() * 3));
+    const temp = temps[destination.name] || '20°C';
+    
     card.innerHTML = `
-        <div class="destination-image" style="background: ${destination.gradient};">
-            <div class="destination-pattern"></div>
-            <div class="destination-emoji">${emoji}</div>
-            <div class="destination-badges">
-                <span class="destination-region-badge">${destination.region.charAt(0).toUpperCase() + destination.region.slice(1)}</span>
+        <div class="dest-item-image">
+            <img src="https://images.unsplash.com/photo-${getImageId(destination.name)}?w=800&h=600&fit=crop" alt="${destination.name}" loading="lazy">
+            <div class="dest-gradient"></div>
+            <div class="dest-icon">${emoji}</div>
+            <button class="favorite-btn" data-destination="${destination.name.toLowerCase()}" title="Save to favorites" onclick="event.preventDefault(); event.stopPropagation();">
+                <i class="far fa-heart"></i>
+            </button>
+        </div>
+        <div class="dest-item-content">
+            <h4>${destination.name}</h4>
+            <p class="dest-country">${destination.country}</p>
+            <div class="dest-meta">
+                <span class="meta-rating">⭐ ${rating}</span>
+                <span class="meta-temp">${temp}</span>
             </div>
-            <div class="destination-favorite">
-                <i class="fas fa-heart"></i>
+            <div class="dest-tags">
+                ${getTagsForDestination(destination.name)}
             </div>
         </div>
-        <div class="destination-info">
-            <h3>${destination.name}, ${destination.country}</h3>
-            <p>${destination.description}</p>
-            <div class="destination-highlights">
-                <div class="highlights-header">
-                    <i class="fas fa-star"></i>
-                    Must-see attractions
-                </div>
-                <div class="highlights-list">${destination.highlights.slice(0, 3).join(' • ')}</div>
-            </div>
-            <div class="destination-meta">
-                <span class="meta-time">
-                    <i class="fas fa-calendar"></i> 
-                    ${destination.bestTime}
-                </span>
-                <div class="destination-actions">
-                    <button class="btn btn-primary destination-explore-btn">
-                        <i class="fas fa-search"></i>
-                        Explore
-                    </button>
-                    <a href="destination-detail.html?destination=${destination.name.toLowerCase().replace(/\s+/g, '')}" class="btn btn-outline destination-info-btn">
-                        <i class="fas fa-info-circle"></i>
-                        More Info
-                    </a>
-                </div>
-            </div>
+        <div class="dest-hover-arrow">
+            <i class="fas fa-arrow-right"></i>
         </div>
     `;
     
-    // Add click event to search for this destination
-    const exploreBtn = card.querySelector('.destination-explore-btn');
-    exploreBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        // Add click animation
-        exploreBtn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            exploreBtn.style.transform = '';
-        }, 150);
-        
-        // Navigate to home page and trigger search
-        window.location.href = `index.html?search=${encodeURIComponent(destination.name)}`;
-    });
-    
     // Add favorite button functionality
-    const favoriteBtn = card.querySelector('.destination-favorite');
+    const favoriteBtn = card.querySelector('.favorite-btn');
     favoriteBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         this.classList.toggle('active');
@@ -393,7 +427,7 @@ function scrollToDestination(destinationName) {
         const normalizedName = destinationName.toLowerCase().replace(/\s+/g, '');
         
         // Try to find the destination card by data-city attribute
-        const allCards = document.querySelectorAll('.destination-card[data-city]');
+        const allCards = document.querySelectorAll('.destination-item[data-city]');
         let destinationCard = null;
         
         for (let card of allCards) {
