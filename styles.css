@@ -5125,24 +5125,6 @@ body {
         padding: 1.25rem;
     }
 }
-    
-    .destination-content {
-        padding: 1.25rem;
-    }
-    
-    .destination-header h3 {
-        font-size: 1.25rem;
-    }
-    
-    .destination-description {
-        font-size: 0.9rem;
-    }
-    
-    .feature-tag {
-        font-size: 0.75rem;
-        padding: 0.4rem 0.75rem;
-    }
-}
 
 .destination-card {
     overflow: hidden;
