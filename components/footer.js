@@ -13,11 +13,26 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 async function loadFooter() {
     try {
-        const response = await fetch('components/footer.html');
+        // Determine the correct path based on current location
+        const pathLevel = window.location.pathname.includes('/services/') ? '../' : '';
+        const footerPath = pathLevel + 'components/footer.html';
+        
+        const response = await fetch(footerPath);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const footerHTML = await response.text();
+        let footerHTML = await response.text();
+        
+        // Adjust paths in footer links based on current page location
+        if (window.location.pathname.includes('/services/')) {
+            // We're in the services folder, adjust paths
+            footerHTML = footerHTML.replace(/href="destinations\.html"/g, 'href="../destinations.html"');
+            footerHTML = footerHTML.replace(/href="blog\.html"/g, 'href="../blog.html"');
+            footerHTML = footerHTML.replace(/href="about\.html"/g, 'href="../about.html"');
+            footerHTML = footerHTML.replace(/href="index\.html/g, 'href="../index.html');
+            footerHTML = footerHTML.replace(/href="contact\.html"/g, 'href="../contact.html"');
+            footerHTML = footerHTML.replace(/href="services\//g, 'href="');
+        }
         
         // Insert footer at the end of body (before closing body tag)
         document.body.insertAdjacentHTML('beforeend', footerHTML);
