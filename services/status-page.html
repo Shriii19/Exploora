@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status - Travel Explorer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .status-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .status-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .status-header h1 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .overall-status {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
+        }
+
+        .overall-status.degraded {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.2);
+        }
+
+        .overall-status.down {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.2);
+        }
+
+        .overall-status i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .overall-status h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .overall-status p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .services-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            margin-bottom: 3rem;
+        }
+
+        .services-section h2 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon i {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .service-details h3 {
+            color: #1e293b;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .service-details p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-badge.operational {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-badge.degraded {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-badge.down {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-badge i {
+            font-size: 0.7rem;
+        }
+
+        .uptime-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            margin-bottom: 3rem;
+        }
+
+        .uptime-section h2 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .uptime-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .uptime-stat {
+            text-align: center;
+        }
+
+        .uptime-stat .percentage {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 0.5rem;
+        }
+
+        .uptime-stat .label {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .incidents-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .incidents-section h2 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .incident-item {
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #10b981;
+        }
+
+        .incident-item.warning {
+            border-left-color: #f59e0b;
+        }
+
+        .incident-item.error {
+            border-left-color: #ef4444;
+        }
+
+        .incident-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.75rem;
+        }
+
+        .incident-title {
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .incident-date {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .incident-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .no-incidents {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+        }
+
+        .no-incidents i {
+            font-size: 3rem;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .status-container {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .status-header h1 {
+                font-size: 2rem;
+            }
+
+            .services-section,
+            .uptime-section,
+            .incidents-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .service-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .uptime-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Page Content -->
+    <div class="status-container">
+        <div class="status-header">
+            <h1>System Status</h1>
+        </div>
+
+        <div class="overall-status">
+            <i class="fas fa-check-circle"></i>
+            <h2>All Systems Operational</h2>
+            <p>All services are running smoothly</p>
+        </div>
+
+        <div class="services-section">
+            <h2>Services</h2>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="service-details">
+                        <h3>Website</h3>
+                        <p>Main website and web application</p>
+                    </div>
+                </div>
+                <span class="status-badge operational">
+                    <i class="fas fa-circle"></i>
+                    Operational
+                </span>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="service-details">
+                        <h3>API Services</h3>
+                        <p>REST API and GraphQL endpoints</p>
+                    </div>
+                </div>
+                <span class="status-badge operational">
+                    <i class="fas fa-circle"></i>
+                    Operational
+                </span>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="service-details">
+                        <h3>Search Engine</h3>
+                        <p>Destination and flight search</p>
+                    </div>
+                </div>
+                <span class="status-badge operational">
+                    <i class="fas fa-circle"></i>
+                    Operational
+                </span>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="service-details">
+                        <h3>Payment Processing</h3>
+                        <p>Booking and payment systems</p>
+                    </div>
+                </div>
+                <span class="status-badge operational">
+                    <i class="fas fa-circle"></i>
+                    Operational
+                </span>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="service-details">
+                        <h3>User Authentication</h3>
+                        <p>Login and registration services</p>
+                    </div>
+                </div>
+                <span class="status-badge operational">
+                    <i class="fas fa-circle"></i>
+                    Operational
+                </span>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="service-details">
+                        <h3>Email Notifications</h3>
+                        <p>Transactional and marketing emails</p>
+                    </div>
+                </div>
+                <span class="status-badge operational">
+                    <i class="fas fa-circle"></i>
+                    Operational
+                </span>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="service-details">
+                        <h3>Mobile Apps</h3>
+                        <p>iOS and Android applications</p>
+                    </div>
+                </div>
+                <span class="status-badge operational">
+                    <i class="fas fa-circle"></i>
+                    Operational
+                </span>
+            </div>
+        </div>
+
+        <div class="uptime-section">
+            <h2>Uptime Statistics</h2>
+            <div class="uptime-stats">
+                <div class="uptime-stat">
+                    <div class="percentage">99.99%</div>
+                    <div class="label">Last 30 Days</div>
+                </div>
+                <div class="uptime-stat">
+                    <div class="percentage">99.98%</div>
+                    <div class="label">Last 90 Days</div>
+                </div>
+                <div class="uptime-stat">
+                    <div class="percentage">99.97%</div>
+                    <div class="label">Last 12 Months</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="incidents-section">
+            <h2>Recent Incidents</h2>
+            
+            <div class="no-incidents">
+                <i class="fas fa-check-circle"></i>
+                <h3>No Recent Incidents</h3>
+                <p>All services have been running smoothly with no reported incidents in the past 30 days.</p>
+            </div>
+
+            <!-- Example incident (hidden by default) -->
+            <!-- <div class="incident-item warning" style="display: none;">
+                <div class="incident-header">
+                    <div class="incident-title">Scheduled Maintenance</div>
+                    <div class="incident-date">Oct 15, 2025</div>
+                </div>
+                <div class="incident-description">
+                    Scheduled maintenance completed successfully. API services were briefly unavailable for approximately 15 minutes. All systems are now fully operational.
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Load Components -->
+    <script src="../components/footer.js"></script>
+    <script src="../components/preloader.js"></script>
+
+    <script>
+        // Auto-refresh status every 60 seconds
+        setInterval(() => {
+            console.log('Checking system status...');
+            // Add actual status check logic here
+        }, 60000);
+
+        // Update last checked time
+        const updateTime = () => {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            console.log('Last checked:', timeString);
+        };
+
+        updateTime();
+        setInterval(updateTime, 60000);
+    </script>
+</body>
+</html>
