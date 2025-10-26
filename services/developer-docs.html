@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Documentation - Travel Explorer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .docs-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .docs-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .docs-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color, #2563eb);
+            margin-bottom: 1rem;
+        }
+
+        .docs-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .docs-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+        }
+
+        .docs-sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .docs-sidebar h3 {
+            color: #1e293b;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .docs-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .docs-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .docs-nav a {
+            color: #64748b;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .docs-nav a:hover {
+            color: var(--primary-color, #2563eb);
+            background: #f1f5f9;
+        }
+
+        .docs-nav a.active {
+            color: var(--primary-color, #2563eb);
+            background: #e0f2fe;
+            font-weight: 600;
+        }
+
+        .docs-main {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .docs-main h2 {
+            color: #1e293b;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .docs-main h3 {
+            color: #334155;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .docs-main h4 {
+            color: #475569;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .docs-main p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .docs-main ul, .docs-main ol {
+            color: #64748b;
+            line-height: 1.8;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .docs-main li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        .inline-code {
+            background: #f1f5f9;
+            color: #e11d48;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .api-endpoint {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color, #2563eb);
+        }
+
+        .api-endpoint h4 {
+            color: var(--primary-color, #2563eb);
+            margin-top: 0;
+        }
+
+        .method-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .method-get {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .method-post {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .parameter-table th,
+        .parameter-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .parameter-table th {
+            background: #f8fafc;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .parameter-table td {
+            color: #64748b;
+        }
+
+        @media (max-width: 992px) {
+            .docs-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .docs-sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .docs-container {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .docs-header h1 {
+                font-size: 2rem;
+            }
+
+            .docs-main {
+                padding: 2rem 1.5rem;
+            }
+
+            .docs-main h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Developer Documentation Content -->
+    <div class="docs-container">
+        <div class="docs-header">
+            <h1>Developer Documentation</h1>
+            <p>Everything you need to integrate Travel Explorer into your applications</p>
+        </div>
+
+        <div class="docs-content">
+            <aside class="docs-sidebar">
+                <h3>Documentation</h3>
+                <ul class="docs-nav">
+                    <li><a href="#getting-started" class="active">Getting Started</a></li>
+                    <li><a href="#authentication">Authentication</a></li>
+                    <li><a href="#api-reference">API Reference</a></li>
+                    <li><a href="#code-examples">Code Examples</a></li>
+                    <li><a href="#rate-limits">Rate Limits</a></li>
+                    <li><a href="#error-handling">Error Handling</a></li>
+                    <li><a href="#sdks">SDKs & Libraries</a></li>
+                </ul>
+            </aside>
+
+            <main class="docs-main">
+                <h2 id="getting-started">Getting Started</h2>
+                <p>Welcome to the Travel Explorer API documentation! Our API provides access to comprehensive travel data, including destination information, weather data, photos, and more.</p>
+
+                <h3>Quick Start</h3>
+                <p>Get started with our API in just a few steps:</p>
+                <ol>
+                    <li>Sign up for a free API key at our developer portal</li>
+                    <li>Make your first API request using the examples below</li>
+                    <li>Explore our comprehensive API endpoints</li>
+                    <li>Build amazing travel applications!</li>
+                </ol>
+
+                <h2 id="authentication">Authentication</h2>
+                <p>All API requests require authentication using an API key. Include your API key in the request header:</p>
+
+                <div class="code-block">
+                    <code>Authorization: Bearer YOUR_API_KEY</code>
+                </div>
+
+                <p>You can obtain your API key from the developer dashboard. Keep your API key secure and never share it publicly.</p>
+
+                <h2 id="api-reference">API Reference</h2>
+
+                <div class="api-endpoint">
+                    <h4><span class="method-badge method-get">GET</span>Search Destinations</h4>
+                    <p><span class="inline-code">/api/v1/destinations/search</span></p>
+                    <p>Search for destinations based on various criteria including location, activities, and climate.</p>
+                    
+                    <h4>Parameters</h4>
+                    <table class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Required</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>query</td>
+                                <td>string</td>
+                                <td>Yes</td>
+                                <td>Search query (city, country, or region)</td>
+                            </tr>
+                            <tr>
+                                <td>limit</td>
+                                <td>integer</td>
+                                <td>No</td>
+                                <td>Number of results (default: 10, max: 100)</td>
+                            </tr>
+                            <tr>
+                                <td>offset</td>
+                                <td>integer</td>
+                                <td>No</td>
+                                <td>Pagination offset (default: 0)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="api-endpoint">
+                    <h4><span class="method-badge method-get">GET</span>Destination Details</h4>
+                    <p><span class="inline-code">/api/v1/destinations/{id}</span></p>
+                    <p>Retrieve detailed information about a specific destination.</p>
+                    
+                    <h4>Response Example</h4>
+                    <div class="code-block">
+<code>{
+  "id": "paris-france",
+  "name": "Paris",
+  "country": "France",
+  "description": "The City of Light...",
+  "coordinates": {
+    "latitude": 48.8566,
+    "longitude": 2.3522
+  },
+  "weather": {
+    "temperature": 18,
+    "condition": "Partly Cloudy"
+  },
+  "photos": [...]
+}</code>
+                    </div>
+                </div>
+
+                <div class="api-endpoint">
+                    <h4><span class="method-badge method-get">GET</span>Weather Data</h4>
+                    <p><span class="inline-code">/api/v1/weather/{location}</span></p>
+                    <p>Get current weather and forecast data for any location.</p>
+                </div>
+
+                <h2 id="code-examples">Code Examples</h2>
+
+                <h3>JavaScript (Fetch API)</h3>
+                <div class="code-block">
+<code>const API_KEY = 'your_api_key_here';
+
+fetch('https://api.travelexplorer.com/v1/destinations/search?query=Paris', {
+  headers: {
+    'Authorization': `Bearer ${API_KEY}`
+  }
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));</code>
+                </div>
+
+                <h3>Python (Requests)</h3>
+                <div class="code-block">
+<code>import requests
+
+API_KEY = 'your_api_key_here'
+headers = {'Authorization': f'Bearer {API_KEY}'}
+
+response = requests.get(
+    'https://api.travelexplorer.com/v1/destinations/search',
+    headers=headers,
+    params={'query': 'Paris'}
+)
+
+data = response.json()
+print(data)</code>
+                </div>
+
+                <h2 id="rate-limits">Rate Limits</h2>
+                <p>API rate limits are based on your subscription tier:</p>
+                <ul>
+                    <li><strong>Free Tier:</strong> 100 requests per hour</li>
+                    <li><strong>Developer Tier:</strong> 1,000 requests per hour</li>
+                    <li><strong>Professional Tier:</strong> 10,000 requests per hour</li>
+                    <li><strong>Enterprise Tier:</strong> Custom limits</li>
+                </ul>
+
+                <h2 id="error-handling">Error Handling</h2>
+                <p>The API uses standard HTTP status codes. Common errors include:</p>
+
+                <div class="code-block">
+<code>// 400 Bad Request - Invalid parameters
+{
+  "error": "Invalid query parameter",
+  "message": "The 'query' parameter is required"
+}
+
+// 401 Unauthorized - Invalid API key
+{
+  "error": "Unauthorized",
+  "message": "Invalid API key"
+}
+
+// 429 Too Many Requests - Rate limit exceeded
+{
+  "error": "Rate limit exceeded",
+  "message": "You have exceeded your hourly rate limit"
+}</code>
+                </div>
+
+                <h2 id="sdks">SDKs & Libraries</h2>
+                <p>We provide official SDKs for popular programming languages:</p>
+                <ul>
+                    <li><strong>JavaScript/TypeScript:</strong> <span class="inline-code">npm install @travelexplorer/sdk</span></li>
+                    <li><strong>Python:</strong> <span class="inline-code">pip install travelexplorer</span></li>
+                    <li><strong>Ruby:</strong> <span class="inline-code">gem install travelexplorer</span></li>
+                    <li><strong>PHP:</strong> <span class="inline-code">composer require travelexplorer/sdk</span></li>
+                </ul>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Load Components -->
+    <script src="../components/footer.js"></script>
+    <script src="../components/preloader.js"></script>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('.docs-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Update active state
+                    document.querySelectorAll('.docs-nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
