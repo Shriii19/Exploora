@@ -615,31 +615,43 @@ body {
 
 /* Navbar Base */
 .navbar {
-    background-color: #0076b600;
-    padding: 1rem 0;
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.35) 0%, 
+        rgba(6, 182, 212, 0.3) 25%,
+        rgba(16, 185, 129, 0.25) 50%,
+        rgba(245, 158, 11, 0.3) 75%,
+        rgba(168, 85, 247, 0.25) 100%);
+    backdrop-filter: blur(25px);
+    padding: 0.875rem 0;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: all var(--transition-normal);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 24px rgba(37, 99, 235, 0.15),
+        0 2px 12px rgba(6, 182, 212, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .navbar.scrolled {
     background: linear-gradient(135deg, 
-        rgba(37, 99, 235, 0.45) 0%, 
-        rgba(6, 182, 212, 0.4) 25%,
-        rgba(16, 185, 129, 0.35) 50%,
-        rgba(245, 158, 11, 0.4) 75%,
-        rgba(168, 85, 247, 0.35) 100%);
-    backdrop-filter: blur(30px);
+        rgba(37, 99, 235, 0.5) 0%, 
+        rgba(6, 182, 212, 0.45) 25%,
+        rgba(16, 185, 129, 0.4) 50%,
+        rgba(245, 158, 11, 0.45) 75%,
+        rgba(168, 85, 247, 0.4) 100%);
+    backdrop-filter: blur(35px);
     padding: 0.75rem 0;
     box-shadow: 
-        0 8px 32px rgba(37, 99, 235, 0.3),
-        0 4px 16px rgba(6, 182, 212, 0.2),
-        0 0 0 1px rgba(255, 255, 255, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        0 8px 32px rgba(37, 99, 235, 0.35),
+        0 4px 20px rgba(6, 182, 212, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .navbar-container {
@@ -819,20 +831,29 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-
-    /* color: var(--white); */
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.35) 0%, 
+        rgba(6, 182, 212, 0.3) 50%,
+        rgba(16, 185, 129, 0.25) 100%);
+    color: var(--white);
     transform: translateY(-2px);
-    /* box-shadow: 
-        0 8px 25px rgba(37, 99, 235, 0.3),
-        0 4px 15px rgba(6, 182, 212, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3); */
-    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    box-shadow: 
+        0 6px 20px rgba(37, 99, 235, 0.25),
+        0 3px 12px rgba(6, 182, 212, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.navbar-nav .nav-link.active 
-{
+.navbar-nav .nav-link.active {
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.4) 0%, 
+        rgba(6, 182, 212, 0.35) 100%);
     color: var(--white);
     font-weight: var(--font-weight-semibold);
+    box-shadow: 
+        0 4px 16px rgba(37, 99, 235, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .navbar-nav .nav-link.active:hover {
