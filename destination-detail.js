@@ -100,6 +100,7 @@ function animateAttractionCards() {
             this.style.transform = 'translateY(-15px) scale(1.05) rotateZ(2deg)';
             this.style.boxShadow = '0 25px 50px rgba(37, 99, 235, 0.4)';
             this.style.animation = 'pulse 0.6s ease';
+            this.style.filter = 'brightness(1.05)';
         });
         
         card.addEventListener('mouseleave', function() {
