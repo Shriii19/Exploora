@@ -1,0 +1,23 @@
+# Exploora Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://exploora.com/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Disallow admin areas (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all search engines to access all content
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
