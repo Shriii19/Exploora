@@ -381,29 +381,47 @@ function showFormSuccess() {
     }, 6000);
 }
 
-// Confetti celebration animation
+// Confetti celebration animation with emojis
 function createConfetti() {
-    const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+    const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+    const emojis = ['🎉', '✨', '🎊', '⭐', '💫'];
     const confettiCount = 50;
     
     for (let i = 0; i < confettiCount; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
-        confetti.style.cssText = `
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: ${colors[Math.floor(Math.random() * colors.length)]};
-            left: ${Math.random() * 100}%;
-            top: -10px;
-            opacity: 1;
-            pointer-events: none;
-            z-index: 10000;
-            animation: confettiFall ${2 + Math.random() * 2}s linear forwards;
-            transform: rotate(${Math.random() * 360}deg);
-        `;
-        document.body.appendChild(confetti);
         
+        // Mix of colored confetti and emojis
+        if (Math.random() > 0.5) {
+            confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            confetti.style.cssText = `
+                position: fixed;
+                font-size: 24px;
+                left: ${Math.random() * 100}%;
+                top: -30px;
+                opacity: 1;
+                pointer-events: none;
+                z-index: 10000;
+                animation: confettiFall ${2 + Math.random() * 2}s linear forwards;
+                transform: rotate(${Math.random() * 360}deg);
+            `;
+        } else {
+            confetti.style.cssText = `
+                position: fixed;
+                width: 10px;
+                height: 10px;
+                background: ${colors[Math.floor(Math.random() * colors.length)]};
+                left: ${Math.random() * 100}%;
+                top: -10px;
+                opacity: 1;
+                pointer-events: none;
+                z-index: 10000;
+                animation: confettiFall ${2 + Math.random() * 2}s linear forwards;
+                transform: rotate(${Math.random() * 360}deg);
+            `;
+        }
+        
+        document.body.appendChild(confetti);
         setTimeout(() => confetti.remove(), 4000);
     }
     
