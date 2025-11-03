@@ -17370,5 +17370,355 @@ a:focus {
    All elements now centered and aligned like Amazon/Flipkart standards
    ============================================================================ */
 
+/* ============================================================================
+   CONTACT PAGE COOL ANIMATIONS
+   Advanced animations for enhanced user experience
+   ============================================================================ */
+
+/* Gradient text animation */
+.gradient-text-animated {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 8s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Floating particles animation */
+.hero-particles::before,
+.hero-particles::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+    animation: floatParticle 20s infinite ease-in-out;
+}
+
+.hero-particles::before {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.hero-particles::after {
+    width: 200px;
+    height: 200px;
+    bottom: 20%;
+    right: 15%;
+    animation-delay: 5s;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+}
+
+@keyframes floatParticle {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50px, -50px) rotate(90deg); }
+    50% { transform: translate(0, -100px) rotate(180deg); }
+    75% { transform: translate(-50px, -50px) rotate(270deg); }
+}
+
+/* Hero announcement pulse */
+.hero-announcement {
+    animation: announcementPulse 3s ease-in-out infinite;
+}
+
+@keyframes announcementPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+    }
+}
+
+/* Scroll indicator glow */
+.hero-scroll-indicator {
+    animation: scrollGlow 2s ease-in-out infinite;
+}
+
+@keyframes scrollGlow {
+    0%, 100% { 
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    }
+    50% { 
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+    }
+}
+
+/* Form header shimmer effect */
+.form-header h3 {
+    position: relative;
+    overflow: hidden;
+}
+
+.form-header h3::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+/* Input glow on focus */
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    animation: inputGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes inputGlow {
+    0%, 100% { 
+        box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+    }
+    50% { 
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+    }
+}
+
+/* Submit button pulse */
+.submit-btn {
+    animation: buttonBreath 2s ease-in-out infinite;
+}
+
+@keyframes buttonBreath {
+    0%, 100% { 
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+    }
+    50% { 
+        box-shadow: 0 8px 35px rgba(37, 99, 235, 0.5);
+    }
+}
+
+/* FAQ icon rotation */
+.faq-icon {
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(360deg) scale(1.2);
+    color: var(--primary-color);
+}
+
+.faq-item:hover .faq-icon {
+    transform: scale(1.1) rotate(10deg);
+}
+
+/* Section badge floating */
+.section-badge {
+    animation: floatBadge 3s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Background mesh animation */
+.background-mesh {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+    animation: meshMove 15s ease-in-out infinite;
+}
+
+@keyframes meshMove {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* Enhanced hero features with bounce */
+.hero-feature {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hero-feature:hover {
+    animation: featureBounce 0.6s ease-in-out;
+}
+
+@keyframes featureBounce {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    50% { transform: scale(1.15) rotate(5deg); }
+    75% { transform: scale(1.1) rotate(-3deg); }
+}
+
+/* Checkbox animation */
+.checkbox-label:hover {
+    animation: checkboxShake 0.5s ease-in-out;
+}
+
+@keyframes checkboxShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+/* Button shine effect */
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transform: skewX(-25deg);
+    animation: btnShine 3s infinite;
+}
+
+@keyframes btnShine {
+    0% { left: -100%; }
+    20%, 100% { left: 150%; }
+}
+
+/* FAQ answer slide in */
+.faq-item.active .faq-answer {
+    animation: slideInAnswer 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes slideInAnswer {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form note pulse */
+.form-note {
+    animation: notePulse 3s ease-in-out infinite;
+}
+
+@keyframes notePulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Enhanced page hero gradient */
+.page-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    animation: heroGradientRotate 20s linear infinite;
+}
+
+@keyframes heroGradientRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Icon animations */
+.form-label i {
+    transition: all 0.3s ease;
+}
+
+.form-group:hover .form-label i {
+    animation: iconBounce 0.6s ease-in-out;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Contact container entrance */
+.contact-container {
+    animation: containerFadeIn 0.8s ease-out;
+}
+
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Section header premium animation */
+.section-header-premium {
+    animation: headerSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes headerSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation for FAQ items */
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.2s; }
+.faq-item:nth-child(3) { animation-delay: 0.3s; }
+.faq-item:nth-child(4) { animation-delay: 0.4s; }
+.faq-item:nth-child(5) { animation-delay: 0.5s; }
+.faq-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    /* Reduce animation intensity on mobile */
+    .hero-particles::before,
+    .hero-particles::after {
+        animation-duration: 25s;
+    }
+    
+    .gradient-text-animated {
+        animation-duration: 10s;
+    }
+    
+    /* Disable heavy animations on mobile for performance */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
+/* ============================================================================
+   END OF CONTACT PAGE COOL ANIMATIONS
+   ============================================================================ */
+
 
 
