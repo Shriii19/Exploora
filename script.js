@@ -335,7 +335,7 @@ function addCursorFollower() {
     });
     
     // Expand on clickable elements
-    const clickables = document.querySelectorAll('a, button, .btn');
+    const clickables = document.querySelectorAll('a, button, .btn, input, select');
     clickables.forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.style.transform = 'scale(2)';
@@ -348,6 +348,12 @@ function addCursorFollower() {
             cursorDot.style.background = '#3b82f6';
         });
     });
+    
+    // Hide custom cursor on touch devices
+    if ('ontouchstart' in window) {
+        cursor.style.display = 'none';
+        cursorDot.style.display = 'none';
+    }
 }
 
 // ============================================================================

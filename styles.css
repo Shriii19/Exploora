@@ -18190,7 +18190,7 @@ a:focus {
     pointer-events: none;
 }
 
-/* Performance optimizations */
+/* Performance optimizations - Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -18198,6 +18198,7 @@ a:focus {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
 
