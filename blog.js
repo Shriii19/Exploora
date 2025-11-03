@@ -1,7 +1,298 @@
 // Blog page functionality
 document.addEventListener('DOMContentLoaded', function() {
     initializeBlogPage();
+    initializeBlogAnimations();
 });
+
+// ============================================================================
+// BLOG PAGE COOL ANIMATIONS
+// ============================================================================
+
+function initializeBlogAnimations() {
+    // Staggered fade-in for blog cards
+    animateBlogCards();
+    
+    // Category filter animation
+    animateCategoryFilters();
+    
+    // Search bar focus animation
+    animateSearchBar();
+    
+    // Featured post highlight animation
+    animateFeaturedPost();
+    
+    // Read more button effects
+    animateReadMoreButtons();
+    
+    // Author avatar hover
+    animateAuthorAvatars();
+    
+    // Tag hover effects
+    animateTagElements();
+    
+    // Image lazy load with blur-up
+    animateBlogImages();
+    
+    // Sidebar widgets animation
+    animateSidebarWidgets();
+}
+
+// Staggered animation for blog cards
+function animateBlogCards() {
+    const blogCards = document.querySelectorAll('.blog-card, .article-card');
+    
+    blogCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px) rotateX(-15deg)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) rotateX(0deg)';
+        }, 100 * index);
+        
+        // 3D tilt effect on hover
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+    });
+}
+
+// Animate category filters
+function animateCategoryFilters() {
+    const filters = document.querySelectorAll('.category-filter, .filter-btn');
+    
+    filters.forEach((filter, index) => {
+        filter.style.opacity = '0';
+        filter.style.transform = 'scale(0) rotate(-180deg)';
+        
+        setTimeout(() => {
+            filter.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            filter.style.opacity = '1';
+            filter.style.transform = 'scale(1) rotate(0deg)';
+        }, 50 * index);
+        
+        // Click animation
+        filter.addEventListener('click', function() {
+            this.style.animation = 'tada 0.8s ease-in-out';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 800);
+        });
+        
+        // Hover effect
+        filter.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.15) rotate(5deg)';
+        });
+        
+        filter.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+}
+
+// Search bar animation
+function animateSearchBar() {
+    const searchBar = document.querySelector('.blog-search, #blog-search');
+    if (!searchBar) return;
+    
+    searchBar.addEventListener('focus', function() {
+        this.style.animation = 'inputWave 0.5s ease-out';
+        this.parentElement.style.transform = 'scale(1.05)';
+        this.parentElement.style.boxShadow = '0 10px 30px rgba(37, 99, 235, 0.3)';
+    });
+    
+    searchBar.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+        this.parentElement.style.boxShadow = '';
+    });
+    
+    // Typing animation
+    let typingTimer;
+    searchBar.addEventListener('input', function() {
+        clearTimeout(typingTimer);
+        this.parentElement.style.animation = 'pulse 0.3s ease';
+        
+        typingTimer = setTimeout(() => {
+            this.parentElement.style.animation = '';
+        }, 300);
+    });
+}
+
+// Featured post animation
+function animateFeaturedPost() {
+    const featuredPost = document.querySelector('.featured-article, .featured-post');
+    if (!featuredPost) return;
+    
+    featuredPost.style.opacity = '0';
+    featuredPost.style.transform = 'scale(0.9) rotateY(-20deg)';
+    
+    setTimeout(() => {
+        featuredPost.style.transition = 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        featuredPost.style.opacity = '1';
+        featuredPost.style.transform = 'scale(1) rotateY(0deg)';
+    }, 300);
+    
+    // Hover effect with gradient shift
+    featuredPost.addEventListener('mouseenter', function() {
+        this.style.animation = 'gradientShift 3s ease infinite';
+    });
+    
+    featuredPost.addEventListener('mouseleave', function() {
+        this.style.animation = '';
+    });
+}
+
+// Read more button animations
+function animateReadMoreButtons() {
+    const readMoreBtns = document.querySelectorAll('.read-more, .btn-read-more');
+    
+    readMoreBtns.forEach(btn => {
+        // Magnetic effect
+        btn.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            this.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.1)`;
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translate(0, 0) scale(1)';
+        });
+        
+        // Click ripple
+        btn.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.style.cssText = `
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.7);
+                transform: translate(-50%, -50%);
+                animation: rippleEffect 0.6s ease-out;
+            `;
+            
+            const rect = this.getBoundingClientRect();
+            ripple.style.left = (e.clientX - rect.left) + 'px';
+            ripple.style.top = (e.clientY - rect.top) + 'px';
+            
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+}
+
+// Author avatar animations
+function animateAuthorAvatars() {
+    const avatars = document.querySelectorAll('.author-avatar, .article-author img');
+    
+    avatars.forEach(avatar => {
+        avatar.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        
+        avatar.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.2) rotate(360deg)';
+            this.style.boxShadow = '0 10px 30px rgba(37, 99, 235, 0.5)';
+        });
+        
+        avatar.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+            this.style.boxShadow = '';
+        });
+    });
+}
+
+// Tag animations
+function animateTagElements() {
+    const tags = document.querySelectorAll('.tag, .article-tag');
+    
+    tags.forEach((tag, index) => {
+        tag.style.opacity = '0';
+        tag.style.transform = 'translateY(10px)';
+        
+        setTimeout(() => {
+            tag.style.transition = 'all 0.3s ease';
+            tag.style.opacity = '1';
+            tag.style.transform = 'translateY(0)';
+        }, 30 * index);
+        
+        tag.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.1)';
+            this.style.animation = 'jello 0.6s ease-in-out';
+        });
+        
+        tag.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.animation = '';
+        });
+    });
+}
+
+// Blog image animations with blur-up effect
+function animateBlogImages() {
+    const images = document.querySelectorAll('.blog-card img, .article-image img');
+    
+    images.forEach(img => {
+        img.style.filter = 'blur(10px)';
+        img.style.transform = 'scale(1.1)';
+        img.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        img.addEventListener('load', function() {
+            this.style.filter = 'blur(0)';
+            this.style.transform = 'scale(1)';
+        });
+        
+        // Zoom effect on hover
+        img.parentElement.addEventListener('mouseenter', function() {
+            img.style.transform = 'scale(1.15) rotate(2deg)';
+        });
+        
+        img.parentElement.addEventListener('mouseleave', function() {
+            img.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+}
+
+// Sidebar widgets animation
+function animateSidebarWidgets() {
+    const widgets = document.querySelectorAll('.sidebar-widget, .widget');
+    
+    widgets.forEach((widget, index) => {
+        widget.style.opacity = '0';
+        widget.style.transform = 'translateX(50px)';
+        
+        setTimeout(() => {
+            widget.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            widget.style.opacity = '1';
+            widget.style.transform = 'translateX(0)';
+        }, 100 * index);
+        
+        widget.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(-10px) scale(1.02)';
+            this.style.boxShadow = '0 15px 40px rgba(37, 99, 235, 0.2)';
+        });
+        
+        widget.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0) scale(1)';
+            this.style.boxShadow = '';
+        });
+    });
+}
+
+// ============================================================================
 
 // Blog articles data
 const blogArticles = [
