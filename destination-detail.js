@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (destinationName) {
             loadDestinationDetails(destinationName);
+            initializeDetailPageAnimations();
         } else {
             // If no destination specified, redirect to destinations page
             console.warn('No destination specified in URL');
@@ -21,6 +22,349 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error initializing destination detail page:', error);
     }
 });
+
+// ============================================================================
+// DESTINATION DETAIL PAGE COOL ANIMATIONS
+// ============================================================================
+
+function initializeDetailPageAnimations() {
+    // Hero banner animation
+    animateHeroBanner();
+    
+    // Attraction cards stagger
+    animateAttractionCards();
+    
+    // Photo gallery lightbox
+    animatePhotoGallery();
+    
+    // Activities tabs
+    animateActivityTabs();
+    
+    // Travel tips reveal
+    animateTravelTips();
+    
+    // Stats counter animation
+    animateStatsCounter();
+    
+    // Similar destinations carousel
+    animateSimilarDestinations();
+    
+    // Save button heart animation
+    animateSaveButton();
+    
+    // Weather forecast cards
+    animateWeatherForecast();
+    
+    // Map zoom animation
+    animateMapZoom();
+}
+
+// Hero banner parallax and reveal
+function animateHeroBanner() {
+    const heroBanner = document.querySelector('.destination-hero, .detail-hero');
+    if (!heroBanner) return;
+    
+    heroBanner.style.opacity = '0';
+    heroBanner.style.transform = 'scale(1.2)';
+    
+    setTimeout(() => {
+        heroBanner.style.transition = 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        heroBanner.style.opacity = '1';
+        heroBanner.style.transform = 'scale(1)';
+    }, 100);
+    
+    // Parallax scroll effect
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        heroBanner.style.transform = `translateY(${scrolled * 0.5}px) scale(${1 + scrolled * 0.0001})`;
+        heroBanner.style.opacity = 1 - (scrolled / 500);
+    });
+}
+
+// Attraction cards staggered animation
+function animateAttractionCards() {
+    const cards = document.querySelectorAll('.attraction-card, .place-card');
+    
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(80px) rotateX(-20deg) scale(0.9)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) rotateX(0deg) scale(1)';
+        }, 150 * index);
+        
+        // Hover with 3D effect
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px) scale(1.05) rotateZ(2deg)';
+            this.style.boxShadow = '0 25px 50px rgba(37, 99, 235, 0.4)';
+            this.style.animation = 'pulse 0.6s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1) rotateZ(0deg)';
+            this.style.boxShadow = '';
+            this.style.animation = '';
+        });
+        
+        // Card tilt on mouse move
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            this.style.transform = `translateY(-15px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+    });
+}
+
+// Photo gallery animations
+function animatePhotoGallery() {
+    const photos = document.querySelectorAll('.gallery-photo, .photo-item');
+    
+    photos.forEach((photo, index) => {
+        photo.style.opacity = '0';
+        photo.style.transform = 'scale(0.8) rotate(-10deg)';
+        photo.style.filter = 'blur(10px)';
+        
+        setTimeout(() => {
+            photo.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            photo.style.opacity = '1';
+            photo.style.transform = 'scale(1) rotate(0deg)';
+            photo.style.filter = 'blur(0)';
+        }, 80 * index);
+        
+        // Hover zoom effect
+        photo.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.2) rotate(5deg)';
+            this.style.zIndex = '10';
+            this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
+        });
+        
+        photo.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+            this.style.zIndex = '';
+            this.style.boxShadow = '';
+        });
+        
+        // Click for lightbox
+        photo.addEventListener('click', function() {
+            this.style.animation = 'zoomIn 0.5s ease';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 500);
+        });
+    });
+}
+
+// Activity tabs animation
+function animateActivityTabs() {
+    const tabs = document.querySelectorAll('.activity-tab, .tab-button');
+    
+    tabs.forEach((tab, index) => {
+        tab.style.opacity = '0';
+        tab.style.transform = 'translateY(-20px)';
+        
+        setTimeout(() => {
+            tab.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            tab.style.opacity = '1';
+            tab.style.transform = 'translateY(0)';
+        }, 50 * index);
+        
+        tab.addEventListener('click', function() {
+            this.style.animation = 'rubberBand 0.6s ease';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 600);
+        });
+        
+        tab.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.1)';
+        });
+        
+        tab.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
+// Travel tips reveal animation
+function animateTravelTips() {
+    const tips = document.querySelectorAll('.travel-tip, .tip-item');
+    
+    tips.forEach((tip, index) => {
+        tip.style.opacity = '0';
+        tip.style.transform = 'translateX(-100px)';
+        
+        setTimeout(() => {
+            tip.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            tip.style.opacity = '1';
+            tip.style.transform = 'translateX(0)';
+        }, 100 * index);
+        
+        tip.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(10px) scale(1.03)';
+            this.style.animation = 'swing 0.8s ease';
+        });
+        
+        tip.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0) scale(1)';
+            this.style.animation = '';
+        });
+    });
+}
+
+// Stats counter animation
+function animateStatsCounter() {
+    const stats = document.querySelectorAll('.stat-number, .counter');
+    
+    stats.forEach(stat => {
+        const target = parseInt(stat.textContent);
+        let current = 0;
+        const increment = target / 50;
+        
+        stat.textContent = '0';
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                stat.textContent = target;
+                clearInterval(timer);
+            } else {
+                stat.textContent = Math.floor(current);
+            }
+        }, 30);
+        
+        // Pulse animation
+        stat.style.animation = 'pulse 1s ease-in-out infinite';
+    });
+}
+
+// Similar destinations carousel
+function animateSimilarDestinations() {
+    const similarCards = document.querySelectorAll('.similar-destination, .recommendation-card');
+    
+    similarCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(100px) rotate(10deg)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateX(0) rotate(0deg)';
+        }, 120 * index);
+        
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1) translateY(-10px)';
+            this.style.animation = 'heartBeat 0.8s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+            this.style.animation = '';
+        });
+    });
+}
+
+// Save button heart animation
+function animateSaveButton() {
+    const saveBtn = document.querySelector('.save-btn, .bookmark-btn');
+    if (!saveBtn) return;
+    
+    saveBtn.addEventListener('click', function() {
+        const heart = this.querySelector('i, .heart-icon');
+        if (heart) {
+            heart.style.animation = 'heartBeat 0.8s ease';
+            setTimeout(() => {
+                heart.style.animation = '';
+            }, 800);
+        }
+        
+        // Confetti effect
+        createHeartConfetti(this);
+    });
+}
+
+// Heart confetti for save button
+function createHeartConfetti(button) {
+    const hearts = ['❤️', '💙', '💚', '💛', '💜'];
+    
+    for (let i = 0; i < 10; i++) {
+        const heart = document.createElement('div');
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.cssText = `
+            position: fixed;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: heartFloat ${2 + Math.random()}s ease-out forwards;
+        `;
+        
+        const rect = button.getBoundingClientRect();
+        heart.style.left = rect.left + rect.width / 2 + 'px';
+        heart.style.top = rect.top + rect.height / 2 + 'px';
+        
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 2500);
+    }
+    
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes heartFloat {
+            to {
+                transform: translateY(-100px) translateX(${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Weather forecast animation
+function animateWeatherForecast() {
+    const weatherCards = document.querySelectorAll('.weather-day, .forecast-card');
+    
+    weatherCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0) rotate(-180deg)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1) rotate(0deg)';
+        }, 80 * index);
+        
+        card.addEventListener('mouseenter', function() {
+            this.style.animation = 'tada 0.8s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.animation = '';
+        });
+    });
+}
+
+// Map zoom animation
+function animateMapZoom() {
+    const mapContainer = document.querySelector('.map-container, #map');
+    if (!mapContainer) return;
+    
+    mapContainer.style.opacity = '0';
+    mapContainer.style.transform = 'scale(0.5)';
+    
+    setTimeout(() => {
+        mapContainer.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
+        mapContainer.style.opacity = '1';
+        mapContainer.style.transform = 'scale(1)';
+    }, 500);
+}
+
+// ============================================================================
 
 // Extended destination data with full details
 const detailedDestinationsData = {
