@@ -1,6 +1,7 @@
 // Destinations page functionality
 document.addEventListener('DOMContentLoaded', function() {
     initializeDestinationsPage();
+    initializeDestinationsAnimations();
     
     // Check if there's a destination parameter in URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -11,6 +12,280 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollToDestination(destinationParam);
     }
 });
+
+// ============================================================================
+// DESTINATIONS PAGE COOL ANIMATIONS
+// ============================================================================
+
+function initializeDestinationsAnimations() {
+    // Animated destination cards
+    animateDestinationCards();
+    
+    // Region filter animations
+    animateRegionFilters();
+    
+    // Map interactions
+    animateMapMarkers();
+    
+    // Search animation
+    animateDestinationSearch();
+    
+    // Highlights carousel
+    animateHighlights();
+    
+    // Country flags animation
+    animateCountryFlags();
+    
+    // Weather badge pulse
+    animateWeatherBadges();
+    
+    // Best time tooltip
+    animateBestTimeTooltips();
+    
+    // Destination cards flip
+    addCardFlipEffect();
+}
+
+// Destination cards with 3D flip animation
+function animateDestinationCards() {
+    const cards = document.querySelectorAll('.destination-card, .dest-card');
+    
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(100px) rotateX(-30deg)';
+        card.style.transformStyle = 'preserve-3d';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) rotateX(0deg)';
+        }, 100 * index);
+        
+        // 3D hover effect
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-20px) scale(1.05) rotateZ(2deg)';
+            this.style.boxShadow = '0 30px 60px rgba(37, 99, 235, 0.4)';
+            this.style.zIndex = '10';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1) rotateZ(0deg)';
+            this.style.boxShadow = '';
+            this.style.zIndex = '';
+        });
+        
+        // Parallax tilt effect
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 15;
+            const rotateY = (centerX - x) / 15;
+            
+            this.style.transform = `translateY(-20px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+    });
+}
+
+// Region filter animations
+function animateRegionFilters() {
+    const filters = document.querySelectorAll('.region-filter, .filter-region');
+    
+    filters.forEach((filter, index) => {
+        filter.style.opacity = '0';
+        filter.style.transform = 'translateX(-50px) rotate(-10deg)';
+        
+        setTimeout(() => {
+            filter.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            filter.style.opacity = '1';
+            filter.style.transform = 'translateX(0) rotate(0deg)';
+        }, 50 * index);
+        
+        filter.addEventListener('click', function() {
+            // Active animation
+            this.style.animation = 'rubberBand 0.8s ease-in-out';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 800);
+        });
+        
+        filter.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.2) translateY(-5px)';
+            this.style.animation = 'pulse 1s ease-in-out infinite';
+        });
+        
+        filter.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) translateY(0)';
+            this.style.animation = '';
+        });
+    });
+}
+
+// Map markers animation
+function animateMapMarkers() {
+    const markers = document.querySelectorAll('.map-marker, .destination-marker');
+    
+    markers.forEach((marker, index) => {
+        marker.style.opacity = '0';
+        marker.style.transform = 'scale(0) rotate(0deg)';
+        
+        setTimeout(() => {
+            marker.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            marker.style.opacity = '1';
+            marker.style.transform = 'scale(1) rotate(360deg)';
+        }, 100 * index);
+        
+        // Bounce on hover
+        marker.addEventListener('mouseenter', function() {
+            this.style.animation = 'bounceIn 0.6s ease';
+        });
+        
+        marker.addEventListener('mouseleave', function() {
+            this.style.animation = '';
+        });
+    });
+}
+
+// Search bar animation
+function animateDestinationSearch() {
+    const searchInput = document.querySelector('.destination-search, #destination-search');
+    if (!searchInput) return;
+    
+    searchInput.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'scale(1.08)';
+        this.parentElement.style.animation = 'neonGlow 2s ease-in-out infinite';
+    });
+    
+    searchInput.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+        this.parentElement.style.animation = '';
+    });
+    
+    // Shake animation for no results
+    searchInput.addEventListener('input', function() {
+        if (this.value.length > 2) {
+            const results = document.querySelectorAll('.destination-card:not(.hidden)');
+            if (results.length === 0) {
+                this.parentElement.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    this.parentElement.style.animation = '';
+                }, 500);
+            }
+        }
+    });
+}
+
+// Highlights carousel animation
+function animateHighlights() {
+    const highlights = document.querySelectorAll('.highlight-item, .destination-highlight');
+    
+    highlights.forEach((highlight, index) => {
+        highlight.style.opacity = '0';
+        highlight.style.transform = 'scale(0.5)';
+        
+        setTimeout(() => {
+            highlight.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            highlight.style.opacity = '1';
+            highlight.style.transform = 'scale(1)';
+        }, 50 * index);
+        
+        highlight.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.15) rotate(5deg)';
+            this.style.animation = 'heartBeat 0.8s ease-in-out';
+        });
+        
+        highlight.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+            this.style.animation = '';
+        });
+    });
+}
+
+// Country flags animation
+function animateCountryFlags() {
+    const flags = document.querySelectorAll('.country-flag, .flag-icon');
+    
+    flags.forEach(flag => {
+        flag.style.transition = 'all 0.3s ease';
+        
+        flag.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.3) rotate(360deg)';
+            this.style.filter = 'brightness(1.2) drop-shadow(0 5px 10px rgba(0,0,0,0.3))';
+        });
+        
+        flag.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+            this.style.filter = 'brightness(1)';
+        });
+    });
+}
+
+// Weather badges pulse
+function animateWeatherBadges() {
+    const weatherBadges = document.querySelectorAll('.weather-badge, .climate-badge');
+    
+    weatherBadges.forEach(badge => {
+        badge.style.animation = 'pulse 2s ease-in-out infinite';
+        
+        badge.addEventListener('mouseenter', function() {
+            this.style.animation = 'tada 0.8s ease-in-out';
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+            this.style.animation = 'pulse 2s ease-in-out infinite';
+        });
+    });
+}
+
+// Best time tooltips
+function animateBestTimeTooltips() {
+    const tooltips = document.querySelectorAll('.best-time, .tooltip-trigger');
+    
+    tooltips.forEach(tooltip => {
+        tooltip.addEventListener('mouseenter', function() {
+            const tooltipContent = this.querySelector('.tooltip-content');
+            if (tooltipContent) {
+                tooltipContent.style.animation = 'bounceIn 0.5s ease';
+                tooltipContent.style.display = 'block';
+            }
+        });
+        
+        tooltip.addEventListener('mouseleave', function() {
+            const tooltipContent = this.querySelector('.tooltip-content');
+            if (tooltipContent) {
+                tooltipContent.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    tooltipContent.style.display = 'none';
+                }, 300);
+            }
+        });
+    });
+}
+
+// Card flip effect
+function addCardFlipEffect() {
+    const flipCards = document.querySelectorAll('.flip-card, .destination-card');
+    
+    flipCards.forEach(card => {
+        card.addEventListener('dblclick', function() {
+            this.style.animation = 'flipIn 0.8s ease';
+            
+            // Toggle additional info
+            const additionalInfo = this.querySelector('.additional-info, .card-back');
+            if (additionalInfo) {
+                additionalInfo.classList.toggle('visible');
+            }
+            
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 800);
+        });
+    });
+}
+
+// ============================================================================
 
 // Sample destinations data with regions
 const destinationsData = [
