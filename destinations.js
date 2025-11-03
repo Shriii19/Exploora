@@ -66,6 +66,7 @@ function animateDestinationCards() {
             this.style.transform = 'translateY(-20px) scale(1.05) rotateZ(2deg)';
             this.style.boxShadow = '0 30px 60px rgba(37, 99, 235, 0.4)';
             this.style.zIndex = '10';
+            this.style.filter = 'brightness(1.05)';
         });
         
         card.addEventListener('mouseleave', function() {
