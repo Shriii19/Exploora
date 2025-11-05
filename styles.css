@@ -18204,21 +18204,197 @@ a:focus {
 
 /* Mobile optimizations */
 @media (max-width: 768px) {
-    /* Simplify animations on mobile */
+    /* MOBILE ANIMATION FIXES - Reduce heavy transforms to prevent layout breaks */
+    
+    /* Simplify animations on mobile - reduce duration and disable complex transforms */
     .animate-fadeInUp,
     .animate-scaleIn,
     .animate-rotateIn {
-        animation-duration: 0.5s;
+        animation-duration: 0.4s !important; /* Faster for better performance */
+    }
+    
+    /* Disable 3D transforms and rotations on mobile */
+    .animate-rotateIn {
+        animation-name: fadeIn !important; /* Replace with simple fade */
+    }
+    
+    /* Reduce translateY distances to prevent scrollbar/overflow issues */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(15px); /* Reduced from 30px */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-15px); /* Reduced from -30px */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-20px); /* Reduced from -50px */
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(20px); /* Reduced from 50px */
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    /* Reduce scale animations to prevent overflow */
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95); /* Reduced from 0.8 */
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    /* Simplify bounce animation */
+    @keyframes bounce {
+        0%, 100% {
+            transform: translate3d(0, 0, 0);
+        }
+        50% {
+            transform: translate3d(0, -5px, 0); /* Reduced from -8px */
+        }
+    }
+    
+    /* Reduce pulse animation */
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.02); /* Reduced from 1.05 */
+        }
+    }
+    
+    /* Reduce float animation */
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-5px); /* Reduced from -10px */
+        }
     }
     
     /* Disable cursor follower on touch devices */
     .custom-cursor {
-        display: none;
+        display: none !important;
     }
     
-    /* Reduce parallax on mobile */
+    /* Disable parallax on mobile - prevents layout shifts */
     [data-parallax] {
         transform: none !important;
+    }
+    
+    /* Reduce hover transforms on mobile */
+    .hover-lift:hover {
+        transform: translateY(-5px) !important; /* Reduced from -10px */
+    }
+    
+    .hover-scale:hover {
+        transform: scale(1.03) !important; /* Reduced from 1.1 */
+    }
+    
+    .hover-rotate:hover {
+        transform: rotate(2deg) !important; /* Reduced from 5deg */
+    }
+}
+
+/* ACCESSIBILITY: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    /* Disable all animations for users who prefer reduced motion */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    /* Remove transforms that could cause motion */
+    [class*="animate-"] {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    /* Disable parallax effects */
+    [data-parallax] {
+        transform: none !important;
+    }
+    
+    /* Disable hover effects with transforms */
+    .hover-lift:hover,
+    .hover-scale:hover,
+    .hover-rotate:hover {
+        transform: none !important;
+    }
+}
+
+/* MOBILE-SPECIFIC: Very small screens (phones in portrait) */
+@media (max-width: 480px) {
+    /* Further reduce animations on very small screens */
+    .animate-fadeInUp,
+    .animate-scaleIn,
+    .animate-rotateIn {
+        animation-duration: 0.3s !important;
+    }
+    
+    /* Disable complex multi-step animations */
+    [class*="bounce"],
+    [class*="pulse"],
+    [class*="float"] {
+        animation: fadeIn 0.4s ease-out !important;
+    }
+    
+    /* Ensure no horizontal overflow from animations */
+    body {
+        overflow-x: hidden !important;
+    }
+    
+    /* Reduce all translateX/Y values by 50% */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-10px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(10px); }
+        to { opacity: 1; transform: translateX(0); }
     }
 }
 
