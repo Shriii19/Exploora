@@ -24,42 +24,48 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================================================
-// DESTINATION DETAIL PAGE COOL ANIMATIONS
+// DESTINATION DETAIL PAGE COOL ANIMATIONS (MOBILE-SAFE)
 // ============================================================================
 
 function initializeDetailPageAnimations() {
-    // Hero banner animation
-    animateHeroBanner();
+    const isMobile = window.innerWidth <= 768;
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     
-    // Attraction cards stagger
+    // Core animations (all devices)
     animateAttractionCards();
-    
-    // Photo gallery lightbox
-    animatePhotoGallery();
-    
-    // Activities tabs
-    animateActivityTabs();
-    
-    // Travel tips reveal
     animateTravelTips();
-    
-    // Stats counter animation
-    animateStatsCounter();
-    
-    // Similar destinations carousel
-    animateSimilarDestinations();
-    
-    // Save button heart animation
+    animateActivityTabs();
     animateSaveButton();
-    
-    // Weather forecast cards
     animateWeatherForecast();
     
-    // Map zoom animation
-    animateMapZoom();
+    // Desktop-only animations (performance)
+    if (!isMobile) {
+        animateHeroBanner();
+        animatePhotoGallery();
+        animateStatsCounter();
+        animateSimilarDestinations();
+        animateMapZoom();
+    } else {
+        // Mobile-optimized versions
+        animateMobileHeroBanner();
+    }
 }
 
-// Hero banner parallax and reveal
+// Mobile-optimized hero banner (no parallax)
+function animateMobileHeroBanner() {
+    const heroBanner = document.querySelector('.destination-hero, .detail-hero');
+    if (!heroBanner) return;
+    
+    // Simple fade-in only
+    heroBanner.style.opacity = '0';
+    
+    setTimeout(() => {
+        heroBanner.style.transition = 'opacity 1s ease-out';
+        heroBanner.style.opacity = '1';
+    }, 100);
+}
+
+// Hero banner parallax and reveal (desktop only)
 function animateHeroBanner() {
     const heroBanner = document.querySelector('.destination-hero, .detail-hero');
     if (!heroBanner) return;
@@ -73,21 +79,38 @@ function animateHeroBanner() {
         heroBanner.style.transform = 'scale(1)';
     }, 100);
     
-    // Parallax scroll effect
+    // MOBILE-SAFE: Throttled parallax scroll effect with limits
+    let ticking = false;
     window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        heroBanner.style.transform = `translateY(${scrolled * 0.5}px) scale(${1 + scrolled * 0.0001})`;
-        heroBanner.style.opacity = 1 - (scrolled / 500);
-    });
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                // MOBILE-SAFE: Limit parallax distance to prevent off-screen content
+                const parallaxDistance = Math.min(scrolled * 0.3, 100); // Reduced from 0.5, capped at 100px
+                const scaleAmount = Math.min(1 + scrolled * 0.00005, 1.05); // Reduced scale effect
+                heroBanner.style.transform = `translateY(${parallaxDistance}px) scale(${scaleAmount})`;
+                heroBanner.style.opacity = Math.max(1 - (scrolled / 500), 0.3); // Keep minimum opacity
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
 // Attraction cards staggered animation
 function animateAttractionCards() {
     const cards = document.querySelectorAll('.attraction-card, .place-card');
+    const isMobile = window.innerWidth <= 768;
     
     cards.forEach((card, index) => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(80px) rotateX(-20deg) scale(0.9)';
+        
+        // MOBILE-SAFE: Reduced transforms to prevent layout breaks
+        if (isMobile) {
+            card.style.transform = 'translateY(25px)'; // Reduced from 80px, no 3D rotation
+        } else {
+            card.style.transform = 'translateY(80px) rotateX(-20deg) scale(0.9)';
+        }
         
         setTimeout(() => {
             card.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
@@ -95,32 +118,40 @@ function animateAttractionCards() {
             card.style.transform = 'translateY(0) rotateX(0deg) scale(1)';
         }, 150 * index);
         
-        // Hover with 3D effect
+        // MOBILE-SAFE: Simplified hover effects on mobile
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-15px) scale(1.05) rotateZ(2deg)';
-            this.style.boxShadow = '0 25px 50px rgba(37, 99, 235, 0.4)';
-            this.style.animation = 'pulse 0.6s ease';
-            this.style.filter = 'brightness(1.05)';
+            if (isMobile) {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+                this.style.boxShadow = '0 12px 24px rgba(37, 99, 235, 0.2)';
+            } else {
+                this.style.transform = 'translateY(-15px) scale(1.05) rotateZ(2deg)';
+                this.style.boxShadow = '0 25px 50px rgba(37, 99, 235, 0.4)';
+                this.style.animation = 'pulse 0.6s ease';
+                this.style.filter = 'brightness(1.05)';
+            }
         });
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1) rotateZ(0deg)';
             this.style.boxShadow = '';
             this.style.animation = '';
+            this.style.filter = '';
         });
         
-        // Card tilt on mouse move
-        card.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-            
-            this.style.transform = `translateY(-15px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
+        // MOBILE-SAFE: Card tilt on mouse move (desktop only)
+        if (!isMobile) {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                this.style.transform = `translateY(-15px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+        }
     });
 }
 
