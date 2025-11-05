@@ -14,46 +14,44 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================================================
-// DESTINATIONS PAGE COOL ANIMATIONS
+// DESTINATIONS PAGE COOL ANIMATIONS (MOBILE-SAFE)
 // ============================================================================
 
 function initializeDestinationsAnimations() {
-    // Animated destination cards
+    const isMobile = window.innerWidth <= 768;
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    
+    // Core animations (all devices)
     animateDestinationCards();
-    
-    // Region filter animations
     animateRegionFilters();
-    
-    // Map interactions
-    animateMapMarkers();
-    
-    // Search animation
     animateDestinationSearch();
-    
-    // Highlights carousel
-    animateHighlights();
-    
-    // Country flags animation
     animateCountryFlags();
-    
-    // Weather badge pulse
     animateWeatherBadges();
-    
-    // Best time tooltip
     animateBestTimeTooltips();
     
-    // Destination cards flip
-    addCardFlipEffect();
+    // Desktop-only heavy animations
+    if (!isMobile) {
+        animateMapMarkers();
+        animateHighlights();
+        addCardFlipEffect();
+    }
 }
 
-// Destination cards with 3D flip animation
+// Destination cards with 3D flip animation (mobile-safe)
 function animateDestinationCards() {
     const cards = document.querySelectorAll('.destination-card, .dest-card');
+    const isMobile = window.innerWidth <= 768;
     
     cards.forEach((card, index) => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(100px) rotateX(-30deg)';
-        card.style.transformStyle = 'preserve-3d';
+        
+        // MOBILE-SAFE: Reduced transforms to prevent layout breaks
+        if (isMobile) {
+            card.style.transform = 'translateY(30px)'; // Reduced from 100px
+        } else {
+            card.style.transform = 'translateY(100px) rotateX(-30deg)';
+            card.style.transformStyle = 'preserve-3d';
+        }
         
         setTimeout(() => {
             card.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
@@ -61,42 +59,57 @@ function animateDestinationCards() {
             card.style.transform = 'translateY(0) rotateX(0deg)';
         }, 100 * index);
         
-        // 3D hover effect
+        // MOBILE-SAFE: Simplified hover effects on mobile
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-20px) scale(1.05) rotateZ(2deg)';
-            this.style.boxShadow = '0 30px 60px rgba(37, 99, 235, 0.4)';
-            this.style.zIndex = '10';
-            this.style.filter = 'brightness(1.05)';
+            if (isMobile) {
+                this.style.transform = 'translateY(-5px) scale(1.02)'; // Subtle on mobile
+                this.style.boxShadow = '0 15px 30px rgba(37, 99, 235, 0.2)';
+            } else {
+                this.style.transform = 'translateY(-20px) scale(1.05) rotateZ(2deg)';
+                this.style.boxShadow = '0 30px 60px rgba(37, 99, 235, 0.4)';
+                this.style.zIndex = '10';
+                this.style.filter = 'brightness(1.05)';
+            }
         });
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1) rotateZ(0deg)';
             this.style.boxShadow = '';
             this.style.zIndex = '';
+            this.style.filter = '';
         });
         
-        // Parallax tilt effect
-        card.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 15;
-            const rotateY = (centerX - x) / 15;
-            
-            this.style.transform = `translateY(-20px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
+        // MOBILE-SAFE: Parallax tilt effect on desktop only
+        if (!isMobile) {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                this.style.transform = `translateY(-20px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+        }
     });
 }
 
-// Region filter animations
+// Region filter animations (mobile-safe)
 function animateRegionFilters() {
     const filters = document.querySelectorAll('.region-filter, .filter-region');
+    const isMobile = window.innerWidth <= 768;
     
     filters.forEach((filter, index) => {
         filter.style.opacity = '0';
-        filter.style.transform = 'translateX(-50px) rotate(-10deg)';
+        
+        // MOBILE-SAFE: Reduced transforms on mobile
+        if (isMobile) {
+            filter.style.transform = 'translateX(-15px)'; // Reduced from -50px, no rotation
+        } else {
+            filter.style.transform = 'translateX(-50px) rotate(-10deg)';
+        }
         
         setTimeout(() => {
             filter.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
