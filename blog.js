@@ -5,45 +5,47 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================================================
-// BLOG PAGE COOL ANIMATIONS
+// BLOG PAGE COOL ANIMATIONS (MOBILE-SAFE)
 // ============================================================================
 
 function initializeBlogAnimations() {
-    // Staggered fade-in for blog cards
+    const isMobile = window.innerWidth <= 768;
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    
+    // Core animations (work on all devices)
     animateBlogCards();
-    
-    // Category filter animation
     animateCategoryFilters();
-    
-    // Search bar focus animation
     animateSearchBar();
-    
-    // Featured post highlight animation
-    animateFeaturedPost();
-    
-    // Read more button effects
     animateReadMoreButtons();
-    
-    // Author avatar hover
-    animateAuthorAvatars();
-    
-    // Tag hover effects
     animateTagElements();
-    
-    // Image lazy load with blur-up
     animateBlogImages();
-    
-    // Sidebar widgets animation
     animateSidebarWidgets();
+    
+    // Desktop-only animations
+    if (!isMobile) {
+        animateFeaturedPost();
+    }
+    
+    // Mouse-only effects (disable on touch)
+    if (!isTouchDevice) {
+        animateAuthorAvatars();
+    }
 }
 
-// Staggered animation for blog cards
+// Staggered animation for blog cards (mobile-safe)
 function animateBlogCards() {
     const blogCards = document.querySelectorAll('.blog-card, .article-card');
+    const isMobile = window.innerWidth <= 768;
     
     blogCards.forEach((card, index) => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(50px) rotateX(-15deg)';
+        
+        // MOBILE-SAFE: Use simple translateY on mobile, avoid 3D rotations
+        if (isMobile) {
+            card.style.transform = 'translateY(20px)'; // Reduced from 50px
+        } else {
+            card.style.transform = 'translateY(50px) rotateX(-15deg)';
+        }
         
         setTimeout(() => {
             card.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
@@ -51,32 +53,41 @@ function animateBlogCards() {
             card.style.transform = 'translateY(0) rotateX(0deg)';
         }, 100 * index);
         
-        // 3D tilt effect on hover
-        card.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
+        // MOBILE-SAFE: 3D tilt effect on desktop only (not suitable for touch)
+        if (!isMobile) {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px) scale(1.02)`;
+            });
             
-            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px) scale(1.02)`;
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-        });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        }
     });
 }
 
-// Animate category filters
+// Animate category filters (mobile-safe)
 function animateCategoryFilters() {
     const filters = document.querySelectorAll('.category-filter, .filter-btn');
+    const isMobile = window.innerWidth <= 768;
     
     filters.forEach((filter, index) => {
         filter.style.opacity = '0';
-        filter.style.transform = 'scale(0) rotate(-180deg)';
+        
+        // MOBILE-SAFE: Simple scale on mobile, avoid rotation
+        if (isMobile) {
+            filter.style.transform = 'scale(0.8)'; // Simpler animation
+        } else {
+            filter.style.transform = 'scale(0) rotate(-180deg)';
+        }
         
         setTimeout(() => {
             filter.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
