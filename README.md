@@ -2,8 +2,6 @@
 
 A modern, responsive Travel Explorer Website built with HTML, CSS, and JavaScript. Discover amazing destinations, check weather conditions, and explore beautiful photos of cities around the world.
 
-> **🎨 New**: Enhanced with stunning cool animations across all pages for an immersive user experience!
-
 ## 🎯 Problem Statement
 
 Planning a trip can be overwhelming without easy access to destination information. Travelers often struggle to find reliable, up-to-date information about destinations, weather conditions, and visual representations of places they want to visit. This project offers a clean interface to explore destinations, view photos, and check weather, simplifying trip planning for users.
