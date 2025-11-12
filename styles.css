@@ -17282,5 +17282,144 @@ a:focus {
    All elements now centered and aligned like Amazon/Flipkart standards
    ============================================================================ */
 
+/* ============================================================================
+   SCROLL TO TOP BUTTON
+   Modern floating button with smooth animations
+   ============================================================================ */
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 
+        0 8px 24px rgba(37, 99, 235, 0.35),
+        0 4px 12px rgba(37, 99, 235, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    backdrop-filter: blur(10px);
+}
+
+/* Show button when visible */
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Hover effects */
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+        0 12px 32px rgba(37, 99, 235, 0.45),
+        0 6px 16px rgba(37, 99, 235, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Active/Click effect */
+.scroll-to-top:active {
+    transform: translateY(-2px) scale(1);
+    box-shadow: 
+        0 6px 16px rgba(37, 99, 235, 0.4),
+        0 3px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Icon animation on hover */
+.scroll-to-top:hover i {
+    animation: bounce-up 0.6s ease-in-out infinite;
+}
+
+/* Focus state for accessibility */
+.scroll-to-top:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.5);
+    outline-offset: 4px;
+}
+
+.scroll-to-top:focus {
+    outline: none;
+}
+
+/* Bounce animation for arrow */
+@keyframes bounce-up {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* Tablet responsive */
+@media (max-width: 1024px) {
+    .scroll-to-top {
+        width: 52px;
+        height: 52px;
+        bottom: 25px;
+        right: 25px;
+        font-size: 1.125rem;
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        width: 48px;
+        height: 48px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
+    }
+    
+    .scroll-to-top:hover {
+        transform: translateY(-3px) scale(1.05);
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .scroll-to-top {
+        width: 44px;
+        height: 44px;
+        bottom: 16px;
+        right: 16px;
+        font-size: 0.9375rem;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-to-top {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        transform: none !important;
+    }
+    
+    .scroll-to-top:hover i {
+        animation: none;
+    }
+}
+
+/* ============================================================================
+   END OF SCROLL TO TOP BUTTON
+   ============================================================================ */
+
+
+
+
 
 
