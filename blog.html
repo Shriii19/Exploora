@@ -595,6 +595,11 @@
         </section>
     </main>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Load component system first -->
     <script src="components/particles.js?v=2.0"></script>
     <script src="components/scroll-animations.js?v=2.0"></script>
@@ -602,5 +607,29 @@
     <!-- Blog-specific JavaScript -->
     <script src="blog.js?v=2.0"></script>
     <script type="module" src="js/main.js"></script>
+    
+    <!-- Scroll to Top Script -->
+    <script>
+        (function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            if (!scrollToTopBtn) return;
+            
+            function toggleScrollButton() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            }
+            
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            window.addEventListener('scroll', toggleScrollButton);
+            scrollToTopBtn.addEventListener('click', scrollToTop);
+            toggleScrollButton();
+        })();
+    </script>
 </body>
 </html>
