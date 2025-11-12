@@ -213,6 +213,28 @@ const blogArticles = [
         readTime: "8 min read",
         category: "guides",
         tags: ["Greece", "Islands", "Island Hopping"]
+    },
+    {
+        id: 20,
+        title: "Peru's Machu Picchu: Planning Your Inca Trail Journey",
+        excerpt: "Everything you need to know about hiking the legendary Inca Trail to Machu Picchu, from permits to packing essentials and altitude preparation.",
+        image: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=600&h=400&fit=crop",
+        author: "Ricardo Silva",
+        date: "2025-11-08",
+        readTime: "11 min read",
+        category: "adventure",
+        tags: ["Peru", "Machu Picchu", "Hiking"]
+    },
+    {
+        id: 21,
+        title: "Street Photography Tips: Capturing Authentic Travel Moments",
+        excerpt: "Master the art of street photography while traveling. Learn ethical practices, camera settings, and how to capture candid moments that tell a story.",
+        image: "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?w=600&h=400&fit=crop",
+        author: "Sophie Martin",
+        date: "2025-11-06",
+        readTime: "6 min read",
+        category: "photography",
+        tags: ["Street Photography", "Travel Tips", "Camera Skills"]
     }
 ];
 
