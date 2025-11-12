@@ -1066,5 +1066,45 @@
             }
         }
     </style>
+
+    <!-- ============================================
+         SCROLL TO TOP BUTTON
+         Place before closing </body> tag
+         ============================================ -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scroll to Top Script -->
+    <script>
+        // Scroll to Top Functionality
+        (function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            // Show/hide button based on scroll position
+            function toggleScrollButton() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            }
+            
+            // Smooth scroll to top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Event listeners
+            window.addEventListener('scroll', toggleScrollButton);
+            scrollToTopBtn.addEventListener('click', scrollToTop);
+            
+            // Initial check
+            toggleScrollButton();
+        })();
+    </script>
 </body>
 </html>
