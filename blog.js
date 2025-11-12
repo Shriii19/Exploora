@@ -180,6 +180,39 @@ const blogArticles = [
         readTime: "6 min read",
         category: "guides",
         tags: ["Europe", "Christmas", "Markets"]
+    },
+    {
+        id: 17,
+        title: "Bali Rice Terraces: Photography & Best Viewing Times",
+        excerpt: "Capture the breathtaking beauty of Bali's iconic rice terraces. Learn the best times to visit and photography techniques for stunning shots.",
+        image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=400&fit=crop",
+        author: "Maya Indah",
+        date: "2025-11-05",
+        readTime: "5 min read",
+        category: "photography",
+        tags: ["Bali", "Rice Terraces", "Photography"]
+    },
+    {
+        id: 18,
+        title: "African Safari: First Timer's Complete Guide",
+        excerpt: "Plan your dream African safari with our comprehensive guide covering the best parks, wildlife seasons, and what to pack for an unforgettable adventure.",
+        image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop",
+        author: "James Omondi",
+        date: "2025-11-02",
+        readTime: "10 min read",
+        category: "adventure",
+        tags: ["Safari", "Africa", "Wildlife"]
+    },
+    {
+        id: 19,
+        title: "Greek Island Hopping: The Ultimate 2-Week Itinerary",
+        excerpt: "Discover the perfect Greek island hopping route from Santorini to Mykonos, including ferry schedules, hidden beaches, and authentic tavernas.",
+        image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&h=400&fit=crop",
+        author: "Dimitris Papadopoulos",
+        date: "2025-10-30",
+        readTime: "8 min read",
+        category: "guides",
+        tags: ["Greece", "Islands", "Island Hopping"]
     }
 ];
 
