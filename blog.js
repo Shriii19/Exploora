@@ -136,6 +136,50 @@ const blogArticles = [
         readTime: "15 min read",
         category: "tips",
         tags: ["Digital Nomad", "Thailand", "Remote Work"]
+    },
+    {
+        id: 13,
+        title: "Exploring Patagonia: A Trekker's Paradise",
+        excerpt: "Discover the stunning landscapes of Patagonia with our guide to the best treks, wildlife encounters, and camping spots in this pristine wilderness.",
+        image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&h=400&fit=crop",
+        author: "Carlos Mendez",
+        date: "2025-10-28",
+        readTime: "9 min read",
+        category: "adventure",
+        tags: ["Patagonia", "Trekking", "Wildlife"]
+    },
+    {
+        id: 14,
+        title: "Street Food Adventures: Bangkok's Best Hidden Stalls",
+        excerpt: "Navigate Bangkok's vibrant street food scene like a pro. From pad thai to mango sticky rice, discover the city's most authentic flavors.",
+        image: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=600&h=400&fit=crop",
+        author: "Som Preeya",
+        date: "2025-10-25",
+        readTime: "5 min read",
+        category: "culture",
+        tags: ["Bangkok", "Street Food", "Thailand"]
+    },
+    {
+        id: 15,
+        title: "Solo Female Travel: Safety Tips for First-Timers",
+        excerpt: "Essential safety advice and confidence-building strategies for women embarking on their first solo travel adventure around the world.",
+        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop",
+        author: "Jennifer Clarke",
+        date: "2025-10-22",
+        readTime: "7 min read",
+        category: "tips",
+        tags: ["Solo Travel", "Safety", "Women Travel"]
+    },
+    {
+        id: 16,
+        title: "European Christmas Markets: A Festive Guide",
+        excerpt: "From Prague to Vienna, explore Europe's most magical Christmas markets with insider tips on what to eat, buy, and experience during the holiday season.",
+        image: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=600&h=400&fit=crop",
+        author: "Anna Schmidt",
+        date: "2025-10-18",
+        readTime: "6 min read",
+        category: "guides",
+        tags: ["Europe", "Christmas", "Markets"]
     }
 ];
 
