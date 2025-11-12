@@ -685,21 +685,30 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradientShift 3s ease-in-out infinite;
-    transition: all var(--transition-normal);
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     margin: -0.5rem;
     border-radius: var(--radius-lg);
     cursor: pointer;
     min-height: 44px;
-    min-width: 44px;
+    position: relative;
+}
+
+/* Ensure emoji stays visible */
+.navbar-brand .logo::before {
+    content: '🌍';
+    -webkit-text-fill-color: initial;
+    margin-right: 0.5rem;
+    display: inline-block;
 }
 
 .navbar-brand .logo:hover {
     transform: translateY(-2px);
     filter: drop-shadow(0 4px 8px rgba(255, 107, 107, 0.3));
+    background-position: 100% 50%;
 }
 
 .navbar-brand .logo:active {
