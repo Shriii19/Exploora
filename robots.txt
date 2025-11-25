@@ -2,8 +2,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://exploora.com/sitemap.xml
+# Sitemap location (update with your actual domain when deploying)
+Sitemap: https://yourdomain.com/sitemap.xml
 
 # Crawl-delay for better server performance
 Crawl-delay: 1
