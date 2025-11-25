@@ -4,20 +4,22 @@ A modern, responsive Travel Explorer Website built with HTML, CSS, and JavaScrip
 
 ## 🎯 Problem Statement
 
-Planning a trip can be overwhelming without easy access to destination information. Travelers often struggle to find reliable, up-to-date information about destinations, weather conditions, and visual representations of places they want to visit. This project offers a clean interface to explore destinations, view photos, and check weather, simplifying trip planning for users.
+Planning a trip can be overwhelming without easy access to destination information. Travelers often struggle to find reliable, up-to-date information about destinations, weather conditions, and visual representations of places they want to visit. This project offers a clean, modern interface to explore destinations, view photos, check weather, and read inspiring travel stories, simplifying trip planning for users worldwide.
 
 ## ✨ Features
 
 ### 🎯 Core Features
 - **Multi-page Architecture** with Home, About, Destinations, Blog, Trip Planner, and Contact pages
-- **Modern Header** with responsive navigation and search functionality
+- **Modern Header** with responsive navigation and clickable logo
 - **Hero Section** with beautiful gradient background and travel-themed design
 - **Real API Integration** with Unsplash API for photos and OpenWeatherMap API for weather
 - **Destination Info Section** displaying high-quality city photos in a gallery format
 - **Weather Info Section** showing real-time temperature, weather condition, and weather icons
 - **Recent Searches Section** with interactive cards showing previously searched cities
 - **Destinations Gallery** with filtering by regions (Europe, Asia, America, Oceania)
-- **Trip Planner** 🆕 - Create, manage, and share multi-day travel itineraries
+- **Trip Planner** - Create, manage, and share multi-day travel itineraries
+- **Blog Section** - 21+ travel articles with search, filter, and category features
+- **Scroll-to-Top Button** - Smooth navigation with modern floating button
 - **Contact Form** with validation and FAQ section
 
 ### 🎨 Design & Styling
