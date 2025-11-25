@@ -2,122 +2,124 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     
+    <!-- Note: Replace 'yourdomain.com' with your actual domain when deploying -->
+    
     <!-- Homepage -->
     <url>
-        <loc>https://exploora.com/</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <!-- Destinations Page -->
     <url>
-        <loc>https://exploora.com/destinations.html</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destinations.html</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <!-- Blog Page -->
     <url>
-        <loc>https://exploora.com/blog.html</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/blog.html</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- Trip Planner -->
     <url>
-        <loc>https://exploora.com/planner.html</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/planner.html</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- About Page -->
     <url>
-        <loc>https://exploora.com/about.html</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/about.html</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     
     <!-- Contact Page -->
     <url>
-        <loc>https://exploora.com/contact.html</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/contact.html</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     
     <!-- Destination Detail Page -->
     <url>
-        <loc>https://exploora.com/destination-detail.html</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <!-- Individual Destinations -->
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=tokyo</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=tokyo</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=paris</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=paris</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=bali</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=bali</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=newyork</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=newyork</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=dubai</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=dubai</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=santorini</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=santorini</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=london</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=london</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=rome</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=rome</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://exploora.com/destination-detail.html?destination=sydney</loc>
-        <lastmod>2025-10-24</lastmod>
+        <loc>https://yourdomain.com/destination-detail.html?destination=sydney</loc>
+        <lastmod>2025-11-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
