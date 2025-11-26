@@ -8095,16 +8095,43 @@ body {
     font-size: var(--text-lg);
 }
 
+.contact-support {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: var(--space-3xl);
+    border-radius: var(--radius-2xl);
+    margin-top: var(--space-3xl);
+    text-align: center;
+}
+
+.contact-support h2 {
+    font-size: var(--text-3xl);
+    color: var(--gray-900);
+    margin-bottom: var(--space-md);
+    font-weight: var(--font-weight-bold);
+}
+
+.contact-support > p {
+    color: var(--gray-600);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2xl);
+}
+
 .contact-methods {
     margin-bottom: var(--space-2xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
 }
 
 .contact-method {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: var(--space-lg);
+    text-align: center;
+    gap: var(--space-md);
     margin-bottom: var(--space-lg);
-    padding: var(--space-lg);
+    padding: var(--space-2xl);
     background: var(--white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -8119,16 +8146,17 @@ body {
 }
 
 .contact-method i {
-    font-size: var(--text-2xl);
+    font-size: 2.5rem;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    width: 50px;
+    width: auto;
     text-align: center;
 }
 
-.contact-method h3 {
+.contact-method h3,
+.contact-method h4 {
     margin: 0 0 var(--space-xs) 0;
     color: var(--gray-800);
     font-size: var(--text-lg);
@@ -8136,9 +8164,24 @@ body {
 }
 
 .contact-method p {
-    margin: 0;
+    margin: 0.25rem 0;
     color: var(--gray-600);
     font-size: var(--text-base);
+    word-break: break-all;
+    width: 100%;
+}
+
+.contact-method p a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    word-break: break-all;
+}
+
+.contact-method p a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
 }
 
 .contact-form {
@@ -16038,25 +16081,31 @@ body {
     .contact-support {
         padding: 2rem 1.5rem;
         border-radius: 16px;
+        margin-top: 2rem;
     }
 
     .contact-support h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         margin-bottom: 0.75rem;
     }
 
-    .contact-support p {
+    .contact-support > p {
         font-size: 0.9375rem;
         margin-bottom: 1.5rem;
     }
 
     .contact-methods {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.25rem;
+        margin-top: 1.5rem;
+    }
+
+    .contact-method {
+        padding: 1.5rem;
     }
 
     .contact-method i {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
 
     .contact-method h4 {
@@ -16064,7 +16113,12 @@ body {
     }
 
     .contact-method p {
-        font-size: 0.9375rem;
+        font-size: 0.875rem;
+        word-break: break-word;
+    }
+    
+    .contact-method p a {
+        word-break: break-word;
     }
 
     /* Fixed: Status page */
