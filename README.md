@@ -40,10 +40,11 @@ Planning a trip can be overwhelming without easy access to destination informati
 - **Weather icons** that change based on real weather conditions
 - **FAQ accordion** with smooth animations
 - **Form validation** with real-time feedback
-- **Itinerary Builder** 🆕 - Drag-and-drop trip planning with auto-save
-- **Activity Management** 🆕 - Add, edit, delete activities with categories
-- **Smart Suggestions** 🆕 - AI-powered destination activity recommendations
-- **Export & Share** 🆕 - Download trips and share via social media
+- **Itinerary Builder** - Drag-and-drop trip planning with auto-save
+- **Activity Management** - Add, edit, delete activities with categories
+- **Smart Suggestions** - AI-powered destination activity recommendations
+- **Export & Share** - Download trips and share via social media
+- **Scroll-to-Top** - Smooth navigation with modern floating button
 
 ## 🛠️ Technologies Used
 
