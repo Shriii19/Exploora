@@ -112,16 +112,27 @@ function initializeFAQ() {
 function validateForm() {
     const requiredFields = ['name', 'email', 'subject', 'message'];
     let isValid = true;
+    let firstErrorField = null;
+    
+    // Remove all existing error messages
+    document.querySelectorAll('.error-message').forEach(el => el.remove());
     
     requiredFields.forEach(fieldName => {
         const field = document.getElementById(fieldName);
+        if (!field) return;
+        
         const value = field.value.trim();
+        const fieldGroup = field.closest('.form-group');
         
         // Remove existing error styling
         field.classList.remove('error');
         
         if (!value) {
             field.classList.add('error');
+            if (fieldGroup) {
+                showFieldError(fieldGroup, `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`);
+            }
+            if (!firstErrorField) firstErrorField = field;
             isValid = false;
         }
         
@@ -130,12 +141,40 @@ function validateForm() {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
                 field.classList.add('error');
+                if (fieldGroup) {
+                    showFieldError(fieldGroup, 'Please enter a valid email address');
+                }
+                if (!firstErrorField) firstErrorField = field;
                 isValid = false;
             }
         }
+        
+        // Message min length validation
+        if (fieldName === 'message' && value && value.length < 10) {
+            field.classList.add('error');
+            if (fieldGroup) {
+                showFieldError(fieldGroup, 'Message must be at least 10 characters');
+            }
+            if (!firstErrorField) firstErrorField = field;
+            isValid = false;
+        }
     });
     
+    // Focus first error field
+    if (firstErrorField) {
+        firstErrorField.focus();
+    }
+    
     return isValid;
+}
+
+// Show field error message
+function showFieldError(fieldGroup, message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.style.cssText = 'color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;';
+    errorDiv.textContent = message;
+    fieldGroup.appendChild(errorDiv);
 }
 
 // Add error styling to CSS
