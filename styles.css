@@ -785,7 +785,8 @@ body {
     padding: 0.5rem 0;
     width: 100%;
     min-width: 0;
-    line-height: 1.5;
+    line-height: 1.4;
+    height: 38px;
 }
 
 .navbar-search-input::placeholder {
@@ -802,16 +803,17 @@ body {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border: none;
     border-radius: var(--radius-full);
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 0.5rem;
+    margin-left: 0.625rem;
     cursor: pointer;
     transition: all var(--transition-normal);
     color: var(--white);
     flex-shrink: 0;
+    font-size: 0.9375rem;
 }
 
 .navbar-search-btn:hover {
@@ -2084,8 +2086,10 @@ body {
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    line-height: 1.1;
+    line-height: 1.15;
     color: white;
+    text-align: center;
+    letter-spacing: -0.02em;
 }
 
 .gradient-text-animated {
@@ -2106,7 +2110,11 @@ body {
     font-size: 1.3rem;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 2rem;
-    line-height: 1.6;
+    line-height: 1.65;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-features {
@@ -11099,10 +11107,13 @@ body {
     
     .hero-title {
         font-size: 2.5rem;
+        line-height: 1.2;
+        word-break: break-word;
     }
     
     .hero-description {
         font-size: 1.1rem;
+        line-height: 1.6;
     }
     
     /* Search Demo Section */
@@ -11128,10 +11139,14 @@ body {
     .hero-title {
         font-size: 2.5rem;
         line-height: 1.2;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
     
     .hero-description {
         font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: 100%;
     }
     
     .hero-features {
@@ -11200,12 +11215,17 @@ body {
     
     .hero-title {
         font-size: 2.25rem;
-        line-height: 1.2;
+        line-height: 1.25;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     .hero-description {
         font-size: 1rem;
         padding: 0 1rem;
+        line-height: 1.6;
+        word-break: break-word;
     }
     
     .hero-features {
