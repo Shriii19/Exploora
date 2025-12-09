@@ -9,7 +9,7 @@
         <ul class="navbar-nav">
             <!-- Mobile Search (only visible in mobile menu) -->
             <li class="nav-item mobile-search-item" style="display: none;">
-                <input type="text" id="mobile-navbar-search" placeholder="Search destinations..." class="mobile-search">
+                <input type="text" id="mobile-navbar-search" placeholder="Search destinations..." class="mobile-search" aria-label="Search destinations (mobile)">
             </li>
             <li class="nav-item">
                 <a href="index.html" class="nav-link">
@@ -52,15 +52,15 @@
         <!-- Search Bar (Extreme Right) -->
         <div class="navbar-search">
             <div class="search-input-wrapper">
-                <input type="text" id="navbar-search" placeholder="Search destinations..." class="navbar-search-input">
-                <button type="button" id="navbar-search-btn" class="navbar-search-btn">
+                <input type="text" id="navbar-search" placeholder="Search destinations..." class="navbar-search-input" aria-label="Search destinations">
+                <button type="button" id="navbar-search-btn" class="navbar-search-btn" aria-label="Submit search">
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
         </div>
 
         <!-- Hamburger Icon -->
-        <div class="menu-toggle" onclick="document.querySelector('.navbar-nav').classList.toggle('active'); this.classList.toggle('active');">
+        <div class="menu-toggle" onclick="document.querySelector('.navbar-nav').classList.toggle('active'); this.classList.toggle('active');" role="button" aria-label="Toggle navigation menu" tabindex="0">
             <span></span>
             <span></span>
             <span></span>
