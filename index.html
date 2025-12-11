@@ -1032,9 +1032,36 @@
                     e.preventDefault();
                     
                     const email = newsletterEmail.value.trim();
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     
-                    if (email && email.includes('@')) {
-                        // Simulate successful subscription
+                    // Clear previous error
+                    newsletterEmail.classList.remove('error');
+                    
+                    if (!email) {
+                        newsletterEmail.classList.add('error');
+                        newsletterEmail.focus();
+                        return;
+                    }
+                    
+                    if (!emailRegex.test(email)) {
+                        newsletterEmail.classList.add('error');
+                        newsletterEmail.focus();
+                        return;
+                    }
+                    
+                    // Show loading state
+                    const submitBtn = newsletterForm.querySelector('.newsletter-submit');
+                    const originalHTML = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // Reset button
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.disabled = false;
+                        
+                        // Show success
                         newsletterSuccess.style.display = 'block';
                         newsletterSuccess.classList.add('show');
                         newsletterEmail.value = '';
@@ -1047,9 +1074,14 @@
                             }, 500);
                         }, 5000);
 
-                        // In production, you would send this to your backend
+                        // In production, send to backend
                         console.log('Newsletter subscription:', email);
-                    }
+                    }, 1500);
+                });
+                
+                // Remove error class on input
+                newsletterEmail.addEventListener('input', () => {
+                    newsletterEmail.classList.remove('error');
                 });
             }
         });
